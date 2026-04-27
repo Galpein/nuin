@@ -1,0 +1,2510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NUIN — Healthcare Market Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green: #00A878;
+  --green-dark: #007A58;
+  --green-light: #00C98E;
+  --green-soft: rgba(0,168,120,0.08);
+  --green-mid: rgba(0,168,120,0.15);
+  --white: #FAFDF9;
+  --bg: #EEF3EF;
+  --bg2: #E5EDE7;
+  --offwhite: #F0F5F1;
+  --dark: #0B1512;
+  --dark2: #162019;
+  --text: #111C18;
+  --text-2: #3A4A45;
+  --text-3: #7A8E89;
+  --border: rgba(0,0,0,0.07);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.07);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.06), 0 12px 40px rgba(0,0,0,0.10);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,0.08), 0 24px 64px rgba(0,0,0,0.14);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.05), 0 8px 28px rgba(0,0,0,0.09), inset 0 1px 0 rgba(255,255,255,0.85);
+  --shadow-card-hover: 0 2px 8px rgba(0,0,0,0.07), 0 20px 56px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.9);
+  --font: 'Montserrat', system-ui, sans-serif;
+  --max-w: 1260px;
+  --pad: clamp(24px, 5vw, 64px);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  font-weight: 300;
+  background: #EFF5F1;
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ──────── NAV ──────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+nav.scrolled { box-shadow: var(--shadow-sm); }
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+  height: 72px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+}
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 34px; }
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+  letter-spacing: 0.01em;
+}
+.nav-links a:hover { color: var(--text); background: var(--bg2); }
+.nav-cta-btn {
+  background: var(--green);
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 9px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 2px 12px rgba(0,168,120,0.3);
+}
+.nav-cta-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+/* ──────── HERO ──────── */
+#hero {
+  min-height: 100svh;
+  background: var(--dark);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 72px;
+}
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 10%, rgba(0,168,120,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 10% 90%, rgba(0,120,88,0.12) 0%, transparent 40%),
+    linear-gradient(150deg, #0B1512 55%, #162019 100%);
+}
+.hero-body {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 52px var(--pad) 36px;
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 52px;
+  align-items: center;
+}
+.hero-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green-light);
+  margin-bottom: 28px;
+}
+.hero-h1 {
+  font-size: clamp(34px, 3.8vw, 58px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: white;
+  margin-bottom: 28px;
+}
+.hero-h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+}
+.hero-h1 .accent {
+  background: linear-gradient(90deg, var(--green-light), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: normal;
+}
+.hero-actionable {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 14px 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  color: rgba(255,255,255,0.95);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.14);
+}
+.hero-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 48px;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--green);
+  color: white;
+  padding: 13px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 13.5px;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  display: inline-block;
+  box-shadow: 0 4px 24px rgba(0,168,120,0.42), 0 8px 40px rgba(0,168,120,0.22), inset 0 1px 0 rgba(255,255,255,0.18);
+}
+.btn-primary:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 6px 32px rgba(0,168,120,0.52), 0 12px 52px rgba(0,168,120,0.28); }
+.btn-ghost {
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.70);
+  padding: 13px 30px;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 13.5px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.14);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  display: inline-block;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.14), 0 6px 28px rgba(0,0,0,0.08);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.11); color: white; box-shadow: 0 4px 20px rgba(0,0,0,0.18), 0 10px 36px rgba(0,0,0,0.12); }
+
+.hero-visual { display: flex; flex-direction: column; gap: 12px; }
+.hero-img-main {
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  box-shadow: var(--shadow-lg);
+}
+.hero-img-main img { width: 100%; height: 100%; object-fit: cover; opacity: 1; display: block; }
+.hero-img-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.hero-img-small { border-radius: 12px; overflow: hidden; aspect-ratio: 3/2; }
+.hero-img-small img { width: 100%; height: 100%; object-fit: cover; opacity: 0.95; display: block; }
+
+.hero-tagline {
+  background: rgba(255,255,255,0.03);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 22px var(--pad);
+  position: relative;
+}
+.hero-tagline-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ht-item {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+.ht-sep { color: rgba(255,255,255,0.1); }
+
+/* ──────── SECTIONS ──────── */
+.section { padding: clamp(72px, 10vw, 120px) 0; }
+.section-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.section-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+/* ──────── SOMOS ──────── */
+#somos { background: radial-gradient(ellipse 65% 75% at 105% 65%, rgba(0,168,120,0.045) 0%, transparent 55%), var(--white); }
+.somos-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+.somos-left .section-title { margin-bottom: 24px; }
+.somos-left p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.85;
+  margin-bottom: 16px;
+}
+.dl-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  text-decoration: none;
+  margin-top: 12px;
+  letter-spacing: 0.01em;
+  transition: gap 0.2s;
+}
+.dl-link:hover { gap: 12px; }
+.dl-link svg { width: 16px; height: 16px; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.25s, transform 0.25s;
+  text-align: center;
+}
+.stat-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
+.stat-card.accent {
+  background: var(--green);
+  border-color: var(--green);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0,168,120,0.2), 0 12px 36px rgba(0,168,120,0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.stat-num {
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.stat-card.accent .stat-num { color: white; }
+.stat-label { font-size: 12px; font-weight: 400; color: var(--text-3); line-height: 1.4; }
+.stat-card.accent .stat-label { color: rgba(255,255,255,0.75); }
+
+/* ──────── EQUIPO ──────── */
+#equipo { background: radial-gradient(ellipse 70% 60% at 90% 45%, rgba(0,168,120,0.05) 0%, transparent 55%), var(--bg); }
+.equipo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 52px;
+}
+.manifesto-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  padding: 10px 20px;
+  border-radius: 50px;
+  background: var(--white);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.manifesto-link:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-1px); }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.tm-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 3/4;
+  background: var(--bg2);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.tm-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-4px); }
+.tm-card img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.tm-card:hover img { transform: scale(1.06); }
+.tm-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 28px 18px 18px;
+  background: linear-gradient(to top, rgba(11,21,18,0.9) 0%, transparent 100%);
+}
+.tm-name { font-size: 14px; font-weight: 600; color: white; line-height: 1.2; }
+.tm-role { font-size: 11.5px; font-weight: 400; color: rgba(255,255,255,0.6); margin-top: 2px; }
+
+/* ──────── SERVICIOS ──────── */
+#servicios { background: radial-gradient(ellipse 55% 65% at -5% 55%, rgba(0,201,142,0.04) 0%, transparent 50%), var(--white); }
+.services-header {
+  margin-bottom: 52px;
+}
+.services-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.services-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: sticky;
+  top: 88px;
+}
+.srv-item {
+  padding: 18px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1.5px solid rgba(0,168,120,0.08);
+  background: rgba(250,253,249,0.92);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 22px rgba(0,0,0,0.07), 0 3px 12px rgba(0,168,120,0.06), inset 0 1px 0 rgba(255,255,255,0.92);
+  text-align: left;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+.srv-item:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateX(2px);
+  border-color: rgba(0,168,120,0.2);
+}
+.srv-item.active {
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 4px 16px rgba(0,168,120,0.25), 0 12px 40px rgba(0,168,120,0.2);
+  transform: translateX(4px);
+}
+.srv-num {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--green);
+  display: block;
+  margin-bottom: 4px;
+}
+.srv-item.active .srv-num { color: rgba(255,255,255,0.65); }
+.srv-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  display: block;
+  margin-bottom: 6px;
+}
+.srv-item.active .srv-name { color: white; }
+.srv-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--green-dark);
+  background: var(--green-soft);
+  padding: 2px 8px;
+  border-radius: 50px;
+  letter-spacing: 0.02em;
+}
+.srv-item.active .srv-badge {
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.15);
+}
+
+/* Service panels */
+.service-panel {
+  display: none;
+  background: var(--bg);
+  border-radius: 24px;
+  padding: 52px;
+  box-shadow: var(--shadow-card);
+  animation: fadeUp 0.35s ease;
+  border: 1px solid var(--border);
+}
+.service-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+.sp-title {
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.sp-desc {
+  font-size: 14.5px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.85;
+  margin-bottom: 28px;
+}
+.sp-pillars { display: flex; flex-direction: column; gap: 16px; }
+.sp-pillar { display: flex; gap: 16px; align-items: flex-start; }
+.sp-pillar-dot {
+  width: 32px; height: 32px; min-width: 32px;
+  background: var(--green-soft);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+.sp-pillar-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.sp-pillar-text { font-size: 13px; font-weight: 300; color: var(--text-2); line-height: 1.6; }
+.sp-right-img {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-card);
+}
+.sp-right-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sp-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.sp-tag {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-2);
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 50px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ──────── EXPERIENCIA ──────── */
+#experiencia {
+  background: var(--dark);
+  color: white;
+  padding: clamp(72px, 10vw, 120px) 0;
+}
+#experiencia .eyebrow { color: var(--green-light); }
+#experiencia .section-title { color: white; }
+#experiencia .section-sub { color: rgba(255,255,255,0.5); max-width: 600px; margin-bottom: 52px; }
+
+.viz-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.vt-btn {
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.25s;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  font-family: var(--font);
+  letter-spacing: 0.01em;
+}
+.vt-btn:hover { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.25); }
+.vt-btn.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: white;
+  box-shadow: 0 4px 16px rgba(0,168,120,0.35);
+}
+
+.viz-panel { display: none; }
+.viz-panel.active { display: block; }
+.network-wrap {
+  width: 100%; margin: 0 auto;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 10%, rgba(0,168,120,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 10% 90%, rgba(0,120,88,0.12) 0%, transparent 40%),
+    linear-gradient(150deg, #0B1512 55%, #162019 100%);
+  border-radius: 20px;
+  padding: 4px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.14), 0 16px 48px rgba(0,0,0,0.09);
+}
+.network-svg { width: 100%; height: auto; display: block; }
+#stakeholdersCanvas {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 17px;
+}
+
+/* VIZ B Hexagonal labels */
+.hex-label { font-family: 'Montserrat', sans-serif; }
+
+/* VIZ C - Cards grid */
+.stk-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.stk-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-align: center;
+  transition: all 0.25s;
+}
+.stk-card:hover { background: rgba(0,168,120,0.1); border-color: rgba(0,168,120,0.3); }
+.stk-card.center {
+  background: var(--green);
+  border-color: var(--green);
+  grid-column: 2 / 4;
+  box-shadow: 0 4px 20px rgba(0,168,120,0.4);
+  padding: 28px 16px;
+}
+.stk-icon { font-size: 24px; margin-bottom: 10px; }
+.stk-name { font-size: 13px; font-weight: 700; color: white; margin-bottom: 4px; line-height: 1.2; }
+.stk-card.center .stk-name { font-size: 20px; font-weight: 800; }
+.stk-desc { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.4; }
+.stk-card.center .stk-desc { color: rgba(255,255,255,0.75); }
+
+/* ──────── ESPACIO ──────── */
+#espacio { background: radial-gradient(ellipse 50% 70% at 2% 60%, rgba(0,201,142,0.04) 0%, transparent 50%), var(--bg); }
+.espacio-header { text-align: center; margin-bottom: 48px; }
+.espacio-header .section-sub { margin: 0 auto; }
+
+.espacio-mosaic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 260px 200px 200px;
+  gap: 12px;
+  margin-bottom: 52px;
+  border-radius: 2000px;
+  overflow: hidden;
+}
+.mosaic-img {
+  overflow: hidden;
+  background: var(--bg2);
+}
+.mosaic-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.mosaic-img:hover img { transform: scale(1.04); }
+.mu1 { grid-column: 1 / 3; grid-row: 1 / 3; }
+.mu2 { grid-column: 3; grid-row: 1; }
+.mu3 { grid-column: 4; grid-row: 1; }
+.mu4 { grid-column: 3; grid-row: 2; }
+.mu5 { grid-column: 4; grid-row: 2; }
+.mu6 { grid-column: 1; grid-row: 3; }
+.mu7 { grid-column: 2; grid-row: 3; }
+.mu8 { grid-column: 3 / 5; grid-row: 3; }
+
+.espacio-rooms-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.room-card {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 24px 22px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.room-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
+.room-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.room-desc { font-size: 13px; font-weight: 300; color: var(--text-2); line-height: 1.65; }
+.room-feats { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.room-feat {
+  font-size: 11px; font-weight: 500;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: 50px;
+  color: var(--text-2);
+}
+.espacio-location {
+  background: var(--dark);
+  color: white;
+  border-radius: 18px;
+  padding: 22px 24px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  box-shadow: var(--shadow-card);
+}
+.loc-icon {
+  width: 36px; height: 36px; min-width: 36px;
+  background: rgba(0,168,120,0.15);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.loc-title { font-size: 12px; font-weight: 700; color: white; margin-bottom: 4px; letter-spacing: 0.02em; text-transform: uppercase; }
+.loc-text { font-size: 12.5px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+/* ──────── BLOG ──────── */
+#blog { background: radial-gradient(ellipse 75% 50% at 95% 18%, rgba(0,168,120,0.045) 0%, transparent 55%), var(--white); }
+.blog-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+.blog-link { font-size: 13px; font-weight: 600; color: var(--green); text-decoration: none; }
+.blog-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.bc {
+  background: var(--bg);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.bc:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-4px); }
+.bc-img { aspect-ratio: 16/9; overflow: hidden; }
+.bc-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+.bc:hover .bc-img img { transform: scale(1.04); }
+.bc-body { padding: 24px; }
+.bc-tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; display: block; }
+.bc-title { font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 10px; }
+.bc-excerpt { font-size: 13px; font-weight: 300; color: var(--text-2); line-height: 1.7; margin-bottom: 18px; }
+.bc-link { font-size: 12.5px; font-weight: 600; color: var(--green); text-decoration: none; }
+
+/* ──────── ALIANZAS ──────── */
+#alianzas { background: radial-gradient(ellipse 60% 80% at 50% 115%, rgba(0,168,120,0.045) 0%, transparent 55%), var(--white); }
+.alianzas-inner { text-align: center; }
+.alianzas-inner .section-sub { margin: 0 auto 60px; }
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.partner-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 16px 22px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.partner-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
+.partner-logo-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 50px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--green-dark);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 14px;
+}
+.partner-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.partner-desc { font-size: 11px; font-weight: 300; color: var(--text-3); line-height: 1.5; }
+
+/* ──────── CONTACTO ──────── */
+#contacto { background: radial-gradient(ellipse 65% 60% at 95% 80%, rgba(0,168,120,0.045) 0%, transparent 55%), var(--bg); padding: clamp(72px, 10vw, 120px) 0; }
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+.contact-headline {
+  font-size: 16px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin: 20px 0 36px;
+  padding-left: 20px;
+  border-left: 3px solid var(--green);
+}
+.contact-info { display: flex; flex-direction: column; gap: 16px; }
+.ci { display: flex; gap: 14px; align-items: flex-start; }
+.ci-icon {
+  width: 40px; height: 40px; min-width: 40px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  box-shadow: var(--shadow-card);
+}
+.ci-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); margin-bottom: 2px; }
+.ci-value { font-size: 14px; font-weight: 500; color: var(--text); }
+.contact-form {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+}
+.cf-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 28px; }
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.cf-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.cf-field:last-of-type { margin-bottom: 0; }
+.cf-field label { font-size: 11.5px; font-weight: 600; color: var(--text-2); letter-spacing: 0.03em; }
+.cf-field input,
+.cf-field select,
+.cf-field textarea {
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text);
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: none;
+}
+.cf-field input:focus,
+.cf-field select:focus,
+.cf-field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(0,168,120,0.08); }
+.cf-field textarea { min-height: 100px; }
+.cf-submit {
+  width: 100%;
+  background: var(--green);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 15px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 16px rgba(0,168,120,0.3);
+}
+.cf-submit:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+/* ──────── FOOTER ──────── */
+footer { background: var(--dark); color: white; padding: 64px 0 32px; }
+.footer-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad); }
+.footer-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 32px;
+}
+.f-brand img { height: 30px; margin-bottom: 16px; display: block; }
+.f-brand p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.4); line-height: 1.75; max-width: 260px; }
+.f-col h6 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+.f-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.f-col a { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.f-col a:hover { color: white; }
+.footer-base { display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.25); }
+.footer-base a { color: rgba(255,255,255,0.35); text-decoration: none; }
+.footer-base a:hover { color: white; }
+
+/* ──────── ANIMATIONS ──────── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+/* ──────── BRAND TEXT ──────── */
+.brand { color: var(--green); font-weight: 800; letter-spacing: -0.02em; }
+.logo-inline {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: baseline;
+  transform: translateY(0.12em);
+}
+.logo-inline img { height: 0.95em; width: auto; display: block; }
+.logo-inline.sm img { height: 0.9em; }
+.logo-inline.on-dark img { filter: drop-shadow(0 10px 24px rgba(0,0,0,0.25)); }
+
+/* ──────── HERO LIGHT MODE ──────── */
+#hero { transition: background 0.5s; }
+.hero-gradient { transition: opacity 0.5s; }
+#hero.light-mode { background: var(--offwhite) !important; }
+#hero.light-mode .hero-gradient { opacity: 0; }
+#hero.light-mode .hero-h1 { color: var(--text); }
+#hero.light-mode .hero-label { color: var(--green); }
+#hero.light-mode .hero-sub { color: var(--text-2); }
+#hero.light-mode .btn-ghost {
+  color: var(--text-2);
+  border-color: rgba(20,40,30,0.12);
+  background: rgba(20,40,30,0.06);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.07), 0 6px 24px rgba(0,0,0,0.05);
+}
+#hero.light-mode .btn-ghost:hover { background: var(--bg2); color: var(--text); }
+#hero.light-mode .hero-tagline { background: var(--bg); border-top-color: var(--border); }
+#hero.light-mode .ht-item { color: var(--text-3); }
+#hero.light-mode .ht-sep { color: var(--border); }
+#hero.light-mode .hero-actionable {
+  background: rgba(0,168,120,0.08);
+  border-color: rgba(0,168,120,0.18);
+  color: var(--text);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+}
+.hero-mode-toggle {
+  position: absolute; top: 96px; right: var(--pad); z-index: 10;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 50px; padding: 8px 18px;
+  font-family: var(--font); font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,0.7); cursor: pointer;
+  transition: all 0.25s; display: flex; align-items: center; gap: 7px;
+}
+.hero-mode-toggle:hover { background: rgba(255,255,255,0.18); color: white; }
+#hero.light-mode .hero-mode-toggle { background: var(--bg2); border-color: var(--border); color: var(--text-2); }
+
+/* ──────── STAT PILL NUMS ──────── */
+.stat-pill-num {
+  display: inline-block;
+  background: var(--green-soft); border: 1px solid var(--green-mid);
+  border-radius: 50px; padding: 4px 18px;
+  font-size: clamp(18px, 2vw, 26px); font-weight: 800;
+  color: var(--green-dark); letter-spacing: -0.02em; line-height: 1.3;
+  margin-bottom: 6px;
+  box-shadow: 0 4px 20px rgba(0,168,120,0.18), 0 10px 30px rgba(0,168,120,0.10);
+}
+.stat-card.accent .stat-pill-num { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3); color: white; box-shadow: 0 4px 20px rgba(255,255,255,0.2); }
+
+/* ──────── EXPLORE SECTION ──────── */
+.section-explore { padding: clamp(48px, 6vw, 80px) 0; background: radial-gradient(ellipse 70% 70% at 50% 120%, rgba(0,168,120,0.05) 0%, transparent 55%), var(--bg); }
+#experiencia.section-explore {
+  background-color: #fafdf9;
+  background-image: none;
+  box-shadow: 0px 4px 8px 0px inset;
+}
+.explore-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.xp-card {
+  background: rgba(255,255,255,0.92);
+  border: 1.5px solid rgba(0,0,0,0.06);
+  border-radius: 999px;
+  padding: 18px 20px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 10px 36px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.9);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s, background 0.25s;
+  font-family: var(--font);
+  cursor: pointer;
+  text-align: left;
+}
+.xp-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.08), 0 22px 56px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.92); transform: translateY(-3px); border-color: rgba(0,168,120,0.28); }
+.xp-icon { width: 46px; height: 46px; background: var(--green-soft); border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 20px; border: 1px solid rgba(0,168,120,0.16); }
+.xp-copy { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.xp-title { font-size: 14.5px; font-weight: 750; color: var(--text); letter-spacing: -0.01em; }
+.xp-sub { font-size: 12.5px; font-weight: 300; color: var(--text-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.xp-arrow { margin-left: auto; font-size: 18px; color: var(--green); }
+.enf-panel {
+  margin-top: 24px; background: rgba(250,253,249,0.95); border-radius: 20px;
+  padding: 40px; border: 1px solid rgba(0,168,120,0.10);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 28px rgba(0,0,0,0.07), 0 4px 16px rgba(0,168,120,0.06);
+  animation: fadeUp 0.35s ease;
+}
+.enf-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 48px; }
+.enf-category-title {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 12px;
+}
+.enf-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.enf-tag {
+  font-size: 11.5px; font-weight: 500; padding: 4px 13px; border-radius: 50px;
+  background: var(--bg); border: 1px solid var(--border); color: var(--text-2);
+}
+
+/* ──────── TEAM VIEW TOGGLE ──────── */
+.team-view-toggle {
+  display: flex; gap: 6px; background: var(--bg2); border-radius: 50px;
+  padding: 4px; width: fit-content;
+}
+.tvt-btn {
+  padding: 8px 20px; border-radius: 50px; font-size: 12px; font-weight: 600;
+  color: var(--text-3); cursor: pointer; border: none; background: none;
+  font-family: var(--font); transition: all 0.2s;
+}
+.tvt-btn.active { background: var(--white); color: var(--text); box-shadow: var(--shadow-sm); }
+
+/* ──────── TEAM FLIP CAPSULES ──────── */
+#team-grid { display: none; }
+#team-capsule { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.tm-flip-wrapper { aspect-ratio: 3/5; position: relative; perspective: 1200px; }
+.tm-flip-inner {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+.tm-flip-wrapper:hover .tm-flip-inner { transform: rotateY(180deg); }
+.tm-flip-front, .tm-flip-back {
+  position: absolute; inset: 0;
+  border-radius: 700px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.tm-flip-front { overflow: hidden; background: var(--bg2); box-shadow: var(--shadow-card); }
+.tm-flip-front img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.tm-flip-front-info {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 22px 18px 30px;
+  text-align: center;
+  background: linear-gradient(to top, rgba(11,21,18,0.9) 0%, rgba(11,21,18,0.0) 100%);
+}
+.tm-flip-front-name { font-size: 13.5px; font-weight: 700; color: white; margin-bottom: 3px; }
+.tm-flip-front-role { font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.65); }
+.tm-flip-back {
+  background: linear-gradient(160deg, var(--green) 0%, var(--green-dark) 100%);
+  transform: rotateY(180deg);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 32px 22px; text-align: center;
+  box-shadow: 0 4px 24px rgba(0,168,120,0.35), 0 16px 48px rgba(0,168,120,0.20);
+}
+.tm-back-name { font-size: 20px; font-weight: 800; color: white; letter-spacing: -0.02em; margin-bottom: 6px; line-height: 1.15; }
+.tm-back-role { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 18px; }
+.tm-back-bio { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.9); line-height: 1.65; }
+
+/* ──────── ACCORDION PANELS ──────── */
+.acc-panel { display: none; margin-top: 32px; padding: 5px; background: var(--dark); border-radius: 24px; border: 1px solid rgba(0,168,120,0.08); backdrop-filter: blur(12px); }
+.acc-panel.open { display: block; animation: fadeUp 0.35s ease; }
+.xp-acc-btn.acc-active {
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 4px 16px rgba(0,168,120,0.25), 0 12px 40px rgba(0,168,120,0.20);
+  transform: translateY(-2px);
+}
+.xp-acc-btn.acc-active .xp-title { color: white; }
+.xp-acc-btn.acc-active .xp-sub { color: rgba(255,255,255,0.7); }
+.xp-acc-btn.acc-active .xp-arrow { color: rgba(255,255,255,0.85); }
+.xp-acc-btn.acc-active .xp-icon { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.24); }
+.xp-arrow { margin-left: auto; font-size: 18px; color: var(--green); transition: transform 0.3s ease, color 0.2s; }
+.xp-acc-btn.acc-active .xp-arrow { transform: rotate(180deg); }
+.acc-panel .enf-panel { margin-top: 0; }
+
+/* Principios accordion content */
+.principios-content {
+  background: rgba(250,253,249,0.95);
+  border-radius: 20px; padding: 40px;
+  border: 1px solid rgba(0,168,120,0.10);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 28px rgba(0,0,0,0.07), 0 4px 16px rgba(0,168,120,0.06);
+}
+
+/* Premium download button */
+.btn-download-premium {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  color: white; font-family: var(--font); font-size: 14px; font-weight: 700;
+  border-radius: 50px; text-decoration: none; letter-spacing: 0.01em;
+  box-shadow: 0 4px 20px rgba(0,168,120,0.35), 0 10px 40px rgba(0,168,120,0.20);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-download-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,168,120,0.45), 0 16px 56px rgba(0,168,120,0.25);
+}
+.btn-download-premium svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ──────── SALA ACCORDION ──────── */
+.sala-tabs {
+  display: flex;
+  gap: 6px;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px;
+  width: fit-content;
+  margin: 0 auto 18px;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(16px);
+}
+.sala-tab-btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  background: none;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--text-3);
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+.sala-tab-btn:hover { transform: translateY(-1px); color: var(--text-2); }
+.sala-tab-btn.active {
+  background: var(--white);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+}
+.sala-panels { margin-bottom: 40px; }
+.sala-panel {
+  display: none;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 26px 28px;
+  box-shadow: var(--shadow-card);
+  animation: fadeUp 0.35s ease;
+}
+.sala-panel.active { display: block; }
+.sala-panel-head { margin-bottom: 18px; }
+.sala-panel-title { font-size: 16px; font-weight: 800; color: var(--text); letter-spacing: -0.01em; }
+.sala-panel-sub { font-size: 12.5px; font-weight: 300; color: var(--text-3); margin-top: 4px; line-height: 1.6; }
+.sala-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+.sala-photo { border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; }
+.sala-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+.sala-photo:hover img { transform: scale(1.04); }
+.sala-feats { display: flex; flex-wrap: wrap; gap: 7px; }
+.sala-feat { font-size: 11.5px; font-weight: 500; background: var(--bg); border: 1px solid var(--border); padding: 4px 13px; border-radius: 50px; color: var(--text-2); }
+
+/* ──────── ALIANZAS CAPSULES ──────── */
+.partners-capsule-row {
+  display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 48px;
+}
+.partner-capsule {
+  background: linear-gradient(180deg, rgba(247,249,248,0.85) 0%, rgba(239,243,241,0.9) 100%);
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 999px;
+  padding: 30px 20px;
+  width: 170px;
+  min-height: 245px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 18px 60px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.85);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  text-align: center;
+}
+.partner-capsule { box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 18px 60px rgba(0,0,0,0.10), 0 10px 30px rgba(0,168,120,0.15), inset 0 1px 0 rgba(255,255,255,0.85); }
+.partner-capsule:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.07), 0 26px 72px rgba(0,0,0,0.14), 0 12px 36px rgba(0,168,120,0.22), inset 0 1px 0 rgba(255,255,255,0.9); transform: translateY(-5px); border-color: rgba(0,168,120,0.3); }
+.partner-logo-slot {
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: var(--green-dark);
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(0,0,0,0.07);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+.partner-cap-name { font-size: 12.5px; font-weight: 700; color: var(--text); }
+.partner-cap-desc { font-size: 10.5px; font-weight: 300; color: var(--text-3); line-height: 1.5; }
+
+/* ──────── TEAM GRID BIO ──────── */
+.tm-bio {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.55;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, opacity 0.25s ease;
+}
+.tm-card:hover .tm-bio {
+  max-height: 80px;
+  opacity: 1;
+}
+
+/* ──────── MOBILE ──────── */
+@media (max-width: 1024px) {
+  .hero-body { grid-template-columns: 1fr; gap: 48px; }
+  .hero-visual { display: none; }
+  .somos-layout { grid-template-columns: 1fr; gap: 48px; }
+  .services-layout { grid-template-columns: 1fr; }
+  .services-sidebar { position: static; flex-direction: row; flex-wrap: wrap; }
+  .srv-item { flex: 0 0 auto; }
+  .service-panel.active { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .partners-grid { grid-template-columns: repeat(3, 1fr); }
+  .espacio-mosaic { grid-template-columns: repeat(2, 1fr); grid-template-rows: 220px 220px 170px; }
+  .mu1 { grid-column: 1; grid-row: 1 / 3; }
+  .mu2 { grid-column: 2; grid-row: 1; }
+  .mu3 { grid-column: 2; grid-row: 2; }
+  .mu4, .mu5 { display: none; }
+  .mu6 { grid-column: 1; grid-row: 3; }
+  .mu7 { grid-column: 2; grid-row: 3; }
+  .mu8 { display: none; }
+  #team-capsule { grid-template-columns: repeat(2, 1fr); }
+  .espacio-rooms-row { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .blog-cards { grid-template-columns: repeat(2, 1fr); }
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .stk-grid { grid-template-columns: repeat(3, 1fr); }
+  .stk-card.center { grid-column: 1 / 4; }
+  #team-capsule { grid-template-columns: repeat(2, 1fr); }
+  .explore-trio { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .hero-h1 { font-size: 28px; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .blog-cards { grid-template-columns: 1fr; }
+  .footer-main { grid-template-columns: 1fr; }
+  .cf-row { grid-template-columns: 1fr; }
+  .stk-grid { grid-template-columns: repeat(2, 1fr); }
+  .stk-card.center { grid-column: 1 / 3; }
+  .espacio-rooms-row { grid-template-columns: 1fr; }
+  .mu6, .mu7, .mu8 { display: none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="dark_logo_transparent_background.png" alt="NUIN">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#somos">Nosotros</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#espacio">Espacio</a></li>
+      <li><a href="#alianzas">Alianzas</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta-btn">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-gradient"></div>
+  <button class="hero-mode-toggle" id="hero-mode-btn" onclick="toggleHeroMode()">
+    <span id="hero-mode-icon">☀</span>
+    <span id="hero-mode-label">Modo claro</span>
+  </button>
+  <div class="hero-body">
+    <div class="hero-left">
+      <div class="hero-label">Healthcare Market Research · España · Desde 1984</div>
+      <h1 class="hero-h1">
+        <span class="accent">40 años</span><br>
+        convirtiendo datos y<br>
+        conversaciones<br>
+        en insights relevantes<br>
+        y accionables
+      </h1>
+      <p class="hero-sub">La primera agencia española dedicada exclusivamente al sector farmacéutico. Cuatro décadas de rigor, método y profundidad clínica.</p>
+      <div class="hero-btns">
+        <a href="#servicios" class="btn-primary">Explorar servicios</a>
+        <a href="#somos" class="btn-ghost">Conocer NUIN</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-main">
+        <img src="NUIN/OFICINA/Sala%20AB-7.jpg" alt="Sala Advisory Board NUIN">
+      </div>
+      <div class="hero-img-row">
+        <div class="hero-img-small"><img src="NUIN/OFICINA/Sala%20Grupos-2.jpg" alt="Sala Focus"></div>
+        <div class="hero-img-small"><img src="NUIN/OFICINA/Cafe-1.jpg" alt="Espacios NUIN"></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-tagline">
+    <div class="hero-tagline-inner">
+      <span class="ht-item">EPHMRA</span>
+      <span class="ht-sep">·</span>
+      <span class="ht-item">ESOMAR</span>
+      <span class="ht-sep">·</span>
+      <span class="ht-item">AIMFA</span>
+      <span class="ht-sep">·</span>
+      <span class="ht-item">IRIS</span>
+      <span class="ht-sep">·</span>
+      <span class="ht-item">+70 laboratorios farmacéuticos</span>
+      <span class="ht-sep">·</span>
+      <span class="ht-item">+4.200 proyectos</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOMOS -->
+<section id="somos" class="section">
+  <div class="section-inner">
+    <div class="somos-layout">
+      <div class="somos-left reveal">
+        <div class="eyebrow">Quiénes somos</div>
+        <h2 class="section-title">La primera agencia española exclusivamente farmacéutica</h2>
+        <p>Fuimos la primera agencia española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Cuatro décadas de trabajo continuo, un equipo sólido y una metodología probada nos avalan.</p>
+        <p>Nuestra especialización radical en healthcare no es una elección comercial — es nuestra razón de ser desde el primer día.</p>
+      </div>
+      <div class="stats-grid reveal reveal-d1">
+        <div class="stat-card">
+          <div class="stat-pill-num">+40</div>
+          <div class="stat-label">años dedicados al sector farma</div>
+        </div>
+        <div class="stat-card accent">
+          <div class="stat-pill-num">+4.200</div>
+          <div class="stat-label">proyectos en healthcare</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-pill-num">+70</div>
+          <div class="stat-label">laboratorios han confiado en nosotros</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-pill-num">+100K</div>
+          <div class="stat-label">encuestas realizadas</div>
+        </div>
+        <div class="stat-card accent">
+          <div class="stat-pill-num">+15K</div>
+          <div class="stat-label">horas de conversaciones relevantes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-pill-num">+750</div>
+          <div class="stat-label">Advisory Boards moderados</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-pill-num">+200</div>
+          <div class="stat-label">enfermedades trabajadas en profundidad</div>
+        </div>
+        <div class="stat-card accent">
+          <div class="stat-pill-num">100%</div>
+          <div class="stat-label">de clientes en AB han repetido</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-explore" id="experiencia">
+      <div class="explore-trio">
+        <button class="xp-card xp-acc-btn" onclick="showExperience(0, this)">
+          <div class="xp-icon">📍</div>
+          <div class="xp-copy">
+            <div class="xp-title">Mapa de Stakeholders</div>
+            <div class="xp-sub">Red de actores clave del sector salud</div>
+          </div>
+          <div class="xp-arrow" id="arr-stakeholders">↓</div>
+        </button>
+        <button class="xp-card xp-acc-btn" onclick="showExperience(1, this)">
+          <div class="xp-icon">🧬</div>
+          <div class="xp-copy">
+            <div class="xp-title">Áreas Terapéuticas</div>
+            <div class="xp-sub">+200 enfermedades trabajadas</div>
+          </div>
+          <div class="xp-arrow" id="arr-areas">↓</div>
+        </button>
+        <button class="xp-card xp-acc-btn" onclick="showExperience(2, this)">
+          <div class="xp-icon">📖</div>
+          <div class="xp-copy">
+            <div class="xp-title">Principios y Valores</div>
+            <div class="xp-sub">Manifiesto <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN"></span></div>
+          </div>
+          <div class="xp-arrow" id="arr-principios">↓</div>
+        </button>
+      </div>
+
+      <div class="acc-panel" id="acc-stakeholders">
+        <div class="network-wrap">
+          <canvas id="stakeholdersCanvas"></canvas>
+        </div>
+      </div>
+
+      <div class="acc-panel" id="acc-areas">
+        <div class="enf-panel">
+        <div class="enf-grid">
+          <div>
+            <div class="enf-category-title">Neurología y neurodesarrollo</div>
+            <div class="enf-tags">
+              <span class="enf-tag">TDAH</span><span class="enf-tag">TEA (Autismo)</span><span class="enf-tag">Alzheimer</span><span class="enf-tag">Demencia Cuerpos de Lewy</span><span class="enf-tag">Parkinson</span><span class="enf-tag">ELA</span><span class="enf-tag">Esclerosis Múltiple RR</span><span class="enf-tag">EM Secundaria Progresiva</span><span class="enf-tag">EM Primaria Progresiva</span><span class="enf-tag">Migraña episódica</span><span class="enf-tag">Migraña crónica</span><span class="enf-tag">Cefalea en racimos</span><span class="enf-tag">Epilepsia focal</span><span class="enf-tag">Epilepsia generalizada</span><span class="enf-tag">Síndrome de Dravet</span><span class="enf-tag">Síndrome de Lennox-Gastaut</span><span class="enf-tag">AME</span><span class="enf-tag">Distrofia Muscular Duchenne</span><span class="enf-tag">Miastenia Gravis</span><span class="enf-tag">Huntington</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Cardiovascular</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Hipertensión arterial</span><span class="enf-tag">Dislipemia</span><span class="enf-tag">Insuf. Cardiaca FE reducida</span><span class="enf-tag">Insuf. Cardiaca FE preservada</span><span class="enf-tag">Fibrilación auricular</span><span class="enf-tag">Síndrome coronario agudo</span><span class="enf-tag">Enfermedad coronaria crónica</span><span class="enf-tag">Tromboembolismo venoso</span><span class="enf-tag">HAP</span><span class="enf-tag">Hipercolesterolemia familiar</span><span class="enf-tag">Amiloidosis TTR</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Oncología y hemato-oncología</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Cáncer de mama HR+/HER2-</span><span class="enf-tag">Cáncer de mama HER2+</span><span class="enf-tag">Cáncer de mama triple negativo</span><span class="enf-tag">Cáncer de pulmón (CPCNP)</span><span class="enf-tag">Cáncer pulmón microcítico</span><span class="enf-tag">Cáncer colorrectal</span><span class="enf-tag">Cáncer de próstata</span><span class="enf-tag">Cáncer de ovario</span><span class="enf-tag">Melanoma</span><span class="enf-tag">Hepatocarcinoma</span><span class="enf-tag">Linfoma</span><span class="enf-tag">Leucemia</span><span class="enf-tag">Mieloma múltiple</span><span class="enf-tag">GIST</span><span class="enf-tag">Sarcomas</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Endocrinología y metabolismo</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Diabetes tipo 1</span><span class="enf-tag">Diabetes tipo 2</span><span class="enf-tag">Obesidad</span><span class="enf-tag">Hipotiroidismo</span><span class="enf-tag">Hipertiroidismo</span><span class="enf-tag">Osteoporosis</span><span class="enf-tag">Síndrome de Cushing</span><span class="enf-tag">Acromegalia</span><span class="enf-tag">Hipofosfatasia</span><span class="enf-tag">Raquitismo hipofosfatémico</span><span class="enf-tag">Fenilcetonuria</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Respiratorio</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Asma leve</span><span class="enf-tag">Asma grave</span><span class="enf-tag">EPOC</span><span class="enf-tag">Rinitis alérgica</span><span class="enf-tag">Fibrosis quística</span><span class="enf-tag">Fibrosis pulmonar idiopática</span><span class="enf-tag">Déficit alfa-1 antitripsina</span><span class="enf-tag">Poliposis nasal</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Hematología y enfermedades raras</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Hemofilia A</span><span class="enf-tag">Hemofilia B</span><span class="enf-tag">Von Willebrand</span><span class="enf-tag">HPN</span><span class="enf-tag">SHUa</span><span class="enf-tag">Anemia aplásica</span><span class="enf-tag">Trombocitopenia inmune</span><span class="enf-tag">Gaucher</span><span class="enf-tag">Fabry</span><span class="enf-tag">Pompe</span><span class="enf-tag">Mucopolisacaridosis</span><span class="enf-tag">Cistinosis</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Reumatología e inmunología</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Artritis reumatoide</span><span class="enf-tag">Artritis psoriásica</span><span class="enf-tag">Espondilitis anquilosante</span><span class="enf-tag">Lupus</span><span class="enf-tag">Fibromialgia</span><span class="enf-tag">Enf. de Crohn</span><span class="enf-tag">Colitis ulcerosa</span><span class="enf-tag">Psoriasis</span><span class="enf-tag">Dermatitis atópica</span><span class="enf-tag">Asma grave eosinofílica</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Otras especialidades</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Gastroenterología</span><span class="enf-tag">Hepatitis B</span><span class="enf-tag">Hepatitis C</span><span class="enf-tag">HIV/SIDA</span><span class="enf-tag">Nefrología / ERC</span><span class="enf-tag">Urología</span><span class="enf-tag">Ginecología</span><span class="enf-tag">Oftalmología</span><span class="enf-tag">Pediatría</span><span class="enf-tag">Dolor crónico</span><span class="enf-tag">Trasplantes</span><span class="enf-tag">Vacunas</span><span class="enf-tag">Psiquiatría</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-panel" id="acc-principios">
+        <div class="principios-content">
+          <div class="eyebrow">Manifiesto</div>
+          <h2 class="section-title" style="margin-bottom:16px;">Principios y valores</h2>
+          <p class="section-sub" style="margin-bottom:28px;">Mani manifesto con más de 10 años de experiencia liderando proyectos de innovación y bienestar, enfocada en una excelencia operativa. Creemos que la investigación de mercados en salud no es solo un ejercicio metodológico: es un acto de responsabilidad. Cada insight que generamos tiene el potencial de mejorar la vida de un paciente, de afinar la decisión de un médico o de orientar una molécula hacia quien más la necesita.</p>
+          <p class="section-sub" style="margin-bottom:36px;">Nuestros principios nos definen: rigor sin rigidez, especialización sin arrogancia, profundidad clínica al servicio de la estrategia. Cuatro décadas avalan no solo lo que hacemos, sino cómo lo hacemos y por qué.</p>
+          <a href="#" class="btn-download-premium">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Descargar manifiesto completo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo" class="section">
+  <div class="section-inner">
+    <div class="equipo-header reveal">
+      <div>
+        <div class="eyebrow">El equipo</div>
+        <h2 class="section-title">Equipo <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN"></span></h2>
+      </div>
+      <div class="team-view-toggle">
+        <button class="tvt-btn" onclick="setTeamView('grid')">Cuadrícula</button>
+        <button class="tvt-btn active" onclick="setTeamView('capsule')">Cápsulas</button>
+      </div>
+    </div>
+    <div class="team-grid" id="team-grid">
+      <div class="tm-card reveal">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Juan_JCM1780.jpg" alt="Juan Reig">
+        <div class="tm-info"><div class="tm-name">Juan Reig</div><div class="tm-role">Director General</div><div class="tm-bio">Texto de ejemplo 1</div></div>
+      </div>
+      <div class="tm-card reveal reveal-d1">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Josefina_JCM1805.jpg" alt="Josefina">
+        <div class="tm-info"><div class="tm-name">Josefina</div><div class="tm-role">Directora de Proyectos</div><div class="tm-bio">Texto de ejemplo 2</div></div>
+      </div>
+      <div class="tm-card reveal reveal-d2">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Loreto_JCM1727.jpg" alt="Loreto">
+        <div class="tm-info"><div class="tm-name">Loreto</div><div class="tm-role">Senior Research</div><div class="tm-bio">Texto de ejemplo 3</div></div>
+      </div>
+      <div class="tm-card reveal reveal-d3">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Sonia_JCM1685.jpg" alt="Sonia">
+        <div class="tm-info"><div class="tm-name">Sonia</div><div class="tm-role">Research Manager</div><div class="tm-bio">Texto de ejemplo 1</div></div>
+      </div>
+      <div class="tm-card reveal">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Ana_JCM1696.jpg" alt="Ana">
+        <div class="tm-info"><div class="tm-name">Ana</div><div class="tm-role">Research Analyst</div><div class="tm-bio">Texto de ejemplo 2</div></div>
+      </div>
+      <div class="tm-card reveal reveal-d1">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Guillermo_JCM1769.jpg" alt="Guillermo">
+        <div class="tm-info"><div class="tm-name">Guillermo</div><div class="tm-role">Advisory Boards Lead</div><div class="tm-bio">Texto de ejemplo 3</div></div>
+      </div>
+      <div class="tm-card reveal reveal-d2">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Irina_JCM1670.jpg" alt="Irina">
+        <div class="tm-info"><div class="tm-name">Irina</div><div class="tm-role">Medical Writing</div><div class="tm-bio">Texto de ejemplo 1</div></div>
+      </div>
+      <div class="tm-card reveal reveal-d3">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Laura_JCM1755.jpg" alt="Laura">
+        <div class="tm-info"><div class="tm-name">Laura</div><div class="tm-role">Research Analyst</div><div class="tm-bio">Texto de ejemplo 2</div></div>
+      </div>
+    </div>
+
+    <div id="team-capsule">
+      <div class="tm-flip-wrapper">
+        <div class="tm-flip-inner">
+          <div class="tm-flip-front">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Juan_JCM1780.jpg" alt="Juan Reig">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Juan Reig</div><div class="tm-flip-front-role">Director General</div></div>
+          </div>
+          <div class="tm-flip-back">
+            <div class="tm-back-name">Juan Reig</div>
+            <div class="tm-back-role">Director General</div>
+            <div class="tm-back-bio">Estratega con más de 40 años liderando proyectos de investigación de mercados en el sector farmacéutico, con un enfoque singular en el impacto clínico y la excelencia metodológica.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tm-flip-wrapper">
+        <div class="tm-flip-inner">
+          <div class="tm-flip-front">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Josefina_JCM1805.jpg" alt="Josefina">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Josefina</div><div class="tm-flip-front-role">Directora de Proyectos</div></div>
+          </div>
+          <div class="tm-flip-back">
+            <div class="tm-back-name">Josefina</div>
+            <div class="tm-back-role">Directora de Proyectos</div>
+            <div class="tm-back-bio">Estratega con más de 10 años de experiencia liderando proyectos de innovación y bienestar, enfocada en la excelencia operativa y el impacto positivo en la salud global.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tm-flip-wrapper">
+        <div class="tm-flip-inner">
+          <div class="tm-flip-front">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Loreto_JCM1727.jpg" alt="Loreto">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Loreto</div><div class="tm-flip-front-role">Senior Research</div></div>
+          </div>
+          <div class="tm-flip-back">
+            <div class="tm-back-name">Loreto</div>
+            <div class="tm-back-role">Senior Research</div>
+            <div class="tm-back-bio">Especialista en investigación cualitativa aplicada al sector farma, con profundo conocimiento de más de 50 áreas terapéuticas y experiencia en metodologías proyectivas.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tm-flip-wrapper">
+        <div class="tm-flip-inner">
+          <div class="tm-flip-front">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Sonia_JCM1685.jpg" alt="Sonia">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Sonia</div><div class="tm-flip-front-role">Research Manager</div></div>
+          </div>
+          <div class="tm-flip-back">
+            <div class="tm-back-name">Sonia</div>
+            <div class="tm-back-role">Research Manager</div>
+            <div class="tm-back-bio">Gestora de proyectos con una visión integral del proceso de investigación, garantizando los más altos estándares de calidad en cada entrega y coordinando equipos multidisciplinares.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tm-flip-wrapper">
+        <div class="tm-flip-inner">
+          <div class="tm-flip-front">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Ana_JCM1696.jpg" alt="Ana">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Ana</div><div class="tm-flip-front-role">Research Analyst</div></div>
+          </div>
+          <div class="tm-flip-back">
+            <div class="tm-back-name">Ana</div>
+            <div class="tm-back-role">Research Analyst</div>
+            <div class="tm-back-bio">Analista de investigación con habilidades avanzadas en análisis de datos cualitativos y cuantitativos, transformando insights complejos en recomendaciones claras y accionables.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tm-flip-wrapper">
+        <div class="tm-flip-inner">
+          <div class="tm-flip-front">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Guillermo_JCM1769.jpg" alt="Guillermo">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Guillermo</div><div class="tm-flip-front-role">Advisory Boards Lead</div></div>
+          </div>
+          <div class="tm-flip-back">
+            <div class="tm-back-name">Guillermo</div>
+            <div class="tm-back-role">Advisory Boards Lead</div>
+            <div class="tm-back-bio">Experto en la facilitación y moderación de Advisory Boards internacionales, con un track record excepcional en la generación de consenso entre KOLs de múltiples países.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tm-flip-wrapper">
+        <div class="tm-flip-inner">
+          <div class="tm-flip-front">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Irina_JCM1670.jpg" alt="Irina">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Irina</div><div class="tm-flip-front-role">Medical Writing</div></div>
+          </div>
+          <div class="tm-flip-back">
+            <div class="tm-back-name">Irina</div>
+            <div class="tm-back-role">Medical Writing</div>
+            <div class="tm-back-bio">Medical writer con formación científica y experiencia en la redacción de informes clínicos, síntesis de evidencia y materiales de comunicación científica para el sector farmacéutico.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tm-flip-wrapper">
+        <div class="tm-flip-inner">
+          <div class="tm-flip-front">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Laura_JCM1755.jpg" alt="Laura">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Laura</div><div class="tm-flip-front-role">Research Analyst</div></div>
+          </div>
+          <div class="tm-flip-back">
+            <div class="tm-back-name">Laura</div>
+            <div class="tm-back-role">Research Analyst</div>
+            <div class="tm-back-bio">Investigadora especializada en metodologías cuantitativas y análisis estadístico, con dominio de técnicas avanzadas como conjoint analysis y segmentación de mercado.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="section">
+  <div class="section-inner">
+    <div class="services-header reveal">
+      <div class="eyebrow">Lo que hacemos</div>
+      <h2 class="section-title">Servicios <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN"></span></h2>
+      <p class="section-sub">Cuarenta años dedicados a un solo sector nos han permitido dominar cada ángulo de la investigación en healthcare. Selecciona un servicio para ver los detalles.</p>
+    </div>
+
+    <div class="services-layout">
+      <div class="services-sidebar">
+        <div class="srv-item active" onclick="showService(0)">
+          <span class="srv-num">01</span>
+          <span class="srv-name">Advisory Boards en salud y farma</span>
+          <span class="srv-badge">Nº 1 España · +750 ABs</span>
+        </div>
+        <div class="srv-item" onclick="showService(1)">
+          <span class="srv-num">02</span>
+          <span class="srv-name">Investigación cualitativa en salud</span>
+          <span class="srv-badge">Core service · 40 años</span>
+        </div>
+        <div class="srv-item" onclick="showService(2)">
+          <span class="srv-num">03</span>
+          <span class="srv-name">Investigación cuantitativa en salud</span>
+          <span class="srv-badge">BBDD propia exclusiva</span>
+        </div>
+        <div class="srv-item" onclick="showService(3)">
+          <span class="srv-num">04</span>
+          <span class="srv-name">Reuniones de ciclo</span>
+          <span class="srv-badge">Facilitación experta</span>
+        </div>
+        <div class="srv-item" onclick="showService(4)">
+          <span class="srv-num">05</span>
+          <span class="srv-name">Revisión de procesos</span>
+          <span class="srv-badge">Método TWACE · +50 hospitales</span>
+        </div>
+        <div class="srv-item" onclick="showService(5)">
+          <span class="srv-num">06</span>
+          <span class="srv-name">Workshops estratégicos</span>
+          <span class="srv-badge">Design Thinking · Metaplan</span>
+        </div>
+      </div>
+
+      <div class="services-content">
+
+        <!-- Panel 01 -->
+        <div class="service-panel active" id="panel-0">
+          <div>
+            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">01 — Advisory Boards</div>
+            <h3 class="sp-title">Líderes en España en la gestión y moderación de Advisory Boards.</h3>
+            <p class="sp-desc">Más de 750 sesiones realizadas en todo el mundo. Diseñamos cada reunión a medida, asegurando la máxima participación y resultados estratégicos para cada laboratorio.</p>
+            <div class="sp-pillars">
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">🏆</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Sistema propio de preparación</div>
+                  <div class="sp-pillar-text">750+ ABs nos han dado las herramientas para optimizar cada sesión. El 100% de los clientes que han hecho un AB con nosotros han repetido.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">🌍</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Alcance internacional</div>
+                  <div class="sp-pillar-text">EEUU, México, Honduras, Chile, Argentina, Francia, Dinamarca, Suiza, UK… Moderamos en cualquier idioma y formato, presencial u online.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">🏛️</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">La única sala en España</div>
+                  <div class="sp-pillar-text">Sala NUIN, diseñada específicamente para Advisory Boards, con espejo unidireccional, videoconferencia HD y grabación profesional.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sp-right">
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20AB-6.jpg" alt="Advisory Boards NUIN"></div>
+            <div class="sp-tags">
+              <span class="sp-tag">Presencial</span><span class="sp-tag">Online</span><span class="sp-tag">Nacional</span><span class="sp-tag">Internacional</span><span class="sp-tag">KOLs</span><span class="sp-tag">Sala NUIN</span><span class="sp-tag">100% repetición</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 02 -->
+        <div class="service-panel" id="panel-1">
+          <div>
+            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">02 — Investigación Cualitativa</div>
+            <h3 class="sp-title">Nuestro origen y especialidad. El alpha y el omega de <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN"></span>.</h3>
+            <p class="sp-desc">Miles de entrevistas, focus groups y estudios que revelan percepciones, motivaciones y experiencias. Un enfoque optimizado durante 40 años para alcanzar los más altos estándares de excelencia.</p>
+            <div class="sp-pillars">
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">🔬</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Profundidad sin igual</div>
+                  <div class="sp-pillar-text">Hemos trabajado en más de 200 enfermedades distintas. Ese bagaje clínico nos permite hacer las preguntas correctas desde el primer momento.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">👥</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Todos los perfiles</div>
+                  <div class="sp-pillar-text">HCPs, enfermería, farmacia hospitalaria, farmacia de calle, KOLs, pacientes, cuidadores y asociaciones de pacientes.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">📐</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Método propio</div>
+                  <div class="sp-pillar-text">Cuatro décadas perfeccionando técnicas exclusivas para el sector salud: proyectivas, etnografías, grupos de discusión y más.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sp-right">
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20Grupos-4.jpg" alt="Investigación Cualitativa NUIN"></div>
+            <div class="sp-tags">
+              <span class="sp-tag">Focus groups</span><span class="sp-tag">Entrevistas en profundidad</span><span class="sp-tag">Técnicas proyectivas</span><span class="sp-tag">Etnografías</span><span class="sp-tag">Dinámicas grupales</span><span class="sp-tag">Online</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 03 -->
+        <div class="service-panel" id="panel-2">
+          <div>
+            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">03 — Investigación Cuantitativa</div>
+            <h3 class="sp-title">Base de datos propia que garantiza calidad, velocidad y representatividad.</h3>
+            <p class="sp-desc">Nuestra base de datos exclusiva, actualizada y propia, asegura calidad y rapidez en la obtención de datos sólidos. Acceso a todos los perfiles profesionales en todo el país con ratios de respuesta superiores.</p>
+            <div class="sp-pillars">
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">🗄️</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">BBDD propia y exclusiva</div>
+                  <div class="sp-pillar-text">Panel propio de profesionales de salud, permanentemente actualizado, con cobertura nacional y ratios de respuesta muy por encima del mercado.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">📊</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Todos los perfiles, todo el país</div>
+                  <div class="sp-pillar-text">Médicos especialistas, médicos de AP, farmacéuticos, enfermería, pacientes… sin restricciones geográficas ni de especialidad.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">⚡</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Rapidez y calidad garantizadas</div>
+                  <div class="sp-pillar-text">La combinación de BBDD propia y metodología afinada durante 40 años garantiza tiempos de ejecución y calidad de dato superiores.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sp-right">
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20Trabajo-2.jpg" alt="Investigación Cuantitativa NUIN"></div>
+            <div class="sp-tags">
+              <span class="sp-tag">Encuestas online</span><span class="sp-tag">CATI</span><span class="sp-tag">Conjoint analysis</span><span class="sp-tag">Tracking</span><span class="sp-tag">Segmentación</span><span class="sp-tag">Análisis estadístico</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 04 -->
+        <div class="service-panel" id="panel-3">
+          <div>
+            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">04 — Reuniones de Ciclo</div>
+            <h3 class="sp-title">Reuniones internas que rompen inercias y generan planes de acción reales.</h3>
+            <p class="sp-desc">Diseñamos y facilitamos reuniones de ciclo que alinean equipos, superan bloqueos y transforman conversaciones en compromisos concretos y medibles para áreas médicas, de acceso y marketing.</p>
+            <div class="sp-pillars">
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">🎯</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Facilitación experta</div>
+                  <div class="sp-pillar-text">Moderadores con profundo conocimiento del sector farma que saben cómo sacar lo mejor de cada equipo en cada situación.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">🔄</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Ruptura de inercias</div>
+                  <div class="sp-pillar-text">Dinámicas diseñadas para superar las barreras habituales de comunicación interna y generar compromisos reales y duraderos.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">📋</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Planes de acción concretos</div>
+                  <div class="sp-pillar-text">Cada reunión termina con un plan de acción claro, con responsables y tiempos definidos. Nada queda en el aire.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sp-right">
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20AB-2.jpg" alt="Reuniones de Ciclo NUIN"></div>
+            <div class="sp-tags">
+              <span class="sp-tag">Facilitación</span><span class="sp-tag">Área médica</span><span class="sp-tag">Marketing farma</span><span class="sp-tag">Acceso</span><span class="sp-tag">Planes de acción</span><span class="sp-tag">Alineación</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 05 -->
+        <div class="service-panel" id="panel-4">
+          <div>
+            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">05 — Revisión de Procesos</div>
+            <h3 class="sp-title">Método TWACE: cambios transformadores con alta implicación del equipo.</h3>
+            <p class="sp-desc">Metodología propia aplicada con éxito en laboratorios y hospitales. Permite establecer planes de cambio operacionales claros, accesibles y realmente transformadores desde la primera semana.</p>
+            <div class="sp-pillars">
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">⚙️</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Laboratorios farmacéuticos</div>
+                  <div class="sp-pillar-text">Revisión y optimización de procesos en decenas de unidades comerciales, médicas y de marketing de laboratorios líderes.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">🏥</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">+50 hospitales implementados</div>
+                  <div class="sp-pillar-text">Mejora cuantitativa y cualitativa inmediata. Cambios que parecían traumáticos se llevan a cabo de forma satisfactoria, rápida y con alta implicación.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">📈</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Resultados medibles desde el día 1</div>
+                  <div class="sp-pillar-text">TWACE genera KPIs de seguimiento desde el inicio para que el cliente pueda medir el impacto del cambio en tiempo real.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sp-right">
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20Trabajo-1.jpg" alt="Método TWACE NUIN"></div>
+            <div class="sp-tags">
+              <span class="sp-tag">Método TWACE</span><span class="sp-tag">+50 hospitales</span><span class="sp-tag">Laboratorios farma</span><span class="sp-tag">Gestión del cambio</span><span class="sp-tag">KPIs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 06 -->
+        <div class="service-panel" id="panel-5">
+          <div>
+            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">06 — Workshops Estratégicos</div>
+            <h3 class="sp-title">Talleres que generan ideas accionables, alineación real y resultados duraderos.</h3>
+            <p class="sp-desc">Talleres presenciales y online con metodologías como Design Thinking o Metaplan. Creamos espacios participativos donde los equipos generan soluciones propias que realmente se implementan.</p>
+            <div class="sp-pillars">
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">💡</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Design Thinking aplicado a salud</div>
+                  <div class="sp-pillar-text">Procesos de ideación centrados en el paciente y en los HCPs, adaptados al contexto y la cultura específica del sector farmacéutico.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">🗺️</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Metaplan y metodologías participativas</div>
+                  <div class="sp-pillar-text">Dinámicas que dan voz a todos los participantes y generan consensos sólidos, sin que las jerarquías distorsionen el proceso.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">🚀</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">De la idea a la acción</div>
+                  <div class="sp-pillar-text">Cada workshop termina con un plan de implementación concreto. No queremos que las ideas se queden en post-its.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sp-right">
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20Grupos-6.jpg" alt="Workshops Estratégicos NUIN"></div>
+            <div class="sp-tags">
+              <span class="sp-tag">Design Thinking</span><span class="sp-tag">Metaplan</span><span class="sp-tag">Presencial</span><span class="sp-tag">Online</span><span class="sp-tag">Co-creación</span><span class="sp-tag">Estrategia</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /services-content -->
+    </div><!-- /services-layout -->
+  </div>
+</section>
+
+<!-- ESPACIO -->
+<section id="espacio" class="section">
+  <div class="section-inner">
+    <div class="espacio-header reveal">
+      <div class="eyebrow">Instalaciones</div>
+      <h2 class="section-title">Espacio <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN"></span></h2>
+      <p class="section-sub">Dejamos que nuestras salas hablen por nosotros. Desde la Sala NUIN — la única en España diseñada específicamente para Advisory Boards — hasta la Sala FOCUS, pensada hasta el más mínimo detalle.</p>
+    </div>
+
+    <!-- Mosaic unificado -->
+    <div class="espacio-mosaic reveal">
+      <div class="mosaic-img mu1"><img src="NUIN/OFICINA/Sala%20AB-1.jpg" alt="Sala Advisory Board NUIN"></div>
+      <div class="mosaic-img mu2"><img src="NUIN/OFICINA/Sala%20AB-5.jpg" alt="Sala AB NUIN"></div>
+      <div class="mosaic-img mu3"><img src="NUIN/OFICINA/Sala%20Grupos-1.jpg" alt="Sala Focus NUIN"></div>
+      <div class="mosaic-img mu4"><img src="NUIN/OFICINA/Cafe-2.jpg" alt="Zona Café NUIN"></div>
+      <div class="mosaic-img mu5"><img src="NUIN/OFICINA/Deco-1.jpg" alt="Espacios NUIN"></div>
+      <div class="mosaic-img mu6"><img src="NUIN/OFICINA/Sala%20Trabajo-2.jpg" alt="Sala de Trabajo NUIN"></div>
+      <div class="mosaic-img mu7"><img src="NUIN/OFICINA/Sala%20Grupos-4.jpg" alt="Sala Grupos NUIN"></div>
+      <div class="mosaic-img mu8"><img src="NUIN/OFICINA/Pasillo-1.jpg" alt="Pasillo NUIN"></div>
+    </div>
+
+    <div class="sala-tabs reveal">
+      <button class="sala-tab-btn active" id="sala-tab-nuin" onclick="setSalaTab('nuin')">Sala <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN"></span></button>
+      <button class="sala-tab-btn" id="sala-tab-focus" onclick="setSalaTab('focus')">Sala FOCUS</button>
+    </div>
+
+    <div class="sala-panels reveal">
+      <div class="sala-panel active" id="sala-panel-nuin">
+        <div class="sala-panel-head">
+          <div class="sala-panel-title">Sala <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN"></span> — Advisory Boards</div>
+          <div class="sala-panel-sub">La única sala en España diseñada específicamente para ABs</div>
+        </div>
+        <div class="sala-gallery">
+          <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20AB-1.jpg" alt="Sala AB NUIN"></div>
+          <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20AB-2.jpg" alt="Sala AB NUIN"></div>
+          <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20AB-6.jpg" alt="Sala AB NUIN"></div>
+        </div>
+        <div class="sala-feats">
+          <span class="sala-feat">Espejo unidireccional</span>
+          <span class="sala-feat">Videoconferencia HD</span>
+          <span class="sala-feat">Grabación profesional</span>
+          <span class="sala-feat">Hasta 20 participantes</span>
+          <span class="sala-feat">Presencial y online</span>
+        </div>
+      </div>
+
+      <div class="sala-panel" id="sala-panel-focus">
+        <div class="sala-panel-head">
+          <div class="sala-panel-title">Sala FOCUS</div>
+          <div class="sala-panel-sub">Diseñada para entrevistas IDI y grupos de discusión</div>
+        </div>
+        <div class="sala-gallery">
+          <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20Grupos-1.jpg" alt="Sala Focus NUIN"></div>
+          <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20Grupos-4.jpg" alt="Sala Focus NUIN"></div>
+          <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20Grupos-6.jpg" alt="Sala Focus NUIN"></div>
+        </div>
+        <div class="sala-feats">
+          <span class="sala-feat">Entrevistas IDI</span>
+          <span class="sala-feat">Grupos de discusión</span>
+          <span class="sala-feat">Observación discreta</span>
+          <span class="sala-feat">Cámara de gesell</span>
+        </div>
+      </div>
+    </div>
+    <div class="espacio-location reveal">
+      <div class="loc-icon">📍</div>
+      <div>
+        <div class="loc-title">Calle Orense — Madrid</div>
+        <div class="loc-text">Centro financiero de Madrid, a un paso de El Corte Inglés. Fácil acceso desde el aeropuerto, estaciones de tren, cercanías, metro y dos parkings en la puerta.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="section">
+  <div class="section-inner">
+    <div class="blog-header reveal">
+      <div>
+        <div class="eyebrow">Casos reales</div>
+        <h2 class="section-title">Blog de Casos</h2>
+      </div>
+      <a href="#" class="blog-link">Ver todos los casos →</a>
+    </div>
+    <p class="section-sub reveal" style="margin-bottom:48px;">Una de las cosas más difíciles de ser especialistas en farma es mostrar lo que puedes hacer por tus clientes sin desvelar información confidencial… así que os hemos preparado este blog que habla de casos reales en los que pudimos ayudar.</p>
+    <div class="blog-cards">
+      <article class="bc reveal">
+        <div class="bc-img"><img src="NUIN/OFICINA/Sala%20AB-4.jpg" alt="Advisory Board Internacional"></div>
+        <div class="bc-body">
+          <span class="bc-tag">Advisory Board Internacional</span>
+          <h3 class="bc-title">¿Cómo alineamos a 12 KOLs internacionales en una sola sesión?</h3>
+          <p class="bc-excerpt">Un laboratorio multinacional necesitaba consenso clínico entre especialistas de 5 países con perspectivas muy divergentes...</p>
+          <a href="#" class="bc-link">Leer caso →</a>
+        </div>
+      </article>
+      <article class="bc reveal reveal-d1">
+        <div class="bc-img"><img src="NUIN/OFICINA/Sala%20Grupos-6.jpg" alt="Cualitativo"></div>
+        <div class="bc-body">
+          <span class="bc-tag">Cualitativo</span>
+          <h3 class="bc-title">Cuando los datos no contaban toda la historia</h3>
+          <p class="bc-excerpt">Un cliente con buenos resultados en encuestas pero producto sin prescripción. Exploramos el gap entre actitud y comportamiento...</p>
+          <a href="#" class="bc-link">Leer caso →</a>
+        </div>
+      </article>
+      <article class="bc reveal reveal-d2">
+        <div class="bc-img"><img src="NUIN/OFICINA/Deco-6.jpg" alt="TWACE"></div>
+        <div class="bc-body">
+          <span class="bc-tag">TWACE</span>
+          <h3 class="bc-title">Transformando la visita médica en tiempo récord</h3>
+          <p class="bc-excerpt">Un laboratorio necesitaba reformular su modelo de visita médica sin perder productividad. Aplicamos TWACE en 6 semanas...</p>
+          <a href="#" class="bc-link">Leer caso →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ALIANZAS -->
+<section id="alianzas" class="section">
+  <div class="section-inner">
+    <div class="alianzas-inner reveal">
+      <div class="eyebrow">Colaboraciones</div>
+      <h2 class="section-title">Alianzas Estratégicas</h2>
+      <p class="section-sub">En NUIN sabemos lo importante que es crecer de la mano de otras agencias y organizaciones, compartiendo buenas prácticas y colaborando para elevar los estándares de calidad del sector.</p>
+    </div>
+    <div class="partners-capsule-row reveal">
+      <div class="partner-capsule">
+        <div class="partner-cap-logo">IRIS</div>
+        <div class="partner-cap-desc">Red global de agencias independientes especializadas en healthcare.</div>
+      </div>
+      <div class="partner-capsule">
+        <div class="partner-cap-logo">EPHMRA</div>
+        <div class="partner-cap-desc">European Pharmaceutical Market Research Association.</div>
+      </div>
+      <div class="partner-capsule">
+        <div class="partner-cap-logo">ESOMAR</div>
+        <div class="partner-cap-desc">Organismo global de estándares éticos y metodológicos en research.</div>
+      </div>
+      <div class="partner-capsule">
+        <div class="partner-cap-logo">AIMFA</div>
+        <div class="partner-cap-desc">Asociación de Investigación del sector Farmacéutico en España.</div>
+      </div>
+      <div class="partner-capsule">
+        <div class="partner-cap-logo">Beauty Cluster</div>
+        <div class="partner-cap-desc">Colaboración en proyectos de salud y belleza.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-inner">
+    <div class="contact-layout">
+      <div class="reveal">
+        <div class="eyebrow">Hablemos</div>
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-headline">
+          "Llevamos más de cuarenta años aprendiendo día a día para que tu próximo proyecto salga perfecto, ¿hablamos?"
+        </div>
+        <div class="contact-info">
+          <div class="ci">
+            <div class="ci-icon">✉</div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-value">info@nuin.es</div>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon">☎</div>
+            <div>
+              <div class="ci-label">Teléfono</div>
+              <div class="ci-value">+34 91 XXX XX XX</div>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Salas y oficinas</div>
+              <div class="ci-value">Calle Orense, Madrid</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal reveal-d1">
+        <div class="cf-title">Cuéntanos tu proyecto</div>
+        <div class="cf-row">
+          <div class="cf-field"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+          <div class="cf-field"><label>Empresa</label><input type="text" placeholder="Tu empresa"></div>
+        </div>
+        <div class="cf-field"><label>Email</label><input type="email" placeholder="correo@empresa.com"></div>
+        <div class="cf-field">
+          <label>Servicio</label>
+          <select>
+            <option value="">Selecciona un servicio</option>
+            <option>Advisory Boards</option>
+            <option>Investigación cualitativa en salud</option>
+            <option>Investigación cuantitativa en salud</option>
+            <option>Reuniones de ciclo</option>
+            <option>Revisión de procesos (TWACE)</option>
+            <option>Workshops estratégicos</option>
+            <option>Alquiler de salas</option>
+          </select>
+        </div>
+        <div class="cf-field"><label>Mensaje</label><textarea placeholder="Cuéntanos sobre tu necesidad..."></textarea></div>
+        <button class="cf-submit">Enviar mensaje</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-main">
+      <div class="f-brand">
+        <img src="white_logo_transparent_background.png" alt="NUIN">
+        <p>Primera agencia española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Desde 1984.</p>
+      </div>
+      <div class="f-col">
+        <h6>Servicios</h6>
+        <ul>
+          <li><a href="#servicios">Advisory Boards</a></li>
+          <li><a href="#servicios">Investigación cualitativa</a></li>
+          <li><a href="#servicios">Investigación cuantitativa</a></li>
+          <li><a href="#servicios">Reuniones de ciclo</a></li>
+          <li><a href="#servicios">Método TWACE</a></li>
+          <li><a href="#servicios">Workshops</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h6>Empresa</h6>
+        <ul>
+          <li><a href="#somos">Somos NUIN</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#experiencia">Stakeholders</a></li>
+          <li><a href="#espacio">Espacio</a></li>
+          <li><a href="#alianzas">Alianzas</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h6>Contacto</h6>
+        <ul>
+          <li><a href="#">info@nuin.es</a></li>
+          <li><a href="#">+34 91 XXX XX XX</a></li>
+          <li><a href="#">Orense, Madrid</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2025 NUIN Healthcare Market Research</span>
+      <span><a href="#">Privacidad</a> · <a href="#">Aviso legal</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nuinLogo = new Image();
+nuinLogo.src = "white_logo_transparent_background.png";
+
+const canvas = document.getElementById("stakeholdersCanvas");
+if (canvas) {
+  const ctx = canvas.getContext("2d");
+  const rootStyles = getComputedStyle(document.documentElement);
+  const GREEN = (rootStyles.getPropertyValue("--green-light") || "#00C98E").trim();
+  const DEEP_GREEN = (rootStyles.getPropertyValue("--green-dark") || "#007A58").trim();
+
+  let width = 0;
+  let height = 0;
+  let DPR = window.devicePixelRatio || 1;
+  let centerX = 0;
+  let centerY = 0;
+  let mouse = { x: -1000, y: -1000 };
+  let nodes = [];
+  let pulses = [];
+  let orbitX = 0;
+  let orbitY = 0;
+  let maxOuterHalfW = 0;
+  let maxOuterHalfH = 0;
+
+  const THEME = {
+    green: GREEN,
+    deepGreen: DEEP_GREEN,
+    text: "#ffffff",
+    centerText: "#010807"
+  };
+
+  const nodeData = [
+    { title: "KOLs", subtitle: "Líderes de Opinión" },
+    { title: "Farmacia Hospitalaria", subtitle: "Entorno Hospitalario" },
+    { title: "Farmacia de Calle", subtitle: "Retail & Community" },
+    { title: "Cuidadores", subtitle: "Entorno del Paciente" },
+    { title: "Asoc. Pacientes", subtitle: "Asociaciones" },
+    { title: "Pacientes", subtitle: "La Voz Real" },
+    { title: "Enfermería", subtitle: "Cuidado Profesional" },
+    { title: "Laboratorios", subtitle: "Industria Farmacéutica" },
+    { title: "Hospitales", subtitle: "Instituciones de Salud" },
+    { title: "HCPs", subtitle: "Profesionales Médicos" }
+  ];
+
+  function isMobile() { return width < 768; }
+
+  function capsulePath(x, y, w, h) {
+    const r = h / 2;
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  class Node {
+    constructor(id, title, subtitle, isCenter = false) {
+      this.id = id;
+      this.title = title;
+      this.subtitle = subtitle;
+      this.isCenter = isCenter;
+      this.angle = isCenter ? 0 : ((id - 1) * (Math.PI * 2) / nodeData.length);
+      this.x = 0;
+      this.y = 0;
+      this.h = isCenter ? 110 : 68;
+      this.paddingSide = isCenter ? 80 : 36;
+      this.w = 0;
+      this.floatOffset = Math.random() * Math.PI * 2;
+      this.hoverProgress = 0;
+      this.currentW = 0;
+      this.currentH = 0;
+    }
+
+    calculateSize() {
+      const titleSize = this.isCenter ? 40 : 14;
+      ctx.font = `600 ${titleSize}px Montserrat, system-ui, sans-serif`;
+      const titleW = ctx.measureText(this.title || "").width;
+
+      const subSize = this.isCenter ? 12 : 9;
+      ctx.font = `500 ${subSize}px Montserrat, system-ui, sans-serif`;
+      const subW = this.subtitle ? ctx.measureText(this.subtitle.toUpperCase()).width : 0;
+
+      this.w = Math.max(titleW, subW) + this.paddingSide;
+      this.w = this.isCenter ? Math.max(this.w, 280) : Math.max(this.w, 120);
+    }
+
+    update(time) {
+      const floatSpeed = 0.5;
+      const floatY = Math.sin(time * floatSpeed + this.floatOffset) * 4;
+      const floatX = Math.cos(time * floatSpeed * 0.8 + this.floatOffset) * 2;
+
+      if (this.isCenter) {
+        this.x = centerX + floatX;
+        this.y = centerY + floatY;
+      } else {
+        const targetX = centerX + Math.cos(this.angle) * orbitX;
+        const targetY = centerY + Math.sin(this.angle) * orbitY;
+        this.x = targetX + floatX;
+        this.y = targetY + floatY;
+      }
+
+      const dx = mouse.x - this.x;
+      const dy = mouse.y - this.y;
+      const hover = Math.abs(dx) < this.currentW / 2 && Math.abs(dy) < this.currentH / 2;
+      this.hoverProgress = hover ? Math.min(1, this.hoverProgress + 0.15) : Math.max(0, this.hoverProgress - 0.1);
+
+      this.currentW = this.w + (this.hoverProgress * 20);
+      this.currentH = this.h + (this.hoverProgress * 4);
+    }
+
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+
+      const w = this.currentW;
+      const h = this.currentH;
+
+      ctx.shadowBlur = this.isCenter ? (60 + this.hoverProgress * 30) : (22 + this.hoverProgress * 10);
+      ctx.shadowColor = `rgba(0, 201, 142, ${this.isCenter ? 0.8 : 0.45})`;
+
+      const grad = ctx.createLinearGradient(-w / 2, -h / 2, w / 2, h / 2);
+      if (this.isCenter) {
+        grad.addColorStop(0, THEME.green);
+        grad.addColorStop(1, THEME.deepGreen);
+      } else {
+        grad.addColorStop(0, `rgba(0, 201, 142, ${0.16 + this.hoverProgress * 0.1})`);
+        grad.addColorStop(1, `rgba(0, 35, 30, 0.55)`);
+      }
+
+      capsulePath(-w / 2, -h / 2, w, h);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = this.isCenter ? "rgba(255,255,255,0.80)" : `rgba(0, 201, 142, ${0.5 + this.hoverProgress * 0.5})`;
+      ctx.lineWidth = this.isCenter ? 6 : 1.7;
+      ctx.stroke();
+
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      if (this.isCenter) {
+        if (nuinLogo.complete && nuinLogo.naturalWidth > 0) {
+          const logoW = isMobile() ? 90 : 110;
+          const logoH = logoW * 0.35;
+          ctx.drawImage(nuinLogo, -logoW / 2, -logoH / 2, logoW, logoH);
+        }
+      } else {
+        ctx.fillStyle = THEME.text;
+        ctx.font = `600 ${isMobile() ? '12px' : '14px'} Montserrat, system-ui, sans-serif`;
+        ctx.fillText(this.title, 0, this.subtitle ? -10 : 0);
+
+        if (this.subtitle) {
+          ctx.fillStyle = `rgba(0, 201, 142, 0.9)`;
+          ctx.font = `500 9px Montserrat, system-ui, sans-serif`;
+          ctx.fillText(this.subtitle.toUpperCase(), 0, 13);
+        }
+      }
+
+      ctx.restore();
+    }
+  }
+
+  class Pulse {
+    constructor(target) {
+      this.target = target;
+      this.reset();
+    }
+    reset() {
+      this.progress = 0;
+      this.speed = 0.0025 + Math.random() * 0.003;
+    }
+    update() {
+      this.progress += this.speed;
+      if (this.progress >= 1) this.reset();
+    }
+    draw(center) {
+      const x = center.x + (this.target.x - center.x) * this.progress;
+      const y = center.y + (this.target.y - center.y) * this.progress;
+      const alpha = Math.sin(this.progress * Math.PI);
+      ctx.fillStyle = `rgba(0, 201, 142, ${alpha * 1.0})`;
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = THEME.green;
+      ctx.beginPath();
+      ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+  }
+
+  function init() {
+    nodes = [];
+    pulses = [];
+    maxOuterHalfW = 0;
+    maxOuterHalfH = 0;
+
+    const centerNode = new Node(0, "", "", true);
+    centerNode.calculateSize();
+    nodes.push(centerNode);
+
+    nodeData.forEach((data, i) => {
+      const n = new Node(i + 1, data.title, data.subtitle, false);
+      n.calculateSize();
+      nodes.push(n);
+      pulses.push(new Pulse(n));
+      pulses.push(new Pulse(n));
+
+      maxOuterHalfW = Math.max(maxOuterHalfW, (n.w + 20) / 2);
+      maxOuterHalfH = Math.max(maxOuterHalfH, (n.h + 4) / 2);
+    });
+  }
+
+  function resize() {
+    DPR = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    width = rect.width;
+    height = Math.max(480, rect.width * 0.70);
+
+    canvas.width = Math.round(width * DPR);
+    canvas.height = Math.round(height * DPR);
+    canvas.style.height = `${height}px`;
+
+    centerX = width / 2;
+    centerY = height / 2;
+
+    init();
+  }
+
+  function updateOrbits() {
+    const pad = isMobile() ? 18 : 28;
+    const availX = Math.max(140, width / 2 - maxOuterHalfW - pad);
+    const availY = Math.max(120, height / 2 - maxOuterHalfH - pad);
+    const baseX = isMobile() ? 175 : 520;
+    const baseY = isMobile() ? 155 : 370;
+    orbitX = Math.min(baseX, availX * 0.98);
+    orbitY = Math.min(baseY, availY * 0.95, orbitX / 1.4);
+  }
+
+  function animate(time) {
+    const t = time * 0.001;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    ctx.clearRect(0, 0, width, height);
+
+    ctx.fillStyle = "rgba(0, 201, 142, 0.04)";
+    for (let i = 0; i < 30; i++) {
+      const x = (Math.sin(t * 0.04 + i * 17) * 0.5 + 0.5) * width;
+      const y = (Math.cos(t * 0.07 + i * 11) * 0.5 + 0.5) * height;
+      ctx.beginPath();
+      ctx.arc(x, y, 1, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    updateOrbits();
+    nodes.forEach(n => n.update(t));
+    pulses.forEach(p => p.update());
+
+    const center = nodes[0];
+    nodes.forEach((node, i) => {
+      if (i === 0) return;
+      ctx.beginPath();
+      ctx.lineWidth = 0.8;
+      const lineGrad = ctx.createLinearGradient(center.x, center.y, node.x, node.y);
+      lineGrad.addColorStop(0.1, "rgba(0, 201, 142, 0.6)");
+      lineGrad.addColorStop(1, "rgba(0, 201, 142, 0)");
+      ctx.strokeStyle = lineGrad;
+      ctx.moveTo(center.x, center.y);
+      ctx.lineTo(node.x, node.y);
+      ctx.stroke();
+    });
+
+    pulses.forEach(p => p.draw(center));
+    nodes.forEach(n => n.draw());
+
+    requestAnimationFrame(animate);
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+  canvas.addEventListener("mousemove", e => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+  canvas.addEventListener("mouseleave", () => { mouse.x = -1000; mouse.y = -1000; });
+  canvas.addEventListener("touchstart", e => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.touches[0].clientX - rect.left;
+    mouse.y = e.touches[0].clientY - rect.top;
+  }, { passive: true });
+  canvas.addEventListener("touchmove", e => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.touches[0].clientX - rect.left;
+    mouse.y = e.touches[0].clientY - rect.top;
+  }, { passive: true });
+  canvas.addEventListener("touchend", () => { mouse.x = -1000; mouse.y = -1000; }, { passive: true });
+
+  if (nuinLogo.complete) {
+    requestAnimationFrame(animate);
+  } else {
+    nuinLogo.addEventListener("load", () => requestAnimationFrame(animate), { once: true });
+  }
+}
+
+// NAV scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Hero light/dark toggle
+function toggleHeroMode() {
+  const hero = document.getElementById('hero');
+  const isLight = hero.classList.toggle('light-mode');
+  document.getElementById('hero-mode-icon').textContent = isLight ? '🌙' : '☀';
+  document.getElementById('hero-mode-label').textContent = isLight ? 'Modo oscuro' : 'Modo claro';
+}
+
+// Services sidebar
+function showService(idx) {
+  document.querySelectorAll('.srv-item').forEach((c, i) => c.classList.toggle('active', i === idx));
+  document.querySelectorAll('.service-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
+}
+
+// Team view toggle
+function setTeamView(view) {
+  document.querySelectorAll('.tvt-btn').forEach((b, i) => b.classList.toggle('active', (i === 0 && view === 'grid') || (i === 1 && view === 'capsule')));
+  document.getElementById('team-grid').style.display = view === 'grid' ? 'grid' : 'none';
+  document.getElementById('team-capsule').style.display = view === 'capsule' ? 'grid' : 'none';
+}
+
+function showExperience(idx, btn) {
+  const keys = ['stakeholders', 'areas', 'principios'];
+  const key = keys[idx];
+  if (!key) return;
+
+  const panel = document.getElementById('acc-' + key);
+  if (!panel) return;
+
+  const isOpen = panel.classList.contains('open');
+  document.querySelectorAll('.acc-panel').forEach(p => p.classList.remove('open'));
+  document.querySelectorAll('.xp-acc-btn').forEach(b => b.classList.remove('acc-active'));
+
+  if (!isOpen) {
+    panel.classList.add('open');
+    if (btn) btn.classList.add('acc-active');
+    if (key === 'stakeholders') {
+      requestAnimationFrame(() => requestAnimationFrame(() => window.dispatchEvent(new Event('resize'))));
+    }
+  }
+}
+
+function toggleAccordion(key, btn) {
+  const idxByKey = { stakeholders: 0, areas: 1, principios: 2 };
+  showExperience(idxByKey[key], btn);
+}
+
+function setSalaTab(key) {
+  const isNuin = key === 'nuin';
+  const tabNuin = document.getElementById('sala-tab-nuin');
+  const tabFocus = document.getElementById('sala-tab-focus');
+  const panelNuin = document.getElementById('sala-panel-nuin');
+  const panelFocus = document.getElementById('sala-panel-focus');
+  if (tabNuin) tabNuin.classList.toggle('active', isNuin);
+  if (tabFocus) tabFocus.classList.toggle('active', !isNuin);
+  if (panelNuin) panelNuin.classList.toggle('active', isNuin);
+  if (panelFocus) panelFocus.classList.toggle('active', !isNuin);
+}
+
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NUIN — Healthcare Market Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  /* ===== VERSION 3: MODERN TECH ===== */
+  /* Dynamic layout. Subtle gradients. More experimental but still professional. */
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #00A878;
+    --green-dark: #007A58;
+    --green-light: #00C98E;
+    --green-soft: rgba(0,168,120,0.1);
+    --bg: #F5F7F6;
+    --bg2: #ECEFEE;
+    --surface: #FFFFFF;
+    --dark: #0D1512;
+    --dark2: #162019;
+    --border: rgba(15,20,19,0.1);
+    --text: #0D1512;
+    --text-2: #3A4A48;
+    --text-3: #728580;
+    --font-display: 'Lora', Georgia, serif;
+    --font-body: 'Space Grotesk', system-ui, sans-serif;
+    --max-w: 1280px;
+    --section-pad: 128px;
+    --radius: 20px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(245,247,246,0.85);
+    backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo img { height: 32px; }
+  .nav-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 8px 8px 8px 28px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-pill a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 40px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-pill a:hover { color: var(--text); background: var(--bg2); }
+  .nav-pill .nav-cta {
+    background: var(--dark);
+    color: white !important;
+    font-weight: 600;
+  }
+  .nav-pill .nav-cta:hover { background: var(--green-dark) !important; }
+
+  /* HERO */
+  #hero {
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding-top: 80px;
+    background: var(--dark);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 100% 0%, rgba(0,168,120,0.2) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 50% at 0% 100%, rgba(0,120,88,0.15) 0%, transparent 40%),
+      linear-gradient(160deg, #0D1512 60%, #162019 100%);
+  }
+  .hero-content-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 80px 64px 60px;
+    position: relative;
+    align-items: center;
+    width: 100%;
+  }
+  .hero-left { }
+  .hero-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,168,120,0.15);
+    border: 1px solid rgba(0,168,120,0.3);
+    padding: 6px 14px 6px 6px;
+    border-radius: 50px;
+    margin-bottom: 40px;
+  }
+  .hero-chip-dot {
+    width: 24px; height: 24px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+  }
+  .hero-chip span {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.04em;
+  }
+  .hero-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 600;
+    line-height: 1.12;
+    color: white;
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+  }
+  .hero-h1 .highlight {
+    font-style: italic;
+    background: linear-gradient(90deg, var(--green-light), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.75;
+    max-width: 460px;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn-dark-primary {
+    background: var(--green);
+    color: var(--dark);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-dark-primary:hover { background: var(--green-light); transform: translateY(-2px); }
+  .btn-dark-ghost {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-dark-ghost:hover { background: rgba(255,255,255,0.14); color: white; }
+
+  .hero-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .hero-img-frame {
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    position: relative;
+  }
+  .hero-img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+  }
+  .hero-img-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(13,21,18,0.5));
+    z-index: 1;
+  }
+  .hero-stats-ticker {
+    display: flex;
+    gap: 8px;
+  }
+  .ticker-item {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+  }
+  .ticker-item .n {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--green-light);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .ticker-item .l {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll-bar {
+    background: rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 64px;
+    position: relative;
+    max-width: var(--max-w);
+    margin: 0 auto;
+    width: 100%;
+  }
+  .scroll-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .scroll-logos {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+  }
+
+  /* SECTIONS */
+  .section-wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    margin-bottom: 16px;
+  }
+  .big-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .body-text {
+    font-size: 16px;
+    color: var(--text-2);
+    line-height: 1.75;
+    font-weight: 400;
+    max-width: 640px;
+  }
+
+  /* SOMOS */
+  #somos {
+    padding: var(--section-pad) 0;
+    background: var(--surface);
+  }
+  .somos-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: start;
+  }
+  .stats-bento {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .bento-card {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .bento-card:hover { transform: translateY(-3px); }
+  .bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--green);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .bento-card:hover::before { opacity: 1; }
+  .bento-num {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .bento-label {
+    font-size: 12.5px;
+    color: var(--text-3);
+    line-height: 1.4;
+  }
+  .bento-card.accent {
+    background: var(--dark);
+    color: white;
+  }
+  .bento-card.accent .bento-num { color: var(--green-light); }
+  .bento-card.accent .bento-label { color: rgba(255,255,255,0.5); }
+  .dl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 11px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 28px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .dl-btn:hover { background: var(--green-soft); border-color: var(--green); color: var(--green-dark); }
+  .dl-btn svg { width: 16px; height: 16px; }
+
+  /* EQUIPO */
+  #equipo {
+    padding: var(--section-pad) 0;
+    background: var(--bg);
+  }
+  .equipo-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+  }
+  .team-masonry {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .tm-card {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background: var(--surface);
+    cursor: pointer;
+  }
+  .tm-photo {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    position: relative;
+  }
+  .tm-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s;
+  }
+  .tm-card:hover .tm-photo img { transform: scale(1.06); }
+  .tm-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13,21,18,0.85) 0%, transparent 50%);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+  }
+  .tm-info { }
+  .tm-name {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 3px;
+  }
+  .tm-role {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green-light);
+  }
+  .manifesto-strip {
+    margin-top: 56px;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 50%, rgba(0,120,88,0.4) 100%);
+    border-radius: var(--radius);
+    padding: 56px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .manifesto-strip::before {
+    content: '"';
+    position: absolute;
+    top: -20px; left: 40px;
+    font-family: var(--font-display);
+    font-size: 200px;
+    color: rgba(0,168,120,0.1);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .manifesto-q {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 400;
+    color: white;
+    max-width: 520px;
+    line-height: 1.45;
+    position: relative;
+  }
+
+  /* SERVICIOS */
+  #servicios {
+    padding: var(--section-pad) 0;
+    background: var(--surface);
+  }
+  .services-header { margin-bottom: 56px; }
+  .services-accordion { display: flex; flex-direction: column; gap: 0; }
+  .acc-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .acc-item:first-child { border-top: 1px solid var(--border); }
+  .acc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0;
+    cursor: pointer;
+    gap: 24px;
+  }
+  .acc-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex: 1;
+  }
+  .acc-num {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-3);
+    min-width: 28px;
+    letter-spacing: 0.04em;
+  }
+  .acc-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+  .acc-item.open .acc-title { color: var(--green-dark); }
+  .acc-tag {
+    background: var(--bg2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-3);
+    letter-spacing: 0.04em;
+  }
+  .acc-item.open .acc-tag { background: rgba(0,168,120,0.12); color: var(--green-dark); }
+  .acc-icon {
+    width: 32px; height: 32px;
+    background: var(--bg2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: transform 0.3s, background 0.2s;
+    flex-shrink: 0;
+  }
+  .acc-item.open .acc-icon { transform: rotate(45deg); background: var(--green); color: white; }
+  .acc-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .acc-item.open .acc-body { max-height: 400px; }
+  .acc-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 0 0 36px 52px;
+  }
+  .acc-text {
+    font-size: 15px;
+    color: var(--text-2);
+    line-height: 1.75;
+  }
+  .acc-text p { margin-bottom: 14px; }
+  .acc-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .acc-features li {
+    font-size: 13.5px;
+    color: var(--text-2);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .acc-features li::before {
+    content: '→';
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ESPACIO */
+  #espacio {
+    padding: var(--section-pad) 0;
+    background: var(--bg);
+  }
+  .espacio-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-top: 56px;
+  }
+  .photo-stack {
+    position: relative;
+  }
+  .photo-main {
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+  .photo-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .photo-small {
+    position: absolute;
+    bottom: -24px;
+    right: -24px;
+    width: 45%;
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 4px solid var(--bg);
+  }
+  .photo-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .espacio-features { padding-top: 16px; }
+  .feature-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .feature-item:first-child { border-top: 1px solid var(--border); }
+  .fi-icon {
+    width: 36px; height: 36px;
+    background: var(--green-soft);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .fi-text { }
+  .fi-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .fi-desc { font-size: 13px; color: var(--text-3); line-height: 1.5; }
+  .location-chip {
+    margin-top: 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 24px;
+  }
+  .location-pin { font-size: 22px; margin-top: 2px; }
+  .location-text { font-size: 14px; color: var(--text-2); line-height: 1.65; }
+
+  /* BLOG */
+  #blog {
+    padding: var(--section-pad) 0;
+    background: var(--surface);
+  }
+  .blog-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 16px;
+  }
+  .blog-desc {
+    font-size: 15px;
+    color: var(--text-2);
+    max-width: 640px;
+    line-height: 1.75;
+    margin-bottom: 48px;
+  }
+  .blog-cards {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 16px;
+  }
+  .bc {
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--bg);
+    position: relative;
+    transition: transform 0.25s;
+  }
+  .bc:hover { transform: translateY(-4px); }
+  .bc-img {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+  .bc:first-child .bc-img { aspect-ratio: 16/10; }
+  .bc-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .bc:hover .bc-img img { transform: scale(1.05); }
+  .bc-body { padding: 24px 20px; }
+  .bc-tag {
+    display: inline-block;
+    background: var(--green-soft);
+    color: var(--green-dark);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .bc-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .bc:first-child .bc-title { font-size: 21px; }
+  .bc-excerpt {
+    font-size: 13px;
+    color: var(--text-3);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .bc-link {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+  .bc-link:hover { gap: 10px; }
+
+  /* ALIANZAS */
+  #alianzas {
+    padding: 80px 0;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .alianzas-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,168,120,0.08), transparent);
+    pointer-events: none;
+  }
+  .alianzas-inner {
+    position: relative;
+    text-align: center;
+  }
+  .alianzas-inner .eyebrow { color: rgba(0,168,120,0.7); }
+  .alianzas-inner .big-title { color: white; max-width: 560px; margin: 0 auto 16px; }
+  .alianzas-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.45);
+    max-width: 580px;
+    margin: 0 auto 56px;
+    line-height: 1.7;
+  }
+  .partners-strip {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .ps-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 24px 32px;
+    min-width: 180px;
+    transition: background 0.2s, border-color 0.2s;
+    text-align: center;
+  }
+  .ps-item:hover { background: rgba(0,168,120,0.12); border-color: rgba(0,168,120,0.3); }
+  .ps-name { font-size: 16px; font-weight: 700; color: white; margin-bottom: 6px; }
+  .ps-desc { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.4; }
+
+  /* CONTACTO */
+  #contacto {
+    padding: var(--section-pad) 0;
+    background: var(--bg);
+  }
+  .contact-2col {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-headline {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 40px;
+    max-width: 380px;
+  }
+  .contact-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cc {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    transition: border-color 0.2s;
+  }
+  .cc:hover { border-color: var(--green); }
+  .cc-icon {
+    width: 40px; height: 40px;
+    background: var(--green-soft);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .cc-lbl { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 2px; }
+  .cc-val { font-size: 15px; color: var(--text); font-weight: 500; }
+  .contact-form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 48px 44px;
+  }
+  .cf-title { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 28px; }
+  .cf-grid { display: flex; flex-direction: column; gap: 16px; }
+  .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .cf-field { display: flex; flex-direction: column; gap: 6px; }
+  .cf-field label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
+  .cf-field input, .cf-field textarea, .cf-field select {
+    padding: 12px 16px;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .cf-field input:focus, .cf-field textarea:focus, .cf-field select:focus {
+    border-color: var(--green);
+    background: var(--surface);
+  }
+  .cf-field textarea { min-height: 120px; resize: vertical; }
+  .cf-submit {
+    background: var(--dark);
+    color: white;
+    border: none;
+    padding: 14px 36px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+  .cf-submit:hover { background: var(--green-dark); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 72px 0 40px;
+  }
+  .footer-wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+  .footer-main {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 32px;
+  }
+  .f-brand img { height: 28px; margin-bottom: 16px; }
+  .f-brand p { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; }
+  .f-col h6 { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+  .f-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .f-col a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+  .f-col a:hover { color: var(--green-light); }
+  .footer-base { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-base a { color: rgba(255,255,255,0.25); text-decoration: none; }
+
+  /* ANIMATIONS */
+  .slide-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .slide-up.visible { opacity: 1; transform: none; }
+  .slide-up.d1 { transition-delay: 0.1s; }
+  .slide-up.d2 { transition-delay: 0.2s; }
+  .slide-up.d3 { transition-delay: 0.3s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 14px 24px; }
+    .nav-pill { display: none; }
+    .hero-content-area { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .section-wrap { padding: 0 32px; }
+    .somos-wrapper { grid-template-columns: 1fr; }
+    .team-masonry { grid-template-columns: repeat(2, 1fr); }
+    .acc-content { grid-template-columns: 1fr; gap: 24px; }
+    .espacio-split { grid-template-columns: 1fr; }
+    .blog-cards { grid-template-columns: 1fr 1fr; }
+    .bc:first-child { grid-column: span 2; }
+    .contact-2col { grid-template-columns: 1fr; }
+    .footer-main { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .manifesto-strip { flex-direction: column; padding: 40px 32px; }
+  }
+  @media (max-width: 640px) {
+    :root { --section-pad: 72px; }
+    .section-wrap { padding: 0 20px; }
+    .team-masonry { grid-template-columns: repeat(2, 1fr); }
+    .blog-cards { grid-template-columns: 1fr; }
+    .bc:first-child { grid-column: auto; }
+    .footer-main { grid-template-columns: 1fr; }
+    .cf-row { grid-template-columns: 1fr; }
+    .stats-bento { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo"><img src="dark_logo_transparent_background.png" alt="NUIN"></a>
+  <div class="nav-pill">
+    <a href="#somos">Nosotros</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#espacio">Espacio</a>
+    <a href="#blog">Blog</a>
+    <a href="#contacto" class="nav-cta">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-gradient"></div>
+  <div class="hero-content-area">
+    <div class="hero-left slide-up">
+      <div class="hero-chip">
+        <div class="hero-chip-dot">✦</div>
+        <span>Healthcare Market Research · España · Desde 1984</span>
+      </div>
+      <h1 class="hero-h1">40 años convirtiendo conversaciones y datos en <span class="highlight">insights accionables</span></h1>
+      <p class="hero-sub">La primera agencia española dedicada exclusivamente al sector farmacéutico. Rigor científico, profundidad clínica y metodología contrastada para las mejores decisiones.</p>
+      <div class="hero-btns">
+        <a href="#servicios" class="btn-dark-primary">Explorar servicios</a>
+        <a href="#somos" class="btn-dark-ghost">Conocer NUIN</a>
+      </div>
+    </div>
+    <div class="hero-right slide-up d2">
+      <div class="hero-img-frame">
+        <img src="NUIN/OFICINA/Sala%20AB-7.jpg" alt="Sala Advisory Board" loading="lazy">
+      </div>
+      <div class="hero-stats-ticker">
+        <div class="ticker-item"><div class="n">+40</div><div class="l">Años farma</div></div>
+        <div class="ticker-item"><div class="n">+4.200</div><div class="l">Proyectos</div></div>
+        <div class="ticker-item"><div class="n">+750</div><div class="l">Advisory Boards</div></div>
+        <div class="ticker-item"><div class="n">98%</div><div class="l">Repiten</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-bar">
+    <span class="scroll-label">Colaboramos con</span>
+    <div class="scroll-logos">
+      <span>EPHMRA</span>
+      <span>·</span>
+      <span>ESOMAR</span>
+      <span>·</span>
+      <span>AIMFA</span>
+      <span>·</span>
+      <span>IRIS</span>
+    </div>
+    <span class="scroll-label">+70 laboratorios confían en NUIN</span>
+  </div>
+</section>
+
+<!-- SOMOS -->
+<section id="somos">
+  <div class="section-wrap">
+    <div class="somos-wrapper">
+      <div class="slide-up">
+        <div class="eyebrow">Quiénes somos</div>
+        <h2 class="big-title">Somos NUIN</h2>
+        <p class="body-text">Fuimos la primera agencia española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Cuatro décadas de trabajo continuo, un equipo sólido y una metodología probada nos avalan.</p>
+        <a href="#" class="dl-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar infografía histórica
+        </a>
+      </div>
+      <div class="stats-bento slide-up d1">
+        <div class="bento-card">
+          <div class="bento-num">+40</div>
+          <div class="bento-label">años dedicados al sector farma</div>
+        </div>
+        <div class="bento-card accent">
+          <div class="bento-num">+4.200</div>
+          <div class="bento-label">proyectos en healthcare</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-num">+70</div>
+          <div class="bento-label">laboratorios han confiado en nosotros</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-num">+100K</div>
+          <div class="bento-label">encuestas realizadas</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-num">+750</div>
+          <div class="bento-label">Advisory Boards moderados</div>
+        </div>
+        <div class="bento-card accent">
+          <div class="bento-num">+98%</div>
+          <div class="bento-label">de clientes que han repetido</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-num">+15K</div>
+          <div class="bento-label">horas de conversaciones</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-num">+200</div>
+          <div class="bento-label">enfermedades profundizadas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo">
+  <div class="section-wrap">
+    <div class="equipo-head slide-up">
+      <div>
+        <div class="eyebrow">El equipo</div>
+        <h2 class="big-title">Equipo NUIN</h2>
+      </div>
+      <a href="#" class="dl-btn" style="margin-top:0;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Manifiesto NUIN
+      </a>
+    </div>
+    <div class="team-masonry">
+      <div class="tm-card slide-up">
+        <div class="tm-photo"><img src="NUIN/EQUIPO/FOTOS/byn/Juan_JCM1780.jpg" alt="Juan" loading="lazy"></div>
+        <div class="tm-overlay"><div class="tm-info"><div class="tm-name">Juan Reig</div><div class="tm-role">Director General</div></div></div>
+      </div>
+      <div class="tm-card slide-up d1">
+        <div class="tm-photo"><img src="NUIN/EQUIPO/FOTOS/byn/Josefina_JCM1805.jpg" alt="Josefina" loading="lazy"></div>
+        <div class="tm-overlay"><div class="tm-info"><div class="tm-name">Josefina</div><div class="tm-role">Directora de Proyectos</div></div></div>
+      </div>
+      <div class="tm-card slide-up d2">
+        <div class="tm-photo"><img src="NUIN/EQUIPO/FOTOS/byn/Loreto_JCM1727.jpg" alt="Loreto" loading="lazy"></div>
+        <div class="tm-overlay"><div class="tm-info"><div class="tm-name">Loreto</div><div class="tm-role">Senior Research</div></div></div>
+      </div>
+      <div class="tm-card slide-up d3">
+        <div class="tm-photo"><img src="NUIN/EQUIPO/FOTOS/byn/Sonia_JCM1685.jpg" alt="Sonia" loading="lazy"></div>
+        <div class="tm-overlay"><div class="tm-info"><div class="tm-name">Sonia</div><div class="tm-role">Research Manager</div></div></div>
+      </div>
+      <div class="tm-card slide-up">
+        <div class="tm-photo"><img src="NUIN/EQUIPO/FOTOS/byn/Ana_JCM1696.jpg" alt="Ana" loading="lazy"></div>
+        <div class="tm-overlay"><div class="tm-info"><div class="tm-name">Ana</div><div class="tm-role">Research Analyst</div></div></div>
+      </div>
+      <div class="tm-card slide-up d1">
+        <div class="tm-photo"><img src="NUIN/EQUIPO/FOTOS/byn/Guillermo_JCM1769.jpg" alt="Guillermo" loading="lazy"></div>
+        <div class="tm-overlay"><div class="tm-info"><div class="tm-name">Guillermo</div><div class="tm-role">Advisory Boards Lead</div></div></div>
+      </div>
+      <div class="tm-card slide-up d2">
+        <div class="tm-photo"><img src="NUIN/EQUIPO/FOTOS/byn/Irina_JCM1670.jpg" alt="Irina" loading="lazy"></div>
+        <div class="tm-overlay"><div class="tm-info"><div class="tm-name">Irina</div><div class="tm-role">Medical Writing</div></div></div>
+      </div>
+      <div class="tm-card slide-up d3">
+        <div class="tm-photo"><img src="NUIN/EQUIPO/FOTOS/byn/Laura_JCM1755.jpg" alt="Laura" loading="lazy"></div>
+        <div class="tm-overlay"><div class="tm-info"><div class="tm-name">Laura</div><div class="tm-role">Research Analyst</div></div></div>
+      </div>
+    </div>
+    <div class="manifesto-strip slide-up">
+      <div class="manifesto-q">"Así somos, así pensamos — descarga el manifiesto que define quiénes somos y cómo trabajamos en NUIN"</div>
+      <a href="#" class="btn-dark-primary">Descargar manifiesto</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="section-wrap">
+    <div class="services-header slide-up">
+      <div class="eyebrow">Lo que hacemos</div>
+      <h2 class="big-title">Servicios NUIN</h2>
+      <p class="body-text">Cuarenta años dedicados a un solo sector nos han permitido dominar cada ángulo de la investigación en healthcare.</p>
+    </div>
+    <div class="services-accordion">
+      <div class="acc-item open">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-left">
+            <span class="acc-num">01</span>
+            <span class="acc-title">Healthcare Market Research</span>
+            <span class="acc-tag">Core service</span>
+          </div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-content">
+            <div class="acc-text">
+              <p>Es la raíz de NUIN, nuestro Alpha y omega. Llevamos 40 años ayudando a los profesionales del sector farma a obtener insights relevantes y accionables que les permitan tomar las mejores decisiones.</p>
+              <p>Nuestra excelencia se basa en tres premisas: Experiencia, Profundidad y Método.</p>
+            </div>
+            <ul class="acc-features">
+              <li>+200 enfermedades diferentes abordadas</li>
+              <li>Todos los stakeholders: HCPs, KOLs, pacientes, cuidadores</li>
+              <li>Metodología cualitativa y cuantitativa propia</li>
+              <li>Insights profundos y accionables garantizados</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-left">
+            <span class="acc-num">02</span>
+            <span class="acc-title">Advisory Boards</span>
+            <span class="acc-tag">Nº 1 en España</span>
+          </div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-content">
+            <div class="acc-text">
+              <p>Somos los número 1 en moderación de Advisory Boards en España. Más de 750 Advisory Boards, presenciales y online, nacionales e internacionales.</p>
+              <p>El 100% de los clientes que han hecho un Advisory Board con nosotros han repetido.</p>
+            </div>
+            <ul class="acc-features">
+              <li>+750 Advisory Boards moderados</li>
+              <li>EEUU, México, Chile, Argentina, Francia, UK, Dinamarca, Suiza…</li>
+              <li>Formato presencial y online con tecnología propia</li>
+              <li>100% de tasa de repetición de clientes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-left">
+            <span class="acc-num">03</span>
+            <span class="acc-title">Investigación Cuantitativa</span>
+            <span class="acc-tag">+100K encuestas</span>
+          </div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-content">
+            <div class="acc-text">
+              <p>Técnicas cuantitativas rigurosas adaptadas específicamente al sector healthcare. Más de 100.000 encuestas realizadas a profesionales sanitarios avalan nuestro expertise.</p>
+            </div>
+            <ul class="acc-features">
+              <li>Encuestas online y CATI a HCPs</li>
+              <li>Estudios de tracking y monitorización</li>
+              <li>Conjoint analysis y pricing research</li>
+              <li>Diseño muestral especializado en farma</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-left">
+            <span class="acc-num">04</span>
+            <span class="acc-title">Investigación Cualitativa</span>
+            <span class="acc-tag">+15K horas</span>
+          </div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-content">
+            <div class="acc-text">
+              <p>La investigación cualitativa es el corazón de NUIN. Más de 15.000 horas de conversaciones profundas con todos los actores del sector salud.</p>
+            </div>
+            <ul class="acc-features">
+              <li>Entrevistas en profundidad a KOLs y HCPs</li>
+              <li>Grupos de discusión con pacientes</li>
+              <li>Etnografías en entornos clínicos</li>
+              <li>Técnicas proyectivas especializadas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-left">
+            <span class="acc-num">05</span>
+            <span class="acc-title">Método TWACE</span>
+            <span class="acc-tag">+50 hospitales</span>
+          </div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-content">
+            <div class="acc-text">
+              <p>Sistema propio de revisión y optimización de procesos. Probado en más de 50 hospitales y decenas de unidades de laboratorios farmacéuticos con resultados inmediatos y medibles.</p>
+            </div>
+            <ul class="acc-features">
+              <li>Revisión de procesos en unidades hospitalarias</li>
+              <li>Implementación en laboratorios farmacéuticos</li>
+              <li>Alta implicación del equipo garantizada</li>
+              <li>Resultados cuantificables desde la primera semana</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-left">
+            <span class="acc-num">06</span>
+            <span class="acc-title">Medical Writing</span>
+            <span class="acc-tag">Especializado healthcare</span>
+          </div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-content">
+            <div class="acc-text">
+              <p>Equipo especializado en healthcare da soporte de medical writing a proyectos editoriales para editoriales, sociedades científicas y laboratorios farmacéuticos.</p>
+            </div>
+            <ul class="acc-features">
+              <li>Consensos y guías de práctica clínica</li>
+              <li>Artículos científicos y revisiones de evidencia</li>
+              <li>Protocolos y procedimientos hospitalarios</li>
+              <li>Materiales educativos para profesionales</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPACIO -->
+<section id="espacio">
+  <div class="section-wrap">
+    <div class="slide-up">
+      <div class="eyebrow">Instalaciones</div>
+      <h2 class="big-title">Espacio NUIN</h2>
+      <p class="body-text">Dejamos que nuestras salas hablen por nosotros. La sala NUIN, única en España diseñada para Advisory Boards, y la sala FOCUS para entrevistas y grupos en las mejores condiciones.</p>
+    </div>
+    <div class="espacio-split">
+      <div class="photo-stack slide-up">
+        <div class="photo-main">
+          <img src="NUIN/OFICINA/Sala%20AB-1.jpg" alt="Sala Advisory Board NUIN" loading="lazy">
+        </div>
+        <div class="photo-small">
+          <img src="NUIN/OFICINA/Sala%20Grupos-2.jpg" alt="Sala Focus" loading="lazy">
+        </div>
+      </div>
+      <div class="espacio-features slide-up d1">
+        <div class="feature-item">
+          <div class="fi-icon">🏛️</div>
+          <div class="fi-text">
+            <div class="fi-title">Sala NUIN — Advisory Boards</div>
+            <div class="fi-desc">La única sala en España diseñada específicamente para la realización de Advisory Boards presenciales y online.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="fi-icon">🔬</div>
+          <div class="fi-text">
+            <div class="fi-title">Sala FOCUS</div>
+            <div class="fi-desc">Cuidada hasta el más mínimo detalle para desarrollar entrevistas y reuniones de grupo en las mejores condiciones.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="fi-icon">🎥</div>
+          <div class="fi-text">
+            <div class="fi-title">Tecnología HD</div>
+            <div class="fi-desc">Sistema de videoconferencia y grabación profesional. Espejo unidireccional para observación discreta.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="fi-icon">☕</div>
+          <div class="fi-text">
+            <div class="fi-title">Zona Café y descanso</div>
+            <div class="fi-desc">Catering completo y zona de descanso para participantes. Pensado para sesiones largas e intensas.</div>
+          </div>
+        </div>
+        <div class="location-chip">
+          <div class="location-pin">📍</div>
+          <div class="location-text">Centro financiero de Madrid, calle Orense. A un paso de El Corte Inglés. Acceso fácil desde el aeropuerto, tren y metro. Dos parkings en la puerta.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-wrap">
+    <div class="blog-top slide-up">
+      <div>
+        <div class="eyebrow">Casos reales</div>
+        <h2 class="big-title">Blog de Casos</h2>
+      </div>
+      <a href="#" class="dl-btn" style="margin-top:0;">Ver todos los casos →</a>
+    </div>
+    <p class="blog-desc slide-up">Una de las cosas más difíciles de ser especialistas en farma es mostrar lo que puedes hacer por tus clientes sin desvelar información confidencial… así que os hemos preparado este blog que habla de casos reales en los que nuestros clientes tenían una necesidad que no sabían resolver y en los que pudimos ayudarles.</p>
+    <div class="blog-cards">
+      <article class="bc slide-up">
+        <div class="bc-img"><img src="NUIN/OFICINA/Sala%20AB-4.jpg" alt="" loading="lazy"></div>
+        <div class="bc-body">
+          <span class="bc-tag">Advisory Board Internacional</span>
+          <h3 class="bc-title">¿Cómo alineamos a 12 KOLs internacionales en una sola sesión?</h3>
+          <p class="bc-excerpt">Un laboratorio multinacional necesitaba consenso clínico entre especialistas de 5 países con perspectivas muy divergentes sobre el protocolo de tratamiento...</p>
+          <a href="#" class="bc-link">Leer caso →</a>
+        </div>
+      </article>
+      <article class="bc slide-up d1">
+        <div class="bc-img"><img src="NUIN/OFICINA/Sala%20Grupos-6.jpg" alt="" loading="lazy"></div>
+        <div class="bc-body">
+          <span class="bc-tag">Cualitativo</span>
+          <h3 class="bc-title">Cuando los datos no contaban toda la historia</h3>
+          <p class="bc-excerpt">Un cliente con buenos resultados en encuestas pero producto sin prescripción...</p>
+          <a href="#" class="bc-link">Leer caso →</a>
+        </div>
+      </article>
+      <article class="bc slide-up d2">
+        <div class="bc-img"><img src="NUIN/OFICINA/Deco-6.jpg" alt="" loading="lazy"></div>
+        <div class="bc-body">
+          <span class="bc-tag">TWACE</span>
+          <h3 class="bc-title">Transformando la visita médica en tiempo récord</h3>
+          <p class="bc-excerpt">Un laboratorio necesitaba reformular su modelo sin perder productividad...</p>
+          <a href="#" class="bc-link">Leer caso →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ALIANZAS -->
+<section id="alianzas">
+  <div class="alianzas-bg"></div>
+  <div class="section-wrap">
+    <div class="alianzas-inner slide-up">
+      <div class="eyebrow">Colaboraciones</div>
+      <h2 class="big-title">Alianzas Estratégicas</h2>
+      <p class="alianzas-sub">En NUIN sabemos lo importante que es crecer de la mano de otras organizaciones, compartiendo buenas prácticas y elevando los estándares de calidad del sector.</p>
+      <div class="partners-strip">
+        <div class="ps-item"><div class="ps-name">IRIS</div><div class="ps-desc">International Research Intelligence Specialisations</div></div>
+        <div class="ps-item"><div class="ps-name">EPHMRA</div><div class="ps-desc">European Pharmaceutical Market Research Association</div></div>
+        <div class="ps-item"><div class="ps-name">ESOMAR</div><div class="ps-desc">European Society for Opinion and Market Research</div></div>
+        <div class="ps-item"><div class="ps-name">AIMFA</div><div class="ps-desc">Asociación de Investigación sector Farmacéutico</div></div>
+        <div class="ps-item"><div class="ps-name">Beauty Cluster</div><div class="ps-desc">Clúster industria cosmética y cuidado personal</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-wrap">
+    <div class="contact-2col">
+      <div class="slide-up">
+        <div class="eyebrow">Hablemos</div>
+        <h2 class="big-title">Contacto</h2>
+        <div class="contact-headline">"Llevamos más de cuarenta años aprendiendo día a día para que tu próximo proyecto salga perfecto, ¿hablamos?"</div>
+        <div class="contact-cards">
+          <div class="cc"><div class="cc-icon">✉</div><div><div class="cc-lbl">Email</div><div class="cc-val">info@nuin.es</div></div></div>
+          <div class="cc"><div class="cc-icon">☎</div><div><div class="cc-lbl">Teléfono</div><div class="cc-val">+34 91 XXX XX XX</div></div></div>
+          <div class="cc"><div class="cc-icon">📍</div><div><div class="cc-lbl">Salas y oficinas</div><div class="cc-val">Calle Orense, Madrid</div></div></div>
+        </div>
+      </div>
+      <div class="contact-form-card slide-up d1">
+        <div class="cf-title">Cuéntanos tu proyecto</div>
+        <div class="cf-grid">
+          <div class="cf-row">
+            <div class="cf-field"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+            <div class="cf-field"><label>Empresa</label><input type="text" placeholder="Tu empresa"></div>
+          </div>
+          <div class="cf-field"><label>Email</label><input type="email" placeholder="correo@empresa.com"></div>
+          <div class="cf-field">
+            <label>Servicio</label>
+            <select>
+              <option value="">Selecciona un servicio</option>
+              <option>Healthcare Market Research</option>
+              <option>Advisory Boards</option>
+              <option>Cuantitativo</option>
+              <option>Cualitativo</option>
+              <option>TWACE</option>
+              <option>Medical Writing</option>
+              <option>Alquiler de salas</option>
+            </select>
+          </div>
+          <div class="cf-field"><label>Mensaje</label><textarea placeholder="Cuéntanos sobre tu necesidad..."></textarea></div>
+          <button class="cf-submit">Enviar mensaje</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-wrap">
+    <div class="footer-main">
+      <div class="f-brand">
+        <img src="white_logo_transparent_background.png" alt="NUIN">
+        <p>Primera agencia española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Desde 1984.</p>
+      </div>
+      <div class="f-col">
+        <h6>Servicios</h6>
+        <ul>
+          <li><a href="#servicios">Healthcare MR</a></li>
+          <li><a href="#servicios">Advisory Boards</a></li>
+          <li><a href="#servicios">Cuantitativo</a></li>
+          <li><a href="#servicios">Cualitativo</a></li>
+          <li><a href="#servicios">TWACE</a></li>
+          <li><a href="#servicios">Medical Writing</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h6>Empresa</h6>
+        <ul>
+          <li><a href="#somos">Somos NUIN</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#espacio">Espacio</a></li>
+          <li><a href="#alianzas">Alianzas</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h6>Contacto</h6>
+        <ul>
+          <li><a href="#">info@nuin.es</a></li>
+          <li><a href="#">+34 91 XXX XX XX</a></li>
+          <li><a href="#">Orense, Madrid</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 2024 NUIN Healthcare Market Research</span>
+      <span><a href="#">Privacidad</a> · <a href="#">Aviso legal</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleAcc(header) {
+    const item = header.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.slide-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
