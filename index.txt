@@ -105,8 +105,8 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
 /* ──────── HERO ──────── */
 #hero {
   min-height: 100svh;
-  background: var(--offwhite);
-  color: var(--text);
+  background: var(--dark);
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,7 +121,6 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
     radial-gradient(ellipse 70% 60% at 80% 10%, rgba(0,168,120,0.18) 0%, transparent 55%),
     radial-gradient(ellipse 40% 50% at 10% 90%, rgba(0,120,88,0.12) 0%, transparent 40%),
     linear-gradient(150deg, #0B1512 55%, #162019 100%);
-  opacity: 0;
 }
 .hero-body {
   max-width: var(--max-w);
@@ -139,7 +138,7 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--green-light);
   margin-bottom: 28px;
 }
 .hero-h1 {
@@ -147,13 +146,13 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.025em;
-  color: var(--text);
+  color: white;
   margin-bottom: 28px;
 }
 .hero-h1 em {
   font-style: italic;
   font-weight: 300;
-  color: var(--text-3);
+  color: rgba(255,255,255,0.55);
 }
 .hero-h1 .accent {
   background: linear-gradient(90deg, var(--green-light), var(--green));
@@ -167,17 +166,17 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   align-items: center;
   padding: 3px 14px 4px;
   border-radius: 999px;
-  background: rgba(0,168,120,0.08);
-  border: 1px solid rgba(0,168,120,0.18);
-  color: var(--text);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  color: rgba(255,255,255,0.95);
   font-weight: 800;
   letter-spacing: -0.01em;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.14);
 }
 .hero-sub {
   font-size: 15px;
   font-weight: 300;
-  color: var(--text-2);
+  color: rgba(255,255,255,0.5);
   line-height: 1.8;
   max-width: 480px;
   margin-bottom: 48px;
@@ -198,19 +197,19 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
 }
 .btn-primary:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 6px 32px rgba(0,168,120,0.52), 0 12px 52px rgba(0,168,120,0.28); }
 .btn-ghost {
-  background: rgba(20,40,30,0.06);
-  color: var(--text-2);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.70);
   padding: 13px 30px;
   border-radius: 50px;
   font-weight: 500;
   font-size: 13.5px;
   text-decoration: none;
-  border: 1px solid rgba(20,40,30,0.12);
+  border: 1px solid rgba(255,255,255,0.14);
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   display: inline-block;
-  box-shadow: 0 2px 14px rgba(0,0,0,0.07), 0 6px 24px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.14), 0 6px 28px rgba(0,0,0,0.08);
 }
-.btn-ghost:hover { background: var(--bg2); color: var(--text); box-shadow: 0 4px 20px rgba(0,0,0,0.10), 0 10px 36px rgba(0,0,0,0.07); }
+.btn-ghost:hover { background: rgba(255,255,255,0.11); color: white; box-shadow: 0 4px 20px rgba(0,0,0,0.18), 0 10px 36px rgba(0,0,0,0.12); }
 
 .hero-visual { display: flex; flex-direction: column; gap: 12px; }
 .hero-img-main {
@@ -312,43 +311,34 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: center;
+  gap: 12px;
 }
-.stat-card:nth-child(even) { transform: translateY(32px); }
-.stat-card:nth-child(even):hover { transform: translateY(26px) scale(1.03); }
 .stat-card {
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.6);
+  background: var(--white);
+  border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 38px 20px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.25s, transform 0.25s;
   text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.06), inset 0 2px 0 rgba(255,255,255,1);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.stat-card:hover {
-  box-shadow: 0 25px 60px rgba(0,0,0,0.16), 0 12px 24px rgba(0,0,0,0.08), inset 0 2px 0 rgba(255,255,255,1);
-  transform: translateY(-6px) scale(1.03);
-}
+.stat-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
 .stat-card.accent {
-  background: linear-gradient(135deg, var(--green-light) 0%, var(--green-dark) 100%);
-  border: none;
-  box-shadow: 0 20px 50px rgba(0,168,120,0.35), 0 8px 16px rgba(0,168,120,0.20), inset 0 2px 0 rgba(255,255,255,0.3);
-}
-.stat-card.accent:hover {
-  box-shadow: 0 25px 60px rgba(0,168,120,0.45), 0 12px 24px rgba(0,168,120,0.25), inset 0 2px 0 rgba(255,255,255,0.4);
+  background: var(--green);
+  border-color: var(--green);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0,168,120,0.2), 0 12px 36px rgba(0,168,120,0.25), inset 0 1px 0 rgba(255,255,255,0.2);
 }
 .stat-num {
-  font-size: clamp(28px, 3.5vw, 42px);
+  font-size: clamp(22px, 2.5vw, 32px);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   line-height: 1;
   color: var(--text);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .stat-card.accent .stat-num { color: white; }
-.stat-label { font-size: 11px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.12em; }
+.stat-label { font-size: 12px; font-weight: 400; color: var(--text-3); line-height: 1.4; }
 .stat-card.accent .stat-label { color: rgba(255,255,255,0.75); }
 
 /* ──────── EQUIPO ──────── */
@@ -581,12 +571,6 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
 
 .viz-panel { display: none; }
 .viz-panel.active { display: block; }
-.somos-tabs { margin-top: 56px; }
-.somos-tabs .vt-btn { color: var(--text-2); border-color: rgba(0,0,0,0.11); background: rgba(0,0,0,0.04); }
-.somos-tabs .vt-btn:hover { color: var(--text); border-color: rgba(0,0,0,0.18); background: rgba(0,0,0,0.07); }
-.somos-tabs .vt-btn.active { background: var(--green); border-color: var(--green); color: white; box-shadow: 0 4px 16px rgba(0,168,120,0.35); }
-.stk-grid-wrap { background: var(--dark); border-radius: 20px; padding: 40px 36px; }
-.somos-tabs .viz-panel { padding-top: 8px; }
 .network-wrap {
   width: 100%; margin: 0 auto;
   background:
@@ -778,32 +762,33 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
 /* ──────── CONTACTO ──────── */
 #contacto { background: radial-gradient(ellipse 65% 60% at 95% 80%, rgba(0,168,120,0.045) 0%, transparent 55%), var(--bg); padding: clamp(72px, 10vw, 120px) 0; }
 .contact-layout {
-  display: block;
-  max-width: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
 }
 .contact-headline {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 300;
   font-style: italic;
-  color: var(--text-3);
-  line-height: 1.6;
-  margin: 16px 0 48px;
-  padding-left: 0;
-  border-left: none;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin: 20px 0 36px;
+  padding-left: 20px;
+  border-left: 3px solid var(--green);
 }
 .contact-info { display: flex; flex-direction: column; gap: 16px; }
 .ci { display: flex; gap: 14px; align-items: flex-start; }
 .ci-icon {
-  width: 44px; height: 44px; min-width: 44px;
+  width: 40px; height: 40px; min-width: 40px;
   background: var(--white);
-  border: none;
-  border-radius: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-  color: var(--text);
+  font-size: 16px;
+  box-shadow: var(--shadow-card);
 }
-.ci-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-3); margin-bottom: 4px; }
+.ci-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); margin-bottom: 2px; }
 .ci-value { font-size: 14px; font-weight: 500; color: var(--text); }
 .contact-form {
   background: var(--white);
@@ -894,198 +879,40 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 .logo-inline.sm img { height: 0.9em; }
 .logo-inline.on-dark img { filter: drop-shadow(0 10px 24px rgba(0,0,0,0.25)); }
 
-/* ──────── HERO STYLE TOGGLE ──────── */
-.hero-style-toggle {
-  position: absolute;
-  top: 88px; right: var(--pad);
-  z-index: 10;
-  display: flex;
-  background: rgba(17,28,24,0.06);
-  border: 1px solid rgba(17,28,24,0.09);
-  border-radius: 50px;
-  padding: 3px;
-  gap: 2px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-.hst-btn {
-  font-family: var(--font);
-  font-size: 11.5px;
-  font-weight: 600;
-  padding: 6px 18px;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
+/* ──────── HERO LIGHT MODE ──────── */
+#hero { transition: background 0.5s; }
+.hero-gradient { transition: opacity 0.5s; }
+#hero.light-mode { background: var(--offwhite) !important; }
+#hero.light-mode .hero-gradient { opacity: 0; }
+#hero.light-mode .hero-h1 { color: var(--text); }
+#hero.light-mode .hero-label { color: var(--green); }
+#hero.light-mode .hero-sub { color: var(--text-2); }
+#hero.light-mode .btn-ghost {
   color: var(--text-2);
-  background: transparent;
-  transition: background 0.22s, color 0.22s, box-shadow 0.22s;
-  letter-spacing: 0.01em;
-  line-height: 1;
+  border-color: rgba(20,40,30,0.12);
+  background: rgba(20,40,30,0.06);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.07), 0 6px 24px rgba(0,0,0,0.05);
 }
-.hst-btn.active {
-  background: var(--green);
-  color: white;
-  box-shadow: 0 2px 14px rgba(0,168,120,0.35);
-}
-
-/* ──────── HERO LENS "THE INSIGHT LENS" ──────── */
-#hero.hero-lens { background: var(--offwhite); color: var(--text); }
-#hero.hero-lens .hero-body,
-#hero.hero-lens .hero-gradient,
-#hero.hero-lens .hero-tagline { display: none; }
-#hero.hero-lens .hero-lens-body { display: grid; }
-
-.hero-lens-body {
-  display: none;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 96px var(--pad) 72px;
-  width: 100%;
-  grid-template-columns: 60fr 40fr;
-  gap: 64px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-
-/* Eyebrow */
-.hl-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 30px;
-}
-.hl-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--green);
-  flex-shrink: 0;
-  animation: hl-pulse 1.6s ease-in-out infinite;
-}
-@keyframes hl-pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,168,120,0.5); }
-  50% { opacity: 0.25; box-shadow: 0 0 0 6px rgba(0,168,120,0); }
-}
-.hl-eyebrow-text {
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--green);
-}
-
-/* H1 */
-.hl-h1 {
-  font-size: clamp(28px, 3.2vw, 50px);
-  line-height: 1.13;
-  letter-spacing: -0.03em;
+#hero.light-mode .btn-ghost:hover { background: var(--bg2); color: var(--text); }
+#hero.light-mode .hero-tagline { background: var(--bg); border-top-color: var(--border); }
+#hero.light-mode .ht-item { color: var(--text-3); }
+#hero.light-mode .ht-sep { color: var(--border); }
+#hero.light-mode .hero-actionable {
+  background: rgba(0,168,120,0.08);
+  border-color: rgba(0,168,120,0.18);
   color: var(--text);
-  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
 }
-.hl-w-light { font-weight: 300; font-style: normal; color: var(--text-2); }
-.hl-w-black { font-weight: 800; color: var(--text); }
-.hl-w-muted { font-weight: 300; color: var(--text-3); font-size: 0.82em; letter-spacing: -0.01em; }
-
-/* Sub */
-.hl-sub {
-  font-size: 14.5px;
-  font-weight: 300;
-  color: var(--text-2);
-  line-height: 1.85;
-  max-width: 420px;
-  margin-bottom: 40px;
+.hero-mode-toggle {
+  position: absolute; top: 96px; right: var(--pad); z-index: 10;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 50px; padding: 8px 18px;
+  font-family: var(--font); font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,0.7); cursor: pointer;
+  transition: all 0.25s; display: flex; align-items: center; gap: 7px;
 }
-
-/* Buttons */
-.hl-btns { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-.btn-lens-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, var(--green-light) 0%, var(--green-dark) 100%);
-  color: white;
-  padding: 13px 28px;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 13.5px;
-  text-decoration: none;
-  box-shadow: 0 4px 24px rgba(0,168,120,0.38), 0 1px 0 rgba(255,255,255,0.18) inset;
-  transition: box-shadow 0.22s, transform 0.22s;
-}
-.btn-lens-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(0,168,120,0.5); }
-.btn-arrow { display: inline-block; transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1); }
-.btn-lens-primary:hover .btn-arrow { transform: translateX(6px); }
-.btn-lens-link {
-  font-size: 13.5px; font-weight: 500;
-  color: var(--text-2); text-decoration: none;
-  position: relative; padding-bottom: 2px;
-  transition: color 0.2s;
-}
-.btn-lens-link::after {
-  content: ''; position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 1.5px;
-  background: var(--green);
-  transition: width 0.3s ease;
-}
-.btn-lens-link:hover { color: var(--text); }
-.btn-lens-link:hover::after { width: 100%; }
-
-/* Right column + image */
-.hl-right { position: relative; }
-.hl-img-wrap {
-  border-radius: 40px 40px 80px 40px;
-  overflow: hidden;
-  aspect-ratio: 3/4;
-  box-shadow: var(--shadow-lg);
-}
-.hl-img-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  filter: brightness(1.04) contrast(1.03) saturate(0.92);
-  display: block;
-}
-
-/* Capsules */
-.hl-cap {
-  position: absolute;
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  background: rgba(255,255,255,0.74);
-  border: 1px solid rgba(0,168,120,0.13);
-  border-radius: 14px;
-  padding: 10px 16px;
-  display: flex; flex-direction: column;
-  box-shadow: 0 6px 28px rgba(0,0,0,0.09);
-  white-space: nowrap;
-}
-.hl-cap-num {
-  font-size: 19px; font-weight: 800;
-  color: var(--green-dark);
-  letter-spacing: -0.03em; line-height: 1.1;
-}
-.hl-cap-label {
-  font-size: 10px; font-weight: 500;
-  color: var(--text-3);
-  text-transform: uppercase;
-  letter-spacing: 0.08em; margin-top: 2px;
-}
-.hl-cap-1 { top: -18px; left: -32px; }
-.hl-cap-2 { top: 38%; right: -28px; }
-.hl-cap-3 { bottom: 88px; left: -32px; }
-.hl-cap-4 { bottom: -18px; right: 44px; }
-
-/* Mobile */
-@media (max-width: 768px) {
-  .hero-lens-body { grid-template-columns: 1fr; padding: 60px var(--pad) 48px; gap: 40px; }
-  .hl-img-wrap { aspect-ratio: 16/9; border-radius: 24px; }
-  .hl-cap-1 { top: -12px; left: 12px; }
-  .hl-cap-2 { top: auto; bottom: 56px; right: -4px; }
-  .hl-cap-3 { display: none; }
-  .hl-cap-4 { bottom: -12px; right: auto; left: 12px; }
-}
+.hero-mode-toggle:hover { background: rgba(255,255,255,0.18); color: white; }
+#hero.light-mode .hero-mode-toggle { background: var(--bg2); border-color: var(--border); color: var(--text-2); }
 
 /* ──────── STAT PILL NUMS ──────── */
 .stat-pill-num {
@@ -1160,9 +987,8 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 
 /* ──────── TEAM FLIP CAPSULES ──────── */
 #team-grid { display: none; }
-#team-capsule { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-#equipo .section-inner { max-width: 1480px; }
-.tm-flip-wrapper { aspect-ratio: 4/7; position: relative; perspective: 1200px; }
+#team-capsule { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.tm-flip-wrapper { aspect-ratio: 3/5; position: relative; perspective: 1200px; }
 .tm-flip-inner {
   position: absolute; inset: 0;
   transform-style: preserve-3d;
@@ -1194,13 +1020,9 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   padding: 32px 22px; text-align: center;
   box-shadow: 0 4px 24px rgba(0,168,120,0.35), 0 16px 48px rgba(0,168,120,0.20);
 }
-.tm-back-name { font-size: 24px; font-weight: 800; color: white; letter-spacing: -0.02em; margin-bottom: 4px; line-height: 1.15; width: 100%; text-align: left; }
-.tm-back-role { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 24px; width: 100%; text-align: left; }
-.tm-back-bio { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.95); line-height: 1.7; overflow-y: auto; max-height: 100%; width: 100%; text-align: justify; padding: 0 0; }
-.tm-back-bio::-webkit-scrollbar { width: 3px; }
-.tm-back-bio::-webkit-scrollbar-track { background: transparent; }
-.tm-back-bio::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 2px; }
-.tm-flip-back { justify-content: flex-start; align-items: flex-start; flex-direction: column; overflow: hidden; padding: 85px 48px 36px; }
+.tm-back-name { font-size: 20px; font-weight: 800; color: white; letter-spacing: -0.02em; margin-bottom: 6px; line-height: 1.15; }
+.tm-back-role { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 18px; }
+.tm-back-bio { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.9); line-height: 1.65; }
 
 /* ──────── ACCORDION PANELS ──────── */
 .acc-panel { display: none; margin-top: 32px; padding: 5px; background: var(--dark); border-radius: 24px; border: 1px solid rgba(0,168,120,0.08); backdrop-filter: blur(12px); }
@@ -1335,15 +1157,6 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 }
 .partner-cap-name { font-size: 12.5px; font-weight: 700; color: var(--text); }
 .partner-cap-desc { font-size: 10.5px; font-weight: 300; color: var(--text-3); line-height: 1.5; }
-.partner-capsule img {
-  max-width: 80%;
-  max-height: 50px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto 20px auto;
-  display: block;
-}
 
 /* ──────── TEAM GRID BIO ──────── */
 .tm-bio {
@@ -1405,157 +1218,6 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   .mu6, .mu7, .mu8 { display: none; }
 }
 
-/* ──────── VALORES ──────── */
-#valores { background: var(--white); }
-.valores-intro {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text-2);
-  line-height: 1.7;
-  max-width: 560px;
-  margin-bottom: 48px;
-}
-.valores-accordion { border-top: 1px solid var(--border); }
-.val-item { border-bottom: 1px solid var(--border); }
-.val-header {
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 22px 8px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  cursor: pointer;
-  text-align: left;
-  border-radius: 8px;
-  transition: background 0.2s, padding-left 0.2s;
-}
-.val-header:hover { background: var(--green-soft); padding-left: 16px; }
-.val-num {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--green);
-  min-width: 28px;
-  text-transform: uppercase;
-}
-.val-title {
-  font-size: 15.5px;
-  font-weight: 600;
-  color: var(--text);
-  flex: 1;
-}
-.val-arrow {
-  font-size: 20px;
-  color: var(--green);
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-  line-height: 1;
-  flex-shrink: 0;
-}
-.val-item.open .val-arrow { transform: rotate(45deg); }
-.val-body {
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.42s cubic-bezier(0.4,0,0.2,1);
-}
-.val-body-inner { padding: 4px 8px 32px 48px; }
-.val-quote {
-  border-left: 3px solid var(--green);
-  padding: 12px 20px;
-  margin-bottom: 20px;
-  background: var(--green-soft);
-  border-radius: 0 10px 10px 0;
-}
-.val-quote-text {
-  font-size: 14.5px;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--text-2);
-  line-height: 1.75;
-  margin-bottom: 8px;
-}
-.val-quote-author {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--green);
-  text-transform: uppercase;
-}
-.val-text {
-  font-size: 14.5px;
-  font-weight: 300;
-  color: var(--text-2);
-  line-height: 1.85;
-}
-
-/* ──────── ÁREAS TERAPÉUTICAS ──────── */
-#areas-terapeuticas { background: var(--bg); }
-.at-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 28px;
-}
-.at-pill {
-  background: var(--white);
-  border: 1.5px solid var(--border);
-  border-radius: 999px;
-  padding: 9px 20px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-2);
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: var(--shadow-sm);
-  font-family: var(--font);
-}
-.at-pill:hover { border-color: var(--green); color: var(--green); transform: translateY(-1px); }
-.at-pill.active {
-  background: var(--green);
-  border-color: var(--green);
-  color: white;
-  box-shadow: 0 4px 20px rgba(0,168,120,0.35);
-}
-.at-panel-wrap {
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.42s cubic-bezier(0.4,0,0.2,1);
-}
-.at-panel-wrap.open { max-height: 700px; }
-.at-panel {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 32px;
-  box-shadow: var(--shadow-card);
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.3s 0.08s, transform 0.3s 0.08s;
-}
-.at-panel-wrap.open .at-panel { opacity: 1; transform: translateY(0); }
-.at-panel-title {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: 18px;
-}
-.at-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.at-tag {
-  background: var(--green-soft);
-  border: 1px solid var(--green-mid);
-  color: var(--green-dark);
-  border-radius: 999px;
-  padding: 5px 15px;
-  font-size: 12.5px;
-  font-weight: 500;
-}
-@media (max-width: 640px) {
-  .val-body-inner { padding: 4px 8px 24px 28px; }
-  .at-panel { padding: 20px; }
-}
-
 </style>
 </head>
 <body>
@@ -1570,6 +1232,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       <li><a href="#somos">Nosotros</a></li>
       <li><a href="#equipo">Equipo</a></li>
       <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#experiencia">Experiencia</a></li>
       <li><a href="#espacio">Espacio</a></li>
       <li><a href="#alianzas">Alianzas</a></li>
     </ul>
@@ -1578,17 +1241,21 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 </nav>
 
 <!-- HERO -->
-<section id="hero" class="hero-lens">
+<section id="hero">
   <div class="hero-gradient"></div>
-  <div class="hero-style-toggle">
-    <button class="hst-btn" data-style="classic">Clásico</button>
-    <button class="hst-btn active" data-style="lens">Lens</button>
-  </div>
+  <button class="hero-mode-toggle" id="hero-mode-btn" onclick="toggleHeroMode()">
+    <span id="hero-mode-icon">☀</span>
+    <span id="hero-mode-label">Modo claro</span>
+  </button>
   <div class="hero-body">
     <div class="hero-left">
-      <div class="hero-label">HEALTHCARE INSIGHTS & STRATEGY</div>
+      <div class="hero-label">Healthcare Market Research · España · Desde 1984</div>
       <h1 class="hero-h1">
-        Convirtiendo datos y conversaciones en insights accionables <strong>desde 1987</strong>
+        <span class="accent">40 años</span><br>
+        convirtiendo datos y<br>
+        conversaciones<br>
+        en insights relevantes<br>
+        y accionables
       </h1>
       <p class="hero-sub">La primera agencia española dedicada exclusivamente al sector farmacéutico. Cuatro décadas de rigor, método y profundidad clínica.</p>
       <div class="hero-btns">
@@ -1598,52 +1265,14 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
     </div>
     <div class="hero-visual">
       <div class="hero-img-main">
-        <img src="imagen_portada.png" alt="NUIN Healthcare Insights">
+        <img src="NUIN/OFICINA/Sala%20AB-7.jpg" alt="Sala Advisory Board NUIN">
+      </div>
+      <div class="hero-img-row">
+        <div class="hero-img-small"><img src="NUIN/OFICINA/Sala%20Grupos-2.jpg" alt="Sala Focus"></div>
+        <div class="hero-img-small"><img src="NUIN/OFICINA/Cafe-1.jpg" alt="Espacios NUIN"></div>
       </div>
     </div>
   </div>
-
-  <!-- HERO LENS: "The Insight Lens" -->
-  <div class="hero-lens-body">
-    <div class="hl-left">
-      <div class="hl-eyebrow">
-        <span class="hl-dot"></span>
-        <span class="hl-eyebrow-text">Healthcare Insights &amp; Strategy</span>
-      </div>
-      <h1 class="hl-h1">
-        Convirtiendo <span class="hl-w-light">datos</span> y conversaciones<br>
-        en <span class="hl-w-black">insights accionables</span><br>
-        <span class="hl-w-muted">desde 1987</span>
-      </h1>
-      <p class="hl-sub">La primera agencia española dedicada exclusivamente al sector farmacéutico. Cuatro décadas de rigor, método y profundidad clínica.</p>
-      <div class="hl-btns">
-        <a href="#servicios" class="btn-lens-primary">Explorar servicios <span class="btn-arrow">→</span></a>
-        <a href="#somos" class="btn-lens-link">Conocer NUIN</a>
-      </div>
-    </div>
-    <div class="hl-right">
-      <div class="hl-img-wrap">
-        <img src="imagen_portada.png" alt="NUIN Healthcare Insights">
-      </div>
-      <div class="hl-cap hl-cap-1">
-        <span class="hl-cap-num">+40</span>
-        <span class="hl-cap-label">años de experiencia</span>
-      </div>
-      <div class="hl-cap hl-cap-2">
-        <span class="hl-cap-num">+4.200</span>
-        <span class="hl-cap-label">proyectos realizados</span>
-      </div>
-      <div class="hl-cap hl-cap-3">
-        <span class="hl-cap-num">+70</span>
-        <span class="hl-cap-label">laboratorios cliente</span>
-      </div>
-      <div class="hl-cap hl-cap-4">
-        <span class="hl-cap-num">Nº1</span>
-        <span class="hl-cap-label">España farma research</span>
-      </div>
-    </div>
-  </div>
-
   <div class="hero-tagline">
     <div class="hero-tagline-inner">
       <span class="ht-item">EPHMRA</span>
@@ -1672,162 +1301,141 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <p>Nuestra especialización radical en healthcare no es una elección comercial — es nuestra razón de ser desde el primer día.</p>
       </div>
       <div class="stats-grid reveal reveal-d1">
-        <div class="stat-card accent">
-          <div class="stat-num">+40</div>
-          <div class="stat-label">años</div>
-        </div>
         <div class="stat-card">
-          <div class="stat-num">+4200</div>
-          <div class="stat-label">proyectos</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">+750</div>
-          <div class="stat-label">ABs</div>
+          <div class="stat-pill-num">+40</div>
+          <div class="stat-label">años dedicados al sector farma</div>
         </div>
         <div class="stat-card accent">
-          <div class="stat-num">+70</div>
-          <div class="stat-label">laboratorios</div>
+          <div class="stat-pill-num">+4.200</div>
+          <div class="stat-label">proyectos en healthcare</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-pill-num">+70</div>
+          <div class="stat-label">laboratorios han confiado en nosotros</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-pill-num">+100K</div>
+          <div class="stat-label">encuestas realizadas</div>
+        </div>
+        <div class="stat-card accent">
+          <div class="stat-pill-num">+15K</div>
+          <div class="stat-label">horas de conversaciones relevantes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-pill-num">+750</div>
+          <div class="stat-label">Advisory Boards moderados</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-pill-num">+200</div>
+          <div class="stat-label">enfermedades trabajadas en profundidad</div>
+        </div>
+        <div class="stat-card accent">
+          <div class="stat-pill-num">100%</div>
+          <div class="stat-label">de clientes en AB han repetido</div>
         </div>
       </div>
     </div>
 
-    <div class="somos-tabs">
-      <div class="viz-toggle" style="justify-content: center; margin-bottom: 40px;">
-        <button class="vt-btn active" data-target="panel-stakeholders">Stakeholders</button>
-        <button class="vt-btn" data-target="panel-areas">Áreas Terapéuticas</button>
-        <button class="vt-btn" data-target="panel-valores">Principios y Valores</button>
+    <div class="section-explore" id="experiencia">
+      <div class="explore-trio">
+        <button class="xp-card xp-acc-btn" onclick="showExperience(0, this)">
+          <div class="xp-icon">📍</div>
+          <div class="xp-copy">
+            <div class="xp-title">Mapa de Stakeholders</div>
+            <div class="xp-sub">Red de actores clave del sector salud</div>
+          </div>
+          <div class="xp-arrow" id="arr-stakeholders">↓</div>
+        </button>
+        <button class="xp-card xp-acc-btn" onclick="showExperience(1, this)">
+          <div class="xp-icon">🧬</div>
+          <div class="xp-copy">
+            <div class="xp-title">Áreas Terapéuticas</div>
+            <div class="xp-sub">+200 enfermedades trabajadas</div>
+          </div>
+          <div class="xp-arrow" id="arr-areas">↓</div>
+        </button>
+        <button class="xp-card xp-acc-btn" onclick="showExperience(2, this)">
+          <div class="xp-icon">📖</div>
+          <div class="xp-copy">
+            <div class="xp-title">Principios y Valores</div>
+            <div class="xp-sub">Manifiesto <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN"></span></div>
+          </div>
+          <div class="xp-arrow" id="arr-principios">↓</div>
+        </button>
       </div>
 
-      <div id="panel-stakeholders" class="viz-panel active">
+      <div class="acc-panel" id="acc-stakeholders">
         <div class="network-wrap">
           <canvas id="stakeholdersCanvas"></canvas>
         </div>
       </div>
 
-      <div id="panel-areas" class="viz-panel">
-        <div class="eyebrow reveal">Experiencia clínica</div>
-        <h2 class="section-title reveal">Áreas terapéuticas</h2>
-        <p class="section-sub reveal" style="margin-bottom:40px;">Más de 200 enfermedades trabajadas en profundidad a lo largo de cuatro décadas.</p>
-        <div class="at-pills reveal" id="at-pills"></div>
-        <div class="at-panel-wrap" id="at-panel-wrap">
-          <div class="at-panel" id="at-panel">
-            <div class="at-panel-title" id="at-panel-title"></div>
-            <div class="at-tags" id="at-tags"></div>
+      <div class="acc-panel" id="acc-areas">
+        <div class="enf-panel">
+        <div class="enf-grid">
+          <div>
+            <div class="enf-category-title">Neurología y neurodesarrollo</div>
+            <div class="enf-tags">
+              <span class="enf-tag">TDAH</span><span class="enf-tag">TEA (Autismo)</span><span class="enf-tag">Alzheimer</span><span class="enf-tag">Demencia Cuerpos de Lewy</span><span class="enf-tag">Parkinson</span><span class="enf-tag">ELA</span><span class="enf-tag">Esclerosis Múltiple RR</span><span class="enf-tag">EM Secundaria Progresiva</span><span class="enf-tag">EM Primaria Progresiva</span><span class="enf-tag">Migraña episódica</span><span class="enf-tag">Migraña crónica</span><span class="enf-tag">Cefalea en racimos</span><span class="enf-tag">Epilepsia focal</span><span class="enf-tag">Epilepsia generalizada</span><span class="enf-tag">Síndrome de Dravet</span><span class="enf-tag">Síndrome de Lennox-Gastaut</span><span class="enf-tag">AME</span><span class="enf-tag">Distrofia Muscular Duchenne</span><span class="enf-tag">Miastenia Gravis</span><span class="enf-tag">Huntington</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Cardiovascular</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Hipertensión arterial</span><span class="enf-tag">Dislipemia</span><span class="enf-tag">Insuf. Cardiaca FE reducida</span><span class="enf-tag">Insuf. Cardiaca FE preservada</span><span class="enf-tag">Fibrilación auricular</span><span class="enf-tag">Síndrome coronario agudo</span><span class="enf-tag">Enfermedad coronaria crónica</span><span class="enf-tag">Tromboembolismo venoso</span><span class="enf-tag">HAP</span><span class="enf-tag">Hipercolesterolemia familiar</span><span class="enf-tag">Amiloidosis TTR</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Oncología y hemato-oncología</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Cáncer de mama HR+/HER2-</span><span class="enf-tag">Cáncer de mama HER2+</span><span class="enf-tag">Cáncer de mama triple negativo</span><span class="enf-tag">Cáncer de pulmón (CPCNP)</span><span class="enf-tag">Cáncer pulmón microcítico</span><span class="enf-tag">Cáncer colorrectal</span><span class="enf-tag">Cáncer de próstata</span><span class="enf-tag">Cáncer de ovario</span><span class="enf-tag">Melanoma</span><span class="enf-tag">Hepatocarcinoma</span><span class="enf-tag">Linfoma</span><span class="enf-tag">Leucemia</span><span class="enf-tag">Mieloma múltiple</span><span class="enf-tag">GIST</span><span class="enf-tag">Sarcomas</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Endocrinología y metabolismo</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Diabetes tipo 1</span><span class="enf-tag">Diabetes tipo 2</span><span class="enf-tag">Obesidad</span><span class="enf-tag">Hipotiroidismo</span><span class="enf-tag">Hipertiroidismo</span><span class="enf-tag">Osteoporosis</span><span class="enf-tag">Síndrome de Cushing</span><span class="enf-tag">Acromegalia</span><span class="enf-tag">Hipofosfatasia</span><span class="enf-tag">Raquitismo hipofosfatémico</span><span class="enf-tag">Fenilcetonuria</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Respiratorio</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Asma leve</span><span class="enf-tag">Asma grave</span><span class="enf-tag">EPOC</span><span class="enf-tag">Rinitis alérgica</span><span class="enf-tag">Fibrosis quística</span><span class="enf-tag">Fibrosis pulmonar idiopática</span><span class="enf-tag">Déficit alfa-1 antitripsina</span><span class="enf-tag">Poliposis nasal</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Hematología y enfermedades raras</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Hemofilia A</span><span class="enf-tag">Hemofilia B</span><span class="enf-tag">Von Willebrand</span><span class="enf-tag">HPN</span><span class="enf-tag">SHUa</span><span class="enf-tag">Anemia aplásica</span><span class="enf-tag">Trombocitopenia inmune</span><span class="enf-tag">Gaucher</span><span class="enf-tag">Fabry</span><span class="enf-tag">Pompe</span><span class="enf-tag">Mucopolisacaridosis</span><span class="enf-tag">Cistinosis</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Reumatología e inmunología</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Artritis reumatoide</span><span class="enf-tag">Artritis psoriásica</span><span class="enf-tag">Espondilitis anquilosante</span><span class="enf-tag">Lupus</span><span class="enf-tag">Fibromialgia</span><span class="enf-tag">Enf. de Crohn</span><span class="enf-tag">Colitis ulcerosa</span><span class="enf-tag">Psoriasis</span><span class="enf-tag">Dermatitis atópica</span><span class="enf-tag">Asma grave eosinofílica</span>
+            </div>
+          </div>
+          <div>
+            <div class="enf-category-title">Otras especialidades</div>
+            <div class="enf-tags">
+              <span class="enf-tag">Gastroenterología</span><span class="enf-tag">Hepatitis B</span><span class="enf-tag">Hepatitis C</span><span class="enf-tag">HIV/SIDA</span><span class="enf-tag">Nefrología / ERC</span><span class="enf-tag">Urología</span><span class="enf-tag">Ginecología</span><span class="enf-tag">Oftalmología</span><span class="enf-tag">Pediatría</span><span class="enf-tag">Dolor crónico</span><span class="enf-tag">Trasplantes</span><span class="enf-tag">Vacunas</span><span class="enf-tag">Psiquiatría</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div id="panel-valores" class="viz-panel">
-        <div class="eyebrow reveal">Principios y valores</div>
-        <h2 class="section-title reveal">Nuestra forma de ver las cosas</h2>
-        <p class="valores-intro reveal">Somos NUIN y esta es nuestra forma de ver las cosas:</p>
-        <div class="valores-accordion reveal">
-
-          <div class="val-item">
-            <button class="val-header" aria-expanded="false">
-              <span class="val-num">01</span>
-              <span class="val-title">Sobre la investigación de mercado</span>
-              <span class="val-arrow">+</span>
-            </button>
-            <div class="val-body">
-              <div class="val-body-inner">
-                <div class="val-quote">
-                  <p class="val-quote-text">"El precio de la luz es menor que el costo de la oscuridad."</p>
-                  <p class="val-quote-author">— Arthur C. Nielsen</p>
-                </div>
-                <p class="val-text">Estamos convencidos de que las decisiones basadas en la empatía siempre serán mejores. Por eso convertimos los conocimientos, comportamientos y sentimientos de las personas en información útil y utilizable para facilitar a nuestros clientes la toma de mejores decisiones.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="val-item">
-            <button class="val-header" aria-expanded="false">
-              <span class="val-num">02</span>
-              <span class="val-title">Sobre la profesionalidad</span>
-              <span class="val-arrow">+</span>
-            </button>
-            <div class="val-body">
-              <div class="val-body-inner">
-                <div class="val-quote">
-                  <p class="val-quote-text">"A la excelencia hay que ir y golpearle la puerta, es un trabajo de todos los días."</p>
-                  <p class="val-quote-author">— Arnaldo Calveyra</p>
-                </div>
-                <p class="val-text">Estamos convencidos de que la excelencia es la única aspiración válida. Por eso ponemos toda nuestra alma, profesionalidad y entrega en cada proyecto, porque creemos firmemente que no hay proyecto o cliente ni grande ni pequeño.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="val-item">
-            <button class="val-header" aria-expanded="false">
-              <span class="val-num">03</span>
-              <span class="val-title">Sobre el equipo</span>
-              <span class="val-arrow">+</span>
-            </button>
-            <div class="val-body">
-              <div class="val-body-inner">
-                <div class="val-quote">
-                  <p class="val-quote-text">"El talento gana partidos, pero el trabajo en equipo y la inteligencia ganan campeonatos."</p>
-                  <p class="val-quote-author">— Michael Jordan</p>
-                </div>
-                <p class="val-text">Estamos convencidos de que toda persona tiene un don. Por eso tenemos un equipo de personas diferentes, que se actualizan continuamente en tendencias, metodologías y recursos.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="val-item">
-            <button class="val-header" aria-expanded="false">
-              <span class="val-num">04</span>
-              <span class="val-title">Sobre las relaciones</span>
-              <span class="val-arrow">+</span>
-            </button>
-            <div class="val-body">
-              <div class="val-body-inner">
-                <div class="val-quote">
-                  <p class="val-quote-text">"Yo no sé hacer lo que tú haces y tú no sabes hacer lo que yo hago, pero juntos podemos hacer grandes cosas."</p>
-                  <p class="val-quote-author">— Madre Teresa de Calcuta</p>
-                </div>
-                <p class="val-text">Estamos convencidos de que la confianza y el respeto profesional son los pilares. Por eso nos relacionamos desde la flexibilidad, la humildad, la cercanía y la profesionalidad.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="val-item">
-            <button class="val-header" aria-expanded="false">
-              <span class="val-num">05</span>
-              <span class="val-title">Sobre la gestión de equipos</span>
-              <span class="val-arrow">+</span>
-            </button>
-            <div class="val-body">
-              <div class="val-body-inner">
-                <div class="val-quote">
-                  <p class="val-quote-text">"Elige un trabajo que te guste y no tendrás que trabajar ni un solo día de tu vida."</p>
-                  <p class="val-quote-author">— Confucio</p>
-                </div>
-                <p class="val-text">Estamos convencidos de que la felicidad de las personas tiene que ser una prioridad. Por eso ofrecemos a nuestros empleados un espacio donde pueden desarrollarse día a día.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="val-item">
-            <button class="val-header" aria-expanded="false">
-              <span class="val-num">06</span>
-              <span class="val-title">Sobre el mundo</span>
-              <span class="val-arrow">+</span>
-            </button>
-            <div class="val-body">
-              <div class="val-body-inner">
-                <div class="val-quote">
-                  <p class="val-quote-text">"La visión sin acción es un sueño, la acción sin visión es pasar el rato, pero la acción con visión significa generar un cambio positivo."</p>
-                  <p class="val-quote-author">— Nelson Mandela</p>
-                </div>
-                <p class="val-text">Estamos convencidos de que si todos enfocásemos nuestra vida desde la empatía el mundo sería un lugar mejor. Por eso abordamos cada proyecto y cada nuevo reto desde el análisis de los distintos puntos de vista.</p>
-              </div>
-            </div>
-          </div>
-
+      <div class="acc-panel" id="acc-principios">
+        <div class="principios-content">
+          <div class="eyebrow">Manifiesto</div>
+          <h2 class="section-title" style="margin-bottom:16px;">Principios y valores</h2>
+          <p class="section-sub" style="margin-bottom:28px;">Mani manifesto con más de 10 años de experiencia liderando proyectos de innovación y bienestar, enfocada en una excelencia operativa. Creemos que la investigación de mercados en salud no es solo un ejercicio metodológico: es un acto de responsabilidad. Cada insight que generamos tiene el potencial de mejorar la vida de un paciente, de afinar la decisión de un médico o de orientar una molécula hacia quien más la necesita.</p>
+          <p class="section-sub" style="margin-bottom:36px;">Nuestros principios nos definen: rigor sin rigidez, especialización sin arrogancia, profundidad clínica al servicio de la estrategia. Cuatro décadas avalan no solo lo que hacemos, sino cómo lo hacemos y por qué.</p>
+          <a href="#" class="btn-download-premium">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Descargar manifiesto completo
+          </a>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1881,159 +1489,110 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
     </div>
 
     <div id="team-capsule">
-
-      <!-- 1. Juan Reig -->
       <div class="tm-flip-wrapper">
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
-            <!-- TODO: FOTO DE JUAN REIG -->
             <img src="NUIN/EQUIPO/FOTOS/byn/Juan_JCM1780.jpg" alt="Juan Reig">
-            <div class="tm-flip-front-info">
-              <div class="tm-flip-front-name">Juan Reig</div>
-              <div class="tm-flip-front-role">Chief Strategy Partner</div>
-            </div>
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Juan Reig</div><div class="tm-flip-front-role">Director General</div></div>
           </div>
           <div class="tm-flip-back">
             <div class="tm-back-name">Juan Reig</div>
-            <div class="tm-back-role">Chief Strategy Partner</div>
-            <div class="tm-back-bio">Con más de 20 años en consultoría farma, Juan ha realizado miles de entrevistas y focus groups, moderado más de 750 Advisory Boards nacionales e internacionales y apoyado a más de 50 hospitales, laboratorios y asociaciones de pacientes en la revisión de procesos, trabajando en todas las áreas terapéuticas. Además, su trayectoria como scout y su participación en la Organización Mundial del Movimiento Scout y en la Society of Leadership Fellows le han consolidado como un líder en entornos multiculturales, aportando valor en foros internacionales como IRIS o EphMRA.</div>
+            <div class="tm-back-role">Director General</div>
+            <div class="tm-back-bio">Estratega con más de 40 años liderando proyectos de investigación de mercados en el sector farmacéutico, con un enfoque singular en el impacto clínico y la excelencia metodológica.</div>
           </div>
         </div>
       </div>
-
-      <!-- 2. Loreto Reig -->
       <div class="tm-flip-wrapper">
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
-            <!-- TODO: FOTO DE LORETO REIG -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Loreto_JCM1727.jpg" alt="Loreto Reig">
-            <div class="tm-flip-front-info">
-              <div class="tm-flip-front-name">Loreto Reig</div>
-              <div class="tm-flip-front-role">Managing Partner</div>
-            </div>
+            <img src="NUIN/EQUIPO/FOTOS/byn/Josefina_JCM1805.jpg" alt="Josefina">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Josefina</div><div class="tm-flip-front-role">Directora de Proyectos</div></div>
           </div>
           <div class="tm-flip-back">
-            <div class="tm-back-name">Loreto Reig</div>
-            <div class="tm-back-role">Managing Partner</div>
-            <div class="tm-back-bio">Licenciada en Administración y Dirección de Empresas por ICADE y en Derecho por la UNED, Loreto acumula más de 15 años de experiencia en gestión de equipos y expansión internacional. Desde hace 10 años es Managing Partner en Nuin, donde coordina la oficina y asegura la excelencia en cada proyecto, alineando talento, metodología y objetivos estratégicos.</div>
+            <div class="tm-back-name">Josefina</div>
+            <div class="tm-back-role">Directora de Proyectos</div>
+            <div class="tm-back-bio">Estratega con más de 10 años de experiencia liderando proyectos de innovación y bienestar, enfocada en la excelencia operativa y el impacto positivo en la salud global.</div>
           </div>
         </div>
       </div>
-
-      <!-- 3. Josefina Consuegra -->
       <div class="tm-flip-wrapper">
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
-            <!-- TODO: FOTO DE JOSEFINA CONSUEGRA -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Josefina_JCM1805.jpg" alt="Josefina Consuegra">
-            <div class="tm-flip-front-info">
-              <div class="tm-flip-front-name">Josefina Consuegra</div>
-              <div class="tm-flip-front-role">Strategic Client Advisor</div>
-            </div>
+            <img src="NUIN/EQUIPO/FOTOS/byn/Loreto_JCM1727.jpg" alt="Loreto">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Loreto</div><div class="tm-flip-front-role">Senior Research</div></div>
           </div>
           <div class="tm-flip-back">
-            <div class="tm-back-name">Josefina Consuegra</div>
-            <div class="tm-back-role">Strategic Client Advisor</div>
-            <div class="tm-back-bio">Con más de 30 años de experiencia en la industria farmacéutica, Josefina aporta una visión estratégica integral del sector, sustentada en un profundo conocimiento de la investigación de mercado y de múltiples áreas terapéuticas. Su trayectoria le ha permitido desarrollar una sólida orientación al cliente, comprendiendo sus retos desde dentro de la organización y actuando como partner estratégico en la definición de proyectos, generación de insights y toma de decisiones alineadas con los objetivos de negocio.</div>
+            <div class="tm-back-name">Loreto</div>
+            <div class="tm-back-role">Senior Research</div>
+            <div class="tm-back-bio">Especialista en investigación cualitativa aplicada al sector farma, con profundo conocimiento de más de 50 áreas terapéuticas y experiencia en metodologías proyectivas.</div>
           </div>
         </div>
       </div>
-
-      <!-- 4. Sonia Galicia -->
       <div class="tm-flip-wrapper">
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
-            <!-- TODO: FOTO DE SONIA GALICIA -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Sonia_JCM1685.jpg" alt="Sonia Galicia">
-            <div class="tm-flip-front-info">
-              <div class="tm-flip-front-name">Sonia Galicia</div>
-              <div class="tm-flip-front-role">Head of Insights</div>
-            </div>
+            <img src="NUIN/EQUIPO/FOTOS/byn/Sonia_JCM1685.jpg" alt="Sonia">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Sonia</div><div class="tm-flip-front-role">Research Manager</div></div>
           </div>
           <div class="tm-flip-back">
-            <div class="tm-back-name">Sonia Galicia</div>
-            <div class="tm-back-role">Head of Insights</div>
-            <div class="tm-back-bio">Las empresas de investigación de mercados y consultoría especializadas en el sector farmacéutico han sido el medio en el que se ha formado y desarrollado profesionalmente. Por su formación como psicóloga, los estudios cualitativos son un área destacada de su trabajo, que le permite analizar, comprender e interpretar las tendencias del sector, enfocado a generar ideas y soluciones para mejorar las estrategias comerciales de los clientes. Experta en técnicas de moderación, metodología maieútica y herramientas innovadoras.</div>
+            <div class="tm-back-name">Sonia</div>
+            <div class="tm-back-role">Research Manager</div>
+            <div class="tm-back-bio">Gestora de proyectos con una visión integral del proceso de investigación, garantizando los más altos estándares de calidad en cada entrega y coordinando equipos multidisciplinares.</div>
           </div>
         </div>
       </div>
-
-      <!-- 5. Irina González -->
       <div class="tm-flip-wrapper">
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
-            <!-- TODO: FOTO DE IRINA GONZÁLEZ -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Irina_JCM1670.jpg" alt="Irina González">
-            <div class="tm-flip-front-info">
-              <div class="tm-flip-front-name">Irina González</div>
-              <div class="tm-flip-front-role">Medical Communication Lead</div>
-            </div>
+            <img src="NUIN/EQUIPO/FOTOS/byn/Ana_JCM1696.jpg" alt="Ana">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Ana</div><div class="tm-flip-front-role">Research Analyst</div></div>
           </div>
           <div class="tm-flip-back">
-            <div class="tm-back-name">Irina González</div>
-            <div class="tm-back-role">Medical Communication Lead</div>
-            <div class="tm-back-bio">Consultora estratégica especializada en investigación de mercados en el sector farmacéutico y salud. Desempeña tareas de colaboración, organización y gestión de Advisory Boards, comités científicos y grupos de trabajo, supervisando la creación, calidad y difusión de los contenidos científicos y médicos generados para ofrecer un resultado alineado a los objetivos del cliente y asegurando el cumplimiento normativo.</div>
+            <div class="tm-back-name">Ana</div>
+            <div class="tm-back-role">Research Analyst</div>
+            <div class="tm-back-bio">Analista de investigación con habilidades avanzadas en análisis de datos cualitativos y cuantitativos, transformando insights complejos en recomendaciones claras y accionables.</div>
           </div>
         </div>
       </div>
-
-      <!-- 6. Ana Pérez -->
       <div class="tm-flip-wrapper">
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
-            <!-- TODO: FOTO DE ANA PÉREZ -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Ana_JCM1696.jpg" alt="Ana Pérez">
-            <div class="tm-flip-front-info">
-              <div class="tm-flip-front-name">Ana Pérez</div>
-              <div class="tm-flip-front-role">Scientific &amp; Medical Writer</div>
-            </div>
+            <img src="NUIN/EQUIPO/FOTOS/byn/Guillermo_JCM1769.jpg" alt="Guillermo">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Guillermo</div><div class="tm-flip-front-role">Advisory Boards Lead</div></div>
           </div>
           <div class="tm-flip-back">
-            <div class="tm-back-name">Ana Pérez</div>
-            <div class="tm-back-role">Scientific &amp; Medical Writer</div>
-            <div class="tm-back-bio">Sólida formación científica y experiencia nacional e internacional. Licenciada en farmacia por la Universidad de Santiago de Compostela y doctora en tecnología farmacéutica por la Heinrich-Heine-Universität de Düsseldorf. Tras varios años como mánager de proyectos en la industria farmacéutica alemana, regresa a España y se especializa en redacción médica, ámbito en el que acumula casi 10 años de experiencia.</div>
+            <div class="tm-back-name">Guillermo</div>
+            <div class="tm-back-role">Advisory Boards Lead</div>
+            <div class="tm-back-bio">Experto en la facilitación y moderación de Advisory Boards internacionales, con un track record excepcional en la generación de consenso entre KOLs de múltiples países.</div>
           </div>
         </div>
       </div>
-
-      <!-- 7. Laura Barcala -->
       <div class="tm-flip-wrapper">
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
-            <!-- TODO: FOTO DE LAURA BARCALA -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Laura_JCM1755.jpg" alt="Laura Barcala">
-            <div class="tm-flip-front-info">
-              <div class="tm-flip-front-name">Laura Barcala</div>
-              <div class="tm-flip-front-role">Project &amp; Engagement Consultant</div>
-            </div>
+            <img src="NUIN/EQUIPO/FOTOS/byn/Irina_JCM1670.jpg" alt="Irina">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Irina</div><div class="tm-flip-front-role">Medical Writing</div></div>
           </div>
           <div class="tm-flip-back">
-            <div class="tm-back-name">Laura Barcala</div>
-            <div class="tm-back-role">Project &amp; Engagement Consultant</div>
-            <div class="tm-back-bio">Más de 14 años de experiencia trabajando con entidades sociales en el ámbito público y privado. Con formación en Magisterio de Educación Primaria, ha desarrollado una forma de trabajar muy centrada en las personas, con facilidad para organizar dinámicas, coordinar encuentros y hacer que distintos perfiles se impliquen en los proyectos. En los últimos años ha trasladado esta experiencia al ámbito sanitario, colaborando con asociaciones de pacientes y coordinando estudios.</div>
+            <div class="tm-back-name">Irina</div>
+            <div class="tm-back-role">Medical Writing</div>
+            <div class="tm-back-bio">Medical writer con formación científica y experiencia en la redacción de informes clínicos, síntesis de evidencia y materiales de comunicación científica para el sector farmacéutico.</div>
           </div>
         </div>
       </div>
-
-      <!-- 8. Guillermo Liébana -->
       <div class="tm-flip-wrapper">
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
-            <!-- TODO: FOTO DE GUILLERMO LIÉBANA -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Guillermo_JCM1769.jpg" alt="Guillermo Liébana">
-            <div class="tm-flip-front-info">
-              <div class="tm-flip-front-name">Guillermo Liébana</div>
-              <div class="tm-flip-front-role">Innovation &amp; Technology Lead</div>
-            </div>
+            <img src="NUIN/EQUIPO/FOTOS/byn/Laura_JCM1755.jpg" alt="Laura">
+            <div class="tm-flip-front-info"><div class="tm-flip-front-name">Laura</div><div class="tm-flip-front-role">Research Analyst</div></div>
           </div>
           <div class="tm-flip-back">
-            <div class="tm-back-name">Guillermo Liébana</div>
-            <div class="tm-back-role">Innovation &amp; Technology Lead</div>
-            <div class="tm-back-bio">Impulsa la adopción de soluciones tecnológicas y enfoques innovadores para optimizar los procesos y la propuesta de valor de NUIN.</div>
+            <div class="tm-back-name">Laura</div>
+            <div class="tm-back-role">Research Analyst</div>
+            <div class="tm-back-bio">Investigadora especializada en metodologías cuantitativas y análisis estadístico, con dominio de técnicas avanzadas como conjoint analysis y segmentación de mercado.</div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -2051,17 +1610,17 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       <div class="services-sidebar">
         <div class="srv-item active" onclick="showService(0)">
           <span class="srv-num">01</span>
-          <span class="srv-name">Advisory Boards</span>
+          <span class="srv-name">Advisory Boards en salud y farma</span>
           <span class="srv-badge">Nº 1 España · +750 ABs</span>
         </div>
         <div class="srv-item" onclick="showService(1)">
           <span class="srv-num">02</span>
-          <span class="srv-name">Investigación cualitativa</span>
+          <span class="srv-name">Investigación cualitativa en salud</span>
           <span class="srv-badge">Core service · 40 años</span>
         </div>
         <div class="srv-item" onclick="showService(2)">
           <span class="srv-num">03</span>
-          <span class="srv-name">Investigación cuantitativa</span>
+          <span class="srv-name">Investigación cuantitativa en salud</span>
           <span class="srv-badge">BBDD propia exclusiva</span>
         </div>
         <div class="srv-item" onclick="showService(3)">
@@ -2087,7 +1646,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <div class="service-panel active" id="panel-0">
           <div>
             <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">01 — Advisory Boards</div>
-            <h3 class="sp-title">Advisory Boards</h3>
+            <h3 class="sp-title">Líderes en España en la gestión y moderación de Advisory Boards.</h3>
             <p class="sp-desc">Más de 750 sesiones realizadas en todo el mundo. Diseñamos cada reunión a medida, asegurando la máxima participación y resultados estratégicos para cada laboratorio.</p>
             <div class="sp-pillars">
               <div class="sp-pillar">
@@ -2101,7 +1660,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
                 <div class="sp-pillar-dot">🌍</div>
                 <div class="sp-pillar-body">
                   <div class="sp-pillar-title">Alcance internacional</div>
-                  <div class="sp-pillar-text">EEUU, México, Honduras, Chile, Argentina, Francia, Dinamarca, Suiza, UK… Moderamos en varios idiomas.</div>
+                  <div class="sp-pillar-text">EEUU, México, Honduras, Chile, Argentina, Francia, Dinamarca, Suiza, UK… Moderamos en cualquier idioma y formato, presencial u online.</div>
                 </div>
               </div>
               <div class="sp-pillar">
@@ -2111,18 +1670,13 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
                   <div class="sp-pillar-text">Sala NUIN, diseñada específicamente para Advisory Boards, con espejo unidireccional, videoconferencia HD y grabación profesional.</div>
                 </div>
               </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">🔀</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Ecosistema</div>
-                  <div class="sp-pillar-text">Abarca una amplia variedad de formatos, presenciales, virtuales o híbridos, áreas de organización, médico, marketing, acceso, y stakeholders.</div>
-                </div>
-              </div>
             </div>
           </div>
           <div class="sp-right">
-            <!-- Imagen tomada del panel Reuniones de Ciclo — ajustar ruta si cambia -->
-            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20AB-2.jpg" alt="Advisory Boards NUIN"></div>
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20AB-6.jpg" alt="Advisory Boards NUIN"></div>
+            <div class="sp-tags">
+              <span class="sp-tag">Presencial</span><span class="sp-tag">Online</span><span class="sp-tag">Nacional</span><span class="sp-tag">Internacional</span><span class="sp-tag">KOLs</span><span class="sp-tag">Sala NUIN</span><span class="sp-tag">100% repetición</span>
+            </div>
           </div>
         </div>
 
@@ -2157,7 +1711,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
             </div>
           </div>
           <div class="sp-right">
-            <div class="sp-right-img"><img src="JCM1978.jpg" alt="Investigación Cualitativa NUIN"></div>
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20Grupos-4.jpg" alt="Investigación Cualitativa NUIN"></div>
             <div class="sp-tags">
               <span class="sp-tag">Focus groups</span><span class="sp-tag">Entrevistas en profundidad</span><span class="sp-tag">Técnicas proyectivas</span><span class="sp-tag">Etnografías</span><span class="sp-tag">Dinámicas grupales</span><span class="sp-tag">Online</span>
             </div>
@@ -2195,7 +1749,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
             </div>
           </div>
           <div class="sp-right">
-            <div class="sp-right-img"><img src="trabajoNI_16.jpg" alt="Investigación Cuantitativa NUIN"></div>
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20Trabajo-2.jpg" alt="Investigación Cuantitativa NUIN"></div>
             <div class="sp-tags">
               <span class="sp-tag">Encuestas online</span><span class="sp-tag">CATI</span><span class="sp-tag">Conjoint analysis</span><span class="sp-tag">Tracking</span><span class="sp-tag">Segmentación</span><span class="sp-tag">Análisis estadístico</span>
             </div>
@@ -2233,7 +1787,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
             </div>
           </div>
           <div class="sp-right">
-            <div class="sp-right-img"><img src="JCM2071.jpg" alt="Reuniones de Ciclo NUIN"></div>
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20AB-2.jpg" alt="Reuniones de Ciclo NUIN"></div>
             <div class="sp-tags">
               <span class="sp-tag">Facilitación</span><span class="sp-tag">Área médica</span><span class="sp-tag">Marketing farma</span><span class="sp-tag">Acceso</span><span class="sp-tag">Planes de acción</span><span class="sp-tag">Alineación</span>
             </div>
@@ -2271,7 +1825,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
             </div>
           </div>
           <div class="sp-right">
-            <div class="sp-right-img"><img src="EquipoNI_11.jpg" alt="Método TWACE NUIN"></div>
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20Trabajo-1.jpg" alt="Método TWACE NUIN"></div>
             <div class="sp-tags">
               <span class="sp-tag">Método TWACE</span><span class="sp-tag">+50 hospitales</span><span class="sp-tag">Laboratorios farma</span><span class="sp-tag">Gestión del cambio</span><span class="sp-tag">KPIs</span>
             </div>
@@ -2309,7 +1863,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
             </div>
           </div>
           <div class="sp-right">
-            <div class="sp-right-img"><img src="procesos_copia_JCM1959.jpg" alt="Workshops Estratégicos NUIN"></div>
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20Grupos-6.jpg" alt="Workshops Estratégicos NUIN"></div>
             <div class="sp-tags">
               <span class="sp-tag">Design Thinking</span><span class="sp-tag">Metaplan</span><span class="sp-tag">Presencial</span><span class="sp-tag">Online</span><span class="sp-tag">Co-creación</span><span class="sp-tag">Estrategia</span>
             </div>
@@ -2353,7 +1907,6 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
           <div class="sala-panel-title">Sala <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN"></span> — Advisory Boards</div>
           <div class="sala-panel-sub">La única sala en España diseñada específicamente para ABs</div>
         </div>
-        <p style="font-size:14px;font-weight:300;color:var(--text-2);line-height:1.7;margin-bottom:20px;">La única sala en España diseñada específicamente para ABs asegurando el confort de los participantes en reuniones de larga duración.</p>
         <div class="sala-gallery">
           <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20AB-1.jpg" alt="Sala AB NUIN"></div>
           <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20AB-2.jpg" alt="Sala AB NUIN"></div>
@@ -2365,8 +1918,6 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
           <span class="sala-feat">Grabación profesional</span>
           <span class="sala-feat">Hasta 20 participantes</span>
           <span class="sala-feat">Presencial y online</span>
-          <span class="sala-feat">Mobiliario ergonómico</span>
-          <span class="sala-feat">Materiales sostenibles</span>
         </div>
       </div>
 
@@ -2451,24 +2002,24 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
     </div>
     <div class="partners-capsule-row reveal">
       <div class="partner-capsule">
-        <img src="logos/iris-logo.png" alt="IRIS Logo">
-        <div class="partner-cap-desc">Red internacional colaborativa con especialistas de market research de primer nivel, donde compartimos buenas prácticas y herramientas para crecer juntos.</div>
+        <div class="partner-cap-logo">IRIS</div>
+        <div class="partner-cap-desc">Red global de agencias independientes especializadas en healthcare.</div>
       </div>
       <div class="partner-capsule">
-        <img src="logos/aimfa-logo.png" alt="AIMFA Logo">
-        <div class="partner-cap-desc">Agrupación de Investigación y Marketing Farmacéutico. Un espacio de encuentro entre profesionales de investigación de mercado especializados en farma de España donde se fomenta el desarrollo profesional, el conocimiento y el networking.</div>
+        <div class="partner-cap-logo">EPHMRA</div>
+        <div class="partner-cap-desc">European Pharmaceutical Market Research Association.</div>
       </div>
       <div class="partner-capsule">
-        <img src="logos/ephmra-logo.webp" alt="EPHMRA Logo">
-        <div class="partner-cap-desc">Nuestro punto de encuentro con especialistas internacionales de investigación de mercado en farma, participando en la mejora de los estándares de calidad e innovando en las metodologías.</div>
+        <div class="partner-cap-logo">ESOMAR</div>
+        <div class="partner-cap-desc">Organismo global de estándares éticos y metodológicos en research.</div>
       </div>
       <div class="partner-capsule">
-        <img src="logos/esomar-logo.png" alt="ESOMAR Logo">
-        <div class="partner-cap-desc">Organismo global de estándares éticos y metodológicos en investigación de mercado.</div>
+        <div class="partner-cap-logo">AIMFA</div>
+        <div class="partner-cap-desc">Asociación de Investigación del sector Farmacéutico en España.</div>
       </div>
       <div class="partner-capsule">
-        <img src="logos/beauty-cluster.png" alt="Beauty Cluster Logo">
-        <div class="partner-cap-desc">Es la principal asociación española de empresas de cosmética y cuidado personal, que impulsa innovación y colaboración en el sector.</div>
+        <div class="partner-cap-logo">Beauty Cluster</div>
+        <div class="partner-cap-desc">Colaboración en proyectos de salud y belleza.</div>
       </div>
     </div>
   </div>
@@ -2477,44 +2028,59 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 <!-- CONTACTO -->
 <section id="contacto">
   <div class="section-inner">
-    <div class="eyebrow">HABLEMOS</div>
-    <h2 class="section-title">Contacto</h2>
-
     <div class="contact-layout">
-      <p class="contact-headline">"Llevamos más de cuarenta años aprendiendo día a día para que tu próximo proyecto salga perfecto, ¿hablamos?"</p>
-
-      <div class="contact-info">
-
-        <div class="ci">
-          <div class="ci-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+      <div class="reveal">
+        <div class="eyebrow">Hablemos</div>
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-headline">
+          "Llevamos más de cuarenta años aprendiendo día a día para que tu próximo proyecto salga perfecto, ¿hablamos?"
+        </div>
+        <div class="contact-info">
+          <div class="ci">
+            <div class="ci-icon">✉</div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-value">info@nuin.es</div>
+            </div>
           </div>
-          <div class="ci-text">
-            <div class="ci-label">EMAIL</div>
-            <div class="ci-value">info@nuin.es</div>
+          <div class="ci">
+            <div class="ci-icon">☎</div>
+            <div>
+              <div class="ci-label">Teléfono</div>
+              <div class="ci-value">+34 91 XXX XX XX</div>
+            </div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Salas y oficinas</div>
+              <div class="ci-value">Calle Orense, Madrid</div>
+            </div>
           </div>
         </div>
-
-        <div class="ci">
-          <div class="ci-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          </div>
-          <div class="ci-text">
-            <div class="ci-label">TELÉFONO</div>
-            <div class="ci-value">+34 91 XXX XX XX</div>
-          </div>
+      </div>
+      <div class="contact-form reveal reveal-d1">
+        <div class="cf-title">Cuéntanos tu proyecto</div>
+        <div class="cf-row">
+          <div class="cf-field"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+          <div class="cf-field"><label>Empresa</label><input type="text" placeholder="Tu empresa"></div>
         </div>
-
-        <div class="ci">
-          <div class="ci-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          </div>
-          <div class="ci-text">
-            <div class="ci-label">SALAS Y OFICINAS</div>
-            <div class="ci-value">Calle Orense, Madrid</div>
-          </div>
+        <div class="cf-field"><label>Email</label><input type="email" placeholder="correo@empresa.com"></div>
+        <div class="cf-field">
+          <label>Servicio</label>
+          <select>
+            <option value="">Selecciona un servicio</option>
+            <option>Advisory Boards</option>
+            <option>Investigación cualitativa en salud</option>
+            <option>Investigación cuantitativa en salud</option>
+            <option>Reuniones de ciclo</option>
+            <option>Revisión de procesos (TWACE)</option>
+            <option>Workshops estratégicos</option>
+            <option>Alquiler de salas</option>
+          </select>
         </div>
-
+        <div class="cf-field"><label>Mensaje</label><textarea placeholder="Cuéntanos sobre tu necesidad..."></textarea></div>
+        <button class="cf-submit">Enviar mensaje</button>
       </div>
     </div>
   </div>
@@ -2543,6 +2109,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <ul>
           <li><a href="#somos">Somos NUIN</a></li>
           <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#experiencia">Stakeholders</a></li>
           <li><a href="#espacio">Espacio</a></li>
           <li><a href="#alianzas">Alianzas</a></li>
           <li><a href="#blog">Blog</a></li>
@@ -2874,6 +2441,14 @@ window.addEventListener('scroll', () => {
   document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 20);
 });
 
+// Hero light/dark toggle
+function toggleHeroMode() {
+  const hero = document.getElementById('hero');
+  const isLight = hero.classList.toggle('light-mode');
+  document.getElementById('hero-mode-icon').textContent = isLight ? '🌙' : '☀';
+  document.getElementById('hero-mode-label').textContent = isLight ? 'Modo oscuro' : 'Modo claro';
+}
+
 // Services sidebar
 function showService(idx) {
   document.querySelectorAll('.srv-item').forEach((c, i) => c.classList.toggle('active', i === idx));
@@ -2930,94 +2505,6 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// ── Valores accordion ──
-document.querySelectorAll('.val-header').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.closest('.val-item');
-    const body = item.querySelector('.val-body');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.val-item.open').forEach(o => {
-      o.classList.remove('open');
-      o.querySelector('.val-body').style.maxHeight = '0';
-      o.querySelector('.val-header').setAttribute('aria-expanded', 'false');
-    });
-    if (!isOpen) {
-      item.classList.add('open');
-      body.style.maxHeight = body.scrollHeight + 'px';
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  });
-});
-
-// ── Áreas terapéuticas ──
-const areasData = [
-  { area: "Neurología y neurodesarrollo", patologias: ["TDAH", "Trastornos de tics / síndrome de Tourette", "Trastornos del sueño", "Enfermedad de Alzheimer", "Enfermedad de Parkinson", "Enfermedad de Huntington", "Esclerosis lateral amiotrófica (ELA)", "Esclerosis múltiple", "Distrofia muscular de Duchenne", "Atrofia muscular espinal", "Miastenia gravis", "Neuropatía inflamatoria", "Neuropatía Óptica de Leber", "Migraña crónica", "Cefalea en racimos", "Epilepsia", "Síndrome de Dravet", "CLN2", "Síndrome de San Filippo", "Síndrome de Morquio"] },
-  { area: "Cardiovascular", patologias: ["Hipertensión arterial", "Dislipidemia", "Enfermedad coronaria crónica", "Síndrome coronario agudo", "Insuficiencia cardiaca", "Fibrilación auricular", "Tromboembolismo venoso", "Hipertensión arterial pulmonar", "Hipercolesterolemia familiar homocigota", "Amiloidosis transtiretina"] },
-  { area: "Respiratorio", patologias: ["Asma", "EPOC", "Rinitis alérgica / poliposis nasal", "Fibrosis quística (FQ)", "Fibrosis pulmonar idiopática", "Enfermedad pulmonar intersticial", "Déficit de alfa-1 antitripsina"] },
-  { area: "Endocrinología y metabolismo", patologias: ["Diabetes mellitus tipo 1 y 2", "Obesidad", "Hipotiroidismo / hipertiroidismo", "Osteoporosis", "Hiperplasia suprarrenal congénita", "Síndrome de Cushing", "Acromegalia", "Acondroplasia", "Fenilcetonuria"] },
-  { area: "Enfermedades metabólicas y lisosomales", patologias: ["Enfermedad de Gaucher", "Enfermedad de Fabry", "Pompe", "Mucopolisacaridosis", "Déficit de esfingomielinasa"] },
-  { area: "Hematología", patologias: ["Anemia ferropénica y por enfermedad renal", "Trombosis venosa", "Trombocitopenia inmune", "Hemofilia A y B", "Enfermedad de von Willebrand", "Hemoglobinuria paroxística nocturna", "Síndrome hemolítico urémico atípico", "Púrpura trombótica", "Enfermedad por aglutininas frías"] },
-  { area: "Oncología y hemato-oncología", patologias: ["Cáncer de mama", "Cáncer de pulmón", "Colorrectal", "Próstata", "Ovario", "Riñón", "Melanoma", "Hepatocarcinoma", "Cabeza y cuello", "Gástrico", "GIST", "Sarcomas", "Mesotelioma", "Tumores neuroendocrinos", "Glioblastoma", "Leucemias", "Linfomas", "Mieloma múltiple"] },
-  { area: "Inmunología, reumatología y autoinflamatorias", patologias: ["Artritis reumatoide", "Artritis psoriásica", "Espondiloartritis axial", "Psoriasis", "Lupus eritematoso sistémico", "Vasculitis ANCA", "Enfermedad de Behçet", "Dermatitis atópica", "Urticaria crónica", "Angioedema hereditario"] },
-  { area: "Gastroenterología y hepatología", patologias: ["Enfermedad de Crohn", "Colitis ulcerosa", "Enfermedad celíaca", "Úlcera péptica", "Síndrome de intestino irritable", "Hepatitis B y C", "Colangitis", "Síndrome de intestino corto"] },
-  { area: "Infecciosas", patologias: ["VIH", "Hepatitis B y C crónica", "Tuberculosis", "Infecciones fúngicas", "Citomegalovirus", "COVID-19", "Herpes Zóster"] },
-  { area: "Dermatología", patologias: ["Psoriasis", "Dermatitis atópica", "Acné", "Rosácea", "Hidradenitis supurativa", "Urticaria crónica espontánea", "Alopecia areata"] },
-  { area: "Nefrología", patologias: ["Enfermedad renal crónica", "Hiperpotasemia crónica", "Glomerulopatías", "Poliquistosis renal autosómica dominante"] },
-  { area: "Oftalmología", patologias: ["Degeneración macular asociada a la edad", "Ojo seco", "Uveítis no infecciosa", "Glaucoma", "Retinopatía diabética", "Distrofias hereditarias retinianas", "Neuromielitis óptica"] },
-  { area: "Reproducción, ginecología y urología", patologias: ["Endometriosis", "Anticoncepción hormonal", "Miomas uterinos", "Osteoporosis posmenopáusica", "Hiperplasia benigna de próstata", "Vejiga hiperactiva", "Disfunción eréctil", "Infertilidad / reproducción asistida", "Cáncer ginecológico y de próstata"] }
-];
-
-(function initAreas() {
-  const pillsEl = document.getElementById('at-pills');
-  const panelWrap = document.getElementById('at-panel-wrap');
-  const panelTitle = document.getElementById('at-panel-title');
-  const tagsEl = document.getElementById('at-tags');
-  if (!pillsEl) return;
-
-  let active = null;
-
-  areasData.forEach((item, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'at-pill';
-    btn.textContent = item.area;
-    btn.addEventListener('click', () => {
-      if (active === i) {
-        btn.classList.remove('active');
-        panelWrap.classList.remove('open');
-        active = null;
-        return;
-      }
-      pillsEl.querySelectorAll('.at-pill').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      panelTitle.textContent = item.area;
-      tagsEl.innerHTML = item.patologias.map(p => `<span class="at-tag">${p}</span>`).join('');
-      panelWrap.classList.add('open');
-      active = i;
-      setTimeout(() => panelWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 60);
-    });
-    pillsEl.appendChild(btn);
-  });
-})();
-</script>
-<script>
-  document.querySelectorAll('.vt-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      document.querySelectorAll('.vt-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.somos-tabs .viz-panel').forEach(panel => panel.classList.remove('active'));
-      button.classList.add('active');
-      document.getElementById(button.getAttribute('data-target')).classList.add('active');
-    });
-  });
-</script>
-
-<script>
-  document.querySelectorAll('.hst-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      document.getElementById('hero').classList.toggle('hero-lens', this.dataset.style === 'lens');
-      document.querySelectorAll('.hst-btn').forEach(b => b.classList.toggle('active', b === this));
-    });
-  });
 </script>
 </body>
 </html>
