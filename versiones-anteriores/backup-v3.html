@@ -348,7 +348,7 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   margin-bottom: 8px;
 }
 .stat-card.accent .stat-num { color: white; }
-.stat-label { font-size: 13px; font-weight: 500; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.01em; line-height: 1.45; padding: 0 8px; }
+.stat-label { font-size: 11px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.12em; }
 .stat-card.accent .stat-label { color: rgba(255,255,255,0.75); }
 
 /* ──────── EQUIPO ──────── */
@@ -375,6 +375,11 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   transition: box-shadow 0.2s, transform 0.2s;
 }
 .manifesto-link:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-1px); }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
 .tm-card {
   border-radius: 16px;
   overflow: hidden;
@@ -664,7 +669,7 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
 
 .espacio-rooms-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 .room-card {
@@ -889,6 +894,39 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 .logo-inline.sm img { height: 0.9em; }
 .logo-inline.on-dark img { filter: drop-shadow(0 10px 24px rgba(0,0,0,0.25)); }
 
+/* ──────── HERO STYLE TOGGLE ──────── */
+.hero-style-toggle {
+  position: absolute;
+  top: 88px; right: var(--pad);
+  z-index: 10;
+  display: flex;
+  background: rgba(17,28,24,0.06);
+  border: 1px solid rgba(17,28,24,0.09);
+  border-radius: 50px;
+  padding: 3px;
+  gap: 2px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.hst-btn {
+  font-family: var(--font);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 6px 18px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  color: var(--text-2);
+  background: transparent;
+  transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+.hst-btn.active {
+  background: var(--green);
+  color: white;
+  box-shadow: 0 2px 14px rgba(0,168,120,0.35);
+}
 
 /* ──────── HERO LENS "THE INSIGHT LENS" ──────── */
 #hero.hero-lens { background: var(--offwhite); color: var(--text); }
@@ -1108,7 +1146,20 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   background: var(--bg); border: 1px solid var(--border); color: var(--text-2);
 }
 
+/* ──────── TEAM VIEW TOGGLE ──────── */
+.team-view-toggle {
+  display: flex; gap: 6px; background: var(--bg2); border-radius: 50px;
+  padding: 4px; width: fit-content;
+}
+.tvt-btn {
+  padding: 8px 20px; border-radius: 50px; font-size: 12px; font-weight: 600;
+  color: var(--text-3); cursor: pointer; border: none; background: none;
+  font-family: var(--font); transition: all 0.2s;
+}
+.tvt-btn.active { background: var(--white); color: var(--text); box-shadow: var(--shadow-sm); }
+
 /* ──────── TEAM FLIP CAPSULES ──────── */
+#team-grid { display: none; }
 #team-capsule { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 #equipo .section-inner { max-width: 1480px; }
 .tm-flip-wrapper { aspect-ratio: 4/7; position: relative; perspective: 1200px; }
@@ -1320,6 +1371,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   .services-sidebar { position: static; flex-direction: row; flex-wrap: wrap; }
   .srv-item { flex: 0 0 auto; }
   .service-panel.active { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
   .partners-grid { grid-template-columns: repeat(3, 1fr); }
   .espacio-mosaic { grid-template-columns: repeat(2, 1fr); grid-template-rows: 220px 220px 170px; }
   .mu1 { grid-column: 1; grid-row: 1 / 3; }
@@ -1342,6 +1394,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 @media (max-width: 640px) {
   .nav-links { display: none; }
   .hero-h1 { font-size: 28px; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
   .partners-grid { grid-template-columns: repeat(2, 1fr); }
   .blog-cards { grid-template-columns: 1fr; }
   .footer-main { grid-template-columns: 1fr; }
@@ -1525,13 +1578,17 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 </nav>
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" class="hero-lens">
   <div class="hero-gradient"></div>
+  <div class="hero-style-toggle">
+    <button class="hst-btn" data-style="classic">Clásico</button>
+    <button class="hst-btn active" data-style="lens">Lens</button>
+  </div>
   <div class="hero-body">
     <div class="hero-left">
       <div class="hero-label">HEALTHCARE INSIGHTS & STRATEGY</div>
       <h1 class="hero-h1">
-        Convirtiendo datos y conversaciones en insights accionables <strong style="color: var(--green);">desde 1987</strong>
+        Convirtiendo datos y conversaciones en insights accionables <strong>desde 1987</strong>
       </h1>
       <p class="hero-sub">La primera agencia española dedicada exclusivamente al sector farmacéutico. Cuatro décadas de rigor, método y profundidad clínica.</p>
       <div class="hero-btns">
@@ -1617,19 +1674,19 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       <div class="stats-grid reveal reveal-d1">
         <div class="stat-card accent">
           <div class="stat-num">+40</div>
-          <div class="stat-label">años dedicados al sector farma</div>
+          <div class="stat-label">años</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">+4.200</div>
-          <div class="stat-label">proyectos en healthcare</div>
+          <div class="stat-num">+4200</div>
+          <div class="stat-label">proyectos</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">+70</div>
-          <div class="stat-label">laboratorios han confiado en nosotros</div>
+          <div class="stat-num">+750</div>
+          <div class="stat-label">ABs</div>
         </div>
         <div class="stat-card accent">
-          <div class="stat-num">+750</div>
-          <div class="stat-label">Advisory Boards moderados</div>
+          <div class="stat-num">+70</div>
+          <div class="stat-label">laboratorios</div>
         </div>
       </div>
     </div>
@@ -1782,6 +1839,44 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       <div>
         <div class="eyebrow">El equipo</div>
         <h2 class="section-title">Equipo <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN"></span></h2>
+      </div>
+      <div class="team-view-toggle">
+        <button class="tvt-btn" onclick="setTeamView('grid')">Cuadrícula</button>
+        <button class="tvt-btn active" onclick="setTeamView('capsule')">Cápsulas</button>
+      </div>
+    </div>
+    <div class="team-grid" id="team-grid">
+      <div class="tm-card reveal">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Juan_JCM1780.jpg" alt="Juan Reig">
+        <div class="tm-info"><div class="tm-name">Juan Reig</div><div class="tm-role">Director General</div><div class="tm-bio">Texto de ejemplo 1</div></div>
+      </div>
+      <div class="tm-card reveal reveal-d1">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Josefina_JCM1805.jpg" alt="Josefina">
+        <div class="tm-info"><div class="tm-name">Josefina</div><div class="tm-role">Directora de Proyectos</div><div class="tm-bio">Texto de ejemplo 2</div></div>
+      </div>
+      <div class="tm-card reveal reveal-d2">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Loreto_JCM1727.jpg" alt="Loreto">
+        <div class="tm-info"><div class="tm-name">Loreto</div><div class="tm-role">Senior Research</div><div class="tm-bio">Texto de ejemplo 3</div></div>
+      </div>
+      <div class="tm-card reveal reveal-d3">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Sonia_JCM1685.jpg" alt="Sonia">
+        <div class="tm-info"><div class="tm-name">Sonia</div><div class="tm-role">Research Manager</div><div class="tm-bio">Texto de ejemplo 1</div></div>
+      </div>
+      <div class="tm-card reveal">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Ana_JCM1696.jpg" alt="Ana">
+        <div class="tm-info"><div class="tm-name">Ana</div><div class="tm-role">Research Analyst</div><div class="tm-bio">Texto de ejemplo 2</div></div>
+      </div>
+      <div class="tm-card reveal reveal-d1">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Guillermo_JCM1769.jpg" alt="Guillermo">
+        <div class="tm-info"><div class="tm-name">Guillermo</div><div class="tm-role">Advisory Boards Lead</div><div class="tm-bio">Texto de ejemplo 3</div></div>
+      </div>
+      <div class="tm-card reveal reveal-d2">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Irina_JCM1670.jpg" alt="Irina">
+        <div class="tm-info"><div class="tm-name">Irina</div><div class="tm-role">Medical Writing</div><div class="tm-bio">Texto de ejemplo 1</div></div>
+      </div>
+      <div class="tm-card reveal reveal-d3">
+        <img src="NUIN/EQUIPO/FOTOS/byn/Laura_JCM1755.jpg" alt="Laura">
+        <div class="tm-info"><div class="tm-name">Laura</div><div class="tm-role">Research Analyst</div><div class="tm-bio">Texto de ejemplo 2</div></div>
       </div>
     </div>
 
@@ -1956,7 +2051,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       <div class="services-sidebar">
         <div class="srv-item active" onclick="showService(0)">
           <span class="srv-num">01</span>
-          <span class="srv-name">Advisory Boards en salud y farma</span>
+          <span class="srv-name">Advisory Boards</span>
           <span class="srv-badge">Nº 1 España · +750 ABs</span>
         </div>
         <div class="srv-item" onclick="showService(1)">
@@ -1992,16 +2087,9 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <div class="service-panel active" id="panel-0">
           <div>
             <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">01 — Advisory Boards</div>
-            <h3 class="sp-title">Advisory Boards en salud y farma</h3>
+            <h3 class="sp-title">Advisory Boards</h3>
             <p class="sp-desc">Más de 750 sesiones realizadas en todo el mundo. Diseñamos cada reunión a medida, asegurando la máxima participación y resultados estratégicos para cada laboratorio.</p>
             <div class="sp-pillars">
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">🔀</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Ecosistema</div>
-                  <div class="sp-pillar-text">Abarca una amplia variedad de formatos, presenciales, virtuales o híbridos, áreas de organización, médico, marketing, acceso, y stakeholders.</div>
-                </div>
-              </div>
               <div class="sp-pillar">
                 <div class="sp-pillar-dot">🏆</div>
                 <div class="sp-pillar-body">
@@ -2021,6 +2109,13 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
                 <div class="sp-pillar-body">
                   <div class="sp-pillar-title">La única sala en España</div>
                   <div class="sp-pillar-text">Sala NUIN, diseñada específicamente para Advisory Boards, con espejo unidireccional, videoconferencia HD y grabación profesional.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot">🔀</div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Ecosistema</div>
+                  <div class="sp-pillar-text">Abarca una amplia variedad de formatos, presenciales, virtuales o híbridos, áreas de organización, médico, marketing, acceso, y stakeholders.</div>
                 </div>
               </div>
             </div>
@@ -2248,19 +2343,19 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
     </div>
 
     <div class="sala-tabs reveal">
-      <button class="sala-tab-btn active" id="sala-tab-nuin" onclick="setSalaTab('nuin')">Sala <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN" style="height: 14px; width: auto; vertical-align: middle;"></span></button>
-      <button class="sala-tab-btn" id="sala-tab-focus" onclick="setSalaTab('focus')">Sala <span style="font-weight: normal;">Focus</span></button>
+      <button class="sala-tab-btn active" id="sala-tab-nuin" onclick="setSalaTab('nuin')">Sala <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN"></span></button>
+      <button class="sala-tab-btn" id="sala-tab-focus" onclick="setSalaTab('focus')">Sala FOCUS</button>
     </div>
 
     <div class="sala-panels reveal">
       <div class="sala-panel active" id="sala-panel-nuin">
         <div class="sala-panel-head">
-          <div class="sala-panel-title">Sala <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN" style="height: 18px; width: auto; vertical-align: middle;"></span> — Advisory Boards</div>
+          <div class="sala-panel-title">Sala <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN"></span> — Advisory Boards</div>
           <div class="sala-panel-sub">La única sala en España diseñada específicamente para ABs</div>
         </div>
         <p style="font-size:14px;font-weight:300;color:var(--text-2);line-height:1.7;margin-bottom:20px;">La única sala en España diseñada específicamente para ABs asegurando el confort de los participantes en reuniones de larga duración.</p>
         <div class="sala-gallery">
-          <div class="sala-photo"><img src="sala_AB-4.jpg" alt="Sala NUIN"></div>
+          <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20AB-1.jpg" alt="Sala AB NUIN"></div>
           <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20AB-2.jpg" alt="Sala AB NUIN"></div>
           <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20AB-6.jpg" alt="Sala AB NUIN"></div>
         </div>
@@ -2277,7 +2372,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 
       <div class="sala-panel" id="sala-panel-focus">
         <div class="sala-panel-head">
-          <div class="sala-panel-title">Sala <span style="font-weight: normal;">Focus</span></div>
+          <div class="sala-panel-title">Sala FOCUS</div>
           <div class="sala-panel-sub">Diseñada para entrevistas IDI y grupos de discusión</div>
         </div>
         <div class="sala-gallery">
@@ -2396,7 +2491,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
           </div>
           <div class="ci-text">
             <div class="ci-label">EMAIL</div>
-            <div class="ci-value">nuin@nuingroup.com</div>
+            <div class="ci-value">info@nuin.es</div>
           </div>
         </div>
 
@@ -2406,7 +2501,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
           </div>
           <div class="ci-text">
             <div class="ci-label">TELÉFONO</div>
-            <div class="ci-value">913531490</div>
+            <div class="ci-value">+34 91 XXX XX XX</div>
           </div>
         </div>
 
@@ -2416,7 +2511,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
           </div>
           <div class="ci-text">
             <div class="ci-label">SALAS Y OFICINAS</div>
-            <div class="ci-value">Calle Raimundo Fdez Villaverde 57, 2º dcha 28003- Madrid</div>
+            <div class="ci-value">Calle Orense, Madrid</div>
           </div>
         </div>
 
@@ -2456,8 +2551,8 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       <div class="f-col">
         <h6>Contacto</h6>
         <ul>
-          <li><a href="#">nuin@nuingroup.com</a></li>
-          <li><a href="#">913531490</a></li>
+          <li><a href="#">info@nuin.es</a></li>
+          <li><a href="#">+34 91 XXX XX XX</a></li>
           <li><a href="#">Orense, Madrid</a></li>
         </ul>
       </div>
@@ -2785,6 +2880,12 @@ function showService(idx) {
   document.querySelectorAll('.service-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
 }
 
+// Team view toggle
+function setTeamView(view) {
+  document.querySelectorAll('.tvt-btn').forEach((b, i) => b.classList.toggle('active', (i === 0 && view === 'grid') || (i === 1 && view === 'capsule')));
+  document.getElementById('team-grid').style.display = view === 'grid' ? 'grid' : 'none';
+  document.getElementById('team-capsule').style.display = view === 'capsule' ? 'grid' : 'none';
+}
 
 function showExperience(idx, btn) {
   const keys = ['stakeholders', 'areas', 'principios'];
@@ -2910,5 +3011,13 @@ const areasData = [
   });
 </script>
 
+<script>
+  document.querySelectorAll('.hst-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.getElementById('hero').classList.toggle('hero-lens', this.dataset.style === 'lens');
+      document.querySelectorAll('.hst-btn').forEach(b => b.classList.toggle('active', b === this));
+    });
+  });
+</script>
 </body>
 </html>
