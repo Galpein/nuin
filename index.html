@@ -509,11 +509,11 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
 .sp-pillars { display: flex; flex-direction: column; gap: 16px; }
 .sp-pillar { display: flex; gap: 16px; align-items: flex-start; }
 .sp-pillar-dot {
-  width: 32px; height: 32px; min-width: 32px;
-  background: var(--green-soft);
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px;
+  width: 8px; height: 8px; min-width: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
 }
 .sp-pillar-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
 .sp-pillar-text { font-size: 13px; font-weight: 300; color: var(--text-2); line-height: 1.6; }
@@ -521,7 +521,7 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   border-radius: 16px;
   overflow: hidden;
   aspect-ratio: 4/3;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   box-shadow: var(--shadow-card);
 }
 .sp-right-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -1961,34 +1961,19 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         </div>
         <div class="srv-item" onclick="showService(1)">
           <span class="srv-num">02</span>
-          <span class="srv-name">Investigación cualitativa</span>
-          <span class="srv-badge">Core service · 40 años</span>
+          <span class="srv-name">Investigación</span>
+          <span class="srv-badge">Cuali · Cuanti · 40 años</span>
         </div>
         <div class="srv-item" onclick="showService(2)">
           <span class="srv-num">03</span>
-          <span class="srv-name">Investigación cuantitativa</span>
-          <span class="srv-badge">BBDD propia exclusiva</span>
-        </div>
-        <div class="srv-item" onclick="showService(3)">
-          <span class="srv-num">04</span>
-          <span class="srv-name">Reuniones de ciclo</span>
-          <span class="srv-badge">Facilitación experta</span>
-        </div>
-        <div class="srv-item" onclick="showService(4)">
-          <span class="srv-num">05</span>
-          <span class="srv-name">Revisión de procesos</span>
-          <span class="srv-badge">Método TWACE · +50 hospitales</span>
-        </div>
-        <div class="srv-item" onclick="showService(5)">
-          <span class="srv-num">06</span>
-          <span class="srv-name">Workshops estratégicos</span>
-          <span class="srv-badge">Design Thinking · Metaplan</span>
+          <span class="srv-name">Otras soluciones estratégicas</span>
+          <span class="srv-badge">TWACE · Ciclo · Workshops</span>
         </div>
       </div>
 
       <div class="services-content">
 
-        <!-- Panel 01 -->
+        <!-- Panel 01 — Advisory Boards -->
         <div class="service-panel active" id="panel-0">
           <div>
             <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">01 — Advisory Boards</div>
@@ -1996,28 +1981,33 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
             <p class="sp-desc">Más de 750 sesiones realizadas en todo el mundo. Diseñamos cada reunión a medida, asegurando la máxima participación y resultados estratégicos para cada laboratorio.</p>
             <div class="sp-pillars">
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">🏆</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
                   <div class="sp-pillar-title">Sistema propio de preparación</div>
                   <div class="sp-pillar-text">750+ ABs nos han dado las herramientas para optimizar cada sesión. El 100% de los clientes que han hecho un AB con nosotros han repetido.</div>
                 </div>
               </div>
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">🌍</div>
+                <div class="sp-pillar-dot"></div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Ecosistema</div>
+                  <div class="sp-pillar-text">Abarca una amplia variedad de formatos, presenciales, virtuales o híbridos, áreas de organización, médico, marketing, acceso, y stakeholders.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sp-right">
+            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20AB-2.jpg" alt="Advisory Boards NUIN"></div>
+            <div class="sp-pillars" style="margin-top:20px;">
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
                   <div class="sp-pillar-title">Alcance internacional</div>
                   <div class="sp-pillar-text">EEUU, México, Honduras, Chile, Argentina, Francia, Dinamarca, Suiza, UK… Moderamos en varios idiomas.</div>
                 </div>
               </div>
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">🔀</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Ecosistema</div>
-                  <div class="sp-pillar-text">Abarca una amplia variedad de formatos, presenciales, virtuales o híbridos, áreas de organización, médico, marketing, acceso, y stakeholders.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">🏛️</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
                   <div class="sp-pillar-title">La única sala en España</div>
                   <div class="sp-pillar-text">Sala NUIN, diseñada específicamente para Advisory Boards, con espejo unidireccional, videoconferencia HD y grabación profesional.</div>
@@ -2025,198 +2015,95 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
               </div>
             </div>
           </div>
-          <div class="sp-right">
-            <!-- Imagen tomada del panel Reuniones de Ciclo — ajustar ruta si cambia -->
-            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20AB-2.jpg" alt="Advisory Boards NUIN"></div>
-          </div>
         </div>
 
-        <!-- Panel 02 -->
+        <!-- Panel 02 — Investigación -->
         <div class="service-panel" id="panel-1">
           <div>
-            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">02 — Investigación Cualitativa</div>
-            <h3 class="sp-title">Nuestro origen y especialidad. El alpha y el omega de <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN"></span>.</h3>
-            <p class="sp-desc">Miles de entrevistas, focus groups y estudios que revelan percepciones, motivaciones y experiencias. Un enfoque optimizado durante 40 años para alcanzar los más altos estándares de excelencia.</p>
-            <div class="sp-pillars">
+            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">02 — Investigación</div>
+            <h3 class="sp-title">Investigación</h3>
+            <p style="font-size:14px;font-weight:500;color:var(--text-2);margin-bottom:14px;line-height:1.5;">40 años convirtiendo preguntas complejas en decisiones claras.</p>
+            <p class="sp-desc">La investigación es el núcleo de NUIN. Cuatro décadas trabajando exclusivamente en salud nos han permitido desarrollar un conocimiento profundo del entorno clínico, los profesionales sanitarios y los pacientes.</p>
+            <p class="sp-desc" style="margin-top:8px;">Combinamos investigación cualitativa y cuantitativa con metodología propia, base de datos exclusiva y experiencia en más de 200 áreas terapéuticas para generar insights sólidos, accionables y relevantes. No solo obtenemos respuestas: entendemos el contexto que las explica.</p>
+            <div class="sp-pillars" style="margin-top:20px;">
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">🔬</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Profundidad sin igual</div>
-                  <div class="sp-pillar-text">Hemos trabajado en más de 200 enfermedades distintas. Ese bagaje clínico nos permite hacer las preguntas correctas desde el primer momento.</div>
+                  <div class="sp-pillar-title">Especialización real en salud</div>
+                  <div class="sp-pillar-text">Hemos trabajado en más de 200 enfermedades y con prácticamente todos los stakeholders del ecosistema sanitario. Ese conocimiento acumulado nos permite comprender rápidamente cada proyecto y formular las preguntas adecuadas desde el inicio.</div>
                 </div>
               </div>
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">👥</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Todos los perfiles</div>
-                  <div class="sp-pillar-text">HCPs, enfermería, farmacia hospitalaria, farmacia de calle, KOLs, pacientes, cuidadores y asociaciones de pacientes.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">📐</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Método propio</div>
-                  <div class="sp-pillar-text">Cuatro décadas perfeccionando técnicas exclusivas para el sector salud: proyectivas, etnografías, grupos de discusión y más.</div>
+                  <div class="sp-pillar-title">Acceso a todos los perfiles</div>
+                  <div class="sp-pillar-text">Médicos especialistas, Atención Primaria, enfermería, farmacia hospitalaria, farmacia comunitaria, gestores, KOLs, pacientes, cuidadores y asociaciones de pacientes. Cobertura nacional, sin limitaciones geográficas ni de especialidad.</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="sp-right">
-            <div class="sp-right-img"><img src="JCM1978.jpg" alt="Investigación Cualitativa NUIN"></div>
-            <div class="sp-tags">
-              <span class="sp-tag">Focus groups</span><span class="sp-tag">Entrevistas en profundidad</span><span class="sp-tag">Técnicas proyectivas</span><span class="sp-tag">Etnografías</span><span class="sp-tag">Dinámicas grupales</span><span class="sp-tag">Online</span>
+            <div class="sp-right-img"><img src="JCM1978.jpg" alt="Investigación NUIN"></div>
+            <div class="sp-pillars" style="margin-top:20px;">
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot"></div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Base de datos propia y exclusiva</div>
+                  <div class="sp-pillar-text">Nuestro panel propio, construido y actualizado internamente durante años, garantiza rapidez, trazabilidad y ratios de respuesta superiores al estándar del mercado. Una ventaja diferencial clave para asegurar calidad y representatividad.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot"></div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Metodología optimizada durante 40 años</div>
+                  <div class="sp-pillar-text">Aplicamos metodologías cualitativas y cuantitativas adaptadas al sector salud: entrevistas en profundidad, focus groups, etnografías, técnicas proyectivas, encuestas y estudios híbridos diseñados para obtener insights realmente útiles.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot"></div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Rigor, agilidad y calidad de dato</div>
+                  <div class="sp-pillar-text">La combinación de expertise sectorial, metodología propia y acceso directo a los perfiles adecuados nos permite ejecutar proyectos con rapidez sin comprometer la profundidad ni la calidad del dato.</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Panel 03 -->
+        <!-- Panel 03 — Otras soluciones estratégicas -->
         <div class="service-panel" id="panel-2">
           <div>
-            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">03 — Investigación Cuantitativa</div>
-            <h3 class="sp-title">Base de datos propia que garantiza calidad, velocidad y representatividad.</h3>
-            <p class="sp-desc">Nuestra base de datos exclusiva, actualizada y propia, asegura calidad y rapidez en la obtención de datos sólidos. Acceso a todos los perfiles profesionales en todo el país con ratios de respuesta superiores.</p>
-            <div class="sp-pillars">
+            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">03 — Otras soluciones estratégicas</div>
+            <h3 class="sp-title">Otras soluciones estratégicas</h3>
+            <p class="sp-desc">En NUIN acompañamos a nuestros clientes en momentos clave de análisis, alineación y toma de decisiones. Diseñamos y facilitamos dinámicas estratégicas adaptadas al entorno healthcare, combinando conocimiento del sector, visión analítica y experiencia moderando equipos multidisciplinares.</p>
+            <p class="sp-desc" style="margin-top:8px;">Ayudamos a transformar información y experiencia en decisiones compartidas, accionables y orientadas a resultados.</p>
+            <div class="sp-pillars" style="margin-top:20px;">
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">🗄️</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">BBDD propia y exclusiva</div>
-                  <div class="sp-pillar-text">Panel propio de profesionales de salud, permanentemente actualizado, con cobertura nacional y ratios de respuesta muy por encima del mercado.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">📊</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Todos los perfiles, todo el país</div>
-                  <div class="sp-pillar-text">Médicos especialistas, médicos de AP, farmacéuticos, enfermería, pacientes… sin restricciones geográficas ni de especialidad.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">⚡</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Rapidez y calidad garantizadas</div>
-                  <div class="sp-pillar-text">La combinación de BBDD propia y metodología afinada durante 40 años garantiza tiempos de ejecución y calidad de dato superiores.</div>
+                  <div class="sp-pillar-title">Revisión de procesos</div>
+                  <div class="sp-pillar-text"><strong>Método TWACE: cambios transformadores con alta implicación del equipo.</strong> Metodología propia aplicada con éxito en laboratorios y hospitales. Permite establecer planes de cambio operacionales claros, accesibles y realmente transformadores desde la primera semana. Experiencia en la optimización de procesos en decenas de unidades comerciales, médicas y de marketing de laboratorios líderes y en hospitales con más de 50 implementaciones realizadas.</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="sp-right">
-            <div class="sp-right-img"><img src="trabajoNI_16.jpg" alt="Investigación Cuantitativa NUIN"></div>
-            <div class="sp-tags">
-              <span class="sp-tag">Encuestas online</span><span class="sp-tag">CATI</span><span class="sp-tag">Conjoint analysis</span><span class="sp-tag">Tracking</span><span class="sp-tag">Segmentación</span><span class="sp-tag">Análisis estadístico</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 04 -->
-        <div class="service-panel" id="panel-3">
-          <div>
-            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">04 — Reuniones de Ciclo</div>
-            <h3 class="sp-title">Reuniones internas que rompen inercias y generan planes de acción reales.</h3>
-            <p class="sp-desc">Diseñamos y facilitamos reuniones de ciclo que alinean equipos, superan bloqueos y transforman conversaciones en compromisos concretos y medibles para áreas médicas, de acceso y marketing.</p>
-            <div class="sp-pillars">
+            <div class="sp-right-img"><img src="EquipoNI_11.jpg" alt="Otras soluciones estratégicas NUIN"></div>
+            <div class="sp-pillars" style="margin-top:20px;">
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">🎯</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Facilitación experta</div>
-                  <div class="sp-pillar-text">Moderadores con profundo conocimiento del sector farma que saben cómo sacar lo mejor de cada equipo en cada situación.</div>
+                  <div class="sp-pillar-title">Reuniones de ciclo</div>
+                  <div class="sp-pillar-text"><strong>Reuniones internas que rompen inercias y generan planes de acción reales.</strong> Diseñamos y facilitamos reuniones de ciclo que alinean equipos, superan bloqueos y transforman conversaciones en compromisos concretos y medibles para áreas médicas, de acceso y marketing.</div>
                 </div>
               </div>
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">🔄</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Ruptura de inercias</div>
-                  <div class="sp-pillar-text">Dinámicas diseñadas para superar las barreras habituales de comunicación interna y generar compromisos reales y duraderos.</div>
+                  <div class="sp-pillar-title">Workshops estratégicos</div>
+                  <div class="sp-pillar-text"><strong>Talleres que generan ideas accionables, alineación real y resultados duraderos.</strong> Talleres presenciales y online con metodologías como Design Thinking o Metaplan. Creamos espacios participativos donde los equipos generan soluciones propias que realmente se implementan.</div>
                 </div>
               </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">📋</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Planes de acción concretos</div>
-                  <div class="sp-pillar-text">Cada reunión termina con un plan de acción claro, con responsables y tiempos definidos. Nada queda en el aire.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="sp-right">
-            <div class="sp-right-img"><img src="JCM2071.jpg" alt="Reuniones de Ciclo NUIN"></div>
-            <div class="sp-tags">
-              <span class="sp-tag">Facilitación</span><span class="sp-tag">Área médica</span><span class="sp-tag">Marketing farma</span><span class="sp-tag">Acceso</span><span class="sp-tag">Planes de acción</span><span class="sp-tag">Alineación</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 05 -->
-        <div class="service-panel" id="panel-4">
-          <div>
-            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">05 — Revisión de Procesos</div>
-            <h3 class="sp-title">Método TWACE: cambios transformadores con alta implicación del equipo.</h3>
-            <p class="sp-desc">Metodología propia aplicada con éxito en laboratorios y hospitales. Permite establecer planes de cambio operacionales claros, accesibles y realmente transformadores desde la primera semana.</p>
-            <div class="sp-pillars">
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">⚙️</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Laboratorios farmacéuticos</div>
-                  <div class="sp-pillar-text">Revisión y optimización de procesos en decenas de unidades comerciales, médicas y de marketing de laboratorios líderes.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">🏥</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">+50 hospitales implementados</div>
-                  <div class="sp-pillar-text">Mejora cuantitativa y cualitativa inmediata. Cambios que parecían traumáticos se llevan a cabo de forma satisfactoria, rápida y con alta implicación.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">📈</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Resultados medibles desde el día 1</div>
-                  <div class="sp-pillar-text">TWACE genera KPIs de seguimiento desde el inicio para que el cliente pueda medir el impacto del cambio en tiempo real.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="sp-right">
-            <div class="sp-right-img"><img src="EquipoNI_11.jpg" alt="Método TWACE NUIN"></div>
-            <div class="sp-tags">
-              <span class="sp-tag">Método TWACE</span><span class="sp-tag">+50 hospitales</span><span class="sp-tag">Laboratorios farma</span><span class="sp-tag">Gestión del cambio</span><span class="sp-tag">KPIs</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 06 -->
-        <div class="service-panel" id="panel-5">
-          <div>
-            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">06 — Workshops Estratégicos</div>
-            <h3 class="sp-title">Talleres que generan ideas accionables, alineación real y resultados duraderos.</h3>
-            <p class="sp-desc">Talleres presenciales y online con metodologías como Design Thinking o Metaplan. Creamos espacios participativos donde los equipos generan soluciones propias que realmente se implementan.</p>
-            <div class="sp-pillars">
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">💡</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Design Thinking aplicado a salud</div>
-                  <div class="sp-pillar-text">Procesos de ideación centrados en el paciente y en los HCPs, adaptados al contexto y la cultura específica del sector farmacéutico.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">🗺️</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Metaplan y metodologías participativas</div>
-                  <div class="sp-pillar-text">Dinámicas que dan voz a todos los participantes y generan consensos sólidos, sin que las jerarquías distorsionen el proceso.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">🚀</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">De la idea a la acción</div>
-                  <div class="sp-pillar-text">Cada workshop termina con un plan de implementación concreto. No queremos que las ideas se queden en post-its.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="sp-right">
-            <div class="sp-right-img"><img src="procesos_copia_JCM1959.jpg" alt="Workshops Estratégicos NUIN"></div>
-            <div class="sp-tags">
-              <span class="sp-tag">Design Thinking</span><span class="sp-tag">Metaplan</span><span class="sp-tag">Presencial</span><span class="sp-tag">Online</span><span class="sp-tag">Co-creación</span><span class="sp-tag">Estrategia</span>
             </div>
           </div>
         </div>
