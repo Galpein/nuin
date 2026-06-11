@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NUIN — Healthcare Market Research</title>
+<title>Nuin — Healthcare Market Research</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
@@ -101,6 +101,32 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   box-shadow: 0 2px 12px rgba(0,168,120,0.3);
 }
 .nav-cta-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+/* ──────── LANG TOGGLE ──────── */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 6px 14px;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.lang-toggle:hover { background: var(--green-soft); color: var(--green); }
+.lt-sep { color: var(--text-3); font-weight: 300; }
+.lt-es, .lt-en { transition: color 0.2s; }
+body[lang="en"] .lt-en,
+body[lang="es"] .lt-es { color: var(--green); }
+body[lang="en"] .lt-es,
+body[lang="es"] .lt-en { color: var(--text-3); }
 
 /* ──────── HERO ──────── */
 #hero {
@@ -1649,7 +1675,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 
 </style>
 </head>
-<body>
+<body lang="es">
 
 <!-- NAV -->
 <nav id="main-nav">
@@ -1658,13 +1684,18 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       <img src="dark_logo_transparent_background.png" alt="NUIN" loading="eager">
     </a>
     <ul class="nav-links">
-      <li><a href="#somos">Quienes somos</a></li>
-      <li><a href="#equipo">Equipo</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#espacio">Espacio</a></li>
-      <li><a href="#alianzas">Alianzas</a></li>
+      <li><a href="#somos" data-i18n="nav_about">Quienes somos</a></li>
+      <li><a href="#equipo" data-i18n="nav_team">Equipo</a></li>
+      <li><a href="#servicios" data-i18n="nav_services">Servicios</a></li>
+      <li><a href="#espacio" data-i18n="nav_space">Espacio</a></li>
+      <li><a href="#alianzas" data-i18n="nav_alliances">Alianzas</a></li>
     </ul>
-    <a href="#contacto" class="nav-cta-btn">Contacto</a>
+    <a href="#contacto" class="nav-cta-btn" data-i18n="nav_contact">Contacto</a>
+    <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+      <span class="lt-es">ES</span>
+      <span class="lt-sep">|</span>
+      <span class="lt-en">EN</span>
+    </button>
   </div>
 </nav>
 
@@ -1673,17 +1704,17 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   <div class="hero-gradient"></div>
   <div class="hero-body">
     <div class="hero-left">
-      <div class="hero-label">HEALTHCARE INSIGHTS & STRATEGY</div>
+      <div class="hero-label" data-i18n="hero_label">HEALTHCARE INSIGHTS & STRATEGY</div>
       <h1 class="hero-h1">
-        Convirtiendo datos y<br>
+        <span data-i18n="hero_h1">Convirtiendo datos y<br>
         conversaciones en<br>
         insights accionables<br>
-        <strong style="color: var(--green);">desde 1987</strong>
+        <strong style="color: var(--green);">desde 1987</strong></span>
       </h1>
-      <p class="hero-sub">El primer instituto de investigación de mercado dedicado exclusivamente al sector farmacéutico. Cuatro décadas de rigor, método y profesionalidad en investigación de mercado cualitativa, cuantitativa, advisory boards y reuniones estratégicas.</p>
+      <p class="hero-sub" data-i18n="hero_sub">El primer instituto de investigación de mercado dedicado exclusivamente al sector farmacéutico. Cuatro décadas de rigor, método y profesionalidad en investigación de mercado cualitativa, cuantitativa, advisory boards y reuniones estratégicas.</p>
       <div class="hero-btns">
-        <a href="#servicios" class="btn-primary">Explorar servicios</a>
-        <a href="#somos" class="btn-ghost">Conocer NUIN</a>
+        <a href="#servicios" class="btn-primary" data-i18n="hero_btn_services">Explorar servicios</a>
+        <a href="#somos" class="btn-ghost" data-i18n="hero_btn_about">Conocer Nuin</a>
       </div>
     </div>
     <div class="hero-visual">
@@ -1701,14 +1732,14 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <span class="hl-eyebrow-text">Healthcare Insights &amp; Strategy</span>
       </div>
       <h1 class="hl-h1">
-        Convirtiendo <span class="hl-w-light">datos</span> y conversaciones<br>
+        <span data-i18n="hero_lens_h1">Convirtiendo <span class="hl-w-light">datos</span> y conversaciones<br>
         en <span class="hl-w-black">insights accionables</span><br>
-        <span class="hl-w-muted">desde 1987</span>
+        <span class="hl-w-muted">desde 1987</span></span>
       </h1>
-      <p class="hl-sub">La primera agencia española dedicada exclusivamente al sector farmacéutico. Cuatro décadas de rigor, método y profundidad clínica.</p>
+      <p class="hl-sub" data-i18n="hero_lens_sub">La primera agencia española dedicada exclusivamente al sector farmacéutico. Cuatro décadas de rigor, método y profundidad clínica.</p>
       <div class="hl-btns">
-        <a href="#servicios" class="btn-lens-primary">Explorar servicios <span class="btn-arrow">→</span></a>
-        <a href="#somos" class="btn-lens-link">Conocer NUIN</a>
+        <a href="#servicios" class="btn-lens-primary" data-i18n="hero_btn_services2">Explorar servicios <span class="btn-arrow">→</span></a>
+        <a href="#somos" class="btn-lens-link" data-i18n="hero_btn_about2">Conocer Nuin</a>
       </div>
     </div>
     <div class="hl-right">
@@ -1717,19 +1748,19 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       </div>
       <div class="hl-cap hl-cap-1">
         <span class="hl-cap-num">+40</span>
-        <span class="hl-cap-label">años de experiencia</span>
+        <span class="hl-cap-label" data-i18n="cap_years">años de experiencia</span>
       </div>
       <div class="hl-cap hl-cap-2">
         <span class="hl-cap-num">+4.200</span>
-        <span class="hl-cap-label">proyectos realizados</span>
+        <span class="hl-cap-label" data-i18n="cap_projects">proyectos realizados</span>
       </div>
       <div class="hl-cap hl-cap-3">
         <span class="hl-cap-num">+70</span>
-        <span class="hl-cap-label">laboratorios cliente</span>
+        <span class="hl-cap-label" data-i18n="cap_labs">laboratorios cliente</span>
       </div>
       <div class="hl-cap hl-cap-4">
         <span class="hl-cap-num">Nº1</span>
-        <span class="hl-cap-label">España farma research</span>
+        <span class="hl-cap-label" data-i18n="cap_rank">España farma research</span>
       </div>
     </div>
   </div>
@@ -1744,9 +1775,9 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       <span class="ht-sep">·</span>
       <span class="ht-item">IRIS</span>
       <span class="ht-sep">·</span>
-      <span class="ht-item">+70 laboratorios farmacéuticos</span>
+      <span class="ht-item" data-i18n="ht_labs">+70 laboratorios farmacéuticos</span>
       <span class="ht-sep">·</span>
-      <span class="ht-item">+4.200 proyectos</span>
+      <span class="ht-item" data-i18n="ht_projects">+4.200 proyectos</span>
     </div>
   </div>
 </section>
@@ -1756,41 +1787,36 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   <div class="section-inner">
     <div class="somos-layout">
       <div class="somos-left reveal">
-        <div class="eyebrow">Quiénes somos</div>
-        <h2 class="section-title">
-          El primer instituto de<br>
-          investigación de mercado<br>
-          dedicado exclusivamente<br>
-          al sector farmacéutico
-        </h2>
-        <p>Fuimos la primera empresa española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Cuatro décadas de trabajo continuo, un equipo sólido y una metodología probada nos avalan.</p>
-        <p>Nuestra especialización en healthcare no es una elección comercial – es nuestra razón de ser.</p>
+        <div class="eyebrow" data-i18n="somos_eyebrow">Quiénes somos</div>
+        <h2 class="section-title" data-i18n="somos_title">El primer instituto de<br>investigación de mercado<br>dedicado exclusivamente<br>al sector farmacéutico</h2>
+        <p data-i18n="somos_p1">Fuimos la primera empresa española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Cuatro décadas de trabajo continuo, un equipo sólido y una metodología probada nos avalan.</p>
+        <p data-i18n="somos_p2">Nuestra especialización en healthcare no es una elección comercial – es nuestra razón de ser.</p>
       </div>
       <div class="stats-grid reveal reveal-d1">
         <div class="stat-card accent">
           <div class="stat-num">+40</div>
-          <div class="stat-label">años dedicados al sector farma</div>
+          <div class="stat-label" data-i18n="stat1">años dedicados al sector farma</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">+4350</div>
-          <div class="stat-label">proyectos en healthcare</div>
+          <div class="stat-label" data-i18n="stat2">proyectos en healthcare</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">+85</div>
-          <div class="stat-label">laboratorios han confiado en nosotros</div>
+          <div class="stat-label" data-i18n="stat3">laboratorios han confiado en nosotros</div>
         </div>
         <div class="stat-card accent">
           <div class="stat-num">+750</div>
-          <div class="stat-label">Advisory Boards moderados</div>
+          <div class="stat-label" data-i18n="stat4">Advisory Boards moderados</div>
         </div>
       </div>
     </div>
 
     <div class="somos-tabs">
       <div class="viz-toggle" style="justify-content: center; margin-bottom: 40px;">
-        <button class="vt-btn active" data-target="panel-stakeholders">Stakeholders</button>
-        <button class="vt-btn" data-target="panel-areas">Áreas Terapéuticas</button>
-        <button class="vt-btn" data-target="panel-valores">Principios y Valores</button>
+        <button class="vt-btn active" data-target="panel-stakeholders" data-i18n="tab_stakeholders">Stakeholders</button>
+        <button class="vt-btn" data-target="panel-areas" data-i18n="tab_areas">Áreas Terapéuticas</button>
+        <button class="vt-btn" data-target="panel-valores" data-i18n="tab_valores">Principios y Valores</button>
       </div>
 
       <div id="panel-stakeholders" class="viz-panel active">
@@ -1800,16 +1826,16 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       </div>
 
       <div id="panel-areas" class="viz-panel">
-        <div class="eyebrow reveal">Experiencia</div>
-        <h2 class="section-title reveal">Áreas terapéuticas</h2>
-        <p class="section-sub reveal" style="margin-bottom:40px;">A lo largo de cuatro décadas hemos adquirido experiencia en más de 200 enfermedades
+        <div class="eyebrow reveal" data-i18n="areas_eyebrow">Experiencia</div>
+        <h2 class="section-title reveal" data-i18n="areas_title">Áreas terapéuticas</h2>
+        <p class="section-sub reveal" style="margin-bottom:40px;" data-i18n="areas_sub">A lo largo de cuatro décadas hemos adquirido experiencia en más de 200 enfermedades
 destacando una gran dedicación a las enfermedades raras.</p>
         <div class="enf-flip-grid reveal theme-aurora">
 
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Neurología y<br>neurodesarrollo</h4>
+                <h4 data-i18n="neuro_title">Neurología y<br>neurodesarrollo</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -1835,7 +1861,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Cardiovascular</h4>
+                <h4 data-i18n="cardio_title">Cardiovascular</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -1857,7 +1883,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Respiratorio</h4>
+                <h4 data-i18n="resp_title">Respiratorio</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -1876,7 +1902,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Endocrinología</h4>
+                <h4 data-i18n="endo_title">Endocrinología</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -1897,7 +1923,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Enf. metabólicas<br>y lisosomales</h4>
+                <h4 data-i18n="metab_title">Enf. metabólicas<br>y lisosomales</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -1914,7 +1940,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Hematología</h4>
+                <h4 data-i18n="hema_title">Hematología</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -1934,7 +1960,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Oncología y<br>hemato-oncología</h4>
+                <h4 data-i18n="onco_title">Oncología y<br>hemato-oncología</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -1957,7 +1983,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Inmunología<br>y reumatología</h4>
+                <h4 data-i18n="inmuno_title">Inmunología<br>y reumatología</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -1978,7 +2004,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Gastroenterología<br>y hepatología</h4>
+                <h4 data-i18n="gastro_title">Gastroenterología<br>y hepatología</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -1998,7 +2024,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Infecciosas</h4>
+                <h4 data-i18n="infec_title">Infecciosas</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -2017,7 +2043,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Dermatología</h4>
+                <h4 data-i18n="derma_title">Dermatología</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -2036,7 +2062,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Nefrología</h4>
+                <h4 data-i18n="nefro_title">Nefrología</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -2052,7 +2078,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Oftalmología</h4>
+                <h4 data-i18n="oftalmo_title">Oftalmología</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -2071,7 +2097,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="enf-flip-card">
             <div class="enf-flip-inner">
               <div class="enf-flip-front">
-                <h4>Reproducción,<br>ginecología y urología</h4>
+                <h4 data-i18n="repro_title">Reproducción,<br>ginecología y urología</h4>
               </div>
               <div class="enf-flip-back">
                 <div class="enf-flip-back-tags">
@@ -2088,9 +2114,20 @@ destacando una gran dedicación a las enfermedades raras.</p>
             </div>
           </div>
 
-          <div class="enf-flip-card static">
+          <div class="enf-flip-card">
             <div class="enf-flip-inner">
-              <div class="enf-flip-front" style="background: var(--green); border-color: var(--green);">
+              <div class="enf-flip-front">
+                <h4 data-i18n="psiq_title">Psiquiatría</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">Esquizofrenia</span>
+                  <span class="enf-tag-flip">Depresión</span>
+                  <span class="enf-tag-flip">Adicciones</span>
+                  <span class="enf-tag-flip">TDAH</span>
+                  <span class="enf-tag-flip">Trastorno bipolar</span>
+                  <span class="enf-tag-flip">Ansiedad</span>
+                </div>
               </div>
             </div>
           </div>
@@ -2099,15 +2136,15 @@ destacando una gran dedicación a las enfermedades raras.</p>
       </div>
 
       <div id="panel-valores" class="viz-panel">
-        <div class="eyebrow reveal">Principios y valores</div>
-        <h2 class="section-title reveal">Nuestra forma de ver las cosas</h2>
-        <p class="valores-intro reveal">Somos NUIN y esta es nuestra forma de ver las cosas:</p>
+        <div class="eyebrow reveal" data-i18n="val_eyebrow">Principios y valores</div>
+        <h2 class="section-title reveal" data-i18n="val_title">Nuestra forma de ver las cosas</h2>
+        <p class="valores-intro reveal" data-i18n="val_intro">Somos Nuin y esta es nuestra forma de ver las cosas:</p>
         <div class="valores-accordion reveal">
 
           <div class="val-item">
             <button class="val-header" aria-expanded="false">
               <span class="val-num">01</span>
-              <span class="val-title">Sobre la investigación de mercado</span>
+              <span class="val-title" data-i18n="val1_title">Sobre la investigación de mercado</span>
               <span class="val-arrow">+</span>
             </button>
             <div class="val-body">
@@ -2116,7 +2153,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
                   <p class="val-quote-text">"El precio de la luz es menor que el costo de la oscuridad."</p>
                   <p class="val-quote-author">— Arthur C. Nielsen</p>
                 </div>
-                <p class="val-text">Estamos convencidos de que las decisiones basadas en la empatía siempre serán mejores. Por eso convertimos los conocimientos, comportamientos y sentimientos de las personas en información útil y utilizable para facilitar a nuestros clientes la toma de mejores decisiones.</p>
+                <p class="val-text" data-i18n="val1_text">Estamos convencidos de que las decisiones basadas en la empatía siempre serán mejores. Por eso convertimos los conocimientos, comportamientos y sentimientos de las personas en información útil y utilizable para facilitar a nuestros clientes la toma de mejores decisiones.</p>
               </div>
             </div>
           </div>
@@ -2124,7 +2161,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="val-item">
             <button class="val-header" aria-expanded="false">
               <span class="val-num">02</span>
-              <span class="val-title">Sobre la profesionalidad</span>
+              <span class="val-title" data-i18n="val2_title">Sobre la profesionalidad</span>
               <span class="val-arrow">+</span>
             </button>
             <div class="val-body">
@@ -2133,7 +2170,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
                   <p class="val-quote-text">"A la excelencia hay que ir y golpearle la puerta, es un trabajo de todos los días."</p>
                   <p class="val-quote-author">— Arnaldo Calveyra</p>
                 </div>
-                <p class="val-text">Estamos convencidos de que la excelencia es la única aspiración válida. Por eso ponemos toda nuestra alma, profesionalidad y entrega en cada proyecto, porque creemos firmemente que no hay proyecto o cliente ni grande ni pequeño.</p>
+                <p class="val-text" data-i18n="val2_text">Estamos convencidos de que la excelencia es la única aspiración válida. Por eso ponemos toda nuestra alma, profesionalidad y entrega en cada proyecto, porque creemos firmemente que no hay proyecto o cliente ni grande ni pequeño.</p>
               </div>
             </div>
           </div>
@@ -2141,7 +2178,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="val-item">
             <button class="val-header" aria-expanded="false">
               <span class="val-num">03</span>
-              <span class="val-title">Sobre el equipo</span>
+              <span class="val-title" data-i18n="val3_title">Sobre el equipo</span>
               <span class="val-arrow">+</span>
             </button>
             <div class="val-body">
@@ -2150,7 +2187,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
                   <p class="val-quote-text">"El talento gana partidos, pero el trabajo en equipo y la inteligencia ganan campeonatos."</p>
                   <p class="val-quote-author">— Michael Jordan</p>
                 </div>
-                <p class="val-text">Estamos convencidos de que toda persona tiene un don. Por eso tenemos un equipo de personas diferentes, que se actualizan continuamente en tendencias, metodologías y recursos.</p>
+                <p class="val-text" data-i18n="val3_text">Estamos convencidos de que toda persona tiene un don. Por eso tenemos un equipo de personas diferentes, que se actualizan continuamente en tendencias, metodologías y recursos.</p>
               </div>
             </div>
           </div>
@@ -2158,7 +2195,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="val-item">
             <button class="val-header" aria-expanded="false">
               <span class="val-num">04</span>
-              <span class="val-title">Sobre las relaciones</span>
+              <span class="val-title" data-i18n="val4_title">Sobre las relaciones</span>
               <span class="val-arrow">+</span>
             </button>
             <div class="val-body">
@@ -2167,7 +2204,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
                   <p class="val-quote-text">"Yo no sé hacer lo que tú haces y tú no sabes hacer lo que yo hago, pero juntos podemos hacer grandes cosas."</p>
                   <p class="val-quote-author">— Madre Teresa de Calcuta</p>
                 </div>
-                <p class="val-text">Estamos convencidos de que la confianza y el respeto profesional son los pilares. Por eso nos relacionamos desde la flexibilidad, la humildad, la cercanía y la profesionalidad.</p>
+                <p class="val-text" data-i18n="val4_text">Estamos convencidos de que la confianza y el respeto profesional son los pilares. Por eso nos relacionamos desde la flexibilidad, la humildad, la cercanía y la profesionalidad.</p>
               </div>
             </div>
           </div>
@@ -2175,7 +2212,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="val-item">
             <button class="val-header" aria-expanded="false">
               <span class="val-num">05</span>
-              <span class="val-title">Sobre la gestión de equipos</span>
+              <span class="val-title" data-i18n="val5_title">Sobre la gestión de equipos</span>
               <span class="val-arrow">+</span>
             </button>
             <div class="val-body">
@@ -2184,7 +2221,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
                   <p class="val-quote-text">"Elige un trabajo que te guste y no tendrás que trabajar ni un solo día de tu vida."</p>
                   <p class="val-quote-author">— Confucio</p>
                 </div>
-                <p class="val-text">Estamos convencidos de que la felicidad de las personas tiene que ser una prioridad. Por eso ofrecemos a nuestros empleados un espacio donde pueden desarrollarse día a día.</p>
+                <p class="val-text" data-i18n="val5_text">Estamos convencidos de que la felicidad de las personas tiene que ser una prioridad. Por eso ofrecemos a nuestros empleados un espacio donde pueden desarrollarse día a día.</p>
               </div>
             </div>
           </div>
@@ -2192,7 +2229,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="val-item">
             <button class="val-header" aria-expanded="false">
               <span class="val-num">06</span>
-              <span class="val-title">Sobre el mundo</span>
+              <span class="val-title" data-i18n="val6_title">Sobre el mundo</span>
               <span class="val-arrow">+</span>
             </button>
             <div class="val-body">
@@ -2201,7 +2238,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
                   <p class="val-quote-text">"La visión sin acción es un sueño, la acción sin visión es pasar el rato, pero la acción con visión significa generar un cambio positivo."</p>
                   <p class="val-quote-author">— Nelson Mandela</p>
                 </div>
-                <p class="val-text">Estamos convencidos de que si todos enfocásemos nuestra vida desde la empatía el mundo sería un lugar mejor. Por eso abordamos cada proyecto y cada nuevo reto desde el análisis de los distintos puntos de vista.</p>
+                <p class="val-text" data-i18n="val6_text">Estamos convencidos de que si todos enfocásemos nuestra vida desde la empatía el mundo sería un lugar mejor. Por eso abordamos cada proyecto y cada nuevo reto desde el análisis de los distintos puntos de vista.</p>
               </div>
             </div>
           </div>
@@ -2218,7 +2255,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
   <div class="section-inner">
     <div class="equipo-header reveal">
       <div>
-        <div class="eyebrow">El equipo</div>
+        <div class="eyebrow" data-i18n="team_eyebrow">El equipo</div>
         <h2 class="section-title">Somos <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="lazy"></span></h2>
       </div>
     </div>
@@ -2239,7 +2276,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="tm-flip-back">
             <div class="tm-back-name">Juan Reig</div>
             <div class="tm-back-role">Chief Strategy Partner</div>
-            <div class="tm-back-bio">Con más de 20 años en consultoría farma, Juan ha realizado miles de entrevistas y focus groups, moderado más de 750 Advisory Boards nacionales e internacionales y apoyado a más de 50 hospitales, laboratorios y asociaciones de pacientes en la revisión de procesos, trabajando en todas las áreas terapéuticas. Además, su trayectoria como scout y su participación en la Organización Mundial del Movimiento Scout y en la Society of Leadership Fellows le han consolidado como un líder en entornos multiculturales, aportando valor en foros internacionales como IRIS o EphMRA.</div>
+            <div class="tm-back-bio" data-i18n="bio_juan">Con más de 20 años en consultoría farma, Juan ha realizado miles de entrevistas y focus groups, moderado más de 750 Advisory Boards nacionales e internacionales y apoyado a más de 50 hospitales, laboratorios y asociaciones de pacientes en la revisión de procesos, trabajando en todas las áreas terapéuticas. Además, su trayectoria como scout y su participación en la Organización Mundial del Movimiento Scout y en la Society of Leadership Fellows le han consolidado como un líder en entornos multiculturales, aportando valor en foros internacionales como IRIS o EphMRA.</div>
           </div>
         </div>
       </div>
@@ -2258,7 +2295,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="tm-flip-back">
             <div class="tm-back-name">Loreto Reig</div>
             <div class="tm-back-role">Managing Partner</div>
-            <div class="tm-back-bio">Licenciada en Administración y Dirección de Empresas por ICADE y en Derecho por la UNED, Loreto acumula más de 15 años de experiencia en gestión de equipos y expansión internacional. Desde hace 10 años es Managing Partner en Nuin, donde coordina la oficina y asegura la excelencia en cada proyecto, alineando talento, metodología y objetivos estratégicos.</div>
+            <div class="tm-back-bio" data-i18n="bio_loreto">Licenciada en Administración y Dirección de Empresas por ICADE y en Derecho por la UNED, Loreto acumula más de 15 años de experiencia en gestión de equipos y expansión internacional. Desde hace 10 años es Managing Partner en Nuin, donde coordina la oficina y asegura la excelencia en cada proyecto, alineando talento, metodología y objetivos estratégicos.</div>
           </div>
         </div>
       </div>
@@ -2277,7 +2314,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="tm-flip-back">
             <div class="tm-back-name">Josefina Consuegra</div>
             <div class="tm-back-role">Strategic Client Advisor</div>
-            <div class="tm-back-bio">Con más de 30 años de experiencia en la industria farmacéutica, Josefina aporta una visión estratégica integral del sector, sustentada en un profundo conocimiento de la investigación de mercado y de múltiples áreas terapéuticas. Su trayectoria le ha permitido desarrollar una sólida orientación al cliente, comprendiendo sus retos desde dentro de la organización y actuando como partner estratégico en la definición de proyectos, generación de insights y toma de decisiones alineadas con los objetivos de negocio.</div>
+            <div class="tm-back-bio" data-i18n="bio_josefina">Con más de 30 años de experiencia en la industria farmacéutica, Josefina aporta una visión estratégica integral del sector, sustentada en un profundo conocimiento de la investigación de mercado y de múltiples áreas terapéuticas. Su trayectoria le ha permitido desarrollar una sólida orientación al cliente, comprendiendo sus retos desde dentro de la organización y actuando como partner estratégico en la definición de proyectos, generación de insights y toma de decisiones alineadas con los objetivos de negocio.</div>
           </div>
         </div>
       </div>
@@ -2296,7 +2333,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="tm-flip-back">
             <div class="tm-back-name">Sonia Galicia</div>
             <div class="tm-back-role">Head of Insights</div>
-            <div class="tm-back-bio">Las empresas de investigación de mercados y consultoría especializadas en el sector farmacéutico han sido el medio en el que se ha formado y desarrollado profesionalmente. Por su formación como psicóloga, los estudios cualitativos son un área destacada de su trabajo, que le permite analizar, comprender e interpretar las tendencias del sector, enfocado a generar ideas y soluciones para mejorar las estrategias comerciales de los clientes. Experta en técnicas de moderación, metodología maieútica y herramientas innovadoras.</div>
+            <div class="tm-back-bio" data-i18n="bio_sonia">Las empresas de investigación de mercados y consultoría especializadas en el sector farmacéutico han sido el medio en el que se ha formado y desarrollado profesionalmente. Por su formación como psicóloga, los estudios cualitativos son un área destacada de su trabajo, que le permite analizar, comprender e interpretar las tendencias del sector, enfocado a generar ideas y soluciones para mejorar las estrategias comerciales de los clientes. Experta en técnicas de moderación, metodología maieútica y herramientas innovadoras.</div>
           </div>
         </div>
       </div>
@@ -2315,7 +2352,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="tm-flip-back">
             <div class="tm-back-name">Irina González</div>
             <div class="tm-back-role">Medical Communication Lead</div>
-            <div class="tm-back-bio">Consultora estratégica especializada en investigación de mercados en el sector farmacéutico y salud. Desempeña tareas de colaboración, organización y gestión de Advisory Boards, comités científicos y grupos de trabajo, supervisando la creación, calidad y difusión de los contenidos científicos y médicos generados para ofrecer un resultado alineado a los objetivos del cliente y asegurando el cumplimiento normativo.</div>
+            <div class="tm-back-bio" data-i18n="bio_irina">Consultora estratégica especializada en investigación de mercados en el sector farmacéutico y salud. Desempeña tareas de colaboración, organización y gestión de Advisory Boards, comités científicos y grupos de trabajo, supervisando la creación, calidad y difusión de los contenidos científicos y médicos generados para ofrecer un resultado alineado a los objetivos del cliente y asegurando el cumplimiento normativo.</div>
           </div>
         </div>
       </div>
@@ -2334,7 +2371,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="tm-flip-back">
             <div class="tm-back-name">Ana Pérez</div>
             <div class="tm-back-role">Scientific &amp; Medical Writer</div>
-            <div class="tm-back-bio">Sólida formación científica y experiencia nacional e internacional. Licenciada en farmacia por la Universidad de Santiago de Compostela y doctora en tecnología farmacéutica por la Heinrich-Heine-Universität de Düsseldorf. Tras varios años como mánager de proyectos en la industria farmacéutica alemana, regresa a España y se especializa en redacción médica, ámbito en el que acumula casi 10 años de experiencia.</div>
+            <div class="tm-back-bio" data-i18n="bio_ana">Sólida formación científica y experiencia nacional e internacional. Licenciada en farmacia por la Universidad de Santiago de Compostela y doctora en tecnología farmacéutica por la Heinrich-Heine-Universität de Düsseldorf. Tras varios años como mánager de proyectos en la industria farmacéutica alemana, regresa a España y se especializa en redacción médica, ámbito en el que acumula casi 10 años de experiencia.</div>
           </div>
         </div>
       </div>
@@ -2353,7 +2390,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="tm-flip-back">
             <div class="tm-back-name">Laura Barcala</div>
             <div class="tm-back-role">Project &amp; Engagement Consultant</div>
-            <div class="tm-back-bio">Más de 14 años de experiencia trabajando con entidades sociales en el ámbito público y privado. Con formación en Magisterio de Educación Primaria, ha desarrollado una forma de trabajar muy centrada en las personas, con facilidad para organizar dinámicas, coordinar encuentros y hacer que distintos perfiles se impliquen en los proyectos. En los últimos años ha trasladado esta experiencia al ámbito sanitario, colaborando con asociaciones de pacientes y coordinando estudios.</div>
+            <div class="tm-back-bio" data-i18n="bio_laura">Más de 14 años de experiencia trabajando con entidades sociales en el ámbito público y privado. Con formación en Magisterio de Educación Primaria, ha desarrollado una forma de trabajar muy centrada en las personas, con facilidad para organizar dinámicas, coordinar encuentros y hacer que distintos perfiles se impliquen en los proyectos. En los últimos años ha trasladado esta experiencia al ámbito sanitario, colaborando con asociaciones de pacientes y coordinando estudios.</div>
           </div>
         </div>
       </div>
@@ -2372,7 +2409,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="tm-flip-back">
             <div class="tm-back-name">Guillermo Liébana</div>
             <div class="tm-back-role">Innovation &amp; Technology Lead</div>
-            <div class="tm-back-bio">Impulsa la adopción de soluciones tecnológicas y enfoques innovadores para optimizar los procesos y la propuesta de valor de NUIN.</div>
+            <div class="tm-back-bio" data-i18n="bio_guillermo">Impulsa la adopción de soluciones tecnológicas y enfoques innovadores para optimizar los procesos y la propuesta de valor de Nuin.</div>
           </div>
         </div>
       </div>
@@ -2385,9 +2422,9 @@ destacando una gran dedicación a las enfermedades raras.</p>
 <section id="servicios" class="section">
   <div class="section-inner">
     <div class="services-header reveal">
-      <div class="eyebrow">Lo que hacemos</div>
+      <div class="eyebrow" data-i18n="srv_eyebrow">Lo que hacemos</div>
       <h2 class="section-title">Servicios <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="lazy"></span></h2>
-      <p class="section-sub">Cuarenta años dedicados a un solo sector nos han permitido dominar cada ángulo de la investigación en healthcare. Selecciona un servicio para ver los detalles.</p>
+      <p class="section-sub" data-i18n="srv_sub">Cuarenta años dedicados a un solo sector nos han permitido dominar cada ángulo de la investigación en healthcare. Selecciona un servicio para ver los detalles.</p>
     </div>
 
     <div class="services-layout">
@@ -2396,10 +2433,10 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <span class="srv-name">Advisory Boards</span>
         </div>
         <div class="srv-item" onclick="showService(1)">
-          <span class="srv-name">Investigación de mercado</span>
+          <span class="srv-name" data-i18n="srv2_name">Investigación de mercado</span>
         </div>
         <div class="srv-item" onclick="showService(2)">
-          <span class="srv-name">Otras soluciones estratégicas</span>
+          <span class="srv-name" data-i18n="srv3_name">Otras soluciones estratégicas</span>
         </div>
       </div>
 
@@ -2410,33 +2447,33 @@ destacando una gran dedicación a las enfermedades raras.</p>
         <div class="service-panel active" id="panel-0">
           <div class="sp-left">
             <h3 class="sp-title">Advisory Boards</h3>
-            <p class="sp-desc">Más de 750 sesiones realizadas en todo el mundo. Diseñamos cada reunión a medida, asegurando la máxima participación y resultados estratégicos para cada laboratorio.</p>
+            <p class="sp-desc" data-i18n="ab_desc">Más de 750 sesiones realizadas en todo el mundo. Diseñamos cada reunión a medida, asegurando la máxima participación y resultados estratégicos para cada laboratorio.</p>
             <div class="sp-pillars">
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Sistema propio de preparación</div>
-                  <div class="sp-pillar-text">750+ ABs nos han dado las herramientas para optimizar cada sesión. El 100% de los clientes que han hecho un AB con nosotros han repetido.</div>
+                  <div class="sp-pillar-title" data-i18n="ab_p1_title">Sistema propio de preparación</div>
+                  <div class="sp-pillar-text" data-i18n="ab_p1_text">750+ ABs nos han dado las herramientas para optimizar cada sesión. El 100% de los clientes que han hecho un AB con nosotros han repetido.</div>
                 </div>
               </div>
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Múltiples formatos</div>
-                  <div class="sp-pillar-text">Abarca una amplia variedad de formatos, presenciales, virtuales o híbridos, áreas de organización, médico, marketing, acceso, y stakeholders.</div>
+                  <div class="sp-pillar-title" data-i18n="ab_p2_title">Múltiples formatos</div>
+                  <div class="sp-pillar-text" data-i18n="ab_p2_text">Abarca una amplia variedad de formatos, presenciales, virtuales o híbridos, áreas de organización, médico, marketing, acceso, y stakeholders.</div>
                 </div>
               </div>
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Alcance internacional</div>
-                  <div class="sp-pillar-text">EEUU, México, Honduras, Chile, Argentina, Francia, Dinamarca, Suiza, UK… Moderamos en varios idiomas.</div>
+                  <div class="sp-pillar-title" data-i18n="ab_p3_title">Alcance internacional</div>
+                  <div class="sp-pillar-text" data-i18n="ab_p3_text">EEUU, México, Honduras, Chile, Argentina, Francia, Dinamarca, Suiza, UK… Moderamos en varios idiomas.</div>
                 </div>
               </div>
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Sala única</div>
+                  <div class="sp-pillar-title" data-i18n="ab_p4_title">Sala única</div>
                   <div class="sp-pillar-text">Sala <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="nuin" loading="lazy"></span>, diseñada específicamente para Advisory Boards, con mobiliario ergonómico, cabina de traducción simultánea, capacidad hasta 20 personas.</div>
                 </div>
               </div>
@@ -2450,44 +2487,44 @@ destacando una gran dedicación a las enfermedades raras.</p>
         <!-- Panel 02 — Investigación -->
         <div class="service-panel" id="panel-1">
           <div class="sp-left">
-            <h3 class="sp-title">Investigación de mercado</h3>
-            <p style="font-size:14px;font-weight:500;color:var(--text-2);margin-bottom:14px;line-height:1.5;">40 años convirtiendo preguntas complejas en decisiones claras.</p>
-            <p class="sp-desc">La investigación es el núcleo de NUIN. Cuatro décadas trabajando exclusivamente en salud nos han permitido desarrollar un conocimiento profundo del entorno clínico, los profesionales sanitarios y los pacientes.</p>
-            <p class="sp-desc" style="margin-top:8px;">Combinamos investigación cualitativa y cuantitativa con metodología propia, base de datos exclusiva y amplia experiencia por áreas terapéuticas para generar insights sólidos, accionables y relevantes. No solo obtenemos respuestas: entendemos el contexto que las explica.</p>
+            <h3 class="sp-title" data-i18n="inv_title">Investigación de mercado</h3>
+            <p style="font-size:14px;font-weight:500;color:var(--text-2);margin-bottom:14px;line-height:1.5;" data-i18n="inv_tagline">40 años convirtiendo preguntas complejas en decisiones claras.</p>
+            <p class="sp-desc" data-i18n="inv_desc1">La investigación es el núcleo de Nuin. Cuatro décadas trabajando exclusivamente en salud nos han permitido desarrollar un conocimiento profundo del entorno clínico, los profesionales sanitarios y los pacientes.</p>
+            <p class="sp-desc" style="margin-top:8px;" data-i18n="inv_desc2">Combinamos investigación cualitativa y cuantitativa con metodología propia, base de datos exclusiva y amplia experiencia por áreas terapéuticas para generar insights sólidos, accionables y relevantes. No solo obtenemos respuestas: entendemos el contexto que las explica.</p>
             <div class="sp-pillars" style="margin-top:20px;">
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Especialización real en salud</div>
-                  <div class="sp-pillar-text">Hemos trabajado en todas las áreas terapéuticas y con prácticamente todos los stakeholders del ecosistema sanitario. Ese conocimiento acumulado nos permite comprender rápidamente cada proyecto y formular las preguntas adecuadas desde el inicio.</div>
+                  <div class="sp-pillar-title" data-i18n="inv_p1_title">Especialización real en salud</div>
+                  <div class="sp-pillar-text" data-i18n="inv_p1_text">Hemos trabajado en todas las áreas terapéuticas y con prácticamente todos los stakeholders del ecosistema sanitario. Ese conocimiento acumulado nos permite comprender rápidamente cada proyecto y formular las preguntas adecuadas desde el inicio.</div>
                 </div>
               </div>
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Acceso a todos los perfiles</div>
-                  <div class="sp-pillar-text">Médicos especialistas, Atención Primaria, enfermería, farmacia hospitalaria, farmacia comunitaria, gestores, KOLs, pacientes, cuidadores y asociaciones de pacientes. Cobertura nacional, sin limitaciones geográficas ni de especialidad.</div>
+                  <div class="sp-pillar-title" data-i18n="inv_p2_title">Acceso a todos los perfiles</div>
+                  <div class="sp-pillar-text" data-i18n="inv_p2_text">Médicos especialistas, Atención Primaria, enfermería, farmacia hospitalaria, farmacia comunitaria, gestores, KOLs, pacientes, cuidadores y asociaciones de pacientes. Cobertura nacional, sin limitaciones geográficas ni de especialidad.</div>
                 </div>
               </div>
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Base de datos propia y exclusiva</div>
-                  <div class="sp-pillar-text">Nuestro panel propio, construido y actualizado internamente durante años, garantiza rapidez, trazabilidad y ratios de respuesta superiores al estándar del mercado. Una ventaja diferencial clave para asegurar calidad y representatividad.</div>
+                  <div class="sp-pillar-title" data-i18n="inv_p3_title">Base de datos propia y exclusiva</div>
+                  <div class="sp-pillar-text" data-i18n="inv_p3_text">Nuestro panel propio, construido y actualizado internamente durante años, garantiza rapidez, trazabilidad y ratios de respuesta superiores al estándar del mercado. Una ventaja diferencial clave para asegurar calidad y representatividad.</div>
                 </div>
               </div>
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Metodología optimizada durante 40 años</div>
-                  <div class="sp-pillar-text">Aplicamos metodologías cualitativas y cuantitativas adaptadas al sector salud: entrevistas en profundidad, focus groups, etnografías, técnicas proyectivas, encuestas y estudios híbridos diseñados para obtener insights realmente útiles.</div>
+                  <div class="sp-pillar-title" data-i18n="inv_p4_title">Metodología optimizada durante 40 años</div>
+                  <div class="sp-pillar-text" data-i18n="inv_p4_text">Aplicamos metodologías cualitativas y cuantitativas adaptadas al sector salud: entrevistas en profundidad, focus groups, etnografías, técnicas proyectivas, encuestas y estudios híbridos diseñados para obtener insights realmente útiles.</div>
                 </div>
               </div>
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Rigor, agilidad y calidad de dato</div>
-                  <div class="sp-pillar-text">La combinación de expertise sectorial, metodología propia y acceso directo a los perfiles adecuados nos permite ejecutar proyectos con rapidez sin comprometer la profundidad ni la calidad del dato.</div>
+                  <div class="sp-pillar-title" data-i18n="inv_p5_title">Rigor, agilidad y calidad de dato</div>
+                  <div class="sp-pillar-text" data-i18n="inv_p5_text">La combinación de expertise sectorial, metodología propia y acceso directo a los perfiles adecuados nos permite ejecutar proyectos con rapidez sin comprometer la profundidad ni la calidad del dato.</div>
                 </div>
               </div>
             </div>
@@ -2500,28 +2537,28 @@ destacando una gran dedicación a las enfermedades raras.</p>
         <!-- Panel 03 — Otras soluciones estratégicas -->
         <div class="service-panel" id="panel-2">
           <div class="sp-left">
-            <h3 class="sp-title">Otras soluciones estratégicas</h3>
-            <p class="sp-desc">En NUIN acompañamos a nuestros clientes en momentos clave de análisis, alineación y toma de decisiones. Diseñamos y facilitamos dinámicas estratégicas adaptadas al entorno healthcare, combinando conocimiento del sector, visión analítica y experiencia moderando equipos multidisciplinares.</p>
-            <p class="sp-desc" style="margin-top:8px;">Ayudamos a transformar información y experiencia en decisiones compartidas, accionables y orientadas a resultados.</p>
+            <h3 class="sp-title" data-i18n="otras_title">Otras soluciones estratégicas</h3>
+            <p class="sp-desc" data-i18n="otras_desc1">En Nuin acompañamos a nuestros clientes en momentos clave de análisis, alineación y toma de decisiones. Diseñamos y facilitamos dinámicas estratégicas adaptadas al entorno healthcare, combinando conocimiento del sector, visión analítica y experiencia moderando equipos multidisciplinares.</p>
+            <p class="sp-desc" style="margin-top:8px;" data-i18n="otras_desc2">Ayudamos a transformar información y experiencia en decisiones compartidas, accionables y orientadas a resultados.</p>
             <div class="sp-pillars" style="margin-top:20px;">
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Revisión de procesos</div>
+                  <div class="sp-pillar-title" data-i18n="otras_p1_title">Revisión de procesos</div>
                   <div class="sp-pillar-text"><strong>Método TWACE: cambios transformadores con alta implicación del equipo.</strong> Metodología propia aplicada con éxito en laboratorios y hospitales. Permite establecer planes de cambio operacionales claros, accesibles y realmente transformadores desde la primera semana. Experiencia en la optimización de procesos en decenas de unidades comerciales, médicas y de marketing de laboratorios líderes y en hospitales con más de 50 implementaciones realizadas.</div>
                 </div>
               </div>
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Reuniones de ciclo</div>
+                  <div class="sp-pillar-title" data-i18n="otras_p2_title">Reuniones de ciclo</div>
                   <div class="sp-pillar-text"><strong>Reuniones internas que rompen inercias y generan planes de acción reales.</strong> Diseñamos y facilitamos reuniones de ciclo que alinean equipos, superan bloqueos y transforman conversaciones en compromisos concretos y medibles para áreas médicas, de acceso y marketing.</div>
                 </div>
               </div>
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Workshops estratégicos</div>
+                  <div class="sp-pillar-title" data-i18n="otras_p3_title">Workshops estratégicos</div>
                   <div class="sp-pillar-text"><strong>Talleres que generan ideas accionables, alineación real y resultados duraderos.</strong> Talleres presenciales y online con metodologías como Design Thinking o Metaplan. Creamos espacios participativos donde los equipos generan soluciones propias que realmente se implementan.</div>
                 </div>
               </div>
@@ -2541,9 +2578,9 @@ destacando una gran dedicación a las enfermedades raras.</p>
 <section id="espacio" class="section">
   <div class="section-inner">
     <div class="espacio-header reveal">
-      <div class="eyebrow">Instalaciones</div>
+      <div class="eyebrow" data-i18n="esp_eyebrow">Instalaciones</div>
       <h2 class="section-title">Espacio <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="lazy"></span></h2>
-      <p class="section-sub">Dejamos que nuestras salas hablen por nosotros. Desde la Sala NUIN — la única en España diseñada específicamente para Advisory Boards — hasta la Sala FOCUS, pensada hasta el más mínimo detalle.</p>
+      <p class="section-sub" data-i18n="esp_sub">Dejamos que nuestras salas hablen por nosotros. Desde la Sala Nuin — la única en España diseñada específicamente para Advisory Boards — hasta la Sala FOCUS, pensada hasta el más mínimo detalle.</p>
     </div>
 
     <!-- Mosaic unificado -->
@@ -2572,13 +2609,13 @@ destacando una gran dedicación a las enfermedades raras.</p>
       <div class="room-right">
         <h3 class="sp-title">Sala <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="lazy"></span></h3>
         <ul class="room-features-list">
-          <li>Espacio equipado con <strong style="font-weight: 600;">mobiliario ergonómico</strong> que garantiza la comodidad de los participantes durante sesiones de larga duración.</li>
-          <li>Dispone de <strong style="font-weight: 600;">cabina de traducción simultánea</strong> para facilitar reuniones internacionales y proyectos multicéntricos.</li>
-          <li>Sala con <strong style="font-weight: 600;">capacidad</strong> para albergar <strong>hasta 20 asistentes</strong> en un entorno cómodo y funcional.</li>
-          <li>Amplia entrada de <strong style="font-weight: 600;">luz natural y terraza</strong> que crea un ambiente agradable y favorece la concentración de los participantes.</li>
-          <li>Equipada con <strong style="font-weight: 600;">pantalla de proyección de alta definición</strong> para presentaciones, resultados y materiales audiovisuales con máxima calidad de imagen.</li>
-          <li><strong style="font-weight: 600;">Zona de coffee</strong> diseñada para ofrecer un espacio cómodo e informal donde los participantes pueden relajarse y compartir impresiones durante las pausas.</li>
-          <li><strong style="font-weight: 600;">Biblioteca</strong> de libre acceso con una selección de <strong  style="font-weight: 600;">libros</strong> disponibles para que visitantes y participantes puedan llevárselos y darles una nueva vida.</li>
+          <li data-i18n="room_n1">Espacio equipado con <strong style="font-weight: 600;">mobiliario ergonómico</strong> que garantiza la comodidad de los participantes durante sesiones de larga duración.</li>
+          <li data-i18n="room_n2">Dispone de <strong style="font-weight: 600;">cabina de traducción simultánea</strong> para facilitar reuniones internacionales y proyectos multicéntricos.</li>
+          <li data-i18n="room_n3">Sala con <strong style="font-weight: 600;">capacidad</strong> para albergar <strong>hasta 20 asistentes</strong> en un entorno cómodo y funcional.</li>
+          <li data-i18n="room_n4">Amplia entrada de <strong style="font-weight: 600;">luz natural y terraza</strong> que crea un ambiente agradable y favorece la concentración de los participantes.</li>
+          <li data-i18n="room_n5">Equipada con <strong style="font-weight: 600;">pantalla de proyección de alta definición</strong> para presentaciones, resultados y materiales audiovisuales con máxima calidad de imagen.</li>
+          <li data-i18n="room_n6"><strong style="font-weight: 600;">Zona de coffee</strong> diseñada para ofrecer un espacio cómodo e informal donde los participantes pueden relajarse y compartir impresiones durante las pausas.</li>
+          <li data-i18n="room_n7"><strong style="font-weight: 600;">Biblioteca</strong> de libre acceso con una selección de <strong  style="font-weight: 600;">libros</strong> disponibles para que visitantes y participantes puedan llevárselos y darles una nueva vida.</li>
         </ul>
       </div>
     </div>
@@ -2591,12 +2628,12 @@ destacando una gran dedicación a las enfermedades raras.</p>
       <div class="room-right">
         <h3 class="sp-title">Sala FOCUS</h3>
         <ul class="room-features-list">
-          <li><strong style="font-weight: 600;">Mesa trapezoidal diseñada a medida</strong> para favorecer la interacción entre los participantes y optimizar la visibilidad durante las reuniones.</li>
-          <li>Equipada con <strong style="font-weight: 600;">espejo unidireccional</strong> que permite la observación en tiempo real de las sesiones sin interferir en la dinámica del grupo.</li>
-          <li>Cuenta con una <strong style="font-weight: 600;">sala de visionado independiente</strong> que permite a los clientes seguir las sesiones en directo con total comodidad.</li>
-          <li>Dispone de <strong style="font-weight: 600;">cabina de traducción simultánea</strong> para facilitar la participación de asistentes de distintos idiomas en proyectos internacionales.</li>
-          <li><strong style="font-weight: 600;">Sistema profesional de grabación de audio y vídeo</strong> que garantiza el registro íntegro de las sesiones para su posterior análisis.</li>
-          <li>Espacio diseñado para garantizar la <strong style="font-weight: 600;">privacidad y confidencialidad</strong> de la información compartida durante las reuniones y estudios de investigación.</li>
+          <li data-i18n="room_f1"><strong style="font-weight: 600;">Mesa trapezoidal diseñada a medida</strong> para favorecer la interacción entre los participantes y optimizar la visibilidad durante las reuniones.</li>
+          <li data-i18n="room_f2">Equipada con <strong style="font-weight: 600;">espejo unidireccional</strong> que permite la observación en tiempo real de las sesiones sin interferir en la dinámica del grupo.</li>
+          <li data-i18n="room_f3">Cuenta con una <strong style="font-weight: 600;">sala de visionado independiente</strong> que permite a los clientes seguir las sesiones en directo con total comodidad.</li>
+          <li data-i18n="room_f4">Dispone de <strong style="font-weight: 600;">cabina de traducción simultánea</strong> para facilitar la participación de asistentes de distintos idiomas en proyectos internacionales.</li>
+          <li data-i18n="room_f5"><strong style="font-weight: 600;">Sistema profesional de grabación de audio y vídeo</strong> que garantiza el registro íntegro de las sesiones para su posterior análisis.</li>
+          <li data-i18n="room_f6">Espacio diseñado para garantizar la <strong style="font-weight: 600;">privacidad y confidencialidad</strong> de la información compartida durante las reuniones y estudios de investigación.</li>
         </ul>
       </div>
     </div>
@@ -2605,8 +2642,8 @@ destacando una gran dedicación a las enfermedades raras.</p>
         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
       </div>
       <div>
-        <div class="loc-title">Calle Orense — Madrid</div>
-        <div class="loc-text">Centro financiero de Madrid, a un paso de El Corte Inglés. Fácil acceso desde el aeropuerto, estaciones de tren, cercanías, metro y dos parkings en la puerta.</div>
+        <div class="loc-title" data-i18n="loc_title">Calle Orense — Madrid</div>
+        <div class="loc-text" data-i18n="loc_text">Centro financiero de Madrid, a un paso de El Corte Inglés. Fácil acceso desde el aeropuerto, estaciones de tren, cercanías, metro y dos parkings en la puerta.</div>
       </div>
     </div>
   </div>
@@ -2617,38 +2654,38 @@ destacando una gran dedicación a las enfermedades raras.</p>
   <div class="section-inner">
     <div class="blog-header reveal">
       <div>
-        <div class="eyebrow">Casos reales</div>
-        <h2 class="section-title">Blog de Casos</h2>
+        <div class="eyebrow" data-i18n="blog_eyebrow">Casos reales</div>
+        <h2 class="section-title" data-i18n="blog_title">Blog de Casos</h2>
       </div>
-      <a href="#" class="blog-link">Ver todos los casos →</a>
+      <a href="#" class="blog-link" data-i18n="blog_all">Ver todos los casos →</a>
     </div>
-    <p class="section-sub reveal" style="margin-bottom:48px;">Una de las cosas más difíciles de ser especialistas en farma es mostrar lo que puedes hacer por tus clientes sin desvelar información confidencial… así que os hemos preparado este blog que habla de casos reales en los que pudimos ayudar.</p>
+    <p class="section-sub reveal" style="margin-bottom:48px;" data-i18n="blog_sub">Una de las cosas más difíciles de ser especialistas en farma es mostrar lo que puedes hacer por tus clientes sin desvelar información confidencial… así que os hemos preparado este blog que habla de casos reales en los que pudimos ayudar.</p>
     <div class="blog-cards">
       <article class="bc reveal">
         <div class="bc-img"><img src="sala_AB-4.jpg" alt="Advisory Board Internacional" loading="lazy"></div>
         <div class="bc-body">
           <span class="bc-tag">Advisory Board Internacional</span>
-          <h3 class="bc-title">¿Cómo alineamos a 12 KOLs internacionales en una sola sesión?</h3>
-          <p class="bc-excerpt">Un laboratorio multinacional necesitaba consenso clínico entre especialistas de 5 países con perspectivas muy divergentes...</p>
-          <a href="#" class="bc-link">Leer caso →</a>
+          <h3 class="bc-title" data-i18n="blog1_title">¿Cómo alineamos a 12 KOLs internacionales en una sola sesión?</h3>
+          <p class="bc-excerpt" data-i18n="blog1_excerpt">Un laboratorio multinacional necesitaba consenso clínico entre especialistas de 5 países con perspectivas muy divergentes...</p>
+          <a href="#" class="bc-link" data-i18n="blog_read">Leer caso →</a>
         </div>
       </article>
       <article class="bc reveal reveal-d1">
         <div class="bc-img"><img src="NUIN/OFICINA/Sala%20Grupos-6.jpg" alt="Cualitativo" loading="lazy"></div>
         <div class="bc-body">
           <span class="bc-tag">Cualitativo</span>
-          <h3 class="bc-title">Cuando los datos no contaban toda la historia</h3>
-          <p class="bc-excerpt">Un cliente con buenos resultados en encuestas pero producto sin prescripción. Exploramos el gap entre actitud y comportamiento...</p>
-          <a href="#" class="bc-link">Leer caso →</a>
+          <h3 class="bc-title" data-i18n="blog2_title">Cuando los datos no contaban toda la historia</h3>
+          <p class="bc-excerpt" data-i18n="blog2_excerpt">Un cliente con buenos resultados en encuestas pero producto sin prescripción. Exploramos el gap entre actitud y comportamiento...</p>
+          <a href="#" class="bc-link" data-i18n="blog_read">Leer caso →</a>
         </div>
       </article>
       <article class="bc reveal reveal-d2">
         <div class="bc-img"><img src="NUIN/OFICINA/Deco-6.jpg" alt="TWACE" loading="lazy"></div>
         <div class="bc-body">
           <span class="bc-tag">TWACE</span>
-          <h3 class="bc-title">Transformando la visita médica en tiempo récord</h3>
-          <p class="bc-excerpt">Un laboratorio necesitaba reformular su modelo de visita médica sin perder productividad. Aplicamos TWACE en 6 semanas...</p>
-          <a href="#" class="bc-link">Leer caso →</a>
+          <h3 class="bc-title" data-i18n="blog3_title">Transformando la visita médica en tiempo récord</h3>
+          <p class="bc-excerpt" data-i18n="blog3_excerpt">Un laboratorio necesitaba reformular su modelo de visita médica sin perder productividad. Aplicamos TWACE en 6 semanas...</p>
+          <a href="#" class="bc-link" data-i18n="blog_read">Leer caso →</a>
         </div>
       </article>
     </div>
@@ -2659,40 +2696,40 @@ destacando una gran dedicación a las enfermedades raras.</p>
 <section id="alianzas" class="section">
   <div class="section-inner">
     <div class="alianzas-inner reveal">
-      <div class="eyebrow">Colaboraciones</div>
-      <h2 class="section-title">Alianzas Estratégicas</h2>
-      <p class="section-sub">En NUIN sabemos lo importante que es crecer de la mano de otras agencias y organizaciones, compartiendo buenas prácticas y colaborando para elevar los estándares de calidad del sector.</p>
+      <div class="eyebrow" data-i18n="ali_eyebrow">Colaboraciones</div>
+      <h2 class="section-title" data-i18n="ali_title">Alianzas Estratégicas</h2>
+      <p class="section-sub" data-i18n="ali_sub">En Nuin sabemos lo importante que es crecer de la mano de otras agencias y organizaciones, compartiendo buenas prácticas y colaborando para elevar los estándares de calidad del sector.</p>
     </div>
     <div class="partners-grid reveal">
       <div class="partner-card">
         <div class="partner-logo-wrapper">
           <img src="logos/iris-logo.png" alt="IRIS Logo" loading="lazy">
         </div>
-        <p class="partner-desc">Red internacional colaborativa con especialistas de market research de primer nivel, donde compartimos buenas prácticas y herramientas para crecer juntos.</p>
+        <p class="partner-desc" data-i18n="ali_iris">Red internacional colaborativa con especialistas de market research de primer nivel, donde compartimos buenas prácticas y herramientas para crecer juntos.</p>
       </div>
       <div class="partner-card">
         <div class="partner-logo-wrapper">
           <img src="logos/aimfa-logo.png" alt="AIMFA Logo" loading="lazy">
         </div>
-        <p class="partner-desc">Agrupación de Investigación y Marketing Farmacéutico. Un espacio de encuentro entre profesionales de investigación de mercado especializados en farma de España donde se fomenta el desarrollo profesional, el conocimiento y el networking.</p>
+        <p class="partner-desc" data-i18n="ali_aimfa">Agrupación de Investigación y Marketing Farmacéutico. Un espacio de encuentro entre profesionales de investigación de mercado especializados en farma de España donde se fomenta el desarrollo profesional, el conocimiento y el networking.</p>
       </div>
       <div class="partner-card">
         <div class="partner-logo-wrapper">
           <img src="logos/ephmra-logo.webp" alt="EPHMRA Logo" loading="lazy">
         </div>
-        <p class="partner-desc">Nuestro punto de encuentro con especialistas internacionales de investigación de mercado en farma, participando en la mejora de los estándares de calidad e innovando en las metodologías.</p>
+        <p class="partner-desc" data-i18n="ali_ephmra">Nuestro punto de encuentro con especialistas internacionales de investigación de mercado en farma, participando en la mejora de los estándares de calidad e innovando en las metodologías.</p>
       </div>
       <div class="partner-card">
         <div class="partner-logo-wrapper">
           <img src="logos/esomar-logo.png" alt="ESOMAR Logo" loading="lazy">
         </div>
-        <p class="partner-desc">Organismo global de estándares éticos y metodológicos en investigación de mercado, que regula la industria a nivel internacional desde 1947 para garantizar la confianza pública y proteger los datos del consumidor.</p>
+        <p class="partner-desc" data-i18n="ali_esomar">Organismo global de estándares éticos y metodológicos en investigación de mercado, que regula la industria a nivel internacional desde 1947 para garantizar la confianza pública y proteger los datos del consumidor.</p>
       </div>
       <div class="partner-card">
         <div class="partner-logo-wrapper">
           <img src="logos/beauty-cluster.png" alt="Beauty Cluster Logo" loading="lazy">
         </div>
-        <p class="partner-desc">Principal asociación española de empresas de cosmética y cuidado personal, que impulsa innovación y colaboración en el sector.</p>
+        <p class="partner-desc" data-i18n="ali_beauty">Principal asociación española de empresas de cosmética y cuidado personal, que impulsa innovación y colaboración en el sector.</p>
       </div>
     </div>
   </div>
@@ -2701,11 +2738,11 @@ destacando una gran dedicación a las enfermedades raras.</p>
 <!-- CONTACTO -->
 <section id="contacto">
   <div class="section-inner">
-    <div class="eyebrow">HABLEMOS</div>
-    <h2 class="section-title">Contacto</h2>
+    <div class="eyebrow" data-i18n="contact_eyebrow">HABLEMOS</div>
+    <h2 class="section-title" data-i18n="contact_title">Contacto</h2>
 
     <div class="contact-layout">
-      <p class="contact-headline">"Llevamos más de cuarenta años aprendiendo día a día para que tu próximo proyecto salga perfecto, ¿hablamos?"</p>
+      <p class="contact-headline" data-i18n="contact_headline">"Llevamos más de cuarenta años aprendiendo día a día para que tu próximo proyecto salga perfecto, ¿hablamos?"</p>
 
       <div class="contact-info">
 
@@ -2724,7 +2761,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
           </div>
           <div class="ci-text">
-            <div class="ci-label">TELÉFONO</div>
+            <div class="ci-label" data-i18n="contact_phone">TELÉFONO</div>
             <div class="ci-value">913531490</div>
           </div>
         </div>
@@ -2734,7 +2771,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
           </div>
           <div class="ci-text">
-            <div class="ci-label">SALAS Y OFICINAS</div>
+            <div class="ci-label" data-i18n="contact_office">SALAS Y OFICINAS</div>
             <div class="ci-value">Calle Raimundo Fdez Villaverde 57, 2º dcha 28003- Madrid</div>
           </div>
         </div>
@@ -2749,31 +2786,31 @@ destacando una gran dedicación a las enfermedades raras.</p>
     <div class="footer-main">
       <div class="f-brand">
         <img src="white_logo_transparent_background.png" alt="NUIN" loading="lazy">
-        <p>Primera agencia española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Desde 1984.</p>
+        <p data-i18n="footer_brand">Primera agencia española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Desde 1984.</p>
       </div>
       <div class="f-col">
-        <h6>Servicios</h6>
+        <h6 data-i18n="footer_services">Servicios</h6>
         <ul>
           <li><a href="#servicios">Advisory Boards</a></li>
-          <li><a href="#servicios">Investigación cualitativa</a></li>
-          <li><a href="#servicios">Investigación cuantitativa</a></li>
-          <li><a href="#servicios">Reuniones de ciclo</a></li>
+          <li><a href="#servicios" data-i18n="footer_srv2">Investigación cualitativa</a></li>
+          <li><a href="#servicios" data-i18n="footer_srv3">Investigación cuantitativa</a></li>
+          <li><a href="#servicios" data-i18n="footer_srv4">Reuniones de ciclo</a></li>
           <li><a href="#servicios">Método TWACE</a></li>
           <li><a href="#servicios">Workshops</a></li>
         </ul>
       </div>
       <div class="f-col">
-        <h6>Empresa</h6>
+        <h6 data-i18n="footer_company">Empresa</h6>
         <ul>
-          <li><a href="#somos">Somos NUIN</a></li>
+          <li><a href="#somos" data-i18n="footer_about">Somos Nuin</a></li>
           <li><a href="#equipo">Equipo</a></li>
           <li><a href="#espacio">Espacio</a></li>
-          <li><a href="#alianzas">Alianzas</a></li>
-          <li><a href="#blog">Blog</a></li>
+          <li><a href="#alianzas" data-i18n="footer_alliances">Alianzas</a></li>
+          <li><a href="#blog" data-i18n="footer_blog">Blog</a></li>
         </ul>
       </div>
       <div class="f-col">
-        <h6>Contacto</h6>
+        <h6 data-i18n="footer_contact">Contacto</h6>
         <ul>
           <li><a href="#">nuin@nuingroup.com</a></li>
           <li><a href="#">913531490</a></li>
@@ -2782,8 +2819,8 @@ destacando una gran dedicación a las enfermedades raras.</p>
       </div>
     </div>
     <div class="footer-base">
-      <span>© 2025 NUIN Healthcare Market Research</span>
-      <span><a href="#">Privacidad</a> · <a href="#">Aviso legal</a></span>
+      <span data-i18n="footer_copy">© 2025 Nuin Healthcare Market Research</span>
+      <span><a href="#" data-i18n="footer_privacy">Privacidad</a> · <a href="#" data-i18n="footer_legal">Aviso legal</a></span>
     </div>
   </div>
 </footer>
@@ -2824,7 +2861,7 @@ if (canvas) {
     { title: "Farmacia Hospitalaria", subtitle: "" },
     { title: "Farmacia de Calle", subtitle: "" },
     { title: "Pagadores regionales", subtitle: "" },
-    { title: "Asoc. Pacientes", subtitle: "" },
+    { title: "Asociaciones de Pacientes", subtitle: "" },
     { title: "Enfermería", subtitle: "" },
     { title: "Pacientes y cuidadores", subtitle: "" },
     { title: "Laboratorios", subtitle: "" },
@@ -3183,7 +3220,8 @@ const areasData = [
   { area: "Dermatología", patologias: ["Psoriasis", "Dermatitis atópica", "Acné", "Rosácea", "Hidradenitis supurativa", "Urticaria crónica espontánea", "Alopecia areata"] },
   { area: "Nefrología", patologias: ["Enfermedad renal crónica", "Hiperpotasemia crónica", "Glomerulopatías", "Poliquistosis renal autosómica dominante"] },
   { area: "Oftalmología", patologias: ["Degeneración macular asociada a la edad", "Ojo seco", "Uveítis no infecciosa", "Glaucoma", "Retinopatía diabética", "Distrofias hereditarias retinianas", "Neuromielitis óptica"] },
-  { area: "Reproducción, ginecología y urología", patologias: ["Endometriosis", "Anticoncepción hormonal", "Miomas uterinos", "Osteoporosis posmenopáusica", "Hiperplasia benigna de próstata", "Vejiga hiperactiva", "Disfunción eréctil", "Infertilidad / reproducción asistida", "Cáncer ginecológico y de próstata"] }
+  { area: "Reproducción, ginecología y urología", patologias: ["Endometriosis", "Anticoncepción hormonal", "Miomas uterinos", "Osteoporosis posmenopáusica", "Hiperplasia benigna de próstata", "Vejiga hiperactiva", "Disfunción eréctil", "Infertilidad / reproducción asistida", "Cáncer ginecológico y de próstata"] },
+  { area: "Psiquiatría", patologias: ["Esquizofrenia", "Depresión", "Adicciones", "TDAH", "Trastorno bipolar", "Ansiedad"] }
 ];
 
 (function initAreas() {
@@ -3227,6 +3265,359 @@ const areasData = [
       document.getElementById(button.getAttribute('data-target')).classList.add('active');
     });
   });
+</script>
+
+<script>
+/* ── i18n ────────────────────────────────────────────────── */
+const T = {
+  es: {
+    nav_about: "Quienes somos",
+    nav_team: "Equipo",
+    nav_services: "Servicios",
+    nav_space: "Espacio",
+    nav_alliances: "Alianzas",
+    nav_contact: "Contacto",
+    hero_label: "HEALTHCARE INSIGHTS & STRATEGY",
+    hero_h1: `Convirtiendo datos y<br>conversaciones en<br>insights accionables<br><strong style="color: var(--green);">desde 1987</strong>`,
+    hero_sub: "El primer instituto de investigación de mercado dedicado exclusivamente al sector farmacéutico. Cuatro décadas de rigor, método y profesionalidad en investigación de mercado cualitativa, cuantitativa, advisory boards y reuniones estratégicas.",
+    hero_btn_services: "Explorar servicios",
+    hero_btn_about: "Conocer Nuin",
+    hero_lens_h1: `Convirtiendo <span class="hl-w-light">datos</span> y conversaciones<br>en <span class="hl-w-black">insights accionables</span><br><span class="hl-w-muted">desde 1987</span>`,
+    hero_lens_sub: "La primera agencia española dedicada exclusivamente al sector farmacéutico. Cuatro décadas de rigor, método y profundidad clínica.",
+    hero_btn_services2: `Explorar servicios <span class="btn-arrow">→</span>`,
+    hero_btn_about2: "Conocer Nuin",
+    cap_years: "años de experiencia",
+    cap_projects: "proyectos realizados",
+    cap_labs: "laboratorios cliente",
+    cap_rank: "España farma research",
+    ht_labs: "+70 laboratorios farmacéuticos",
+    ht_projects: "+4.200 proyectos",
+    somos_eyebrow: "Quiénes somos",
+    somos_title: "El primer instituto de<br>investigación de mercado<br>dedicado exclusivamente<br>al sector farmacéutico",
+    somos_p1: "Fuimos la primera empresa española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Cuatro décadas de trabajo continuo, un equipo sólido y una metodología probada nos avalan.",
+    somos_p2: "Nuestra especialización en healthcare no es una elección comercial – es nuestra razón de ser.",
+    stat1: "años dedicados al sector farma",
+    stat2: "proyectos en healthcare",
+    stat3: "laboratorios han confiado en nosotros",
+    stat4: "Advisory Boards moderados",
+    tab_stakeholders: "Stakeholders",
+    tab_areas: "Áreas Terapéuticas",
+    tab_valores: "Principios y Valores",
+    areas_eyebrow: "Experiencia",
+    areas_title: "Áreas terapéuticas",
+    areas_sub: "A lo largo de cuatro décadas hemos adquirido experiencia en más de 200 enfermedades destacando una gran dedicación a las enfermedades raras.",
+    neuro_title: "Neurología y<br>neurodesarrollo",
+    cardio_title: "Cardiovascular",
+    resp_title: "Respiratorio",
+    endo_title: "Endocrinología",
+    metab_title: "Enf. metabólicas<br>y lisosomales",
+    hema_title: "Hematología",
+    onco_title: "Oncología y<br>hemato-oncología",
+    inmuno_title: "Inmunología<br>y reumatología",
+    gastro_title: "Gastroenterología<br>y hepatología",
+    infec_title: "Infecciosas",
+    derma_title: "Dermatología",
+    nefro_title: "Nefrología",
+    oftalmo_title: "Oftalmología",
+    repro_title: "Reproducción,<br>ginecología y urología",
+    psiq_title: "Psiquiatría",
+    val_eyebrow: "Principios y valores",
+    val_title: "Nuestra forma de ver las cosas",
+    val_intro: "Somos Nuin y esta es nuestra forma de ver las cosas:",
+    val1_title: "Sobre la investigación de mercado",
+    val2_title: "Sobre la profesionalidad",
+    val3_title: "Sobre el equipo",
+    val4_title: "Sobre las relaciones",
+    val5_title: "Sobre la gestión de equipos",
+    val6_title: "Sobre el mundo",
+    val1_text: "Estamos convencidos de que las decisiones basadas en la empatía siempre serán mejores. Por eso convertimos los conocimientos, comportamientos y sentimientos de las personas en información útil y utilizable para facilitar a nuestros clientes la toma de mejores decisiones.",
+    val2_text: "Estamos convencidos de que la excelencia es la única aspiración válida. Por eso ponemos toda nuestra alma, profesionalidad y entrega en cada proyecto, porque creemos firmemente que no hay proyecto o cliente ni grande ni pequeño.",
+    val3_text: "Estamos convencidos de que toda persona tiene un don. Por eso tenemos un equipo de personas diferentes, que se actualizan continuamente en tendencias, metodologías y recursos.",
+    val4_text: "Estamos convencidos de que la confianza y el respeto profesional son los pilares. Por eso nos relacionamos desde la flexibilidad, la humildad, la cercanía y la profesionalidad.",
+    val5_text: "Estamos convencidos de que la felicidad de las personas tiene que ser una prioridad. Por eso ofrecemos a nuestros empleados un espacio donde pueden desarrollarse día a día.",
+    val6_text: "Estamos convencidos de que si todos enfocásemos nuestra vida desde la empatía el mundo sería un lugar mejor. Por eso abordamos cada proyecto y cada nuevo reto desde el análisis de los distintos puntos de vista.",
+    team_eyebrow: "El equipo",
+    bio_juan: "Con más de 20 años en consultoría farma, Juan ha realizado miles de entrevistas y focus groups, moderado más de 750 Advisory Boards nacionales e internacionales y apoyado a más de 50 hospitales, laboratorios y asociaciones de pacientes en la revisión de procesos, trabajando en todas las áreas terapéuticas. Además, su trayectoria como scout y su participación en la Organización Mundial del Movimiento Scout y en la Society of Leadership Fellows le han consolidado como un líder en entornos multiculturales, aportando valor en foros internacionales como IRIS o EphMRA.",
+    bio_loreto: "Licenciada en Administración y Dirección de Empresas por ICADE y en Derecho por la UNED, Loreto acumula más de 15 años de experiencia en gestión de equipos y expansión internacional. Desde hace 10 años es Managing Partner en Nuin, donde coordina la oficina y asegura la excelencia en cada proyecto, alineando talento, metodología y objetivos estratégicos.",
+    bio_josefina: "Con más de 30 años de experiencia en la industria farmacéutica, Josefina aporta una visión estratégica integral del sector, sustentada en un profundo conocimiento de la investigación de mercado y de múltiples áreas terapéuticas. Su trayectoria le ha permitido desarrollar una sólida orientación al cliente, comprendiendo sus retos desde dentro de la organización y actuando como partner estratégico en la definición de proyectos, generación de insights y toma de decisiones alineadas con los objetivos de negocio.",
+    bio_sonia: "Las empresas de investigación de mercados y consultoría especializadas en el sector farmacéutico han sido el medio en el que se ha formado y desarrollado profesionalmente. Por su formación como psicóloga, los estudios cualitativos son un área destacada de su trabajo, que le permite analizar, comprender e interpretar las tendencias del sector, enfocado a generar ideas y soluciones para mejorar las estrategias comerciales de los clientes. Experta en técnicas de moderación, metodología maieútica y herramientas innovadoras.",
+    bio_irina: "Consultora estratégica especializada en investigación de mercados en el sector farmacéutico y salud. Desempeña tareas de colaboración, organización y gestión de Advisory Boards, comités científicos y grupos de trabajo, supervisando la creación, calidad y difusión de los contenidos científicos y médicos generados para ofrecer un resultado alineado a los objetivos del cliente y asegurando el cumplimiento normativo.",
+    bio_ana: "Sólida formación científica y experiencia nacional e internacional. Licenciada en farmacia por la Universidad de Santiago de Compostela y doctora en tecnología farmacéutica por la Heinrich-Heine-Universität de Düsseldorf. Tras varios años como mánager de proyectos en la industria farmacéutica alemana, regresa a España y se especializa en redacción médica, ámbito en el que acumula casi 10 años de experiencia.",
+    bio_laura: "Más de 14 años de experiencia trabajando con entidades sociales en el ámbito público y privado. Con formación en Magisterio de Educación Primaria, ha desarrollado una forma de trabajar muy centrada en las personas, con facilidad para organizar dinámicas, coordinar encuentros y hacer que distintos perfiles se impliquen en los proyectos. En los últimos años ha trasladado esta experiencia al ámbito sanitario, colaborando con asociaciones de pacientes y coordinando estudios.",
+    bio_guillermo: "Impulsa la adopción de soluciones tecnológicas y enfoques innovadores para optimizar los procesos y la propuesta de valor de Nuin.",
+    srv_eyebrow: "Lo que hacemos",
+    srv_sub: "Cuarenta años dedicados a un solo sector nos han permitido dominar cada ángulo de la investigación en healthcare. Selecciona un servicio para ver los detalles.",
+    srv2_name: "Investigación de mercado",
+    srv3_name: "Otras soluciones estratégicas",
+    ab_desc: "Más de 750 sesiones realizadas en todo el mundo. Diseñamos cada reunión a medida, asegurando la máxima participación y resultados estratégicos para cada laboratorio.",
+    ab_p1_title: "Sistema propio de preparación",
+    ab_p1_text: "750+ ABs nos han dado las herramientas para optimizar cada sesión. El 100% de los clientes que han hecho un AB con nosotros han repetido.",
+    ab_p2_title: "Múltiples formatos",
+    ab_p2_text: "Abarca una amplia variedad de formatos, presenciales, virtuales o híbridos, áreas de organización, médico, marketing, acceso, y stakeholders.",
+    ab_p3_title: "Alcance internacional",
+    ab_p3_text: "EEUU, México, Honduras, Chile, Argentina, Francia, Dinamarca, Suiza, UK… Moderamos en varios idiomas.",
+    ab_p4_title: "Sala única",
+    inv_title: "Investigación de mercado",
+    inv_tagline: "40 años convirtiendo preguntas complejas en decisiones claras.",
+    inv_desc1: "La investigación es el núcleo de Nuin. Cuatro décadas trabajando exclusivamente en salud nos han permitido desarrollar un conocimiento profundo del entorno clínico, los profesionales sanitarios y los pacientes.",
+    inv_desc2: "Combinamos investigación cualitativa y cuantitativa con metodología propia, base de datos exclusiva y amplia experiencia por áreas terapéuticas para generar insights sólidos, accionables y relevantes. No solo obtenemos respuestas: entendemos el contexto que las explica.",
+    inv_p1_title: "Especialización real en salud",
+    inv_p1_text: "Hemos trabajado en todas las áreas terapéuticas y con prácticamente todos los stakeholders del ecosistema sanitario. Ese conocimiento acumulado nos permite comprender rápidamente cada proyecto y formular las preguntas adecuadas desde el inicio.",
+    inv_p2_title: "Acceso a todos los perfiles",
+    inv_p2_text: "Médicos especialistas, Atención Primaria, enfermería, farmacia hospitalaria, farmacia comunitaria, gestores, KOLs, pacientes, cuidadores y asociaciones de pacientes. Cobertura nacional, sin limitaciones geográficas ni de especialidad.",
+    inv_p3_title: "Base de datos propia y exclusiva",
+    inv_p3_text: "Nuestro panel propio, construido y actualizado internamente durante años, garantiza rapidez, trazabilidad y ratios de respuesta superiores al estándar del mercado. Una ventaja diferencial clave para asegurar calidad y representatividad.",
+    inv_p4_title: "Metodología optimizada durante 40 años",
+    inv_p4_text: "Aplicamos metodologías cualitativas y cuantitativas adaptadas al sector salud: entrevistas en profundidad, focus groups, etnografías, técnicas proyectivas, encuestas y estudios híbridos diseñados para obtener insights realmente útiles.",
+    inv_p5_title: "Rigor, agilidad y calidad de dato",
+    inv_p5_text: "La combinación de expertise sectorial, metodología propia y acceso directo a los perfiles adecuados nos permite ejecutar proyectos con rapidez sin comprometer la profundidad ni la calidad del dato.",
+    otras_title: "Otras soluciones estratégicas",
+    otras_desc1: "En Nuin acompañamos a nuestros clientes en momentos clave de análisis, alineación y toma de decisiones. Diseñamos y facilitamos dinámicas estratégicas adaptadas al entorno healthcare, combinando conocimiento del sector, visión analítica y experiencia moderando equipos multidisciplinares.",
+    otras_desc2: "Ayudamos a transformar información y experiencia en decisiones compartidas, accionables y orientadas a resultados.",
+    otras_p1_title: "Revisión de procesos",
+    otras_p2_title: "Reuniones de ciclo",
+    otras_p3_title: "Workshops estratégicos",
+    esp_eyebrow: "Instalaciones",
+    esp_sub: "Dejamos que nuestras salas hablen por nosotros. Desde la Sala Nuin — la única en España diseñada específicamente para Advisory Boards — hasta la Sala FOCUS, pensada hasta el más mínimo detalle.",
+    room_n1: `Espacio equipado con <strong style="font-weight: 600;">mobiliario ergonómico</strong> que garantiza la comodidad de los participantes durante sesiones de larga duración.`,
+    room_n2: `Dispone de <strong style="font-weight: 600;">cabina de traducción simultánea</strong> para facilitar reuniones internacionales y proyectos multicéntricos.`,
+    room_n3: `Sala con <strong style="font-weight: 600;">capacidad</strong> para albergar <strong>hasta 20 asistentes</strong> en un entorno cómodo y funcional.`,
+    room_n4: `Amplia entrada de <strong style="font-weight: 600;">luz natural y terraza</strong> que crea un ambiente agradable y favorece la concentración de los participantes.`,
+    room_n5: `Equipada con <strong style="font-weight: 600;">pantalla de proyección de alta definición</strong> para presentaciones, resultados y materiales audiovisuales con máxima calidad de imagen.`,
+    room_n6: `<strong style="font-weight: 600;">Zona de coffee</strong> diseñada para ofrecer un espacio cómodo e informal donde los participantes pueden relajarse y compartir impresiones durante las pausas.`,
+    room_n7: `<strong style="font-weight: 600;">Biblioteca</strong> de libre acceso con una selección de <strong style="font-weight: 600;">libros</strong> disponibles para que visitantes y participantes puedan llevárselos y darles una nueva vida.`,
+    room_f1: `<strong style="font-weight: 600;">Mesa trapezoidal diseñada a medida</strong> para favorecer la interacción entre los participantes y optimizar la visibilidad durante las reuniones.`,
+    room_f2: `Equipada con <strong style="font-weight: 600;">espejo unidireccional</strong> que permite la observación en tiempo real de las sesiones sin interferir en la dinámica del grupo.`,
+    room_f3: `Cuenta con una <strong style="font-weight: 600;">sala de visionado independiente</strong> que permite a los clientes seguir las sesiones en directo con total comodidad.`,
+    room_f4: `Dispone de <strong style="font-weight: 600;">cabina de traducción simultánea</strong> para facilitar la participación de asistentes de distintos idiomas en proyectos internacionales.`,
+    room_f5: `<strong style="font-weight: 600;">Sistema profesional de grabación de audio y vídeo</strong> que garantiza el registro íntegro de las sesiones para su posterior análisis.`,
+    room_f6: `Espacio diseñado para garantizar la <strong style="font-weight: 600;">privacidad y confidencialidad</strong> de la información compartida durante las reuniones y estudios de investigación.`,
+    loc_title: "Calle Orense — Madrid",
+    loc_text: "Centro financiero de Madrid, a un paso de El Corte Inglés. Fácil acceso desde el aeropuerto, estaciones de tren, cercanías, metro y dos parkings en la puerta.",
+    blog_eyebrow: "Casos reales",
+    blog_title: "Blog de Casos",
+    blog_all: "Ver todos los casos →",
+    blog_sub: "Una de las cosas más difíciles de ser especialistas en farma es mostrar lo que puedes hacer por tus clientes sin desvelar información confidencial… así que os hemos preparado este blog que habla de casos reales en los que pudimos ayudar.",
+    blog1_title: "¿Cómo alineamos a 12 KOLs internacionales en una sola sesión?",
+    blog1_excerpt: "Un laboratorio multinacional necesitaba consenso clínico entre especialistas de 5 países con perspectivas muy divergentes...",
+    blog2_title: "Cuando los datos no contaban toda la historia",
+    blog2_excerpt: "Un cliente con buenos resultados en encuestas pero producto sin prescripción. Exploramos el gap entre actitud y comportamiento...",
+    blog3_title: "Transformando la visita médica en tiempo récord",
+    blog3_excerpt: "Un laboratorio necesitaba reformular su modelo de visita médica sin perder productividad. Aplicamos TWACE en 6 semanas...",
+    blog_read: "Leer caso →",
+    ali_eyebrow: "Colaboraciones",
+    ali_title: "Alianzas Estratégicas",
+    ali_sub: "En Nuin sabemos lo importante que es crecer de la mano de otras agencias y organizaciones, compartiendo buenas prácticas y colaborando para elevar los estándares de calidad del sector.",
+    ali_iris: "Red internacional colaborativa con especialistas de market research de primer nivel, donde compartimos buenas prácticas y herramientas para crecer juntos.",
+    ali_aimfa: "Agrupación de Investigación y Marketing Farmacéutico. Un espacio de encuentro entre profesionales de investigación de mercado especializados en farma de España donde se fomenta el desarrollo profesional, el conocimiento y el networking.",
+    ali_ephmra: "Nuestro punto de encuentro con especialistas internacionales de investigación de mercado en farma, participando en la mejora de los estándares de calidad e innovando en las metodologías.",
+    ali_esomar: "Organismo global de estándares éticos y metodológicos en investigación de mercado, que regula la industria a nivel internacional desde 1947 para garantizar la confianza pública y proteger los datos del consumidor.",
+    ali_beauty: "Principal asociación española de empresas de cosmética y cuidado personal, que impulsa innovación y colaboración en el sector.",
+    contact_eyebrow: "HABLEMOS",
+    contact_title: "Contacto",
+    contact_headline: `"Llevamos más de cuarenta años aprendiendo día a día para que tu próximo proyecto salga perfecto, ¿hablamos?"`,
+    contact_phone: "TELÉFONO",
+    contact_office: "SALAS Y OFICINAS",
+    footer_brand: "Primera agencia española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Desde 1984.",
+    footer_services: "Servicios",
+    footer_srv2: "Investigación cualitativa",
+    footer_srv3: "Investigación cuantitativa",
+    footer_srv4: "Reuniones de ciclo",
+    footer_company: "Empresa",
+    footer_about: "Somos Nuin",
+    footer_alliances: "Alianzas",
+    footer_blog: "Blog",
+    footer_contact: "Contacto",
+    footer_copy: "© 2025 Nuin Healthcare Market Research",
+    footer_privacy: "Privacidad",
+    footer_legal: "Aviso legal",
+  },
+  en: {
+    nav_about: "About us",
+    nav_team: "Team",
+    nav_services: "Services",
+    nav_space: "Space",
+    nav_alliances: "Alliances",
+    nav_contact: "Contact",
+    hero_label: "HEALTHCARE INSIGHTS & STRATEGY",
+    hero_h1: `Turning data and<br>conversations into<br>actionable insights<br><strong style="color: var(--green);">since 1987</strong>`,
+    hero_sub: "The first market research institute exclusively dedicated to the pharmaceutical sector. Four decades of rigour, methodology and professionalism in qualitative and quantitative research, advisory boards and strategic meetings.",
+    hero_btn_services: "Explore services",
+    hero_btn_about: "Discover Nuin",
+    hero_lens_h1: `Turning <span class="hl-w-light">data</span> and conversations<br>into <span class="hl-w-black">actionable insights</span><br><span class="hl-w-muted">since 1987</span>`,
+    hero_lens_sub: "Spain's first agency exclusively dedicated to the pharmaceutical sector. Four decades of rigour, methodology and clinical depth.",
+    hero_btn_services2: `Explore services <span class="btn-arrow">→</span>`,
+    hero_btn_about2: "Discover Nuin",
+    cap_years: "years of experience",
+    cap_projects: "projects completed",
+    cap_labs: "client laboratories",
+    cap_rank: "Spain pharma research",
+    ht_labs: "+70 pharmaceutical labs",
+    ht_projects: "+4,200 projects",
+    somos_eyebrow: "Who we are",
+    somos_title: "The first market research<br>institute exclusively<br>dedicated to the<br>pharmaceutical sector",
+    somos_p1: "We were Spain's first market research company exclusively dedicated to the pharmaceutical sector. Four decades of continuous work, a solid team and a proven methodology back us up.",
+    somos_p2: "Our specialisation in healthcare is not a commercial choice — it is our reason for being.",
+    stat1: "years dedicated to pharma",
+    stat2: "healthcare projects",
+    stat3: "laboratories have trusted us",
+    stat4: "Advisory Boards moderated",
+    tab_stakeholders: "Stakeholders",
+    tab_areas: "Therapeutic Areas",
+    tab_valores: "Principles & Values",
+    areas_eyebrow: "Expertise",
+    areas_title: "Therapeutic areas",
+    areas_sub: "Over four decades we have built expertise in more than 200 diseases, with a strong dedication to rare diseases.",
+    neuro_title: "Neurology &amp;<br>neurodevelopment",
+    cardio_title: "Cardiovascular",
+    resp_title: "Respiratory",
+    endo_title: "Endocrinology",
+    metab_title: "Metabolic &amp;<br>lysosomal diseases",
+    hema_title: "Haematology",
+    onco_title: "Oncology &amp;<br>haemato-oncology",
+    inmuno_title: "Immunology<br>&amp; rheumatology",
+    gastro_title: "Gastroenterology<br>&amp; hepatology",
+    infec_title: "Infectious diseases",
+    derma_title: "Dermatology",
+    nefro_title: "Nephrology",
+    oftalmo_title: "Ophthalmology",
+    repro_title: "Reproduction,<br>gynaecology &amp; urology",
+    psiq_title: "Psychiatry",
+    val_eyebrow: "Principles & values",
+    val_title: "Our way of seeing things",
+    val_intro: "We are Nuin and this is our way of seeing things:",
+    val1_title: "On market research",
+    val2_title: "On professionalism",
+    val3_title: "On the team",
+    val4_title: "On relationships",
+    val5_title: "On team management",
+    val6_title: "On the world",
+    val1_text: "We are convinced that decisions based on empathy will always be better. That is why we turn people's knowledge, behaviours and feelings into useful, actionable information to help our clients make better decisions.",
+    val2_text: "We are convinced that excellence is the only valid aspiration. That is why we put all our soul, professionalism and dedication into every project, because we firmly believe there is no project or client too big or too small.",
+    val3_text: "We are convinced that every person has a gift. That is why we have a team of diverse people who continuously update themselves on trends, methodologies and resources.",
+    val4_text: "We are convinced that trust and professional respect are the pillars. That is why we relate with flexibility, humility, closeness and professionalism.",
+    val5_text: "We are convinced that people's happiness must be a priority. That is why we offer our employees a space where they can develop day by day.",
+    val6_text: "We are convinced that if everyone approached life through empathy, the world would be a better place. That is why we tackle every project and every new challenge by analysing different points of view.",
+    team_eyebrow: "The team",
+    bio_juan: "With over 20 years in pharma consulting, Juan has conducted thousands of interviews and focus groups, moderated more than 750 national and international Advisory Boards, and supported over 50 hospitals, laboratories and patient associations in process reviews across all therapeutic areas. His background as a scout and his involvement in the World Scout Movement and the Society of Leadership Fellows have consolidated him as a leader in multicultural environments, contributing to international forums such as IRIS and EphMRA.",
+    bio_loreto: "Holding degrees in Business Administration from ICADE and Law from UNED, Loreto brings over 15 years of experience in team management and international expansion. For the past 10 years she has been Managing Partner at Nuin, coordinating the office and ensuring excellence in every project by aligning talent, methodology and strategic objectives.",
+    bio_josefina: "With more than 30 years of experience in the pharmaceutical industry, Josefina brings a comprehensive strategic vision of the sector, grounded in deep knowledge of market research and multiple therapeutic areas. Her career has allowed her to develop a strong client-orientation, understanding their challenges from within the organisation and acting as a strategic partner in project definition, insight generation and decision-making aligned with business objectives.",
+    bio_sonia: "Market research and consulting companies specialised in the pharmaceutical sector have been the environment in which she has trained and developed professionally. Her background as a psychologist makes qualitative research a standout area of her work, enabling her to analyse, understand and interpret sector trends to generate ideas and solutions that improve clients' commercial strategies. Expert in moderation techniques, maieutic methodology and innovative tools.",
+    bio_irina: "Strategic consultant specialised in market research in the pharmaceutical and healthcare sector. She collaborates in the organisation and management of Advisory Boards, scientific committees and working groups, overseeing the creation, quality and dissemination of scientific and medical content to deliver results aligned with client objectives while ensuring regulatory compliance.",
+    bio_ana: "Strong scientific background with national and international experience. She holds a degree in Pharmacy from the University of Santiago de Compostela and a PhD in Pharmaceutical Technology from Heinrich-Heine-Universität Düsseldorf. After several years as a project manager in the German pharmaceutical industry, she returned to Spain and specialised in medical writing, a field in which she has accumulated almost 10 years of experience.",
+    bio_laura: "Over 14 years of experience working with social organisations in both public and private settings. With a background in Primary Education, she has developed a highly people-centred way of working, with a talent for organising dynamics, coordinating meetings and getting diverse profiles engaged in projects. In recent years she has transferred this experience to the healthcare field, collaborating with patient associations and coordinating studies.",
+    bio_guillermo: "Drives the adoption of technological solutions and innovative approaches to optimise Nuin's processes and value proposition.",
+    srv_eyebrow: "What we do",
+    srv_sub: "Forty years dedicated to a single sector have allowed us to master every angle of healthcare research. Select a service to see the details.",
+    srv2_name: "Market research",
+    srv3_name: "Other strategic solutions",
+    ab_desc: "More than 750 sessions conducted worldwide. We design every meeting to measure, ensuring maximum participation and strategic results for each laboratory.",
+    ab_p1_title: "Proprietary preparation system",
+    ab_p1_text: "750+ ABs have given us the tools to optimise every session. 100% of clients who have run an AB with us have repeated.",
+    ab_p2_title: "Multiple formats",
+    ab_p2_text: "Covers a wide variety of formats — in-person, virtual or hybrid — across medical, marketing and access organisational areas and stakeholders.",
+    ab_p3_title: "International reach",
+    ab_p3_text: "USA, Mexico, Honduras, Chile, Argentina, France, Denmark, Switzerland, UK… We moderate in multiple languages.",
+    ab_p4_title: "Unique room",
+    inv_title: "Market research",
+    inv_tagline: "40 years turning complex questions into clear decisions.",
+    inv_desc1: "Research is Nuin's core. Four decades working exclusively in health have allowed us to develop deep knowledge of the clinical environment, healthcare professionals and patients.",
+    inv_desc2: "We combine qualitative and quantitative research with proprietary methodology, an exclusive database and broad therapeutic area expertise to generate solid, actionable and relevant insights. We don't just get answers — we understand the context that explains them.",
+    inv_p1_title: "Real health expertise",
+    inv_p1_text: "We have worked across all therapeutic areas and with virtually every stakeholder in the healthcare ecosystem. That accumulated knowledge allows us to quickly understand each project and ask the right questions from the start.",
+    inv_p2_title: "Access to all profiles",
+    inv_p2_text: "Specialist physicians, Primary Care, nursing, hospital pharmacy, community pharmacy, managers, KOLs, patients, caregivers and patient associations. National coverage, with no geographical or specialty limitations.",
+    inv_p3_title: "Proprietary and exclusive database",
+    inv_p3_text: "Our own panel, built and updated internally over the years, guarantees speed, traceability and response rates above market standard. A key differentiating advantage to ensure quality and representativeness.",
+    inv_p4_title: "Methodology refined over 40 years",
+    inv_p4_text: "We apply qualitative and quantitative methodologies adapted to the health sector: in-depth interviews, focus groups, ethnographies, projective techniques, surveys and hybrid studies designed to obtain truly useful insights.",
+    inv_p5_title: "Rigour, agility and data quality",
+    inv_p5_text: "The combination of sector expertise, proprietary methodology and direct access to the right profiles allows us to execute projects quickly without compromising depth or data quality.",
+    otras_title: "Other strategic solutions",
+    otras_desc1: "At Nuin we accompany our clients at key moments of analysis, alignment and decision-making. We design and facilitate strategic dynamics adapted to the healthcare environment, combining sector knowledge, analytical vision and experience moderating multidisciplinary teams.",
+    otras_desc2: "We help transform information and experience into shared, actionable and results-oriented decisions.",
+    otras_p1_title: "Process review",
+    otras_p2_title: "Cycle meetings",
+    otras_p3_title: "Strategic workshops",
+    esp_eyebrow: "Facilities",
+    esp_sub: "We let our rooms speak for themselves. From the Sala Nuin — the only one in Spain designed specifically for Advisory Boards — to the FOCUS Room, designed down to the last detail.",
+    room_n1: `Space equipped with <strong style="font-weight: 600;">ergonomic furniture</strong> that ensures participant comfort during long sessions.`,
+    room_n2: `Features a <strong style="font-weight: 600;">simultaneous translation booth</strong> to facilitate international meetings and multicentre projects.`,
+    room_n3: `Room with <strong style="font-weight: 600;">capacity</strong> for <strong>up to 20 attendees</strong> in a comfortable and functional environment.`,
+    room_n4: `Generous <strong style="font-weight: 600;">natural light and terrace</strong> creating a pleasant atmosphere that aids participant focus.`,
+    room_n5: `Equipped with a <strong style="font-weight: 600;">high-definition projection screen</strong> for presentations, results and audiovisual materials with maximum image quality.`,
+    room_n6: `<strong style="font-weight: 600;">Coffee area</strong> designed to offer a comfortable and informal space where participants can relax and share thoughts during breaks.`,
+    room_n7: `<strong style="font-weight: 600;">Open-access library</strong> with a curated selection of <strong style="font-weight: 600;">books</strong> available for visitors and participants to take and give a new life.`,
+    room_f1: `<strong style="font-weight: 600;">Custom-designed trapezoidal table</strong> to encourage participant interaction and optimise visibility during meetings.`,
+    room_f2: `Equipped with a <strong style="font-weight: 600;">one-way mirror</strong> for real-time observation of sessions without interfering with group dynamics.`,
+    room_f3: `Features an <strong style="font-weight: 600;">independent viewing room</strong> allowing clients to follow sessions live in total comfort.`,
+    room_f4: `Has a <strong style="font-weight: 600;">simultaneous translation booth</strong> to facilitate participation by attendees of different languages in international projects.`,
+    room_f5: `<strong style="font-weight: 600;">Professional audio and video recording system</strong> guaranteeing full capture of sessions for subsequent analysis.`,
+    room_f6: `Space designed to ensure <strong style="font-weight: 600;">privacy and confidentiality</strong> of information shared during meetings and research studies.`,
+    loc_title: "Calle Orense — Madrid",
+    loc_text: "Madrid's financial district, steps from El Corte Inglés. Easy access from the airport, train stations, commuter rail, metro and two car parks at the door.",
+    blog_eyebrow: "Real cases",
+    blog_title: "Case Blog",
+    blog_all: "View all cases →",
+    blog_sub: "One of the hardest things about being pharma specialists is showing what you can do for your clients without revealing confidential information… so we have prepared this blog about real cases where we were able to help.",
+    blog1_title: "How did we align 12 international KOLs in a single session?",
+    blog1_excerpt: "A multinational laboratory needed clinical consensus among specialists from 5 countries with very divergent perspectives...",
+    blog2_title: "When the data wasn't telling the whole story",
+    blog2_excerpt: "A client with good survey results but a product with no prescriptions. We explored the gap between attitude and behaviour...",
+    blog3_title: "Transforming the medical visit in record time",
+    blog3_excerpt: "A laboratory needed to reformulate its medical visit model without losing productivity. We applied TWACE in 6 weeks...",
+    blog_read: "Read case →",
+    ali_eyebrow: "Collaborations",
+    ali_title: "Strategic Alliances",
+    ali_sub: "At Nuin we know how important it is to grow alongside other agencies and organisations, sharing best practices and collaborating to raise quality standards in the sector.",
+    ali_iris: "International collaborative network with top-tier market research specialists, where we share best practices and tools to grow together.",
+    ali_aimfa: "Association of Pharmaceutical Research and Marketing. A meeting point for market research professionals specialised in pharma in Spain, fostering professional development, knowledge and networking.",
+    ali_ephmra: "Our meeting point with international pharma market research specialists, participating in the improvement of quality standards and innovating in methodologies.",
+    ali_esomar: "Global body of ethical and methodological standards in market research, regulating the industry internationally since 1947 to ensure public trust and protect consumer data.",
+    ali_beauty: "Spain's leading association of cosmetics and personal care companies, driving innovation and collaboration in the sector.",
+    contact_eyebrow: "LET'S TALK",
+    contact_title: "Contact",
+    contact_headline: `"We have spent over forty years learning day by day so your next project comes out perfect — shall we talk?"`,
+    contact_phone: "PHONE",
+    contact_office: "ROOMS & OFFICES",
+    footer_brand: "Spain's first market research agency exclusively dedicated to the pharmaceutical sector. Since 1984.",
+    footer_services: "Services",
+    footer_srv2: "Qualitative research",
+    footer_srv3: "Quantitative research",
+    footer_srv4: "Cycle meetings",
+    footer_company: "Company",
+    footer_about: "About Nuin",
+    footer_alliances: "Alliances",
+    footer_blog: "Blog",
+    footer_contact: "Contact",
+    footer_copy: "© 2025 Nuin Healthcare Market Research",
+    footer_privacy: "Privacy",
+    footer_legal: "Legal notice",
+  }
+};
+
+let currentLang = localStorage.getItem('nuinLang') || 'es';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('nuinLang', lang);
+  document.documentElement.lang = lang;
+  document.body.setAttribute('lang', lang);
+  const dict = T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+}
+
+function toggleLang() {
+  setLang(currentLang === 'es' ? 'en' : 'es');
+}
+
+// Init on load
+document.addEventListener('DOMContentLoaded', () => {
+  setLang(currentLang);
+});
 </script>
 
 </body>
