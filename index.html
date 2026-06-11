@@ -101,6 +101,7 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   box-shadow: 0 2px 12px rgba(0,168,120,0.3);
 }
 .nav-cta-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+.nav-right { display: flex; align-items: center; gap: 10px; }
 
 /* ──────── LANG TOGGLE ──────── */
 .lang-toggle {
@@ -1690,12 +1691,14 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       <li><a href="#espacio" data-i18n="nav_space">Espacio</a></li>
       <li><a href="#alianzas" data-i18n="nav_alliances">Alianzas</a></li>
     </ul>
-    <a href="#contacto" class="nav-cta-btn" data-i18n="nav_contact">Contacto</a>
-    <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
-      <span class="lt-es">ES</span>
-      <span class="lt-sep">|</span>
-      <span class="lt-en">EN</span>
-    </button>
+    <div class="nav-right">
+      <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+        <span class="lt-es">ES</span>
+        <span class="lt-sep">|</span>
+        <span class="lt-en">EN</span>
+      </button>
+      <a href="#contacto" class="nav-cta-btn" data-i18n="nav_contact">Contacto</a>
+    </div>
   </div>
 </nav>
 
