@@ -33,7 +33,7 @@
   --shadow-card: 0 1px 3px rgba(0,0,0,0.05), 0 8px 28px rgba(0,0,0,0.09), inset 0 1px 0 rgba(255,255,255,0.85);
   --shadow-card-hover: 0 2px 8px rgba(0,0,0,0.07), 0 20px 56px rgba(0,0,0,0.14), inset 0 1px 0 rgba(255,255,255,0.9);
   --font: 'Montserrat', system-ui, sans-serif;
-  --max-w: 1260px;
+  --max-w: 1536px;
   --pad: clamp(24px, 5vw, 64px);
 }
 
@@ -132,8 +132,9 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 52px;
-  align-items: center;
+  align-items: flex-start;
 }
+.hero-left { padding-top: 20px; }
 .hero-label {
   font-size: 11px;
   font-weight: 600;
@@ -407,72 +408,50 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   margin-bottom: 52px;
 }
 .services-layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 28px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 .services-sidebar {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: sticky;
-  top: 88px;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  position: relative;
+  top: 0;
 }
 .srv-item {
-  padding: 18px 20px;
-  border-radius: 14px;
+  background: rgba(0,0,0,0.04);
+  border: 1.5px solid rgba(0,0,0,0.11);
+  border-radius: 100px;
+  padding: 14px 32px;
   cursor: pointer;
-  transition: all 0.2s;
-  border: 1.5px solid rgba(0,168,120,0.08);
-  background: rgba(250,253,249,0.92);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 22px rgba(0,0,0,0.07), 0 3px 12px rgba(0,168,120,0.06), inset 0 1px 0 rgba(255,255,255,0.92);
-  text-align: left;
-  min-height: 90px;
+  transition: all 0.25s;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  backdrop-filter: blur(8px);
+  text-align: center;
 }
 .srv-item:hover {
-  box-shadow: var(--shadow-card-hover);
-  transform: translateX(2px);
-  border-color: rgba(0,168,120,0.2);
+  background: rgba(0,0,0,0.07);
+  border-color: rgba(0,0,0,0.18);
 }
 .srv-item.active {
   background: var(--green);
   border-color: var(--green);
-  box-shadow: 0 4px 16px rgba(0,168,120,0.25), 0 12px 40px rgba(0,168,120,0.2);
-  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0,168,120,0.35);
 }
-.srv-num {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--green);
-  display: block;
-  margin-bottom: 4px;
-}
-.srv-item.active .srv-num { color: rgba(255,255,255,0.65); }
 .srv-name {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.3;
-  display: block;
-  margin-bottom: 6px;
-}
-.srv-item.active .srv-name { color: white; }
-.srv-badge {
-  display: inline-block;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 600;
-  color: var(--green-dark);
-  background: var(--green-soft);
-  padding: 2px 8px;
-  border-radius: 50px;
-  letter-spacing: 0.02em;
+  color: var(--text-2);
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: 0.01em;
 }
+.srv-item:hover .srv-name { color: var(--text); }
+.srv-item.active .srv-name { color: white; font-weight: 700; }
 .srv-item.active .srv-badge {
   color: rgba(255,255,255,0.85);
   background: rgba(255,255,255,0.15);
@@ -509,11 +488,11 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
 .sp-pillars { display: flex; flex-direction: column; gap: 16px; }
 .sp-pillar { display: flex; gap: 16px; align-items: flex-start; }
 .sp-pillar-dot {
-  width: 32px; height: 32px; min-width: 32px;
-  background: var(--green-soft);
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px;
+  width: 8px; height: 8px; min-width: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
 }
 .sp-pillar-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
 .sp-pillar-text { font-size: 13px; font-weight: 300; color: var(--text-2); line-height: 1.6; }
@@ -521,7 +500,7 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   border-radius: 16px;
   overflow: hidden;
   aspect-ratio: 4/3;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   box-shadow: var(--shadow-card);
 }
 .sp-right-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -583,7 +562,7 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
 .stk-grid-wrap { background: var(--dark); border-radius: 20px; padding: 40px 36px; }
 .somos-tabs .viz-panel { padding-top: 8px; }
 .network-wrap {
-  width: 100%; margin: 0 auto;
+  width: 88%; margin: 0 auto;
   background:
     radial-gradient(ellipse 70% 60% at 80% 10%, rgba(0,168,120,0.18) 0%, transparent 55%),
     radial-gradient(ellipse 40% 50% at 10% 90%, rgba(0,120,88,0.12) 0%, transparent 40%),
@@ -591,6 +570,7 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   border-radius: 20px;
   padding: 4px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.14), 0 16px 48px rgba(0,0,0,0.09);
+  position: relative;
 }
 .network-svg { width: 100%; height: auto; display: block; }
 #stakeholdersCanvas {
@@ -605,33 +585,29 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
 
 /* VIZ C - Cards grid */
 .stk-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  max-width: 860px;
-  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  position: absolute;
+  bottom: 28px;
+  left: 0; right: 0;
+  padding: 0 32px;
+  z-index: 10;
 }
 .stk-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 16px;
-  padding: 20px 16px;
+  padding: 18px 20px;
   text-align: center;
   transition: all 0.25s;
+  backdrop-filter: blur(8px);
+  min-width: 140px;
 }
-.stk-card:hover { background: rgba(0,168,120,0.1); border-color: rgba(0,168,120,0.3); }
-.stk-card.center {
-  background: var(--green);
-  border-color: var(--green);
-  grid-column: 2 / 4;
-  box-shadow: 0 4px 20px rgba(0,168,120,0.4);
-  padding: 28px 16px;
-}
-.stk-icon { font-size: 24px; margin-bottom: 10px; }
-.stk-name { font-size: 13px; font-weight: 700; color: white; margin-bottom: 4px; line-height: 1.2; }
-.stk-card.center .stk-name { font-size: 20px; font-weight: 800; }
-.stk-desc { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.4; }
-.stk-card.center .stk-desc { color: rgba(255,255,255,0.75); }
+.stk-card:hover { background: rgba(0,168,120,0.18); border-color: rgba(0,168,120,0.4); }
+.stk-icon { font-size: 22px; margin-bottom: 8px; }
+.stk-name { font-size: 12.5px; font-weight: 700; color: white; line-height: 1.25; }
 
 /* ──────── ESPACIO ──────── */
 #espacio { background: radial-gradient(ellipse 50% 70% at 2% 60%, rgba(0,201,142,0.04) 0%, transparent 50%), var(--bg); }
@@ -691,21 +667,23 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
   background: var(--dark);
   color: white;
   border-radius: 18px;
-  padding: 22px 24px;
+  padding: 24px 28px;
   display: flex;
-  gap: 14px;
-  align-items: flex-start;
+  gap: 18px;
+  align-items: center;
   box-shadow: var(--shadow-card);
+  margin-top: 48px;
 }
 .loc-icon {
-  width: 36px; height: 36px; min-width: 36px;
+  width: 40px; height: 40px; min-width: 40px;
   background: rgba(0,168,120,0.15);
-  border-radius: 8px;
+  border: 1px solid rgba(0,168,120,0.25);
+  border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 16px;
 }
-.loc-title { font-size: 12px; font-weight: 700; color: white; margin-bottom: 4px; letter-spacing: 0.02em; text-transform: uppercase; }
-.loc-text { font-size: 12.5px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.65; }
+.loc-icon svg { width: 18px; height: 18px; stroke: var(--green-light); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.loc-title { font-size: 13px; font-weight: 700; color: white; margin-bottom: 3px; letter-spacing: 0.06em; text-transform: uppercase; }
+.loc-text { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.6; }
 
 /* ──────── BLOG ──────── */
 #blog { background: radial-gradient(ellipse 75% 50% at 95% 18%, rgba(0,168,120,0.045) 0%, transparent 55%), var(--white); }
@@ -731,44 +709,52 @@ nav.scrolled { box-shadow: var(--shadow-sm); }
 .bc-link { font-size: 12.5px; font-weight: 600; color: var(--green); text-decoration: none; }
 
 /* ──────── ALIANZAS ──────── */
-#alianzas { background: radial-gradient(ellipse 60% 80% at 50% 115%, rgba(0,168,120,0.045) 0%, transparent 55%), var(--white); }
+#alianzas { background: radial-gradient(ellipse 60% 80% at 50% 115%, rgba(0,168,120,0.045) 0%, transparent 55%), var(--white); padding-top: clamp(36px, 4vw, 52px); }
 .alianzas-inner { text-align: center; }
 .alianzas-inner .section-sub { margin: 0 auto 60px; }
 .partners-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
   margin-bottom: 48px;
+  overflow: hidden;
 }
 .partner-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 28px 16px 22px;
+  background: transparent !important;
+  border: none !important;
+  border-right: 1px solid var(--border) !important;
+  border-radius: 0 !important;
+  padding: 40px 24px !important;
   text-align: center;
-  box-shadow: var(--shadow-card);
-  transition: box-shadow 0.25s, transform 0.25s;
+  box-shadow: none !important;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s ease !important;
 }
-.partner-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
-.partner-logo-pill {
-  display: inline-flex;
+.partner-card:last-child { border-right: none !important; }
+.partner-card:hover { background: var(--bg2) !important; transform: none !important; }
+.partner-logo-wrapper {
+  height: 90px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  height: 36px;
-  padding: 0 14px;
-  border-radius: 50px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  font-size: 11px;
-  font-weight: 800;
-  color: var(--green-dark);
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 14px;
+  margin-bottom: 24px;
 }
-.partner-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-.partner-desc { font-size: 11px; font-weight: 300; color: var(--text-3); line-height: 1.5; }
+.partner-logo-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.partner-desc {
+  font-size: 12px !important;
+  font-weight: 300 !important;
+  color: var(--text-2) !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
 
 /* ──────── CONTACTO ──────── */
 #contacto { background: radial-gradient(ellipse 65% 60% at 95% 80%, rgba(0,168,120,0.045) 0%, transparent 55%), var(--bg); padding: clamp(72px, 10vw, 120px) 0; }
@@ -885,7 +871,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   vertical-align: baseline;
   transform: translateY(0.12em);
 }
-.logo-inline img { height: 0.95em; width: auto; display: block; }
+.logo-inline img { height: 1.2em; width: auto; display: block; }
 .logo-inline.sm img { height: 0.9em; }
 .logo-inline.on-dark img { filter: drop-shadow(0 10px 24px rgba(0,0,0,0.25)); }
 
@@ -1108,6 +1094,83 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   background: var(--bg); border: 1px solid var(--border); color: var(--text-2);
 }
 
+/* ──────── ENF FLIP GRID ──────── */
+.enf-flip-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+.enf-flip-card {
+  aspect-ratio: 4/5;
+  perspective: 900px;
+  cursor: pointer;
+}
+.enf-flip-inner {
+  position: relative;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.enf-flip-card:not(.static):hover .enf-flip-inner { transform: rotateY(180deg); }
+.enf-flip-front, .enf-flip-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 14px;
+}
+.enf-flip-front {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.65);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 4px 24px rgba(0,168,120,0.10);
+}
+.enf-flip-front h4 {
+  font-size: 15px;          /* ← TAMAÑO TÍTULO FRONTAL */
+  font-weight: 800;
+  color: var(--green);
+  text-align: center;
+  line-height: 1.25;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.enf-flip-back {
+  background: var(--green);
+  transform: rotateY(180deg);
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 16px 14px;
+}
+.enf-flip-back-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+}
+.enf-tag-flip {
+  font-size: 11px;           /* ← TAMAÑO PÍLDORAS REVERSO */
+  font-weight: 500;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  padding: 5px 11px;         /* ← PADDING PÍLDORAS REVERSO */
+  border-radius: 50px;
+  color: white;
+  line-height: 1.25;
+}
+.enf-flip-card.static { cursor: default; }
+.enf-flip-card.static:hover .enf-flip-inner { transform: none; }
+.enf-flip-card.static .enf-flip-front h4 {
+  font-size: 18px;           /* ← TAMAÑO TÍTULO TARJETA VERDE */
+  color: white;
+  letter-spacing: 0.04em;
+}
+
 /* ──────── TEAM FLIP CAPSULES ──────── */
 #team-capsule { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 #equipo .section-inner { max-width: 1480px; }
@@ -1245,54 +1308,83 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 .sala-feats { display: flex; flex-wrap: wrap; gap: 7px; }
 .sala-feat { font-size: 11.5px; font-weight: 500; background: var(--bg); border: 1px solid var(--border); padding: 4px 13px; border-radius: 50px; color: var(--text-2); }
 
-/* ──────── ALIANZAS CAPSULES ──────── */
-.partners-capsule-row {
-  display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 48px;
+/* ──────── ROOM DETAIL PANELS ──────── */
+.room-tabs-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
 }
-.partner-capsule {
-  background: linear-gradient(180deg, rgba(247,249,248,0.85) 0%, rgba(239,243,241,0.9) 100%);
-  border: 1px solid rgba(0,0,0,0.07);
-  border-radius: 999px;
-  padding: 30px 20px;
-  width: 170px;
-  min-height: 245px;
+.room-tab-btn {
+  background: var(--white);
+  border: 2px solid rgba(0,168,120,0.2);
+  border-radius: 50px;
+  padding: 16px 40px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font);
+}
+.room-tab-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--green-light);
+}
+.room-tab-btn.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: white;
+  box-shadow: 0 8px 24px rgba(0,168,120,0.3);
+}
+.room-detail-panel {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  background: var(--white);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+}
+.room-detail-panel.active {
+  display: grid;
+  animation: fadeUp 0.35s ease;
+}
+.room-main-photo {
+  width: 100%;
+  border-radius: 16px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  box-shadow: var(--shadow-md);
+}
+.room-features-list {
+  list-style: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 18px 60px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.85);
-  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-  text-align: center;
+  gap: 14px;
+  margin-top: 20px;
 }
-.partner-capsule { box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 18px 60px rgba(0,0,0,0.10), 0 10px 30px rgba(0,168,120,0.15), inset 0 1px 0 rgba(255,255,255,0.85); }
-.partner-capsule:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.07), 0 26px 72px rgba(0,0,0,0.14), 0 12px 36px rgba(0,168,120,0.22), inset 0 1px 0 rgba(255,255,255,0.9); transform: translateY(-5px); border-color: rgba(0,168,120,0.3); }
-.partner-logo-slot {
-  width: 58px;
-  height: 58px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  color: var(--green-dark);
-  background: rgba(255,255,255,0.92);
-  border: 1px solid rgba(0,0,0,0.07);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.9);
+.room-features-list li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.5;
 }
-.partner-cap-name { font-size: 12.5px; font-weight: 700; color: var(--text); }
-.partner-cap-desc { font-size: 10.5px; font-weight: 300; color: var(--text-3); line-height: 1.5; }
-.partner-capsule img {
-  max-width: 80%;
-  max-height: 50px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto 20px auto;
-  display: block;
+.room-features-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 800;
+  font-size: 16px;
 }
+
 
 /* ──────── TEAM GRID BIO ──────── */
 .tm-bio {
@@ -1334,8 +1426,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   .contact-layout { grid-template-columns: 1fr; }
   .blog-cards { grid-template-columns: repeat(2, 1fr); }
   .footer-main { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .stk-grid { grid-template-columns: repeat(3, 1fr); }
-  .stk-card.center { grid-column: 1 / 4; }
+  .enf-flip-grid { grid-template-columns: repeat(3, 1fr); }
   #team-capsule { grid-template-columns: repeat(2, 1fr); }
   .explore-trio { grid-template-columns: 1fr; }
 }
@@ -1346,8 +1437,8 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   .blog-cards { grid-template-columns: 1fr; }
   .footer-main { grid-template-columns: 1fr; }
   .cf-row { grid-template-columns: 1fr; }
-  .stk-grid { grid-template-columns: repeat(2, 1fr); }
-  .stk-card.center { grid-column: 1 / 3; }
+  .enf-flip-grid { grid-template-columns: repeat(2, 1fr); }
+  .stk-grid { gap: 10px; padding: 0 12px; }
   .espacio-rooms-row { grid-template-columns: 1fr; }
   .mu6, .mu7, .mu8 { display: none; }
 }
@@ -1503,6 +1594,59 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   .at-panel { padding: 20px; }
 }
 
+/* ──────── ESTILOS DE PRUEBA: ÁREAS TERAPÉUTICAS ──────── */
+/* TRANSICIÓN SUAVE PARA LOS CAMBIOS */
+.enf-flip-front, .enf-flip-back { transition: all 0.5s ease !important; }
+
+/* OPCIÓN 1: GLASSMORPHISM (Efecto Vidrio) */
+.theme-glass .enf-flip-front {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 8px 32px rgba(0, 168, 120, 0.05), inset 0 2px 0 rgba(255, 255, 255, 1) !important;
+}
+.theme-glass .enf-flip-card:nth-child(even) .enf-flip-front {
+  background: rgba(0, 168, 120, 0.04) !important;
+}
+.theme-glass .enf-flip-back {
+  background: rgba(0, 168, 120, 0.85) !important;
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* OPCIÓN 2: AURORA MESH (Gradientes Intercalados) */
+.theme-aurora .enf-flip-front {
+  border: none !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+}
+.theme-aurora .enf-flip-front h4 { color: white !important; text-shadow: 0 2px 10px rgba(0,0,0,0.15); }
+.theme-aurora .enf-flip-card:nth-child(4n+1) .enf-flip-front { background: linear-gradient(135deg, #00A878, #007A58) !important; }
+.theme-aurora .enf-flip-card:nth-child(4n+2) .enf-flip-front { background: linear-gradient(135deg, #00C98E, #00A878) !important; }
+.theme-aurora .enf-flip-card:nth-child(4n+3) .enf-flip-front { background: linear-gradient(135deg, #028A64, #015E44) !important; }
+.theme-aurora .enf-flip-card:nth-child(4n) .enf-flip-front   { background: linear-gradient(135deg, #00b380, #008f66) !important; }
+.theme-aurora .enf-flip-back {
+  background: #E8EFEB !important;
+  border: 1px solid rgba(0,168,120,0.15) !important;
+}
+.theme-aurora .enf-tag-flip {
+  background: rgba(0,168,120,0.12) !important;
+  border: 1px solid rgba(0,168,120,0.25) !important;
+  color: var(--green-dark) !important;
+}
+
+/* OPCIÓN 3: NEUMORFISMO (3D Suave) */
+.theme-3d .enf-flip-front {
+  background: var(--bg) !important;
+  border: none !important;
+  box-shadow: 8px 8px 16px rgba(0,0,0,0.06), -8px -8px 16px rgba(255,255,255,0.8) !important;
+}
+.theme-3d .enf-flip-front h4 { color: var(--green-dark) !important; }
+.theme-3d .enf-flip-back {
+  background: var(--green) !important;
+  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.1), inset -4px -4px 10px rgba(255,255,255,0.2) !important;
+}
+
+
 </style>
 </head>
 <body>
@@ -1511,10 +1655,10 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 <nav id="main-nav">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">
-      <img src="dark_logo_transparent_background.png" alt="NUIN">
+      <img src="dark_logo_transparent_background.png" alt="NUIN" loading="eager">
     </a>
     <ul class="nav-links">
-      <li><a href="#somos">Nosotros</a></li>
+      <li><a href="#somos">Quienes somos</a></li>
       <li><a href="#equipo">Equipo</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#espacio">Espacio</a></li>
@@ -1531,9 +1675,12 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
     <div class="hero-left">
       <div class="hero-label">HEALTHCARE INSIGHTS & STRATEGY</div>
       <h1 class="hero-h1">
-        Convirtiendo datos y conversaciones en insights accionables <strong style="color: var(--green);">desde 1987</strong>
+        Convirtiendo datos y<br>
+        conversaciones en<br>
+        insights accionables<br>
+        <strong style="color: var(--green);">desde 1987</strong>
       </h1>
-      <p class="hero-sub">La primera agencia española dedicada exclusivamente al sector farmacéutico. Cuatro décadas de rigor, método y profundidad clínica.</p>
+      <p class="hero-sub">El primer instituto de investigación de mercado dedicado exclusivamente al sector farmacéutico. Cuatro décadas de rigor, método y profesionalidad en investigación de mercado cualitativa, cuantitativa, advisory boards y reuniones estratégicas.</p>
       <div class="hero-btns">
         <a href="#servicios" class="btn-primary">Explorar servicios</a>
         <a href="#somos" class="btn-ghost">Conocer NUIN</a>
@@ -1541,7 +1688,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
     </div>
     <div class="hero-visual">
       <div class="hero-img-main">
-        <img src="imagen_portada.png" alt="NUIN Healthcare Insights">
+        <img src="imagen_portada.jpg" alt="NUIN Healthcare Insights" loading="eager">
       </div>
     </div>
   </div>
@@ -1566,7 +1713,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
     </div>
     <div class="hl-right">
       <div class="hl-img-wrap">
-        <img src="imagen_portada.png" alt="NUIN Healthcare Insights">
+        <img src="imagen_portada.jpg" alt="NUIN Healthcare Insights" loading="eager">
       </div>
       <div class="hl-cap hl-cap-1">
         <span class="hl-cap-num">+40</span>
@@ -1610,9 +1757,14 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
     <div class="somos-layout">
       <div class="somos-left reveal">
         <div class="eyebrow">Quiénes somos</div>
-        <h2 class="section-title">La primera agencia española exclusivamente farmacéutica</h2>
-        <p>Fuimos la primera agencia española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Cuatro décadas de trabajo continuo, un equipo sólido y una metodología probada nos avalan.</p>
-        <p>Nuestra especialización radical en healthcare no es una elección comercial — es nuestra razón de ser desde el primer día.</p>
+        <h2 class="section-title">
+          El primer instituto de<br>
+          investigación de mercado<br>
+          dedicado exclusivamente<br>
+          al sector farmacéutico
+        </h2>
+        <p>Fuimos la primera empresa española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Cuatro décadas de trabajo continuo, un equipo sólido y una metodología probada nos avalan.</p>
+        <p>Nuestra especialización en healthcare no es una elección comercial – es nuestra razón de ser.</p>
       </div>
       <div class="stats-grid reveal reveal-d1">
         <div class="stat-card accent">
@@ -1620,11 +1772,11 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
           <div class="stat-label">años dedicados al sector farma</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">+4.200</div>
+          <div class="stat-num">+4350</div>
           <div class="stat-label">proyectos en healthcare</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">+70</div>
+          <div class="stat-num">+85</div>
           <div class="stat-label">laboratorios han confiado en nosotros</div>
         </div>
         <div class="stat-card accent">
@@ -1648,15 +1800,301 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       </div>
 
       <div id="panel-areas" class="viz-panel">
-        <div class="eyebrow reveal">Experiencia clínica</div>
+        <div class="eyebrow reveal">Experiencia</div>
         <h2 class="section-title reveal">Áreas terapéuticas</h2>
-        <p class="section-sub reveal" style="margin-bottom:40px;">Más de 200 enfermedades trabajadas en profundidad a lo largo de cuatro décadas.</p>
-        <div class="at-pills reveal" id="at-pills"></div>
-        <div class="at-panel-wrap" id="at-panel-wrap">
-          <div class="at-panel" id="at-panel">
-            <div class="at-panel-title" id="at-panel-title"></div>
-            <div class="at-tags" id="at-tags"></div>
+        <p class="section-sub reveal" style="margin-bottom:40px;">A lo largo de cuatro décadas hemos adquirido experiencia en más de 200 enfermedades
+destacando una gran dedicación a las enfermedades raras.</p>
+        <div class="enf-flip-grid reveal theme-aurora">
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Neurología y<br>neurodesarrollo</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">TDAH</span>
+                  <span class="enf-tag-flip">Tourette</span>
+                  <span class="enf-tag-flip">Trastornos del sueño</span>
+                  <span class="enf-tag-flip">Alzheimer</span>
+                  <span class="enf-tag-flip">Parkinson</span>
+                  <span class="enf-tag-flip">Huntington</span>
+                  <span class="enf-tag-flip">ELA</span>
+                  <span class="enf-tag-flip">Esclerosis múltiple</span>
+                  <span class="enf-tag-flip">Duchenne</span>
+                  <span class="enf-tag-flip">Atrofia muscular espinal</span>
+                  <span class="enf-tag-flip">Miastenia gravis</span>
+                  <span class="enf-tag-flip">Migraña crónica</span>
+                  <span class="enf-tag-flip">Epilepsia</span>
+                  <span class="enf-tag-flip">Síndrome de Dravet</span>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Cardiovascular</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">Hipertensión arterial</span>
+                  <span class="enf-tag-flip">Dislipidemia</span>
+                  <span class="enf-tag-flip">Enfermedad coronaria</span>
+                  <span class="enf-tag-flip">Síndrome coronario agudo</span>
+                  <span class="enf-tag-flip">Insuficiencia cardiaca</span>
+                  <span class="enf-tag-flip">Fibrilación auricular</span>
+                  <span class="enf-tag-flip">Tromboembolismo venoso</span>
+                  <span class="enf-tag-flip">HAP</span>
+                  <span class="enf-tag-flip">Hipercolesterolemia familiar</span>
+                  <span class="enf-tag-flip">Amiloidosis ATTR</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Respiratorio</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">Asma</span>
+                  <span class="enf-tag-flip">EPOC</span>
+                  <span class="enf-tag-flip">Rinitis alérgica</span>
+                  <span class="enf-tag-flip">Fibrosis quística</span>
+                  <span class="enf-tag-flip">Fibrosis pulmonar idiopática</span>
+                  <span class="enf-tag-flip">Enfermedad pulmonar intersticial</span>
+                  <span class="enf-tag-flip">Déficit alfa-1 antitripsina</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Endocrinología</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">Diabetes tipo 1 y 2</span>
+                  <span class="enf-tag-flip">Obesidad</span>
+                  <span class="enf-tag-flip">Hipotiroidismo</span>
+                  <span class="enf-tag-flip">Osteoporosis</span>
+                  <span class="enf-tag-flip">Hiperplasia suprarrenal</span>
+                  <span class="enf-tag-flip">Síndrome de Cushing</span>
+                  <span class="enf-tag-flip">Acromegalia</span>
+                  <span class="enf-tag-flip">Acondroplasia</span>
+                  <span class="enf-tag-flip">Fenilcetonuria</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Enf. metabólicas<br>y lisosomales</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">Gaucher</span>
+                  <span class="enf-tag-flip">Fabry</span>
+                  <span class="enf-tag-flip">Pompe</span>
+                  <span class="enf-tag-flip">Mucopolisacaridosis</span>
+                  <span class="enf-tag-flip">Déficit esfingomielinasa</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Hematología</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">Anemia ferropénica</span>
+                  <span class="enf-tag-flip">Trombosis venosa</span>
+                  <span class="enf-tag-flip">Trombocitopenia inmune</span>
+                  <span class="enf-tag-flip">Hemofilia A y B</span>
+                  <span class="enf-tag-flip">Von Willebrand</span>
+                  <span class="enf-tag-flip">HPN</span>
+                  <span class="enf-tag-flip">SHUa</span>
+                  <span class="enf-tag-flip">Aglutininas frías</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Oncología y<br>hemato-oncología</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">Cáncer de mama</span>
+                  <span class="enf-tag-flip">Cáncer de pulmón</span>
+                  <span class="enf-tag-flip">Colorrectal</span>
+                  <span class="enf-tag-flip">Próstata</span>
+                  <span class="enf-tag-flip">Ovario</span>
+                  <span class="enf-tag-flip">Melanoma</span>
+                  <span class="enf-tag-flip">Hepatocarcinoma</span>
+                  <span class="enf-tag-flip">Glioblastoma</span>
+                  <span class="enf-tag-flip">Leucemias</span>
+                  <span class="enf-tag-flip">Linfomas</span>
+                  <span class="enf-tag-flip">Mieloma múltiple</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Inmunología<br>y reumatología</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">Artritis reumatoide</span>
+                  <span class="enf-tag-flip">Artritis psoriásica</span>
+                  <span class="enf-tag-flip">Espondiloartritis axial</span>
+                  <span class="enf-tag-flip">Psoriasis</span>
+                  <span class="enf-tag-flip">Lupus eritematoso</span>
+                  <span class="enf-tag-flip">Vasculitis ANCA</span>
+                  <span class="enf-tag-flip">Dermatitis atópica</span>
+                  <span class="enf-tag-flip">Urticaria crónica</span>
+                  <span class="enf-tag-flip">Angioedema hereditario</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Gastroenterología<br>y hepatología</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">Enfermedad de Crohn</span>
+                  <span class="enf-tag-flip">Colitis ulcerosa</span>
+                  <span class="enf-tag-flip">Enfermedad celíaca</span>
+                  <span class="enf-tag-flip">Úlcera péptica</span>
+                  <span class="enf-tag-flip">Síndrome intestino irritable</span>
+                  <span class="enf-tag-flip">Hepatitis B y C</span>
+                  <span class="enf-tag-flip">Colangitis</span>
+                  <span class="enf-tag-flip">Intestino corto</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Infecciosas</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">VIH</span>
+                  <span class="enf-tag-flip">Hepatitis B y C crónica</span>
+                  <span class="enf-tag-flip">Tuberculosis</span>
+                  <span class="enf-tag-flip">Infecciones fúngicas</span>
+                  <span class="enf-tag-flip">Citomegalovirus</span>
+                  <span class="enf-tag-flip">COVID-19</span>
+                  <span class="enf-tag-flip">Herpes Zóster</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Dermatología</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">Psoriasis</span>
+                  <span class="enf-tag-flip">Dermatitis atópica</span>
+                  <span class="enf-tag-flip">Acné</span>
+                  <span class="enf-tag-flip">Rosácea</span>
+                  <span class="enf-tag-flip">Hidradenitis supurativa</span>
+                  <span class="enf-tag-flip">Urticaria crónica espontánea</span>
+                  <span class="enf-tag-flip">Alopecia areata</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Nefrología</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">Enfermedad renal crónica</span>
+                  <span class="enf-tag-flip">Hiperpotasemia crónica</span>
+                  <span class="enf-tag-flip">Glomerulopatías</span>
+                  <span class="enf-tag-flip">Poliquistosis renal</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Oftalmología</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">DMAE</span>
+                  <span class="enf-tag-flip">Ojo seco</span>
+                  <span class="enf-tag-flip">Uveítis no infecciosa</span>
+                  <span class="enf-tag-flip">Glaucoma</span>
+                  <span class="enf-tag-flip">Retinopatía diabética</span>
+                  <span class="enf-tag-flip">Distrofias retinianas</span>
+                  <span class="enf-tag-flip">Neuromielitis óptica</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front">
+                <h4>Reproducción,<br>ginecología y urología</h4>
+              </div>
+              <div class="enf-flip-back">
+                <div class="enf-flip-back-tags">
+                  <span class="enf-tag-flip">Endometriosis</span>
+                  <span class="enf-tag-flip">Anticoncepción hormonal</span>
+                  <span class="enf-tag-flip">Miomas uterinos</span>
+                  <span class="enf-tag-flip">Osteoporosis posmenopáusica</span>
+                  <span class="enf-tag-flip">Hiperplasia benigna próstata</span>
+                  <span class="enf-tag-flip">Vejiga hiperactiva</span>
+                  <span class="enf-tag-flip">Disfunción eréctil</span>
+                  <span class="enf-tag-flip">Infertilidad</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="enf-flip-card static">
+            <div class="enf-flip-inner">
+              <div class="enf-flip-front" style="background: var(--green); border-color: var(--green);">
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -1781,7 +2219,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
     <div class="equipo-header reveal">
       <div>
         <div class="eyebrow">El equipo</div>
-        <h2 class="section-title">Equipo <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN"></span></h2>
+        <h2 class="section-title">Somos <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="eager"></span></h2>
       </div>
     </div>
 
@@ -1792,7 +2230,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
             <!-- TODO: FOTO DE JUAN REIG -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Juan_JCM1780.jpg" alt="Juan Reig">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Juan_JCM1780.jpg" alt="Juan Reig" loading="lazy">
             <div class="tm-flip-front-info">
               <div class="tm-flip-front-name">Juan Reig</div>
               <div class="tm-flip-front-role">Chief Strategy Partner</div>
@@ -1811,7 +2249,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
             <!-- TODO: FOTO DE LORETO REIG -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Loreto_JCM1727.jpg" alt="Loreto Reig">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Loreto_JCM1727.jpg" alt="Loreto Reig" loading="lazy">
             <div class="tm-flip-front-info">
               <div class="tm-flip-front-name">Loreto Reig</div>
               <div class="tm-flip-front-role">Managing Partner</div>
@@ -1830,7 +2268,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
             <!-- TODO: FOTO DE JOSEFINA CONSUEGRA -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Josefina_JCM1805.jpg" alt="Josefina Consuegra">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Josefina_JCM1805.jpg" alt="Josefina Consuegra" loading="lazy">
             <div class="tm-flip-front-info">
               <div class="tm-flip-front-name">Josefina Consuegra</div>
               <div class="tm-flip-front-role">Strategic Client Advisor</div>
@@ -1849,7 +2287,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
             <!-- TODO: FOTO DE SONIA GALICIA -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Sonia_JCM1685.jpg" alt="Sonia Galicia">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Sonia_JCM1685.jpg" alt="Sonia Galicia" loading="lazy">
             <div class="tm-flip-front-info">
               <div class="tm-flip-front-name">Sonia Galicia</div>
               <div class="tm-flip-front-role">Head of Insights</div>
@@ -1868,7 +2306,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
             <!-- TODO: FOTO DE IRINA GONZÁLEZ -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Irina_JCM1670.jpg" alt="Irina González">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Irina_JCM1670.jpg" alt="Irina González" loading="lazy">
             <div class="tm-flip-front-info">
               <div class="tm-flip-front-name">Irina González</div>
               <div class="tm-flip-front-role">Medical Communication Lead</div>
@@ -1887,7 +2325,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
             <!-- TODO: FOTO DE ANA PÉREZ -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Ana_JCM1696.jpg" alt="Ana Pérez">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Ana_JCM1696.jpg" alt="Ana Pérez" loading="lazy">
             <div class="tm-flip-front-info">
               <div class="tm-flip-front-name">Ana Pérez</div>
               <div class="tm-flip-front-role">Scientific &amp; Medical Writer</div>
@@ -1906,7 +2344,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
             <!-- TODO: FOTO DE LAURA BARCALA -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Laura_JCM1755.jpg" alt="Laura Barcala">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Laura_JCM1755.jpg" alt="Laura Barcala" loading="lazy">
             <div class="tm-flip-front-info">
               <div class="tm-flip-front-name">Laura Barcala</div>
               <div class="tm-flip-front-role">Project &amp; Engagement Consultant</div>
@@ -1925,7 +2363,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <div class="tm-flip-inner">
           <div class="tm-flip-front">
             <!-- TODO: FOTO DE GUILLERMO LIÉBANA -->
-            <img src="NUIN/EQUIPO/FOTOS/byn/Guillermo_JCM1769.jpg" alt="Guillermo Liébana">
+            <img src="NUIN/EQUIPO/FOTOS/byn/Guillermo_JCM1769.jpg" alt="Guillermo Liébana" loading="lazy">
             <div class="tm-flip-front-info">
               <div class="tm-flip-front-name">Guillermo Liébana</div>
               <div class="tm-flip-front-role">Innovation &amp; Technology Lead</div>
@@ -1948,276 +2386,149 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   <div class="section-inner">
     <div class="services-header reveal">
       <div class="eyebrow">Lo que hacemos</div>
-      <h2 class="section-title">Servicios <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN"></span></h2>
+      <h2 class="section-title">Servicios <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="eager"></span></h2>
       <p class="section-sub">Cuarenta años dedicados a un solo sector nos han permitido dominar cada ángulo de la investigación en healthcare. Selecciona un servicio para ver los detalles.</p>
     </div>
 
     <div class="services-layout">
       <div class="services-sidebar">
         <div class="srv-item active" onclick="showService(0)">
-          <span class="srv-num">01</span>
-          <span class="srv-name">Advisory Boards en salud y farma</span>
-          <span class="srv-badge">Nº 1 España · +750 ABs</span>
+          <span class="srv-name">Advisory Boards</span>
         </div>
         <div class="srv-item" onclick="showService(1)">
-          <span class="srv-num">02</span>
-          <span class="srv-name">Investigación cualitativa</span>
-          <span class="srv-badge">Core service · 40 años</span>
+          <span class="srv-name">Investigación de mercado</span>
         </div>
         <div class="srv-item" onclick="showService(2)">
-          <span class="srv-num">03</span>
-          <span class="srv-name">Investigación cuantitativa</span>
-          <span class="srv-badge">BBDD propia exclusiva</span>
-        </div>
-        <div class="srv-item" onclick="showService(3)">
-          <span class="srv-num">04</span>
-          <span class="srv-name">Reuniones de ciclo</span>
-          <span class="srv-badge">Facilitación experta</span>
-        </div>
-        <div class="srv-item" onclick="showService(4)">
-          <span class="srv-num">05</span>
-          <span class="srv-name">Revisión de procesos</span>
-          <span class="srv-badge">Método TWACE · +50 hospitales</span>
-        </div>
-        <div class="srv-item" onclick="showService(5)">
-          <span class="srv-num">06</span>
-          <span class="srv-name">Workshops estratégicos</span>
-          <span class="srv-badge">Design Thinking · Metaplan</span>
+          <span class="srv-name">Otras soluciones estratégicas</span>
         </div>
       </div>
 
       <div class="services-content">
 
-        <!-- Panel 01 -->
+        <!-- Panel 01 — Advisory Boards -->
+        <!-- Panel 01 — Advisory Boards -->
         <div class="service-panel active" id="panel-0">
-          <div>
-            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">01 — Advisory Boards</div>
-            <h3 class="sp-title">Advisory Boards en salud y farma</h3>
+          <div class="sp-left">
+            <h3 class="sp-title">Advisory Boards</h3>
             <p class="sp-desc">Más de 750 sesiones realizadas en todo el mundo. Diseñamos cada reunión a medida, asegurando la máxima participación y resultados estratégicos para cada laboratorio.</p>
             <div class="sp-pillars">
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">🔀</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Ecosistema</div>
-                  <div class="sp-pillar-text">Abarca una amplia variedad de formatos, presenciales, virtuales o híbridos, áreas de organización, médico, marketing, acceso, y stakeholders.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">🏆</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
                   <div class="sp-pillar-title">Sistema propio de preparación</div>
                   <div class="sp-pillar-text">750+ ABs nos han dado las herramientas para optimizar cada sesión. El 100% de los clientes que han hecho un AB con nosotros han repetido.</div>
                 </div>
               </div>
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">🌍</div>
+                <div class="sp-pillar-dot"></div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Múltiples formatos</div>
+                  <div class="sp-pillar-text">Abarca una amplia variedad de formatos, presenciales, virtuales o híbridos, áreas de organización, médico, marketing, acceso, y stakeholders.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
                   <div class="sp-pillar-title">Alcance internacional</div>
                   <div class="sp-pillar-text">EEUU, México, Honduras, Chile, Argentina, Francia, Dinamarca, Suiza, UK… Moderamos en varios idiomas.</div>
                 </div>
               </div>
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">🏛️</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">La única sala en España</div>
-                  <div class="sp-pillar-text">Sala NUIN, diseñada específicamente para Advisory Boards, con espejo unidireccional, videoconferencia HD y grabación profesional.</div>
+                  <div class="sp-pillar-title">Sala única</div>
+                  <div class="sp-pillar-text">Sala <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="nuin" loading="lazy"></span>, diseñada específicamente para Advisory Boards, con mobiliario ergonómico, cabina de traducción simultánea, capacidad hasta 20 personas.</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="sp-right">
-            <!-- Imagen tomada del panel Reuniones de Ciclo — ajustar ruta si cambia -->
-            <div class="sp-right-img"><img src="NUIN/OFICINA/Sala%20AB-2.jpg" alt="Advisory Boards NUIN"></div>
+            <div class="sp-right-img"><img src="Sala AB-2.jpg" alt="Advisory Boards NUIN" loading="lazy"></div>
           </div>
         </div>
 
-        <!-- Panel 02 -->
+        <!-- Panel 02 — Investigación -->
         <div class="service-panel" id="panel-1">
-          <div>
-            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">02 — Investigación Cualitativa</div>
-            <h3 class="sp-title">Nuestro origen y especialidad. El alpha y el omega de <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN"></span>.</h3>
-            <p class="sp-desc">Miles de entrevistas, focus groups y estudios que revelan percepciones, motivaciones y experiencias. Un enfoque optimizado durante 40 años para alcanzar los más altos estándares de excelencia.</p>
-            <div class="sp-pillars">
+          <div class="sp-left">
+            <h3 class="sp-title">Investigación de mercado</h3>
+            <p style="font-size:14px;font-weight:500;color:var(--text-2);margin-bottom:14px;line-height:1.5;">40 años convirtiendo preguntas complejas en decisiones claras.</p>
+            <p class="sp-desc">La investigación es el núcleo de NUIN. Cuatro décadas trabajando exclusivamente en salud nos han permitido desarrollar un conocimiento profundo del entorno clínico, los profesionales sanitarios y los pacientes.</p>
+            <p class="sp-desc" style="margin-top:8px;">Combinamos investigación cualitativa y cuantitativa con metodología propia, base de datos exclusiva y amplia experiencia por áreas terapéuticas para generar insights sólidos, accionables y relevantes. No solo obtenemos respuestas: entendemos el contexto que las explica.</p>
+            <div class="sp-pillars" style="margin-top:20px;">
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">🔬</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Profundidad sin igual</div>
-                  <div class="sp-pillar-text">Hemos trabajado en más de 200 enfermedades distintas. Ese bagaje clínico nos permite hacer las preguntas correctas desde el primer momento.</div>
+                  <div class="sp-pillar-title">Especialización real en salud</div>
+                  <div class="sp-pillar-text">Hemos trabajado en todas las áreas terapéuticas y con prácticamente todos los stakeholders del ecosistema sanitario. Ese conocimiento acumulado nos permite comprender rápidamente cada proyecto y formular las preguntas adecuadas desde el inicio.</div>
                 </div>
               </div>
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">👥</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Todos los perfiles</div>
-                  <div class="sp-pillar-text">HCPs, enfermería, farmacia hospitalaria, farmacia de calle, KOLs, pacientes, cuidadores y asociaciones de pacientes.</div>
+                  <div class="sp-pillar-title">Acceso a todos los perfiles</div>
+                  <div class="sp-pillar-text">Médicos especialistas, Atención Primaria, enfermería, farmacia hospitalaria, farmacia comunitaria, gestores, KOLs, pacientes, cuidadores y asociaciones de pacientes. Cobertura nacional, sin limitaciones geográficas ni de especialidad.</div>
                 </div>
               </div>
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">📐</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Método propio</div>
-                  <div class="sp-pillar-text">Cuatro décadas perfeccionando técnicas exclusivas para el sector salud: proyectivas, etnografías, grupos de discusión y más.</div>
+                  <div class="sp-pillar-title">Base de datos propia y exclusiva</div>
+                  <div class="sp-pillar-text">Nuestro panel propio, construido y actualizado internamente durante años, garantiza rapidez, trazabilidad y ratios de respuesta superiores al estándar del mercado. Una ventaja diferencial clave para asegurar calidad y representatividad.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot"></div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Metodología optimizada durante 40 años</div>
+                  <div class="sp-pillar-text">Aplicamos metodologías cualitativas y cuantitativas adaptadas al sector salud: entrevistas en profundidad, focus groups, etnografías, técnicas proyectivas, encuestas y estudios híbridos diseñados para obtener insights realmente útiles.</div>
+                </div>
+              </div>
+              <div class="sp-pillar">
+                <div class="sp-pillar-dot"></div>
+                <div class="sp-pillar-body">
+                  <div class="sp-pillar-title">Rigor, agilidad y calidad de dato</div>
+                  <div class="sp-pillar-text">La combinación de expertise sectorial, metodología propia y acceso directo a los perfiles adecuados nos permite ejecutar proyectos con rapidez sin comprometer la profundidad ni la calidad del dato.</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="sp-right">
-            <div class="sp-right-img"><img src="JCM1978.jpg" alt="Investigación Cualitativa NUIN"></div>
-            <div class="sp-tags">
-              <span class="sp-tag">Focus groups</span><span class="sp-tag">Entrevistas en profundidad</span><span class="sp-tag">Técnicas proyectivas</span><span class="sp-tag">Etnografías</span><span class="sp-tag">Dinámicas grupales</span><span class="sp-tag">Online</span>
-            </div>
+            <div class="sp-right-img"><img src="JCM1978.jpg" alt="Investigación NUIN" loading="lazy"></div>
           </div>
         </div>
 
-        <!-- Panel 03 -->
+        <!-- Panel 03 — Otras soluciones estratégicas -->
         <div class="service-panel" id="panel-2">
-          <div>
-            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">03 — Investigación Cuantitativa</div>
-            <h3 class="sp-title">Base de datos propia que garantiza calidad, velocidad y representatividad.</h3>
-            <p class="sp-desc">Nuestra base de datos exclusiva, actualizada y propia, asegura calidad y rapidez en la obtención de datos sólidos. Acceso a todos los perfiles profesionales en todo el país con ratios de respuesta superiores.</p>
-            <div class="sp-pillars">
+          <div class="sp-left">
+            <h3 class="sp-title">Otras soluciones estratégicas</h3>
+            <p class="sp-desc">En NUIN acompañamos a nuestros clientes en momentos clave de análisis, alineación y toma de decisiones. Diseñamos y facilitamos dinámicas estratégicas adaptadas al entorno healthcare, combinando conocimiento del sector, visión analítica y experiencia moderando equipos multidisciplinares.</p>
+            <p class="sp-desc" style="margin-top:8px;">Ayudamos a transformar información y experiencia en decisiones compartidas, accionables y orientadas a resultados.</p>
+            <div class="sp-pillars" style="margin-top:20px;">
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">🗄️</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">BBDD propia y exclusiva</div>
-                  <div class="sp-pillar-text">Panel propio de profesionales de salud, permanentemente actualizado, con cobertura nacional y ratios de respuesta muy por encima del mercado.</div>
+                  <div class="sp-pillar-title">Revisión de procesos</div>
+                  <div class="sp-pillar-text"><strong>Método TWACE: cambios transformadores con alta implicación del equipo.</strong> Metodología propia aplicada con éxito en laboratorios y hospitales. Permite establecer planes de cambio operacionales claros, accesibles y realmente transformadores desde la primera semana. Experiencia en la optimización de procesos en decenas de unidades comerciales, médicas y de marketing de laboratorios líderes y en hospitales con más de 50 implementaciones realizadas.</div>
                 </div>
               </div>
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">📊</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Todos los perfiles, todo el país</div>
-                  <div class="sp-pillar-text">Médicos especialistas, médicos de AP, farmacéuticos, enfermería, pacientes… sin restricciones geográficas ni de especialidad.</div>
+                  <div class="sp-pillar-title">Reuniones de ciclo</div>
+                  <div class="sp-pillar-text"><strong>Reuniones internas que rompen inercias y generan planes de acción reales.</strong> Diseñamos y facilitamos reuniones de ciclo que alinean equipos, superan bloqueos y transforman conversaciones en compromisos concretos y medibles para áreas médicas, de acceso y marketing.</div>
                 </div>
               </div>
               <div class="sp-pillar">
-                <div class="sp-pillar-dot">⚡</div>
+                <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Rapidez y calidad garantizadas</div>
-                  <div class="sp-pillar-text">La combinación de BBDD propia y metodología afinada durante 40 años garantiza tiempos de ejecución y calidad de dato superiores.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="sp-right">
-            <div class="sp-right-img"><img src="trabajoNI_16.jpg" alt="Investigación Cuantitativa NUIN"></div>
-            <div class="sp-tags">
-              <span class="sp-tag">Encuestas online</span><span class="sp-tag">CATI</span><span class="sp-tag">Conjoint analysis</span><span class="sp-tag">Tracking</span><span class="sp-tag">Segmentación</span><span class="sp-tag">Análisis estadístico</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 04 -->
-        <div class="service-panel" id="panel-3">
-          <div>
-            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">04 — Reuniones de Ciclo</div>
-            <h3 class="sp-title">Reuniones internas que rompen inercias y generan planes de acción reales.</h3>
-            <p class="sp-desc">Diseñamos y facilitamos reuniones de ciclo que alinean equipos, superan bloqueos y transforman conversaciones en compromisos concretos y medibles para áreas médicas, de acceso y marketing.</p>
-            <div class="sp-pillars">
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">🎯</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Facilitación experta</div>
-                  <div class="sp-pillar-text">Moderadores con profundo conocimiento del sector farma que saben cómo sacar lo mejor de cada equipo en cada situación.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">🔄</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Ruptura de inercias</div>
-                  <div class="sp-pillar-text">Dinámicas diseñadas para superar las barreras habituales de comunicación interna y generar compromisos reales y duraderos.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">📋</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Planes de acción concretos</div>
-                  <div class="sp-pillar-text">Cada reunión termina con un plan de acción claro, con responsables y tiempos definidos. Nada queda en el aire.</div>
+                  <div class="sp-pillar-title">Workshops estratégicos</div>
+                  <div class="sp-pillar-text"><strong>Talleres que generan ideas accionables, alineación real y resultados duraderos.</strong> Talleres presenciales y online con metodologías como Design Thinking o Metaplan. Creamos espacios participativos donde los equipos generan soluciones propias que realmente se implementan.</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="sp-right">
-            <div class="sp-right-img"><img src="JCM2071.jpg" alt="Reuniones de Ciclo NUIN"></div>
-            <div class="sp-tags">
-              <span class="sp-tag">Facilitación</span><span class="sp-tag">Área médica</span><span class="sp-tag">Marketing farma</span><span class="sp-tag">Acceso</span><span class="sp-tag">Planes de acción</span><span class="sp-tag">Alineación</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 05 -->
-        <div class="service-panel" id="panel-4">
-          <div>
-            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">05 — Revisión de Procesos</div>
-            <h3 class="sp-title">Método TWACE: cambios transformadores con alta implicación del equipo.</h3>
-            <p class="sp-desc">Metodología propia aplicada con éxito en laboratorios y hospitales. Permite establecer planes de cambio operacionales claros, accesibles y realmente transformadores desde la primera semana.</p>
-            <div class="sp-pillars">
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">⚙️</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Laboratorios farmacéuticos</div>
-                  <div class="sp-pillar-text">Revisión y optimización de procesos en decenas de unidades comerciales, médicas y de marketing de laboratorios líderes.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">🏥</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">+50 hospitales implementados</div>
-                  <div class="sp-pillar-text">Mejora cuantitativa y cualitativa inmediata. Cambios que parecían traumáticos se llevan a cabo de forma satisfactoria, rápida y con alta implicación.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">📈</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Resultados medibles desde el día 1</div>
-                  <div class="sp-pillar-text">TWACE genera KPIs de seguimiento desde el inicio para que el cliente pueda medir el impacto del cambio en tiempo real.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="sp-right">
-            <div class="sp-right-img"><img src="EquipoNI_11.jpg" alt="Método TWACE NUIN"></div>
-            <div class="sp-tags">
-              <span class="sp-tag">Método TWACE</span><span class="sp-tag">+50 hospitales</span><span class="sp-tag">Laboratorios farma</span><span class="sp-tag">Gestión del cambio</span><span class="sp-tag">KPIs</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 06 -->
-        <div class="service-panel" id="panel-5">
-          <div>
-            <div class="sat-num" style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--green);margin-bottom:16px;">06 — Workshops Estratégicos</div>
-            <h3 class="sp-title">Talleres que generan ideas accionables, alineación real y resultados duraderos.</h3>
-            <p class="sp-desc">Talleres presenciales y online con metodologías como Design Thinking o Metaplan. Creamos espacios participativos donde los equipos generan soluciones propias que realmente se implementan.</p>
-            <div class="sp-pillars">
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">💡</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Design Thinking aplicado a salud</div>
-                  <div class="sp-pillar-text">Procesos de ideación centrados en el paciente y en los HCPs, adaptados al contexto y la cultura específica del sector farmacéutico.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">🗺️</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">Metaplan y metodologías participativas</div>
-                  <div class="sp-pillar-text">Dinámicas que dan voz a todos los participantes y generan consensos sólidos, sin que las jerarquías distorsionen el proceso.</div>
-                </div>
-              </div>
-              <div class="sp-pillar">
-                <div class="sp-pillar-dot">🚀</div>
-                <div class="sp-pillar-body">
-                  <div class="sp-pillar-title">De la idea a la acción</div>
-                  <div class="sp-pillar-text">Cada workshop termina con un plan de implementación concreto. No queremos que las ideas se queden en post-its.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="sp-right">
-            <div class="sp-right-img"><img src="procesos_copia_JCM1959.jpg" alt="Workshops Estratégicos NUIN"></div>
-            <div class="sp-tags">
-              <span class="sp-tag">Design Thinking</span><span class="sp-tag">Metaplan</span><span class="sp-tag">Presencial</span><span class="sp-tag">Online</span><span class="sp-tag">Co-creación</span><span class="sp-tag">Estrategia</span>
-            </div>
+            <div class="sp-right-img"><img src="EquipoNI_11.jpg" alt="Otras soluciones estratégicas NUIN" loading="lazy"></div>
           </div>
         </div>
 
@@ -2231,70 +2542,68 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   <div class="section-inner">
     <div class="espacio-header reveal">
       <div class="eyebrow">Instalaciones</div>
-      <h2 class="section-title">Espacio <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN"></span></h2>
+      <h2 class="section-title">Espacio <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="eager"></span></h2>
       <p class="section-sub">Dejamos que nuestras salas hablen por nosotros. Desde la Sala NUIN — la única en España diseñada específicamente para Advisory Boards — hasta la Sala FOCUS, pensada hasta el más mínimo detalle.</p>
     </div>
 
     <!-- Mosaic unificado -->
     <div class="espacio-mosaic reveal">
-      <div class="mosaic-img mu1"><img src="NUIN/OFICINA/Sala%20AB-1.jpg" alt="Sala Advisory Board NUIN"></div>
-      <div class="mosaic-img mu2"><img src="NUIN/OFICINA/Sala%20AB-5.jpg" alt="Sala AB NUIN"></div>
-      <div class="mosaic-img mu3"><img src="NUIN/OFICINA/Sala%20Grupos-1.jpg" alt="Sala Focus NUIN"></div>
-      <div class="mosaic-img mu4"><img src="NUIN/OFICINA/Cafe-2.jpg" alt="Zona Café NUIN"></div>
-      <div class="mosaic-img mu5"><img src="NUIN/OFICINA/Deco-1.jpg" alt="Espacios NUIN"></div>
-      <div class="mosaic-img mu6"><img src="NUIN/OFICINA/Sala%20Trabajo-2.jpg" alt="Sala de Trabajo NUIN"></div>
-      <div class="mosaic-img mu7"><img src="NUIN/OFICINA/Sala%20Grupos-4.jpg" alt="Sala Grupos NUIN"></div>
-      <div class="mosaic-img mu8"><img src="NUIN/OFICINA/Pasillo-1.jpg" alt="Pasillo NUIN"></div>
+      <div class="mosaic-img mu1"><img src="Sala AB-2.jpg" alt="Sala Advisory Board NUIN" loading="lazy"></div>
+      <div class="mosaic-img mu2"><img src="Sala Cafe-3.jpg" alt="Zona de café y descanso" loading="lazy"></div>
+      <div class="mosaic-img mu3"><img src="NUIN/OFICINA/Cafe-2.jpg" alt="Zona Café NUIN" loading="lazy"></div>
+      <div class="mosaic-img mu4"><img src="Sala_Focus.jpg" alt="Sala Focus NUIN" loading="lazy"></div>
+      <div class="mosaic-img mu5"><img src="NUIN/OFICINA/Deco-1.jpg" alt="Espacios NUIN" loading="lazy"></div>
+      <div class="mosaic-img mu6"><img src="NUIN/OFICINA/Sala%20Trabajo-2.jpg" alt="Sala de Trabajo NUIN" loading="lazy"></div>
+      <div class="mosaic-img mu7"><img src="NUIN/OFICINA/Sala%20Grupos-4.jpg" alt="Sala Grupos NUIN" loading="lazy"></div>
+      <div class="mosaic-img mu8"><img src="NUIN/OFICINA/Pasillo-1.jpg" alt="Pasillo NUIN" loading="lazy"></div>
     </div>
 
-    <div class="sala-tabs reveal">
-      <button class="sala-tab-btn active" id="sala-tab-nuin" onclick="setSalaTab('nuin')">Sala <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN" style="height: 14px; width: auto; vertical-align: middle;"></span></button>
-      <button class="sala-tab-btn" id="sala-tab-focus" onclick="setSalaTab('focus')">Sala <span style="font-weight: normal;">Focus</span></button>
+    <!-- Botones Selectores -->
+    <div class="room-tabs-container reveal">
+      <button class="room-tab-btn active" id="sala-tab-nuin" onclick="setSalaTab('nuin')">Sala <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="eager"></span></button>
+      <button class="room-tab-btn" id="sala-tab-focus" onclick="setSalaTab('focus')">Sala FOCUS</button>
     </div>
 
-    <div class="sala-panels reveal">
-      <div class="sala-panel active" id="sala-panel-nuin">
-        <div class="sala-panel-head">
-          <div class="sala-panel-title">Sala <span class="logo-inline sm"><img src="dark_logo_transparent_background.png" alt="NUIN" style="height: 18px; width: auto; vertical-align: middle;"></span> — Advisory Boards</div>
-          <div class="sala-panel-sub">La única sala en España diseñada específicamente para ABs</div>
-        </div>
-        <p style="font-size:14px;font-weight:300;color:var(--text-2);line-height:1.7;margin-bottom:20px;">La única sala en España diseñada específicamente para ABs asegurando el confort de los participantes en reuniones de larga duración.</p>
-        <div class="sala-gallery">
-          <div class="sala-photo"><img src="sala_AB-4.jpg" alt="Sala NUIN"></div>
-          <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20AB-2.jpg" alt="Sala AB NUIN"></div>
-          <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20AB-6.jpg" alt="Sala AB NUIN"></div>
-        </div>
-        <div class="sala-feats">
-          <span class="sala-feat">Espejo unidireccional</span>
-          <span class="sala-feat">Videoconferencia HD</span>
-          <span class="sala-feat">Grabación profesional</span>
-          <span class="sala-feat">Hasta 20 participantes</span>
-          <span class="sala-feat">Presencial y online</span>
-          <span class="sala-feat">Mobiliario ergonómico</span>
-          <span class="sala-feat">Materiales sostenibles</span>
-        </div>
+    <!-- Panel Sala NUIN -->
+    <div class="room-detail-panel active reveal" id="panel-nuin">
+      <div class="room-left">
+        <img src="sala_AB-4.jpg" alt="Sala NUIN" class="room-main-photo" loading="lazy">
       </div>
+      <div class="room-right">
+        <h3 class="sp-title">Sala <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="eager"></span></h3>
+        <ul class="room-features-list">
+          <li>Espacio equipado con <strong style="font-weight: 600;">mobiliario ergonómico</strong> que garantiza la comodidad de los participantes durante sesiones de larga duración.</li>
+          <li>Dispone de <strong style="font-weight: 600;">cabina de traducción simultánea</strong> para facilitar reuniones internacionales y proyectos multicéntricos.</li>
+          <li>Sala con <strong style="font-weight: 600;">capacidad</strong> para albergar <strong>hasta 20 asistentes</strong> en un entorno cómodo y funcional.</li>
+          <li>Amplia entrada de <strong style="font-weight: 600;">luz natural y terraza</strong> que crea un ambiente agradable y favorece la concentración de los participantes.</li>
+          <li>Equipada con <strong style="font-weight: 600;">pantalla de proyección de alta definición</strong> para presentaciones, resultados y materiales audiovisuales con máxima calidad de imagen.</li>
+          <li><strong style="font-weight: 600;">Zona de coffee</strong> diseñada para ofrecer un espacio cómodo e informal donde los participantes pueden relajarse y compartir impresiones durante las pausas.</li>
+          <li><strong style="font-weight: 600;">Biblioteca</strong> de libre acceso con una selección de <strong  style="font-weight: 600;">libros</strong> disponibles para que visitantes y participantes puedan llevárselos y darles una nueva vida.</li>
+        </ul>
+      </div>
+    </div>
 
-      <div class="sala-panel" id="sala-panel-focus">
-        <div class="sala-panel-head">
-          <div class="sala-panel-title">Sala <span style="font-weight: normal;">Focus</span></div>
-          <div class="sala-panel-sub">Diseñada para entrevistas IDI y grupos de discusión</div>
-        </div>
-        <div class="sala-gallery">
-          <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20Grupos-1.jpg" alt="Sala Focus NUIN"></div>
-          <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20Grupos-4.jpg" alt="Sala Focus NUIN"></div>
-          <div class="sala-photo"><img src="NUIN/OFICINA/Sala%20Grupos-6.jpg" alt="Sala Focus NUIN"></div>
-        </div>
-        <div class="sala-feats">
-          <span class="sala-feat">Entrevistas IDI</span>
-          <span class="sala-feat">Grupos de discusión</span>
-          <span class="sala-feat">Observación discreta</span>
-          <span class="sala-feat">Cámara de gesell</span>
-        </div>
+    <!-- Panel Sala FOCUS -->
+    <div class="room-detail-panel reveal" id="panel-focus">
+      <div class="room-left">
+        <img src="Sala_Focus.jpg" alt="Sala FOCUS" class="room-main-photo" loading="lazy">
+      </div>
+      <div class="room-right">
+        <h3 class="sp-title">Sala FOCUS</h3>
+        <ul class="room-features-list">
+          <li><strong style="font-weight: 600;">Mesa trapezoidal diseñada a medida</strong> para favorecer la interacción entre los participantes y optimizar la visibilidad durante las reuniones.</li>
+          <li>Equipada con <strong style="font-weight: 600;">espejo unidireccional</strong> que permite la observación en tiempo real de las sesiones sin interferir en la dinámica del grupo.</li>
+          <li>Cuenta con una <strong style="font-weight: 600;">sala de visionado independiente</strong> que permite a los clientes seguir las sesiones en directo con total comodidad.</li>
+          <li>Dispone de <strong style="font-weight: 600;">cabina de traducción simultánea</strong> para facilitar la participación de asistentes de distintos idiomas en proyectos internacionales.</li>
+          <li><strong style="font-weight: 600;">Sistema profesional de grabación de audio y vídeo</strong> que garantiza el registro íntegro de las sesiones para su posterior análisis.</li>
+          <li>Espacio diseñado para garantizar la <strong style="font-weight: 600;">privacidad y confidencialidad</strong> de la información compartida durante las reuniones y estudios de investigación.</li>
+        </ul>
       </div>
     </div>
     <div class="espacio-location reveal">
-      <div class="loc-icon">📍</div>
+      <div class="loc-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      </div>
       <div>
         <div class="loc-title">Calle Orense — Madrid</div>
         <div class="loc-text">Centro financiero de Madrid, a un paso de El Corte Inglés. Fácil acceso desde el aeropuerto, estaciones de tren, cercanías, metro y dos parkings en la puerta.</div>
@@ -2316,7 +2625,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
     <p class="section-sub reveal" style="margin-bottom:48px;">Una de las cosas más difíciles de ser especialistas en farma es mostrar lo que puedes hacer por tus clientes sin desvelar información confidencial… así que os hemos preparado este blog que habla de casos reales en los que pudimos ayudar.</p>
     <div class="blog-cards">
       <article class="bc reveal">
-        <div class="bc-img"><img src="NUIN/OFICINA/Sala%20AB-4.jpg" alt="Advisory Board Internacional"></div>
+        <div class="bc-img"><img src="sala_AB-4.jpg" alt="Advisory Board Internacional" loading="lazy"></div>
         <div class="bc-body">
           <span class="bc-tag">Advisory Board Internacional</span>
           <h3 class="bc-title">¿Cómo alineamos a 12 KOLs internacionales en una sola sesión?</h3>
@@ -2325,7 +2634,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         </div>
       </article>
       <article class="bc reveal reveal-d1">
-        <div class="bc-img"><img src="NUIN/OFICINA/Sala%20Grupos-6.jpg" alt="Cualitativo"></div>
+        <div class="bc-img"><img src="NUIN/OFICINA/Sala%20Grupos-6.jpg" alt="Cualitativo" loading="lazy"></div>
         <div class="bc-body">
           <span class="bc-tag">Cualitativo</span>
           <h3 class="bc-title">Cuando los datos no contaban toda la historia</h3>
@@ -2334,7 +2643,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         </div>
       </article>
       <article class="bc reveal reveal-d2">
-        <div class="bc-img"><img src="NUIN/OFICINA/Deco-6.jpg" alt="TWACE"></div>
+        <div class="bc-img"><img src="NUIN/OFICINA/Deco-6.jpg" alt="TWACE" loading="lazy"></div>
         <div class="bc-body">
           <span class="bc-tag">TWACE</span>
           <h3 class="bc-title">Transformando la visita médica en tiempo récord</h3>
@@ -2354,26 +2663,36 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
       <h2 class="section-title">Alianzas Estratégicas</h2>
       <p class="section-sub">En NUIN sabemos lo importante que es crecer de la mano de otras agencias y organizaciones, compartiendo buenas prácticas y colaborando para elevar los estándares de calidad del sector.</p>
     </div>
-    <div class="partners-capsule-row reveal">
-      <div class="partner-capsule">
-        <img src="logos/iris-logo.png" alt="IRIS Logo">
-        <div class="partner-cap-desc">Red internacional colaborativa con especialistas de market research de primer nivel, donde compartimos buenas prácticas y herramientas para crecer juntos.</div>
+    <div class="partners-grid reveal">
+      <div class="partner-card">
+        <div class="partner-logo-wrapper">
+          <img src="logos/iris-logo.png" alt="IRIS Logo" loading="lazy">
+        </div>
+        <p class="partner-desc">Red internacional colaborativa con especialistas de market research de primer nivel, donde compartimos buenas prácticas y herramientas para crecer juntos.</p>
       </div>
-      <div class="partner-capsule">
-        <img src="logos/aimfa-logo.png" alt="AIMFA Logo">
-        <div class="partner-cap-desc">Agrupación de Investigación y Marketing Farmacéutico. Un espacio de encuentro entre profesionales de investigación de mercado especializados en farma de España donde se fomenta el desarrollo profesional, el conocimiento y el networking.</div>
+      <div class="partner-card">
+        <div class="partner-logo-wrapper">
+          <img src="logos/aimfa-logo.png" alt="AIMFA Logo" loading="lazy">
+        </div>
+        <p class="partner-desc">Agrupación de Investigación y Marketing Farmacéutico. Un espacio de encuentro entre profesionales de investigación de mercado especializados en farma de España donde se fomenta el desarrollo profesional, el conocimiento y el networking.</p>
       </div>
-      <div class="partner-capsule">
-        <img src="logos/ephmra-logo.webp" alt="EPHMRA Logo">
-        <div class="partner-cap-desc">Nuestro punto de encuentro con especialistas internacionales de investigación de mercado en farma, participando en la mejora de los estándares de calidad e innovando en las metodologías.</div>
+      <div class="partner-card">
+        <div class="partner-logo-wrapper">
+          <img src="logos/ephmra-logo.webp" alt="EPHMRA Logo" loading="lazy">
+        </div>
+        <p class="partner-desc">Nuestro punto de encuentro con especialistas internacionales de investigación de mercado en farma, participando en la mejora de los estándares de calidad e innovando en las metodologías.</p>
       </div>
-      <div class="partner-capsule">
-        <img src="logos/esomar-logo.png" alt="ESOMAR Logo">
-        <div class="partner-cap-desc">Organismo global de estándares éticos y metodológicos en investigación de mercado.</div>
+      <div class="partner-card">
+        <div class="partner-logo-wrapper">
+          <img src="logos/esomar-logo.png" alt="ESOMAR Logo" loading="lazy">
+        </div>
+        <p class="partner-desc">Organismo global de estándares éticos y metodológicos en investigación de mercado, que regula la industria a nivel internacional desde 1947 para garantizar la confianza pública y proteger los datos del consumidor.</p>
       </div>
-      <div class="partner-capsule">
-        <img src="logos/beauty-cluster.png" alt="Beauty Cluster Logo">
-        <div class="partner-cap-desc">Es la principal asociación española de empresas de cosmética y cuidado personal, que impulsa innovación y colaboración en el sector.</div>
+      <div class="partner-card">
+        <div class="partner-logo-wrapper">
+          <img src="logos/beauty-cluster.png" alt="Beauty Cluster Logo" loading="lazy">
+        </div>
+        <p class="partner-desc">Principal asociación española de empresas de cosmética y cuidado personal, que impulsa innovación y colaboración en el sector.</p>
       </div>
     </div>
   </div>
@@ -2429,7 +2748,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   <div class="footer-inner">
     <div class="footer-main">
       <div class="f-brand">
-        <img src="white_logo_transparent_background.png" alt="NUIN">
+        <img src="white_logo_transparent_background.png" alt="NUIN" loading="lazy">
         <p>Primera agencia española de investigación de mercados dedicada exclusivamente al sector farmacéutico. Desde 1984.</p>
       </div>
       <div class="f-col">
@@ -2501,16 +2820,16 @@ if (canvas) {
   };
 
   const nodeData = [
-    { title: "KOLs", subtitle: "Líderes de Opinión" },
-    { title: "Farmacia Hospitalaria", subtitle: "Entorno Hospitalario" },
-    { title: "Farmacia de Calle", subtitle: "Retail & Community" },
-    { title: "Cuidadores", subtitle: "Entorno del Paciente" },
-    { title: "Asoc. Pacientes", subtitle: "Asociaciones" },
-    { title: "Pacientes", subtitle: "La Voz Real" },
-    { title: "Enfermería", subtitle: "Cuidado Profesional" },
-    { title: "Laboratorios", subtitle: "Industria Farmacéutica" },
-    { title: "Hospitales", subtitle: "Instituciones de Salud" },
-    { title: "HCPs", subtitle: "Profesionales Médicos" }
+    { title: "KOLs", subtitle: "" },
+    { title: "Farmacia Hospitalaria", subtitle: "" },
+    { title: "Farmacia de Calle", subtitle: "" },
+    { title: "Pagadores regionales", subtitle: "" },
+    { title: "Asoc. Pacientes", subtitle: "" },
+    { title: "Enfermería", subtitle: "" },
+    { title: "Pacientes y cuidadores", subtitle: "" },
+    { title: "Laboratorios", subtitle: "" },
+    { title: "Hospitales", subtitle: "" },
+    { title: "HCPs", subtitle: "" }
   ];
 
   function isMobile() { return width < 768; }
@@ -2535,8 +2854,8 @@ if (canvas) {
       this.angle = isCenter ? 0 : ((id - 1) * (Math.PI * 2) / nodeData.length);
       this.x = 0;
       this.y = 0;
-      this.h = isCenter ? 110 : 68;
-      this.paddingSide = isCenter ? 80 : 36;
+      this.h = isCenter ? 110 : 82;
+      this.paddingSide = isCenter ? 80 : 48;
       this.w = 0;
       this.floatOffset = Math.random() * Math.PI * 2;
       this.hoverProgress = 0;
@@ -2545,7 +2864,7 @@ if (canvas) {
     }
 
     calculateSize() {
-      const titleSize = this.isCenter ? 40 : 14;
+      const titleSize = this.isCenter ? 40 : 16;
       ctx.font = `600 ${titleSize}px Montserrat, system-ui, sans-serif`;
       const titleW = ctx.measureText(this.title || "").width;
 
@@ -2554,7 +2873,7 @@ if (canvas) {
       const subW = this.subtitle ? ctx.measureText(this.subtitle.toUpperCase()).width : 0;
 
       this.w = Math.max(titleW, subW) + this.paddingSide;
-      this.w = this.isCenter ? Math.max(this.w, 280) : Math.max(this.w, 120);
+      this.w = this.isCenter ? Math.max(this.w, 280) : Math.max(this.w, 150);
     }
 
     update(time) {
@@ -2687,7 +3006,7 @@ if (canvas) {
     DPR = window.devicePixelRatio || 1;
     const rect = canvas.getBoundingClientRect();
     width = rect.width;
-    height = Math.max(480, rect.width * 0.70);
+    height = Math.max(480, rect.width * 0.50);
 
     canvas.width = Math.round(width * DPR);
     canvas.height = Math.round(height * DPR);
@@ -2703,10 +3022,10 @@ if (canvas) {
     const pad = isMobile() ? 18 : 28;
     const availX = Math.max(140, width / 2 - maxOuterHalfW - pad);
     const availY = Math.max(120, height / 2 - maxOuterHalfH - pad);
-    const baseX = isMobile() ? 175 : 520;
-    const baseY = isMobile() ? 155 : 370;
+    const baseX = isMobile() ? 175 : 460;
+    const baseY = isMobile() ? 130 : 300;
     orbitX = Math.min(baseX, availX * 0.98);
-    orbitY = Math.min(baseY, availY * 0.95, orbitX / 1.4);
+    orbitY = Math.min(baseY, availY * 0.95, orbitX / 2.0);
   }
 
   function animate(time) {
@@ -2816,8 +3135,8 @@ function setSalaTab(key) {
   const isNuin = key === 'nuin';
   const tabNuin = document.getElementById('sala-tab-nuin');
   const tabFocus = document.getElementById('sala-tab-focus');
-  const panelNuin = document.getElementById('sala-panel-nuin');
-  const panelFocus = document.getElementById('sala-panel-focus');
+  const panelNuin = document.getElementById('panel-nuin');
+  const panelFocus = document.getElementById('panel-focus');
   if (tabNuin) tabNuin.classList.toggle('active', isNuin);
   if (tabFocus) tabFocus.classList.toggle('active', !isNuin);
   if (panelNuin) panelNuin.classList.toggle('active', isNuin);
@@ -2854,7 +3173,7 @@ const areasData = [
   { area: "Neurología y neurodesarrollo", patologias: ["TDAH", "Trastornos de tics / síndrome de Tourette", "Trastornos del sueño", "Enfermedad de Alzheimer", "Enfermedad de Parkinson", "Enfermedad de Huntington", "Esclerosis lateral amiotrófica (ELA)", "Esclerosis múltiple", "Distrofia muscular de Duchenne", "Atrofia muscular espinal", "Miastenia gravis", "Neuropatía inflamatoria", "Neuropatía Óptica de Leber", "Migraña crónica", "Cefalea en racimos", "Epilepsia", "Síndrome de Dravet", "CLN2", "Síndrome de San Filippo", "Síndrome de Morquio"] },
   { area: "Cardiovascular", patologias: ["Hipertensión arterial", "Dislipidemia", "Enfermedad coronaria crónica", "Síndrome coronario agudo", "Insuficiencia cardiaca", "Fibrilación auricular", "Tromboembolismo venoso", "Hipertensión arterial pulmonar", "Hipercolesterolemia familiar homocigota", "Amiloidosis transtiretina"] },
   { area: "Respiratorio", patologias: ["Asma", "EPOC", "Rinitis alérgica / poliposis nasal", "Fibrosis quística (FQ)", "Fibrosis pulmonar idiopática", "Enfermedad pulmonar intersticial", "Déficit de alfa-1 antitripsina"] },
-  { area: "Endocrinología y metabolismo", patologias: ["Diabetes mellitus tipo 1 y 2", "Obesidad", "Hipotiroidismo / hipertiroidismo", "Osteoporosis", "Hiperplasia suprarrenal congénita", "Síndrome de Cushing", "Acromegalia", "Acondroplasia", "Fenilcetonuria"] },
+  { area: "Endocrinología", patologias: ["Diabetes mellitus tipo 1 y 2", "Obesidad", "Hipotiroidismo / hipertiroidismo", "Osteoporosis", "Hiperplasia suprarrenal congénita", "Síndrome de Cushing", "Acromegalia", "Acondroplasia", "Fenilcetonuria"] },
   { area: "Enfermedades metabólicas y lisosomales", patologias: ["Enfermedad de Gaucher", "Enfermedad de Fabry", "Pompe", "Mucopolisacaridosis", "Déficit de esfingomielinasa"] },
   { area: "Hematología", patologias: ["Anemia ferropénica y por enfermedad renal", "Trombosis venosa", "Trombocitopenia inmune", "Hemofilia A y B", "Enfermedad de von Willebrand", "Hemoglobinuria paroxística nocturna", "Síndrome hemolítico urémico atípico", "Púrpura trombótica", "Enfermedad por aglutininas frías"] },
   { area: "Oncología y hemato-oncología", patologias: ["Cáncer de mama", "Cáncer de pulmón", "Colorrectal", "Próstata", "Ovario", "Riñón", "Melanoma", "Hepatocarcinoma", "Cabeza y cuello", "Gástrico", "GIST", "Sarcomas", "Mesotelioma", "Tumores neuroendocrinos", "Glioblastoma", "Leucemias", "Linfomas", "Mieloma múltiple"] },
