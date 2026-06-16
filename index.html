@@ -1697,11 +1697,33 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 .mobile-menu a.mm-cta { margin-top: 16px; background: var(--green); color: #fff; text-align: center; border-radius: 50px; border-bottom: none; padding: 14px; box-shadow: 0 4px 18px rgba(0,168,120,0.32); }
 body.menu-open { overflow: hidden; }
 
+/* ──────── ALIANZAS CAROUSEL (arrows desktop-hidden) ──────── */
+.alianzas-carousel { position: relative; }
+.ali-arrow {
+  display: none;
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 5;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  color: var(--green);
+  font-size: 26px; line-height: 1;
+  cursor: pointer;
+  align-items: center; justify-content: center;
+  padding-bottom: 3px;
+  transition: background 0.2s, transform 0.15s;
+}
+.ali-arrow:active { transform: translateY(-50%) scale(0.92); }
+.ali-prev { left: -6px; }
+.ali-next { right: -6px; }
+
 /* ════════════════════ MÓVIL (≤768px) ════════════════════ */
 @media (max-width: 768px) {
   html, body { overflow-x: hidden; }
   .nav-links { display: none !important; }
-  .nav-inner { height: 64px; gap: 12px; }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 64px; gap: 12px; }
   .nav-cta-btn { display: none; }
   .hamburger { display: flex; }
   .mobile-menu { display: flex; }
@@ -1747,27 +1769,43 @@ body.menu-open { overflow: hidden; }
   .room-detail-panel { grid-template-columns: 1fr; gap: 22px; padding: 20px; }
   .room-features-list { gap: 11px; }
 
+  /* ESPACIO — mini galería (todas las fotos) */
+  .espacio-mosaic {
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+    grid-template-rows: none !important;
+    grid-auto-rows: 116px;
+    gap: 8px;
+    border-radius: 16px;
+    margin-bottom: 36px;
+  }
+  .mu1, .mu2, .mu3, .mu4, .mu5, .mu6, .mu7, .mu8 {
+    display: block !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  .mosaic-img { border-radius: 12px; }
+
   /* BLOG — fuera */
   #blog { display: none !important; }
 
-  /* ALIANZAS — carrusel de logos */
+  /* ALIANZAS — carrusel de logos con flechas */
+  .ali-arrow { display: flex; }
+  .ali-viewport { overflow: hidden; border-radius: 16px; }
   .partners-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    border-radius: 16px;
+    display: flex !important;
+    grid-template-columns: none !important;
+    transform: translateX(0);
+    transition: transform 0.42s cubic-bezier(0.4,0,0.2,1);
+    border-radius: 0;
+    overflow: visible;
   }
-  .partners-grid::-webkit-scrollbar { display: none; }
   .partner-card {
-    flex: 0 0 50%;
-    scroll-snap-align: center;
-    padding: 30px 18px !important;
+    flex: 0 0 100%;
+    padding: 38px 18px !important;
     justify-content: center;
   }
   .partner-desc { display: none !important; }
-  .partner-logo-wrapper { height: 64px; margin-bottom: 0; }
+  .partner-logo-wrapper { height: 72px; margin-bottom: 0; }
 }
 
 </style>
@@ -2813,7 +2851,10 @@ destacando una gran dedicación a las enfermedades raras.</p>
       <h2 class="section-title" data-i18n="ali_title">Alianzas Estratégicas</h2>
       <p class="section-sub" data-i18n="ali_sub">En Nuin sabemos lo importante que es crecer de la mano de otras agencias y organizaciones, compartiendo buenas prácticas y colaborando para elevar los estándares de calidad del sector.</p>
     </div>
-    <div class="partners-grid reveal">
+    <div class="alianzas-carousel reveal">
+      <button class="ali-arrow ali-prev" onclick="scrollAli(-1)" aria-label="Anterior">‹</button>
+      <div class="ali-viewport">
+      <div class="partners-grid" id="partners-grid">
       <div class="partner-card">
         <div class="partner-logo-wrapper">
           <img src="logos/iris-logo.png" alt="IRIS Logo" loading="lazy">
@@ -2844,6 +2885,9 @@ destacando una gran dedicación a las enfermedades raras.</p>
         </div>
         <p class="partner-desc" data-i18n="ali_beauty">Principal asociación española de empresas de cosmética y cuidado personal, que impulsa innovación y colaboración en el sector.</p>
       </div>
+      </div>
+      </div>
+      <button class="ali-arrow ali-next" onclick="scrollAli(1)" aria-label="Siguiente">›</button>
     </div>
   </div>
 </section>
@@ -3814,6 +3858,14 @@ function closeMenu() {
   document.getElementById('hamburger').classList.remove('open');
   document.getElementById('mobile-menu').classList.remove('open');
   document.body.classList.remove('menu-open');
+}
+
+let aliIndex = 0;
+function scrollAli(dir) {
+  const grid = document.getElementById('partners-grid');
+  const n = grid.children.length;
+  aliIndex = Math.max(0, Math.min(n - 1, aliIndex + dir));
+  grid.style.transform = 'translateX(-' + (aliIndex * 100) + '%)';
 }
 
 // Init on load
