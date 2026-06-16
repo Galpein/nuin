@@ -1788,32 +1788,41 @@ body.menu-open { overflow: hidden; }
   /* BLOG — fuera */
   #blog { display: none !important; }
 
-  /* ALIANZAS — carrusel de logos con flechas */
+  /* ALIANZAS — carrusel mobile */
   .alianzas-carousel {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 14px;
-    padding: 0 4px;
+    gap: 16px;
+    padding: 0 2px;
+  }
+  .ali-track-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
   }
   .ali-arrow {
     display: flex;
     position: static;
     transform: none !important;
     flex-shrink: 0;
-    width: 36px; height: 36px;
+    width: 38px; height: 38px;
     border-radius: 50%;
-    background: transparent;
-    border: 1.5px solid var(--green);
-    box-shadow: none;
+    background: var(--white);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     color: var(--green);
-    font-size: 22px;
+    font-size: 20px;
   }
-  .ali-arrow:active { transform: scale(0.92) !important; }
+  .ali-arrow:active { opacity: 0.7; }
   .ali-viewport {
     flex: 1;
     overflow: hidden;
-    border-radius: 999px;
-    border: 1.5px solid var(--green);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
   }
   .partners-grid {
     display: flex !important;
@@ -1822,18 +1831,38 @@ body.menu-open { overflow: hidden; }
     transition: transform 0.42s cubic-bezier(0.4,0,0.2,1);
     border-radius: 0;
     overflow: visible;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
   }
   .partner-card {
     flex: 0 0 100%;
-    padding: 28px 18px !important;
+    padding: 36px 24px !important;
     justify-content: center;
     align-items: center;
-    background: white !important;
+    background: transparent !important;
     border: none !important;
     border-radius: 0 !important;
+    box-shadow: none !important;
   }
   .partner-desc { display: none !important; }
-  .partner-logo-wrapper { height: 64px; margin-bottom: 0; width: 100%; justify-content: center; }
+  .partner-logo-wrapper { height: 72px; margin-bottom: 0; width: 100%; justify-content: center; }
+  .ali-dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .ali-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background 0.25s, width 0.25s;
+  }
+  .ali-dot.active {
+    background: var(--green);
+    width: 18px;
+    border-radius: 3px;
+  }
 }
 
 </style>
@@ -2880,9 +2909,10 @@ destacando una gran dedicación a las enfermedades raras.</p>
       <p class="section-sub" data-i18n="ali_sub">En Nuin sabemos lo importante que es crecer de la mano de otras agencias y organizaciones, compartiendo buenas prácticas y colaborando para elevar los estándares de calidad del sector.</p>
     </div>
     <div class="alianzas-carousel reveal">
-      <button class="ali-arrow ali-prev" onclick="scrollAli(-1)" aria-label="Anterior">‹</button>
-      <div class="ali-viewport">
-      <div class="partners-grid" id="partners-grid">
+      <div class="ali-track-row">
+        <button class="ali-arrow ali-prev" onclick="scrollAli(-1)" aria-label="Anterior">‹</button>
+        <div class="ali-viewport">
+        <div class="partners-grid" id="partners-grid">
       <div class="partner-card">
         <div class="partner-logo-wrapper">
           <img src="logos/iris-logo.png" alt="IRIS Logo" loading="lazy">
@@ -2913,9 +2943,11 @@ destacando una gran dedicación a las enfermedades raras.</p>
         </div>
         <p class="partner-desc" data-i18n="ali_beauty">Principal asociación española de empresas de cosmética y cuidado personal, que impulsa innovación y colaboración en el sector.</p>
       </div>
+        </div>
+        </div>
+        <button class="ali-arrow ali-next" onclick="scrollAli(1)" aria-label="Siguiente">›</button>
       </div>
-      </div>
-      <button class="ali-arrow ali-next" onclick="scrollAli(1)" aria-label="Siguiente">›</button>
+      <div class="ali-dots" id="ali-dots"></div>
     </div>
   </div>
 </section>
@@ -3889,16 +3921,30 @@ function closeMenu() {
 }
 
 let aliIndex = 0;
+function updateAliDots(n) {
+  const c = document.getElementById('ali-dots');
+  if (!c) return;
+  c.innerHTML = '';
+  for (let i = 0; i < n; i++) {
+    const d = document.createElement('span');
+    d.className = 'ali-dot' + (i === aliIndex ? ' active' : '');
+    d.onclick = () => { aliIndex = i; scrollAli(0); };
+    c.appendChild(d);
+  }
+}
 function scrollAli(dir) {
   const grid = document.getElementById('partners-grid');
   const n = grid.children.length;
   aliIndex = Math.max(0, Math.min(n - 1, aliIndex + dir));
   grid.style.transform = 'translateX(-' + (aliIndex * 100) + '%)';
+  updateAliDots(n);
 }
 
 // Init on load
 document.addEventListener('DOMContentLoaded', () => {
   setLang(currentLang);
+  const grid = document.getElementById('partners-grid');
+  if (grid) updateAliDots(grid.children.length);
 });
 </script>
 
