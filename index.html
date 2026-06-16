@@ -1789,8 +1789,32 @@ body.menu-open { overflow: hidden; }
   #blog { display: none !important; }
 
   /* ALIANZAS — carrusel de logos con flechas */
-  .ali-arrow { display: flex; }
-  .ali-viewport { overflow: hidden; border-radius: 16px; }
+  .alianzas-carousel {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 0 4px;
+  }
+  .ali-arrow {
+    display: flex;
+    position: static;
+    transform: none !important;
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1.5px solid var(--green);
+    box-shadow: none;
+    color: var(--green);
+    font-size: 22px;
+  }
+  .ali-arrow:active { transform: scale(0.92) !important; }
+  .ali-viewport {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 999px;
+    border: 1.5px solid var(--green);
+  }
   .partners-grid {
     display: flex !important;
     grid-template-columns: none !important;
@@ -1801,11 +1825,13 @@ body.menu-open { overflow: hidden; }
   }
   .partner-card {
     flex: 0 0 100%;
-    padding: 38px 18px !important;
+    padding: 28px 18px !important;
     justify-content: center;
+    border: none !important;
+    border-radius: 0 !important;
   }
   .partner-desc { display: none !important; }
-  .partner-logo-wrapper { height: 72px; margin-bottom: 0; }
+  .partner-logo-wrapper { height: 64px; margin-bottom: 0; }
 }
 
 </style>
