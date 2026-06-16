@@ -1673,6 +1673,102 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   box-shadow: inset 4px 4px 10px rgba(0,0,0,0.1), inset -4px -4px 10px rgba(255,255,255,0.2) !important;
 }
 
+/* ──────── HAMBURGER + MOBILE MENU ──────── */
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px 6px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.32s cubic-bezier(0.4,0,0.2,1), opacity 0.2s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display: none;
+  position: fixed; top: 64px; left: 0; right: 0;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  flex-direction: column;
+  padding: 8px var(--pad) 24px;
+  transform: translateY(-130%);
+  transition: transform 0.42s cubic-bezier(0.4,0,0.2,1);
+  z-index: 190;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+.mobile-menu.open { transform: translateY(0); }
+.mobile-menu a { font-size: 16px; font-weight: 600; color: var(--text); text-decoration: none; padding: 15px 6px; border-bottom: 1px solid var(--border); letter-spacing: -0.01em; }
+.mobile-menu a.mm-cta { margin-top: 16px; background: var(--green); color: #fff; text-align: center; border-radius: 50px; border-bottom: none; padding: 14px; box-shadow: 0 4px 18px rgba(0,168,120,0.32); }
+body.menu-open { overflow: hidden; }
+
+/* ════════════════════ MÓVIL (≤768px) ════════════════════ */
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden; }
+  .nav-links { display: none !important; }
+  .nav-inner { height: 64px; gap: 12px; }
+  .nav-cta-btn { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu { display: flex; }
+
+  /* HERO / PORTADA */
+  #hero { min-height: auto; padding-top: 64px; padding-bottom: 20px; }
+  .hero-body { padding: 30px var(--pad) 6px; gap: 28px; }
+  .hero-visual { display: flex !important; }
+  .hero-img-main { aspect-ratio: 16/11; }
+  .hero-h1 { font-size: clamp(27px, 8vw, 36px); margin-bottom: 22px; }
+  .hero-sub { font-size: 14px; line-height: 1.7; margin-bottom: 26px; }
+  .hero-label { margin-bottom: 20px; }
+  .hero-tagline { display: none; }
+
+  /* SOBRE NOSOTROS — datos */
+  .somos-layout { gap: 36px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-card { padding: 22px 16px; }
+  .stat-card:nth-child(even), .stat-card:nth-child(even):hover { transform: none; }
+  .stat-num { font-size: 30px; }
+
+  /* EXPERIENCIA — stakeholders + áreas, sin giro, sin valores */
+  [data-target="panel-valores"], #panel-valores { display: none !important; }
+  .somos-tabs { margin-top: 40px; }
+  .viz-toggle { flex-wrap: wrap; gap: 8px; }
+  .enf-flip-card { cursor: default; aspect-ratio: auto; }
+  .enf-flip-inner { transform: none !important; position: static; }
+  .enf-flip-card:hover .enf-flip-inner { transform: none !important; }
+  .enf-flip-back { display: none !important; }
+  .enf-flip-front { position: relative; min-height: 88px; }
+  .enf-flip-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin-top: 24px; }
+  .enf-flip-front h4 { font-size: 13px; }
+
+  /* EQUIPO — solo foto + nombre + cargo */
+  #team-capsule { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+  .tm-flip-wrapper { aspect-ratio: 3/4; perspective: none; }
+  .tm-flip-inner { transform: none !important; transition: none; position: relative; }
+  .tm-flip-wrapper:hover .tm-flip-inner { transform: none !important; }
+  .tm-flip-back { display: none !important; }
+  .tm-flip-front { position: relative; }
+
+  /* SALAS */
+  .room-detail-panel { grid-template-columns: 1fr; gap: 22px; padding: 20px; }
+  .room-features-list { gap: 11px; }
+
+  /* BLOG — fuera */
+  #blog { display: none !important; }
+
+  /* ALIANZAS — carrusel de logos */
+  .partners-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: 16px;
+  }
+  .partners-grid::-webkit-scrollbar { display: none; }
+  .partner-card {
+    flex: 0 0 50%;
+    scroll-snap-align: center;
+    padding: 30px 18px !important;
+    justify-content: center;
+  }
+  .partner-desc { display: none !important; }
+  .partner-logo-wrapper { height: 64px; margin-bottom: 0; }
+}
 
 </style>
 </head>
@@ -1698,9 +1794,23 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
         <span class="lt-en">EN</span>
       </button>
       <a href="#contacto" class="nav-cta-btn" data-i18n="nav_contact">Contacto</a>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#hero" onclick="closeMenu()" data-i18n="nav_home">Inicio</a>
+  <a href="#somos" onclick="closeMenu()" data-i18n="nav_about">Quienes somos</a>
+  <a href="#equipo" onclick="closeMenu()" data-i18n="nav_team">Equipo</a>
+  <a href="#servicios" onclick="closeMenu()" data-i18n="nav_services">Servicios</a>
+  <a href="#espacio" onclick="closeMenu()" data-i18n="nav_space">Salas</a>
+  <a href="#alianzas" onclick="closeMenu()" data-i18n="nav_alliances">Alianzas</a>
+  <a href="#contacto" class="mm-cta" onclick="closeMenu()" data-i18n="nav_contact">Contacto</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -3289,6 +3399,7 @@ const areasData = [
 /* ── i18n ────────────────────────────────────────────────── */
 const T = {
   es: {
+    nav_home: "Inicio",
     nav_about: "Quienes somos",
     nav_team: "Equipo",
     nav_services: "Servicios",
@@ -3477,6 +3588,7 @@ const T = {
     contact_address: "Calle Raimundo Fdez Villaverde 57, 2º dcha 28003- Madrid",
   },
   en: {
+    nav_home: "Home",
     nav_about: "About us",
     nav_team: "Team",
     nav_services: "Services",
@@ -3691,6 +3803,17 @@ function setLang(lang) {
 
 function toggleLang() {
   setLang(currentLang === 'es' ? 'en' : 'es');
+}
+
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobile-menu').classList.toggle('open');
+  document.body.classList.toggle('menu-open');
+}
+function closeMenu() {
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.body.classList.remove('menu-open');
 }
 
 // Init on load
