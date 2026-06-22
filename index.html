@@ -709,8 +709,12 @@ body[lang="es"] .lt-en { color: var(--text-3); }
   display: flex; align-items: center; justify-content: center;
 }
 .loc-icon svg { width: 18px; height: 18px; stroke: var(--green-light); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.loc-title { font-size: 13px; font-weight: 700; color: white; margin-bottom: 3px; letter-spacing: 0.06em; text-transform: uppercase; }
-.loc-text { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.6; }
+.loc-title { font-size: 13px; font-weight: 700; color: white; margin-bottom: 5px; letter-spacing: 0.06em; text-transform: uppercase; }
+.loc-text { font-size: 14.5px; font-weight: 400; color: rgba(255,255,255,0.85); line-height: 1.6; }
+a.espacio-location { text-decoration: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+a.espacio-location:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
+a.espacio-location:hover .loc-icon { background: rgba(0,168,120,0.28); }
+.loc-maps { display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: var(--green-light); letter-spacing: 0.02em; }
 
 /* ──────── BLOG ──────── */
 #blog { background: radial-gradient(ellipse 75% 50% at 95% 18%, rgba(0,168,120,0.045) 0%, transparent 55%), var(--white); }
@@ -813,6 +817,10 @@ body[lang="es"] .lt-en { color: var(--text-3); }
 }
 .ci-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-3); margin-bottom: 4px; }
 .ci-value { font-size: 14px; font-weight: 500; color: var(--text); }
+a.ci { text-decoration: none; color: inherit; transition: transform 0.2s ease; }
+a.ci:hover { transform: translateX(3px); }
+a.ci:hover .ci-icon { color: var(--green); box-shadow: 0 6px 18px rgba(0,168,120,0.18); }
+a.ci:hover .ci-value { color: var(--green); }
 .contact-form {
   background: var(--white);
   border-radius: 24px;
@@ -900,6 +908,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 }
 .logo-inline img { height: 1.2em; width: auto; display: block; }
 .logo-inline.sm img { height: 0.9em; }
+.logo-inline.esp img { height: 1.2em; }   /* ← LOGO NUIN EN PÁRRAFO ESPACIO */
 .logo-inline.on-dark img { filter: drop-shadow(0 10px 24px rgba(0,0,0,0.25)); }
 
 
@@ -1176,19 +1185,29 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
 }
 .enf-flip-back-tags {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-direction: column;     /* ← LISTA VERTICAL HOMOGÉNEA */
+  gap: 3px;
   width: 100%;
 }
 .enf-tag-flip {
-  font-size: 11px;           /* ← TAMAÑO PÍLDORAS REVERSO */
+  font-size: 10.5px;          /* ← TAMAÑO ITEM LISTA REVERSO */
   font-weight: 500;
-  background: rgba(255,255,255,0.18);
-  border: 1px solid rgba(255,255,255,0.35);
-  padding: 5px 11px;         /* ← PADDING PÍLDORAS REVERSO */
-  border-radius: 50px;
+  background: none;
+  border: none;
+  padding: 1px 0 1px 13px;
+  position: relative;
+  border-radius: 0;
   color: white;
-  line-height: 1.25;
+  line-height: 1.22;
+}
+.enf-tag-flip::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 7px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
 }
 .enf-flip-card.static { cursor: default; }
 .enf-flip-card.static:hover .enf-flip-inner { transform: none; }
@@ -1366,6 +1385,7 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   color: white;
   box-shadow: 0 8px 24px rgba(0,168,120,0.3);
 }
+.room-tab-btn.active .logo-inline img { filter: brightness(0) invert(1); }
 .room-detail-panel {
   display: none;
   grid-template-columns: 1fr 1fr;
@@ -1440,14 +1460,17 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   .srv-item { flex: 0 0 auto; }
   .service-panel.active { grid-template-columns: 1fr; }
   .partners-grid { grid-template-columns: repeat(3, 1fr); }
-  .espacio-mosaic { grid-template-columns: repeat(2, 1fr); grid-template-rows: 220px 220px 170px; }
-  .mu1 { grid-column: 1; grid-row: 1 / 3; }
-  .mu2 { grid-column: 2; grid-row: 1; }
-  .mu3 { grid-column: 2; grid-row: 2; }
-  .mu4, .mu5 { display: none; }
-  .mu6 { grid-column: 1; grid-row: 3; }
-  .mu7 { grid-column: 2; grid-row: 3; }
-  .mu8 { display: none; }
+  .espacio-mosaic {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: none;
+    grid-auto-rows: 170px;
+    border-radius: 28px;
+  }
+  .mu1, .mu2, .mu3, .mu4, .mu5, .mu6, .mu7, .mu8 {
+    display: block !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
   #team-capsule { grid-template-columns: repeat(2, 1fr); }
   .espacio-rooms-row { grid-template-columns: 1fr; }
   .contact-layout { grid-template-columns: 1fr; }
@@ -1467,7 +1490,6 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   .enf-flip-grid { grid-template-columns: repeat(2, 1fr); }
   .stk-grid { gap: 10px; padding: 0 12px; }
   .espacio-rooms-row { grid-template-columns: 1fr; }
-  .mu6, .mu7, .mu8 { display: none; }
 }
 
 /* ──────── VALORES ──────── */
@@ -1718,6 +1740,17 @@ body.menu-open { overflow: hidden; }
 .ali-arrow:active { transform: translateY(-50%) scale(0.92); }
 .ali-prev { left: -6px; }
 .ali-next { right: -6px; }
+
+/* ──────── TEXTOS JUSTIFICADOS (solo desktop) ──────── */
+@media (min-width: 769px) {
+  .somos-left p,
+  .hero-sub,
+  .val-text,
+  .sp-pillar-text,
+  .partner-desc,
+  .bc-excerpt,
+  .room-desc { text-align: justify; }
+}
 
 /* ════════════════════ MÓVIL (≤768px) ════════════════════ */
 @media (max-width: 768px) {
@@ -2560,7 +2593,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
           <div class="tm-flip-back">
             <div class="tm-back-name">Irina González</div>
             <div class="tm-back-role">Medical Communication Lead</div>
-            <div class="tm-back-bio" data-i18n="bio_irina">Consultora estratégica especializada en investigación de mercados en el sector farmacéutico y salud. Desempeña tareas de colaboración, organización y gestión de Advisory Boards, comités científicos y grupos de trabajo, supervisando la creación, calidad y difusión de los contenidos científicos y médicos generados para ofrecer un resultado alineado a los objetivos del cliente y asegurando el cumplimiento normativo.</div>
+            <div class="tm-back-bio" data-i18n="bio_irina">Especialista en la gestión de proyectos editoriales y estratégicos de alto impacto. Desempeña tareas de colaboración, organización y gestión de Advisory Boards, comités científicos y grupos de trabajo, supervisando la creación, calidad y difusión de los contenidos científicos y médicos generados para ofrecer un resultado alineado a los objetivos del cliente y asegurando el cumplimiento normativo.</div>
           </div>
         </div>
       </div>
@@ -2632,7 +2665,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
     <div class="services-header reveal">
       <div class="eyebrow" data-i18n="srv_eyebrow">Lo que hacemos</div>
       <h2 class="section-title" data-i18n="srv_title">Servicios <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="lazy"></span></h2>
-      <p class="section-sub" data-i18n="srv_sub">Cuarenta años dedicados a un solo sector nos han permitido dominar cada ángulo de la investigación en healthcare. Selecciona un servicio para ver los detalles.</p>
+      <p class="section-sub" data-i18n="srv_sub">Cuarenta años dedicados a un solo sector nos han permitido dominar cada ángulo de la investigación en healthcare.<br><br>Selecciona un servicio para ver los detalles.</p>
     </div>
 
     <div class="services-layout">
@@ -2682,7 +2715,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
                   <div class="sp-pillar-title" data-i18n="ab_p4_title">Sala única</div>
-                  <div class="sp-pillar-text" data-i18n="ab_p4_text">Sala <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="nuin" loading="lazy"></span>, diseñada específicamente para Advisory Boards, con mobiliario ergonómico, cabina de traducción simultánea, capacidad hasta 20 personas.</div>
+                  <div class="sp-pillar-text" data-i18n="ab_p4_text">Sala <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="nuin" loading="lazy"></span>, diseñada específicamente para Advisory Boards, con mobiliario ergonómico, cabina de traducción simultánea y capacidad hasta 20 personas.</div>
                 </div>
               </div>
             </div>
@@ -2753,21 +2786,21 @@ destacando una gran dedicación a las enfermedades raras.</p>
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
                   <div class="sp-pillar-title" data-i18n="otras_p1_title">Revisión de procesos</div>
-                  <div class="sp-pillar-text"><strong>Método TWACE: cambios transformadores con alta implicación del equipo.</strong> Metodología propia aplicada con éxito en laboratorios y hospitales. Permite establecer planes de cambio operacionales claros, accesibles y realmente transformadores desde la primera semana. Experiencia en la optimización de procesos en decenas de unidades comerciales, médicas y de marketing de laboratorios líderes y en hospitales con más de 50 implementaciones realizadas.</div>
+                  <div class="sp-pillar-text" data-i18n="otras_p1_text"><strong>Método TWACE: cambios transformadores con alta implicación del equipo.</strong> Metodología propia aplicada con éxito en laboratorios y hospitales. Permite establecer planes de cambio operacionales claros, accesibles y realmente transformadores desde la primera semana. Experiencia en la optimización de procesos en decenas de unidades comerciales, médicas y de marketing de laboratorios líderes y en hospitales con más de 50 implementaciones realizadas.</div>
                 </div>
               </div>
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
                   <div class="sp-pillar-title" data-i18n="otras_p2_title">Reuniones de ciclo</div>
-                  <div class="sp-pillar-text"><strong>Reuniones internas que rompen inercias y generan planes de acción reales.</strong> Diseñamos y facilitamos reuniones de ciclo que alinean equipos, superan bloqueos y transforman conversaciones en compromisos concretos y medibles para áreas médicas, de acceso y marketing.</div>
+                  <div class="sp-pillar-text" data-i18n="otras_p2_text"><strong>Reuniones internas que rompen inercias y generan planes de acción reales.</strong> Diseñamos y facilitamos reuniones de ciclo que alinean equipos, superan bloqueos y transforman conversaciones en compromisos concretos y medibles para áreas médicas, de acceso y marketing.</div>
                 </div>
               </div>
               <div class="sp-pillar">
                 <div class="sp-pillar-dot"></div>
                 <div class="sp-pillar-body">
                   <div class="sp-pillar-title" data-i18n="otras_p3_title">Workshops estratégicos</div>
-                  <div class="sp-pillar-text"><strong>Talleres que generan ideas accionables, alineación real y resultados duraderos.</strong> Talleres presenciales y online con metodologías como Design Thinking o Metaplan. Creamos espacios participativos donde los equipos generan soluciones propias que realmente se implementan.</div>
+                  <div class="sp-pillar-text" data-i18n="otras_p3_text"><strong>Talleres que generan ideas accionables, alineación real y resultados duraderos.</strong> Talleres presenciales y online con metodologías como Design Thinking o Metaplan. Creamos espacios participativos donde los equipos generan soluciones propias que realmente se implementan.</div>
                 </div>
               </div>
             </div>
@@ -2788,7 +2821,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
     <div class="espacio-header reveal">
       <div class="eyebrow" data-i18n="esp_eyebrow">Instalaciones</div>
       <h2 class="section-title" data-i18n="esp_title">Espacio <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="lazy"></span></h2>
-      <p class="section-sub" data-i18n="esp_sub">Dejamos que nuestras salas hablen por nosotros. Desde la Sala Nuin — la única en España diseñada específicamente para Advisory Boards — hasta la Sala FOCUS, pensada hasta el más mínimo detalle.</p>
+      <p class="section-sub" data-i18n="esp_sub">Dejamos que nuestras salas hablen por nosotros. Desde la Sala <span class="logo-inline esp"><img src="dark_logo_transparent_background.png" alt="nuin" loading="lazy"></span> — la única en España diseñada específicamente para Advisory Boards — hasta la Sala FOCUS, pensada hasta el más mínimo detalle.</p>
     </div>
 
     <!-- Mosaic unificado -->
@@ -2845,15 +2878,16 @@ destacando una gran dedicación a las enfermedades raras.</p>
         </ul>
       </div>
     </div>
-    <div class="espacio-location reveal">
+    <a class="espacio-location reveal" href="https://www.google.com/maps/search/?api=1&query=Calle+Raimundo+Fern%C3%A1ndez+Villaverde+57+28003+Madrid" target="_blank" rel="noopener">
       <div class="loc-icon">
         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
       </div>
       <div>
         <div class="loc-title" data-i18n="loc_title">Calle Orense — Madrid</div>
         <div class="loc-text" data-i18n="loc_text">Centro financiero de Madrid, a un paso de El Corte Inglés. Fácil acceso desde el aeropuerto, estaciones de tren, cercanías, metro y dos parkings en la puerta.</div>
+        <span class="loc-maps" data-i18n="loc_maps">Ver en Google Maps →</span>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -2963,7 +2997,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
 
       <div class="contact-info">
 
-        <div class="ci">
+        <a class="ci" href="mailto:nuin@nuingroup.com">
           <div class="ci-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
           </div>
@@ -2971,9 +3005,9 @@ destacando una gran dedicación a las enfermedades raras.</p>
             <div class="ci-label">EMAIL</div>
             <div class="ci-value">nuin@nuingroup.com</div>
           </div>
-        </div>
+        </a>
 
-        <div class="ci">
+        <a class="ci" href="tel:+34913531490">
           <div class="ci-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
           </div>
@@ -2981,9 +3015,9 @@ destacando una gran dedicación a las enfermedades raras.</p>
             <div class="ci-label" data-i18n="contact_phone">TELÉFONO</div>
             <div class="ci-value">913531490</div>
           </div>
-        </div>
+        </a>
 
-        <div class="ci">
+        <a class="ci" href="https://www.google.com/maps/search/?api=1&query=Calle+Raimundo+Fern%C3%A1ndez+Villaverde+57+28003+Madrid" target="_blank" rel="noopener">
           <div class="ci-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
           </div>
@@ -2991,7 +3025,7 @@ destacando una gran dedicación a las enfermedades raras.</p>
             <div class="ci-label" data-i18n="contact_office">SALAS Y OFICINAS</div>
             <div class="ci-value" data-i18n="contact_address">Calle Raimundo Fdez Villaverde 57, 2º dcha 28003- Madrid</div>
           </div>
-        </div>
+        </a>
 
       </div>
     </div>
@@ -3101,6 +3135,23 @@ if (canvas) {
   };
   let nodeData = nodeDataByLang[document.body.getAttribute('lang') || 'es'];
 
+  // Expuesto globalmente: setLang lo llama para traducir los nodos
+  window.updateStakeholderLang = function(lang) {
+    nodeData = nodeDataByLang[lang] || nodeDataByLang.es;
+    if (nodes && nodes.length) {
+      let i = 0;
+      nodes.forEach(n => {
+        if (n.isCenter) return;
+        if (nodeData[i]) n.title = nodeData[i].title;
+        i++;
+      });
+      nodes.forEach(n => { if (!n.isCenter) n.calculateSize(); });
+      let uniformW = 0;
+      nodes.forEach(n => { if (!n.isCenter) uniformW = Math.max(uniformW, n.w); });
+      nodes.forEach(n => { if (!n.isCenter) n.w = uniformW; });
+    }
+  };
+
   function isMobile() { return width < 768; }
 
   function capsulePath(x, y, w, h) {
@@ -3202,7 +3253,7 @@ if (canvas) {
 
       if (this.isCenter) {
         if (nuinLogo.complete && nuinLogo.naturalWidth > 0) {
-          const logoW = isMobile() ? 90 : 110;
+          const logoW = isMobile() ? 110 : 140;
           const logoH = logoW * 0.35;
           ctx.drawImage(nuinLogo, -logoW / 2, -logoH / 2, logoW, logoH);
         }
@@ -3265,7 +3316,14 @@ if (canvas) {
       nodes.push(n);
       pulses.push(new Pulse(n));
       pulses.push(new Pulse(n));
+    });
 
+    // Mismo tamaño para todos los nodos aunque la palabra sea corta
+    let uniformW = 0;
+    nodes.forEach(n => { if (!n.isCenter) uniformW = Math.max(uniformW, n.w); });
+    nodes.forEach(n => {
+      if (n.isCenter) return;
+      n.w = uniformW;
       maxOuterHalfW = Math.max(maxOuterHalfW, (n.w + 20) / 2);
       maxOuterHalfH = Math.max(maxOuterHalfH, (n.h + 4) / 2);
     });
@@ -3574,12 +3632,12 @@ const T = {
     bio_loreto: "Licenciada en Administración y Dirección de Empresas por ICADE y en Derecho por la UNED, Loreto acumula más de 15 años de experiencia en gestión de equipos y expansión internacional. Desde hace 10 años es Managing Partner en Nuin, donde coordina la oficina y asegura la excelencia en cada proyecto, alineando talento, metodología y objetivos estratégicos.",
     bio_josefina: "Con más de 30 años de experiencia en la industria farmacéutica, Josefina aporta una visión estratégica integral del sector, sustentada en un profundo conocimiento de la investigación de mercado y de múltiples áreas terapéuticas. Su trayectoria le ha permitido desarrollar una sólida orientación al cliente, comprendiendo sus retos desde dentro de la organización y actuando como partner estratégico en la definición de proyectos, generación de insights y toma de decisiones alineadas con los objetivos de negocio.",
     bio_sonia: "Las empresas de investigación de mercados y consultoría especializadas en el sector farmacéutico han sido el medio en el que se ha formado y desarrollado profesionalmente. Por su formación como psicóloga, los estudios cualitativos son un área destacada de su trabajo, que le permite analizar, comprender e interpretar las tendencias del sector, enfocado a generar ideas y soluciones para mejorar las estrategias comerciales de los clientes. Experta en técnicas de moderación, metodología maieútica y herramientas innovadoras.",
-    bio_irina: "Consultora estratégica especializada en investigación de mercados en el sector farmacéutico y salud. Desempeña tareas de colaboración, organización y gestión de Advisory Boards, comités científicos y grupos de trabajo, supervisando la creación, calidad y difusión de los contenidos científicos y médicos generados para ofrecer un resultado alineado a los objetivos del cliente y asegurando el cumplimiento normativo.",
+    bio_irina: "Especialista en la gestión de proyectos editoriales y estratégicos de alto impacto. Desempeña tareas de colaboración, organización y gestión de Advisory Boards, comités científicos y grupos de trabajo, supervisando la creación, calidad y difusión de los contenidos científicos y médicos generados para ofrecer un resultado alineado a los objetivos del cliente y asegurando el cumplimiento normativo.",
     bio_ana: "Sólida formación científica y experiencia nacional e internacional. Licenciada en farmacia por la Universidad de Santiago de Compostela y doctora en tecnología farmacéutica por la Heinrich-Heine-Universität de Düsseldorf. Tras varios años como mánager de proyectos en la industria farmacéutica alemana, regresa a España y se especializa en redacción médica, ámbito en el que acumula casi 10 años de experiencia.",
     bio_laura: "Más de 14 años de experiencia trabajando con entidades sociales en el ámbito público y privado. Con formación en Magisterio de Educación Primaria, ha desarrollado una forma de trabajar muy centrada en las personas, con facilidad para organizar dinámicas, coordinar encuentros y hacer que distintos perfiles se impliquen en los proyectos. En los últimos años ha trasladado esta experiencia al ámbito sanitario, colaborando con asociaciones de pacientes y coordinando estudios.",
     bio_guillermo: "Impulsa la adopción de soluciones tecnológicas y enfoques innovadores para optimizar los procesos y la propuesta de valor de Nuin.",
     srv_eyebrow: "Lo que hacemos",
-    srv_sub: "Cuarenta años dedicados a un solo sector nos han permitido dominar cada ángulo de la investigación en healthcare. Selecciona un servicio para ver los detalles.",
+    srv_sub: "Cuarenta años dedicados a un solo sector nos han permitido dominar cada ángulo de la investigación en healthcare.<br><br>Selecciona un servicio para ver los detalles.",
     srv2_name: "Investigación de mercado",
     srv3_name: "Otras soluciones estratégicas",
     ab_desc: "Más de 750 sesiones realizadas en todo el mundo. Diseñamos cada reunión a medida, asegurando la máxima participación y resultados estratégicos para cada laboratorio.",
@@ -3608,10 +3666,13 @@ const T = {
     otras_desc1: "En Nuin acompañamos a nuestros clientes en momentos clave de análisis, alineación y toma de decisiones. Diseñamos y facilitamos dinámicas estratégicas adaptadas al entorno healthcare, combinando conocimiento del sector, visión analítica y experiencia moderando equipos multidisciplinares.",
     otras_desc2: "Ayudamos a transformar información y experiencia en decisiones compartidas, accionables y orientadas a resultados.",
     otras_p1_title: "Revisión de procesos",
+    otras_p1_text: `<strong>Método TWACE: cambios transformadores con alta implicación del equipo.</strong> Metodología propia aplicada con éxito en laboratorios y hospitales. Permite establecer planes de cambio operacionales claros, accesibles y realmente transformadores desde la primera semana. Experiencia en la optimización de procesos en decenas de unidades comerciales, médicas y de marketing de laboratorios líderes y en hospitales con más de 50 implementaciones realizadas.`,
     otras_p2_title: "Reuniones de ciclo",
+    otras_p2_text: `<strong>Reuniones internas que rompen inercias y generan planes de acción reales.</strong> Diseñamos y facilitamos reuniones de ciclo que alinean equipos, superan bloqueos y transforman conversaciones en compromisos concretos y medibles para áreas médicas, de acceso y marketing.`,
     otras_p3_title: "Workshops estratégicos",
+    otras_p3_text: `<strong>Talleres que generan ideas accionables, alineación real y resultados duraderos.</strong> Talleres presenciales y online con metodologías como Design Thinking o Metaplan. Creamos espacios participativos donde los equipos generan soluciones propias que realmente se implementan.`,
     esp_eyebrow: "Instalaciones",
-    esp_sub: "Dejamos que nuestras salas hablen por nosotros. Desde la Sala Nuin — la única en España diseñada específicamente para Advisory Boards — hasta la Sala FOCUS, pensada hasta el más mínimo detalle.",
+    esp_sub: `Dejamos que nuestras salas hablen por nosotros. Desde la Sala <span class="logo-inline esp"><img src="dark_logo_transparent_background.png" alt="nuin" loading="lazy"></span> — la única en España diseñada específicamente para Advisory Boards — hasta la Sala FOCUS, pensada hasta el más mínimo detalle.`,
     room_n1: `Espacio equipado con <strong style="font-weight: 600;">mobiliario ergonómico</strong> que garantiza la comodidad de los participantes durante sesiones de larga duración.`,
     room_n2: `Dispone de <strong style="font-weight: 600;">cabina de traducción simultánea</strong> para facilitar reuniones internacionales y proyectos multicéntricos.`,
     room_n3: `Sala con <strong style="font-weight: 600;">capacidad</strong> para albergar <strong>hasta 20 asistentes</strong> en un entorno cómodo y funcional.`,
@@ -3627,6 +3688,7 @@ const T = {
     room_f6: `Espacio diseñado para garantizar la <strong style="font-weight: 600;">privacidad y confidencialidad</strong> de la información compartida durante las reuniones y estudios de investigación.`,
     loc_title: "Calle Orense — Madrid",
     loc_text: "Centro financiero de Madrid, a un paso de El Corte Inglés. Fácil acceso desde el aeropuerto, estaciones de tren, cercanías, metro y dos parkings en la puerta.",
+    loc_maps: "Ver en Google Maps →",
     blog_eyebrow: "Casos reales",
     blog_title: "Blog de Casos",
     blog_all: "Ver todos los casos →",
@@ -3673,7 +3735,7 @@ const T = {
     room_tab_focus: "Sala FOCUS",
     room_nuin_title: `Sala <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="lazy"></span>`,
     room_focus_title: "Sala FOCUS",
-    ab_p4_text: `Sala <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="nuin" loading="lazy"></span>, diseñada específicamente para Advisory Boards, con mobiliario ergonómico, cabina de traducción simultánea, capacidad hasta 20 personas.`,
+    ab_p4_text: `Sala <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="nuin" loading="lazy"></span>, diseñada específicamente para Advisory Boards, con mobiliario ergonómico, cabina de traducción simultánea y capacidad hasta 20 personas.`,
     q1_text: '"El precio de la luz es menor que el costo de la oscuridad."',
     q2_text: '"A la excelencia hay que ir y golpearle la puerta, es un trabajo de todos los días."',
     q3_text: '"El talento gana partidos, pero el trabajo en equipo y la inteligencia ganan campeonatos."',
@@ -3716,7 +3778,7 @@ const T = {
     ht_projects: "+4,200 projects",
     somos_eyebrow: "Who we are",
     somos_title: "The first market research<br>institute exclusively<br>dedicated to the<br>pharmaceutical sector",
-    somos_p1: "We were Spain's first market research company exclusively dedicated to the pharmaceutical sector. Four decades of continuous work, a solid team and a proven methodology back us up.",
+    somos_p1: "We were the first Spanish market research company exclusively dedicated to the pharmaceutical sector. Four decades of continuous work, a solid team, and a proven methodology support us.",
     somos_p2: "Our specialisation in healthcare is not a commercial choice — it is our reason for being.",
     stat1: "years dedicated to pharma",
     stat2: "healthcare projects",
@@ -3763,20 +3825,20 @@ const T = {
     bio_loreto: "Holding degrees in Business Administration from ICADE and Law from UNED, Loreto brings over 15 years of experience in team management and international expansion. For the past 10 years she has been Managing Partner at Nuin, coordinating the office and ensuring excellence in every project by aligning talent, methodology and strategic objectives.",
     bio_josefina: "With more than 30 years of experience in the pharmaceutical industry, Josefina brings a comprehensive strategic vision of the sector, grounded in deep knowledge of market research and multiple therapeutic areas. Her career has allowed her to develop a strong client-orientation, understanding their challenges from within the organisation and acting as a strategic partner in project definition, insight generation and decision-making aligned with business objectives.",
     bio_sonia: "Market research and consulting companies specialised in the pharmaceutical sector have been the environment in which she has trained and developed professionally. Her background as a psychologist makes qualitative research a standout area of her work, enabling her to analyse, understand and interpret sector trends to generate ideas and solutions that improve clients' commercial strategies. Expert in moderation techniques, maieutic methodology and innovative tools.",
-    bio_irina: "Strategic consultant specialised in market research in the pharmaceutical and healthcare sector. She collaborates in the organisation and management of Advisory Boards, scientific committees and working groups, overseeing the creation, quality and dissemination of scientific and medical content to deliver results aligned with client objectives while ensuring regulatory compliance.",
+    bio_irina: "Specialist in the management of high-impact editorial and strategic projects. She collaborates in the organisation and management of Advisory Boards, scientific committees and working groups, overseeing the creation, quality and dissemination of scientific and medical content to deliver results aligned with client objectives while ensuring regulatory compliance.",
     bio_ana: "Strong scientific background with national and international experience. She holds a degree in Pharmacy from the University of Santiago de Compostela and a PhD in Pharmaceutical Technology from Heinrich-Heine-Universität Düsseldorf. After several years as a project manager in the German pharmaceutical industry, she returned to Spain and specialised in medical writing, a field in which she has accumulated almost 10 years of experience.",
     bio_laura: "Over 14 years of experience working with social organisations in both public and private settings. With a background in Primary Education, she has developed a highly people-centred way of working, with a talent for organising dynamics, coordinating meetings and getting diverse profiles engaged in projects. In recent years she has transferred this experience to the healthcare field, collaborating with patient associations and coordinating studies.",
     bio_guillermo: "Drives the adoption of technological solutions and innovative approaches to optimise Nuin's processes and value proposition.",
     srv_eyebrow: "What we do",
-    srv_sub: "Forty years dedicated to a single sector have allowed us to master every angle of healthcare research. Select a service to see the details.",
+    srv_sub: "Forty years dedicated to a single sector have allowed us to master every angle of healthcare research.<br><br>Select a service to see the details.",
     srv2_name: "Market research",
     srv3_name: "Other strategic solutions",
     ab_desc: "More than 750 sessions conducted worldwide. We design every meeting to measure, ensuring maximum participation and strategic results for each laboratory.",
-    ab_p1_title: "Proprietary preparation system",
+    ab_p1_title: "Own preparation system",
     ab_p1_text: "750+ ABs have given us the tools to optimise every session. 100% of clients who have run an AB with us have repeated.",
     ab_p2_title: "Multiple formats",
     ab_p2_text: "Covers a wide variety of formats — in-person, virtual or hybrid — across medical, marketing and access organisational areas and stakeholders.",
-    ab_p3_title: "International reach",
+    ab_p3_title: "International coverage",
     ab_p3_text: "USA, Mexico, Honduras, Chile, Argentina, France, Denmark, Switzerland, UK… We moderate in multiple languages.",
     ab_p4_title: "Unique room",
     inv_title: "Market research",
@@ -3784,7 +3846,7 @@ const T = {
     inv_desc1: "Research is Nuin's core. Four decades working exclusively in health have allowed us to develop deep knowledge of the clinical environment, healthcare professionals and patients.",
     inv_desc2: "We combine qualitative and quantitative research with proprietary methodology, an exclusive database and broad therapeutic area expertise to generate solid, actionable and relevant insights. We don't just get answers — we understand the context that explains them.",
     inv_p1_title: "Real health expertise",
-    inv_p1_text: "We have worked across all therapeutic areas and with virtually every stakeholder in the healthcare ecosystem. That accumulated knowledge allows us to quickly understand each project and ask the right questions from the start.",
+    inv_p1_text: "We have worked across all therapeutic areas and with virtually every stakeholder in the healthcare ecosystem. That accumulated knowledge allows us to quickly understand each project and ask the right questions.",
     inv_p2_title: "Access to all profiles",
     inv_p2_text: "Specialist physicians, Primary Care, nursing, hospital pharmacy, community pharmacy, managers, KOLs, patients, caregivers and patient associations. National coverage, with no geographical or specialty limitations.",
     inv_p3_title: "Proprietary and exclusive database",
@@ -3797,10 +3859,13 @@ const T = {
     otras_desc1: "At Nuin we accompany our clients at key moments of analysis, alignment and decision-making. We design and facilitate strategic dynamics adapted to the healthcare environment, combining sector knowledge, analytical vision and experience moderating multidisciplinary teams.",
     otras_desc2: "We help transform information and experience into shared, actionable and results-oriented decisions.",
     otras_p1_title: "Process review",
+    otras_p1_text: `<strong>TWACE Method: transformative change with high team involvement.</strong> Our own methodology, successfully applied in laboratories and hospitals. It allows clear, accessible and truly transformative operational change plans to be established from the very first week. Experience optimising processes across dozens of commercial, medical and marketing units of leading laboratories and in hospitals, with more than 50 implementations carried out.`,
     otras_p2_title: "Cycle meetings",
+    otras_p2_text: `<strong>Internal meetings that break inertia and generate real action plans.</strong> We design and facilitate cycle meetings that align teams, overcome blockers and turn conversations into concrete, measurable commitments for medical, access and marketing areas.`,
     otras_p3_title: "Strategic workshops",
+    otras_p3_text: `<strong>Workshops that generate actionable ideas, real alignment and lasting results.</strong> In-person and online workshops using methodologies such as Design Thinking or Metaplan. We create participatory spaces where teams generate their own solutions that are actually implemented.`,
     esp_eyebrow: "Facilities",
-    esp_sub: "We let our rooms speak for themselves. From the Sala Nuin — the only one in Spain designed specifically for Advisory Boards — to the FOCUS Room, designed down to the last detail.",
+    esp_sub: `We let our rooms speak for themselves. From the Sala <span class="logo-inline esp"><img src="dark_logo_transparent_background.png" alt="nuin" loading="lazy"></span> — the only one in Spain designed specifically for Advisory Boards — to the FOCUS Room, designed down to the last detail.`,
     room_n1: `Space equipped with <strong style="font-weight: 600;">ergonomic furniture</strong> that ensures participant comfort during long sessions.`,
     room_n2: `Features a <strong style="font-weight: 600;">simultaneous translation booth</strong> to facilitate international meetings and multicentre projects.`,
     room_n3: `Room with <strong style="font-weight: 600;">capacity</strong> for <strong>up to 20 attendees</strong> in a comfortable and functional environment.`,
@@ -3816,6 +3881,7 @@ const T = {
     room_f6: `Space designed to ensure <strong style="font-weight: 600;">privacy and confidentiality</strong> of information shared during meetings and research studies.`,
     loc_title: "Calle Orense — Madrid",
     loc_text: "Madrid's financial district, steps from El Corte Inglés. Easy access from the airport, train stations, commuter rail, metro and two car parks at the door.",
+    loc_maps: "View on Google Maps →",
     blog_eyebrow: "Real cases",
     blog_title: "Case Blog",
     blog_all: "View all cases →",
@@ -3834,7 +3900,7 @@ const T = {
     ali_aimfa: "Association of Pharmaceutical Research and Marketing. A meeting point for market research professionals specialised in pharma in Spain, fostering professional development, knowledge and networking.",
     ali_ephmra: "Our meeting point with international pharma market research specialists, participating in the improvement of quality standards and innovating in methodologies.",
     ali_esomar: "Global body of ethical and methodological standards in market research, regulating the industry internationally since 1947 to ensure public trust and protect consumer data.",
-    ali_beauty: "Spain's leading association of cosmetics and personal care companies, driving innovation and collaboration in the sector.",
+    ali_beauty: "Main Spanish association of cosmetics and personal care companies, driving innovation and collaboration in the sector.",
     contact_eyebrow: "LET'S TALK",
     contact_title: "Contact",
     contact_headline: `"We have spent over forty years learning day by day so your next project comes out perfect — shall we talk?"`,
@@ -3862,7 +3928,7 @@ const T = {
     room_tab_focus: "FOCUS Room",
     room_nuin_title: `<span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="NUIN" loading="lazy"></span> Room`,
     room_focus_title: "FOCUS Room",
-    ab_p4_text: `The <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="nuin" loading="lazy"></span> Room, designed specifically for Advisory Boards, with ergonomic furniture, simultaneous translation booth, capacity for up to 20 people.`,
+    ab_p4_text: `The <span class="logo-inline"><img src="dark_logo_transparent_background.png" alt="nuin" loading="lazy"></span> Room, designed specifically for Advisory Boards, with ergonomic furniture, simultaneous translation booth, and capacity for up to 20 people.`,
     q1_text: '"The price of light is less than the cost of darkness."',
     q2_text: '"Excellence must be pursued — it is the work of every single day."',
     q3_text: '"Talent wins games, but teamwork and intelligence win championships."',
@@ -3884,6 +3950,44 @@ const T = {
 
 let currentLang = localStorage.getItem('nuinLang') || 'es';
 
+// Enfermedades por área terapéutica (orden = tarjetas en DOM)
+const enfDiseases = {
+  es: [
+    ["TDAH","Tourette","Trastornos del sueño","Alzheimer","Parkinson","Huntington","ELA","Esclerosis múltiple","Duchenne","Atrofia muscular espinal","Miastenia gravis","Migraña crónica","Epilepsia","Síndrome de Dravet"],
+    ["Hipertensión arterial","Dislipidemia","Enfermedad coronaria","Síndrome coronario agudo","Insuficiencia cardiaca","Fibrilación auricular","Tromboembolismo venoso","HAP","Hipercolesterolemia familiar","Amiloidosis ATTR"],
+    ["Asma","EPOC","Rinitis alérgica","Fibrosis quística","Fibrosis pulmonar idiopática","Enfermedad pulmonar intersticial","Déficit alfa-1 antitripsina"],
+    ["Diabetes tipo 1 y 2","Obesidad","Hipotiroidismo","Osteoporosis","Hiperplasia suprarrenal","Síndrome de Cushing","Acromegalia","Acondroplasia","Fenilcetonuria"],
+    ["Gaucher","Fabry","Pompe","Mucopolisacaridosis","Déficit esfingomielinasa"],
+    ["Anemia ferropénica","Trombosis venosa","Trombocitopenia inmune","Hemofilia A y B","Von Willebrand","HPN","SHUa","Aglutininas frías"],
+    ["Cáncer de mama","Cáncer de pulmón","Colorrectal","Próstata","Ovario","Melanoma","Hepatocarcinoma","Glioblastoma","Leucemias","Linfomas","Mieloma múltiple"],
+    ["Artritis reumatoide","Artritis psoriásica","Espondiloartritis axial","Psoriasis","Lupus eritematoso","Vasculitis ANCA","Dermatitis atópica","Urticaria crónica","Angioedema hereditario"],
+    ["Enfermedad de Crohn","Colitis ulcerosa","Enfermedad celíaca","Úlcera péptica","Síndrome intestino irritable","Hepatitis B y C","Colangitis","Intestino corto"],
+    ["VIH","Hepatitis B y C crónica","Tuberculosis","Infecciones fúngicas","Citomegalovirus","COVID-19","Herpes Zóster"],
+    ["Psoriasis","Dermatitis atópica","Acné","Rosácea","Hidradenitis supurativa","Urticaria crónica espontánea","Alopecia areata"],
+    ["Enfermedad renal crónica","Hiperpotasemia crónica","Glomerulopatías","Poliquistosis renal"],
+    ["DMAE","Ojo seco","Uveítis no infecciosa","Glaucoma","Retinopatía diabética","Distrofias retinianas","Neuromielitis óptica"],
+    ["Endometriosis","Anticoncepción hormonal","Miomas uterinos","Osteoporosis posmenopáusica","Hiperplasia benigna próstata","Vejiga hiperactiva","Disfunción eréctil","Infertilidad"],
+    ["Esquizofrenia","Depresión","Adicciones","TDAH","Trastorno bipolar","Ansiedad"]
+  ],
+  en: [
+    ["ADHD","Tourette","Sleep disorders","Alzheimer's","Parkinson's","Huntington's","ALS","Multiple sclerosis","Duchenne (DMD)","Spinal muscular atrophy","Myasthenia gravis","Chronic migraine","Epilepsy","Dravet syndrome"],
+    ["High blood pressure","Dyslipidemia","Chronic coronary heart disease","Acute coronary syndrome","Heart failure","Atrial fibrillation","Venous thromboembolism","PAH","Familial hypercholesterolemia","TTR amyloidosis"],
+    ["Asthma","COPD","Allergic rhinitis","Cystic fibrosis","Idiopathic pulmonary fibrosis","Interstitial lung disease","Alpha-1 antitrypsin deficiency"],
+    ["Diabetes type 1 & 2","Obesity","Hypothyroidism","Osteoporosis","Adrenal hyperplasia","Cushing's syndrome","Acromegaly","Achondroplasia","Phenylketonuria"],
+    ["Gaucher","Fabry","Pompe","Mucopolysaccharidosis","Sphingomyelinase deficiency"],
+    ["Iron deficiency anemia","Venous thrombosis","Immune thrombocytopenia","Hemophilia A & B","Von Willebrand","PNH","aHUS","Cold agglutinin disease"],
+    ["Breast cancer","Lung cancer","Colorectal","Prostate","Ovary","Melanoma","Hepatocarcinoma","Glioblastoma","Leukemias","Lymphomas","Multiple myeloma"],
+    ["Rheumatoid arthritis","Psoriatic arthritis","Axial spondyloarthritis","Psoriasis","Systemic lupus erythematosus","ANCA vasculitis","Atopic dermatitis","Chronic urticaria","Hereditary angioedema"],
+    ["Crohn's disease","Ulcerative colitis","Celiac disease","Peptic ulcer","Irritable bowel syndrome","Hepatitis B & C","Cholangitis","Short bowel syndrome"],
+    ["HIV","Chronic hepatitis B & C","Tuberculosis","Invasive fungal infections","Cytomegalovirus","COVID-19","Shingles"],
+    ["Psoriasis","Atopic dermatitis","Acne","Rosacea","Hidradenitis suppurativa","Chronic spontaneous urticaria","Alopecia areata"],
+    ["Chronic kidney disease","Chronic hyperkalemia","Glomerulopathies","Polycystic kidney disease"],
+    ["AMD","Dry eye","Non-infectious uveitis","Glaucoma","Diabetic retinopathy","Hereditary retinal dystrophies","Neuromyelitis optica"],
+    ["Endometriosis","Hormonal contraception","Uterine fibroids","Postmenopausal osteoporosis","Benign prostatic hyperplasia","Overactive bladder","Erectile dysfunction","Infertility"],
+    ["Schizophrenia","Depression","Addictions","ADHD","Bipolar disorder","Anxiety"]
+  ]
+};
+
 function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('nuinLang', lang);
@@ -3894,14 +3998,15 @@ function setLang(lang) {
     const key = el.getAttribute('data-i18n');
     if (dict[key] !== undefined) el.innerHTML = dict[key];
   });
+  // Enfermedades de áreas terapéuticas
+  const enfList = enfDiseases[lang] || enfDiseases.es;
+  document.querySelectorAll('.enf-flip-back-tags').forEach((el, idx) => {
+    const list = enfList[idx];
+    if (list) el.innerHTML = list.map(d => `<span class="enf-tag-flip">${d}</span>`).join('');
+  });
   // Update stakeholders canvas
-  if (typeof nodeDataByLang !== 'undefined') {
-    nodeData = nodeDataByLang[lang];
-    if (typeof nodes !== 'undefined') {
-      nodes.forEach((n, i) => {
-        if (!n.isCenter && nodeData[i]) n.title = nodeData[i].title;
-      });
-    }
+  if (typeof window.updateStakeholderLang === 'function') {
+    window.updateStakeholderLang(lang);
   }
 }
 
