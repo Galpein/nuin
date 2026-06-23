@@ -3178,10 +3178,11 @@ nuinLogo.src = "white_logo_transparent_background.png";
 const canvas = document.getElementById("stakeholdersCanvas");
 if (canvas) {
   // ─────────────────────────────────────────────────────────────────────────
-  // AJUSTES STAKEHOLDERS — modifica solo estas 3 líneas
-  const STK_CENTER_SIZE = 1.0;   // píldora NUIN central  (1.0 = normal, 1.3 = 30% más grande)
-  const STK_NODE_SIZE   = 1.0;   // píldoras que orbitan  (1.0 = normal, 0.8 = 20% más pequeño)
-  const STK_ORBIT       = 1.0;   // distancia al centro   (1.0 = normal, 1.2 = más separado)
+  // AJUSTES STAKEHOLDERS — modifica solo estas líneas
+  const STK_CENTER_W  = 1.0;   // ancho píldora NUIN    (1.0 = normal · afecta logo y padding horizontal)
+  const STK_CENTER_H  = 1.0;   // alto  píldora NUIN    (1.0 = normal · afecta alto y tamaño de letra)
+  const STK_NODE_SIZE = 1.0;   // píldoras que orbitan  (1.0 = normal · afecta todo: alto, ancho, letra)
+  const STK_ORBIT     = 1.0;   // distancia al centro   (1.0 = normal · 1.2 = más separado)
   // ─────────────────────────────────────────────────────────────────────────
 
   const ctx = canvas.getContext("2d");
@@ -3290,8 +3291,8 @@ if (canvas) {
       this.angle = isCenter ? 0 : ((id - 1) * (Math.PI * 2) / nodeData.length);
       this.x = 0;
       this.y = 0;
-      this.h = isCenter ? Math.round(132 * STK_CENTER_SIZE) : Math.round(94 * STK_NODE_SIZE);
-      this.paddingSide = isCenter ? Math.round(90 * STK_CENTER_SIZE) : Math.round(52 * STK_NODE_SIZE);
+      this.h = isCenter ? Math.round(132 * STK_CENTER_H) : Math.round(94 * STK_NODE_SIZE);
+      this.paddingSide = isCenter ? Math.round(90 * STK_CENTER_W) : Math.round(52 * STK_NODE_SIZE);
       this.w = 0;
       this.floatOffset = Math.random() * Math.PI * 2;
       this.hoverProgress = 0;
@@ -3300,7 +3301,7 @@ if (canvas) {
     }
 
     calculateSize() {
-      const titleSize = this.isCenter ? Math.round(40 * STK_CENTER_SIZE) : Math.round(18 * STK_NODE_SIZE);
+      const titleSize = this.isCenter ? Math.round(40 * STK_CENTER_H) : Math.round(18 * STK_NODE_SIZE);
       ctx.font = `600 ${titleSize}px Montserrat, system-ui, sans-serif`;
       const titleW = ctx.measureText(this.title || "").width;
 
@@ -3369,7 +3370,7 @@ if (canvas) {
 
       if (this.isCenter) {
         if (nuinLogo.complete && nuinLogo.naturalWidth > 0) {
-          const logoW = isMobile() ? 110 : Math.round(188 * STK_CENTER_SIZE);
+          const logoW = isMobile() ? 110 : Math.round(188 * STK_CENTER_W);
           const logoH = logoW * 0.35;
           ctx.drawImage(nuinLogo, -logoW / 2, -logoH / 2, logoW, logoH);
         }
