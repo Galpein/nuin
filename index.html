@@ -3310,7 +3310,7 @@ if (canvas) {
       const subW = this.subtitle ? ctx.measureText(this.subtitle.toUpperCase()).width : 0;
 
       this.w = Math.max(titleW, subW) + this.paddingSide;
-      this.w = this.isCenter ? Math.max(this.w, 280) : Math.max(this.w, 150);
+      this.w = this.isCenter ? Math.max(this.w, Math.round(280 * STK_CENTER_W)) : Math.max(this.w, Math.round(150 * STK_NODE_SIZE));
     }
 
     update(time, still) {
