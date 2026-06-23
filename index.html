@@ -2141,10 +2141,6 @@ body.menu-open { overflow: hidden; }
 
       <div id="panel-stakeholders" class="viz-panel active">
         <div class="network-wrap">
-          <div class="stk-mode-toggle" role="group" aria-label="Modo visualización">
-            <button type="button" class="stk-mode-btn active" data-mode="anim" onclick="setStakeholdersMode('anim', this)" data-i18n="stk_mode_anim">Animado</button>
-            <button type="button" class="stk-mode-btn" data-mode="static" onclick="setStakeholdersMode('static', this)" data-i18n="stk_mode_static">Imagen</button>
-          </div>
           <canvas id="stakeholdersCanvas"></canvas>
           <div class="stk-mobile">
             <div class="stk-m-center"><img src="dark_logo_transparent_background.png" alt="nuin"></div>
@@ -3182,10 +3178,10 @@ const canvas = document.getElementById("stakeholdersCanvas");
 if (canvas) {
   // ─────────────────────────────────────────────────────────────────────────
   // AJUSTES STAKEHOLDERS — modifica solo estas líneas
-  const STK_CENTER_W  = 1.0;   // ancho píldora NUIN    (1.0 = normal · afecta logo y padding horizontal)
-  const STK_CENTER_H  = 1.0;   // alto  píldora NUIN    (1.0 = normal · afecta alto y tamaño de letra)
-  const STK_NODE_SIZE = 1.0;   // píldoras que orbitan  (1.0 = normal · afecta todo: alto, ancho, letra)
-  const STK_ORBIT     = 1.0;   // distancia al centro   (1.0 = normal · 1.2 = más separado)
+  const STK_CENTER_W  = 1.7;   // ancho píldora NUIN    (1.0 = normal · afecta logo y padding horizontal)
+  const STK_CENTER_H  = 1.4;   // alto  píldora NUIN    (1.0 = normal · afecta alto y tamaño de letra)
+  const STK_NODE_SIZE = 1.3;   // píldoras que orbitan  (1.0 = normal · afecta todo: alto, ancho, letra)
+  const STK_ORBIT     = 0.9;   // distancia al centro   (1.0 = normal · 1.2 = más separado)
   // ─────────────────────────────────────────────────────────────────────────
 
   const ctx = canvas.getContext("2d");
