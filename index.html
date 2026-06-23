@@ -3149,6 +3149,8 @@ if (canvas) {
       let uniformW = 0;
       nodes.forEach(n => { if (!n.isCenter) uniformW = Math.max(uniformW, n.w); });
       nodes.forEach(n => { if (!n.isCenter) n.w = uniformW; });
+      maxOuterHalfW = 0;
+      nodes.forEach(n => { if (!n.isCenter) maxOuterHalfW = Math.max(maxOuterHalfW, (n.w + 20) / 2); });
     }
   };
 
@@ -3174,8 +3176,8 @@ if (canvas) {
       this.angle = isCenter ? 0 : ((id - 1) * (Math.PI * 2) / nodeData.length);
       this.x = 0;
       this.y = 0;
-      this.h = isCenter ? 110 : 82;
-      this.paddingSide = isCenter ? 80 : 48;
+      this.h = isCenter ? 110 : 74;
+      this.paddingSide = isCenter ? 80 : 36;
       this.w = 0;
       this.floatOffset = Math.random() * Math.PI * 2;
       this.hoverProgress = 0;
@@ -3184,7 +3186,7 @@ if (canvas) {
     }
 
     calculateSize() {
-      const titleSize = this.isCenter ? 40 : 16;
+      const titleSize = this.isCenter ? 40 : 13;
       ctx.font = `600 ${titleSize}px Montserrat, system-ui, sans-serif`;
       const titleW = ctx.measureText(this.title || "").width;
 
