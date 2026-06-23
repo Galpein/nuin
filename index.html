@@ -638,6 +638,9 @@ body[lang="es"] .lt-en { color: var(--text-3); }
   color: #04211A;
 }
 
+/* ──────── STAKEHOLDERS MÓVIL (píldoras, sin canvas) ──────── */
+.stk-mobile { display: none; }
+
 /* VIZ B Hexagonal labels */
 .hex-label { font-family: 'Montserrat', sans-serif; }
 
@@ -1100,6 +1103,48 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   .hl-cap-2 { top: auto; bottom: 56px; right: -4px; }
   .hl-cap-3 { display: none; }
   .hl-cap-4 { bottom: -12px; right: auto; left: 12px; }
+
+  /* Stakeholders: el radial de 10 nodos no cabe legible en móvil → píldoras */
+  #stakeholdersCanvas { display: none; }
+  .network-wrap .stk-mode-toggle { display: none; }
+  .network-wrap { padding: 0; }
+  .stk-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    padding: 30px 16px 34px;
+  }
+  .stk-m-center {
+    background: linear-gradient(135deg, var(--green-light, #00C98E), var(--green-dark, #007A58));
+    border: 2px solid rgba(255,255,255,0.82);
+    border-radius: 999px;
+    padding: 15px 42px;
+    box-shadow: 0 0 44px rgba(0,201,142,0.5);
+  }
+  .stk-m-center img { height: 28px; width: auto; display: block; filter: brightness(0) invert(1); }
+  .stk-m-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    width: 100%;
+  }
+  .stk-m-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 52px;
+    padding: 11px 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #fff;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(0,201,142,0.16), rgba(0,35,30,0.55));
+    border: 1px solid rgba(0,201,142,0.5);
+    box-shadow: 0 2px 12px rgba(0,201,142,0.12);
+  }
 }
 
 /* ──────── STAT PILL NUMS ──────── */
@@ -2098,6 +2143,21 @@ body.menu-open { overflow: hidden; }
             <button type="button" class="stk-mode-btn" data-mode="static" onclick="setStakeholdersMode('static', this)" data-i18n="stk_mode_static">Imagen</button>
           </div>
           <canvas id="stakeholdersCanvas"></canvas>
+          <div class="stk-mobile">
+            <div class="stk-m-center"><img src="dark_logo_transparent_background.png" alt="nuin"></div>
+            <div class="stk-m-grid">
+              <span class="stk-m-pill" data-i18n="stk_n_lab">Laboratorios</span>
+              <span class="stk-m-pill" data-i18n="stk_n_hosp">Hospitales</span>
+              <span class="stk-m-pill" data-i18n="stk_n_hcp">HCPs</span>
+              <span class="stk-m-pill" data-i18n="stk_n_kol">KOLs</span>
+              <span class="stk-m-pill" data-i18n="stk_n_farmh">Farmacia Hospitalaria</span>
+              <span class="stk-m-pill" data-i18n="stk_n_farmc">Farmacia de Calle</span>
+              <span class="stk-m-pill" data-i18n="stk_n_pag">Pagadores regionales</span>
+              <span class="stk-m-pill" data-i18n="stk_n_asoc">Asociaciones de Pacientes</span>
+              <span class="stk-m-pill" data-i18n="stk_n_enf">Enfermería</span>
+              <span class="stk-m-pill" data-i18n="stk_n_pac">Pacientes y cuidadores</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -3418,8 +3478,8 @@ if (canvas) {
     const pad = isMobile() ? 18 : 28;
     const availX = Math.max(140, width / 2 - maxOuterHalfW - pad);
     const availY = Math.max(120, height / 2 - maxOuterHalfH - pad);
-    const baseX = isMobile() ? 175 : 460;
-    const baseY = isMobile() ? 130 : 300;
+    const baseX = isMobile() ? 175 : 760;
+    const baseY = isMobile() ? 130 : 360;
     orbitX = Math.min(baseX, availX * 0.98);
     orbitY = Math.min(baseY, availY * 0.95, orbitX / 2.0);
   }
@@ -3694,6 +3754,16 @@ const T = {
     tab_stakeholders: "Stakeholders",
     stk_mode_anim: "Animado",
     stk_mode_static: "Imagen",
+    stk_n_lab: "Laboratorios",
+    stk_n_hosp: "Hospitales",
+    stk_n_hcp: "HCPs",
+    stk_n_kol: "KOLs",
+    stk_n_farmh: "Farmacia Hospitalaria",
+    stk_n_farmc: "Farmacia de Calle",
+    stk_n_pag: "Pagadores regionales",
+    stk_n_asoc: "Asociaciones de Pacientes",
+    stk_n_enf: "Enfermería",
+    stk_n_pac: "Pacientes y cuidadores",
     tab_areas: "Áreas Terapéuticas",
     tab_valores: "Principios y Valores",
     areas_eyebrow: "Experiencia",
@@ -3889,6 +3959,16 @@ const T = {
     tab_stakeholders: "Stakeholders",
     stk_mode_anim: "Animated",
     stk_mode_static: "Image",
+    stk_n_lab: "Laboratories",
+    stk_n_hosp: "Hospitals",
+    stk_n_hcp: "HCPs",
+    stk_n_kol: "KOLs",
+    stk_n_farmh: "Hospital Pharmacy",
+    stk_n_farmc: "Community Pharmacy",
+    stk_n_pag: "Regional Payers",
+    stk_n_asoc: "Patient Associations",
+    stk_n_enf: "Nursing",
+    stk_n_pac: "Patients & Caregivers",
     tab_areas: "Therapeutic Areas",
     tab_valores: "Principles & Values",
     areas_eyebrow: "Expertise",
