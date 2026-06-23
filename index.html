@@ -1104,7 +1104,10 @@ footer { background: var(--dark); color: white; padding: 64px 0 32px; }
   .hl-cap-3 { display: none; }
   .hl-cap-4 { bottom: -12px; right: auto; left: 12px; }
 
-  /* Stakeholders: el radial de 10 nodos no cabe legible en móvil → píldoras */
+}
+
+/* Stakeholders: cambia a píldoras antes de que el grafo se amontone (~25% reducido) */
+@media (max-width: 1100px) {
   #stakeholdersCanvas { display: none; }
   .network-wrap .stk-mode-toggle { display: none; }
   .network-wrap { padding: 0; }
@@ -3453,7 +3456,7 @@ if (canvas) {
     // El modo se decide por el VIEWPORT del dispositivo, no por el ancho del
     // canvas (que se reduce por padding en pantalla dividida). Así una ventana
     // estrecha de escritorio sigue usando el modo escalado, no el de móvil.
-    mobileLayout = window.innerWidth < 768;
+    mobileLayout = window.innerWidth < 1100;
 
     let displayH;
     if (!mobileLayout) {
