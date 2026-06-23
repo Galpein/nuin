@@ -3186,7 +3186,7 @@ if (canvas) {
   // escala como una unidad al tamaño real. Composición idéntica a cualquier
   // ancho/monitor → los nodos nunca chocan. (solo escritorio)
   const DESIGN_W = 1900;
-  const DESIGN_H = 950;
+  const DESIGN_H = 840;
   let displayW = 0;       // ancho real en CSS px
   let scale = 1;          // factor de escala display/diseño
   let staticMode = false; // true = imagen congelada (sin animación)
@@ -3283,8 +3283,8 @@ if (canvas) {
       this.angle = isCenter ? 0 : ((id - 1) * (Math.PI * 2) / nodeData.length);
       this.x = 0;
       this.y = 0;
-      this.h = isCenter ? 110 : 74;
-      this.paddingSide = isCenter ? 80 : 36;
+      this.h = isCenter ? 132 : 94;
+      this.paddingSide = isCenter ? 90 : 52;
       this.w = 0;
       this.floatOffset = Math.random() * Math.PI * 2;
       this.hoverProgress = 0;
@@ -3293,7 +3293,7 @@ if (canvas) {
     }
 
     calculateSize() {
-      const titleSize = this.isCenter ? 40 : 14;
+      const titleSize = this.isCenter ? 40 : 18;
       ctx.font = `600 ${titleSize}px Montserrat, system-ui, sans-serif`;
       const titleW = ctx.measureText(this.title || "").width;
 
@@ -3362,13 +3362,13 @@ if (canvas) {
 
       if (this.isCenter) {
         if (nuinLogo.complete && nuinLogo.naturalWidth > 0) {
-          const logoW = isMobile() ? 110 : 140;
+          const logoW = isMobile() ? 110 : 188;
           const logoH = logoW * 0.35;
           ctx.drawImage(nuinLogo, -logoW / 2, -logoH / 2, logoW, logoH);
         }
       } else {
         ctx.fillStyle = THEME.text;
-        ctx.font = `600 ${isMobile() ? '12px' : '14px'} Montserrat, system-ui, sans-serif`;
+        ctx.font = `600 ${isMobile() ? '12px' : '18px'} Montserrat, system-ui, sans-serif`;
         ctx.fillText(this.title, 0, this.subtitle ? -10 : 0);
 
         if (this.subtitle) {
