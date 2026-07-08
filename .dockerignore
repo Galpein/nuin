@@ -1,0 +1,27 @@
+# Control de versiones / herramientas
+.git
+.gitignore
+.claude
+
+# Documentación y fuentes no-web
+*.md
+*.docx
+*.pptx
+*.zip
+index.txt
+
+# Backups y maquetas antiguas
+versiones-anteriores/
+v1-light-professional.html
+v1-nuin.html
+v2-dark-elegant.html
+v4-minimal-luxury.html
+preview-v1.png
+preview-v2.png
+preview-v3.png
+preview-v4.png
+
+# Archivos de build (no van dentro de la imagen servida)
+Dockerfile
+nginx.conf
+.dockerignore
