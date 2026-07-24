@@ -21,7 +21,8 @@ preview-v2.png
 preview-v3.png
 preview-v4.png
 
-# Archivos de build (no van dentro de la imagen servida)
+# Archivos de build (Dockerfile/.dockerignore fuera del contexto;
+# nginx.conf SÍ debe estar en el contexto porque el Dockerfile lo COPIA,
+# y luego se borra del html en el propio Dockerfile)
 Dockerfile
-nginx.conf
 .dockerignore
