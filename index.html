@@ -38,6 +38,10 @@
 <style>
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* Los atributos width/height del HTML (necesarios para evitar saltos de layout)
+   actúan como altura fija si la regla CSS no define height. Esto lo neutraliza:
+   manda siempre el CSS. Cualquier regla con clase es más específica y prevalece. */
+img { height: auto; }
 
 :root {
   --green: #00A878;
@@ -837,6 +841,7 @@ a.espacio-location:hover .loc-icon { background: rgba(0,168,120,0.28); }
   margin-bottom: 24px;
 }
 .partner-logo-wrapper img {
+  width: auto;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
